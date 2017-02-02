@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129591E431DF7004CA4F8 /* AppDelegate.swift */; };
+		4031295C1E431DF7004CA4F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031295B1E431DF7004CA4F8 /* ViewController.swift */; };
+		4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4031295D1E431DF7004CA4F8 /* Main.storyboard */; };
+		403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */; };
+		403129641E431DF7004CA4F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 403129631E431DF7004CA4F8 /* Assets.xcassets */; };
+		403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */; };
+		403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129711E431DF7004CA4F8 /* RouteNavTests.swift */; };
+		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4031296E1E431DF7004CA4F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 403129551E431DF7004CA4F8;
+			remoteInfo = RouteNav;
+		};
+		403129791E431DF7004CA4F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 403129551E431DF7004CA4F8;
+			remoteInfo = RouteNav;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		403129561E431DF7004CA4F8 /* RouteNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4031295B1E431DF7004CA4F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4031295E1E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		403129611E431DF7004CA4F8 /* RouteNav.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RouteNav.xcdatamodel; sourceTree = "<group>"; };
+		403129631E431DF7004CA4F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		403129661E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		403129681E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		403129711E431DF7004CA4F8 /* RouteNavTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavTests.swift; sourceTree = "<group>"; };
+		403129731E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavUITests.swift; sourceTree = "<group>"; };
+		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		403129531E431DF7004CA4F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4031296A1E431DF7004CA4F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		403129751E431DF7004CA4F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4031294D1E431DF7004CA4F8 = {
+			isa = PBXGroup;
+			children = (
+				403129581E431DF7004CA4F8 /* RouteNav */,
+				403129701E431DF7004CA4F8 /* RouteNavTests */,
+				4031297B1E431DF7004CA4F8 /* RouteNavUITests */,
+				403129571E431DF7004CA4F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		403129571E431DF7004CA4F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				403129561E431DF7004CA4F8 /* RouteNav.app */,
+				4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */,
+				403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		403129581E431DF7004CA4F8 /* RouteNav */ = {
+			isa = PBXGroup;
+			children = (
+				403129591E431DF7004CA4F8 /* AppDelegate.swift */,
+				4031295B1E431DF7004CA4F8 /* ViewController.swift */,
+				4031295D1E431DF7004CA4F8 /* Main.storyboard */,
+				403129631E431DF7004CA4F8 /* Assets.xcassets */,
+				403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */,
+				403129681E431DF7004CA4F8 /* Info.plist */,
+				403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */,
+			);
+			path = RouteNav;
+			sourceTree = "<group>";
+		};
+		403129701E431DF7004CA4F8 /* RouteNavTests */ = {
+			isa = PBXGroup;
+			children = (
+				403129711E431DF7004CA4F8 /* RouteNavTests.swift */,
+				403129731E431DF7004CA4F8 /* Info.plist */,
+			);
+			path = RouteNavTests;
+			sourceTree = "<group>";
+		};
+		4031297B1E431DF7004CA4F8 /* RouteNavUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */,
+				4031297E1E431DF7004CA4F8 /* Info.plist */,
+			);
+			path = RouteNavUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		403129551E431DF7004CA4F8 /* RouteNav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNav" */;
+			buildPhases = (
+				403129521E431DF7004CA4F8 /* Sources */,
+				403129531E431DF7004CA4F8 /* Frameworks */,
+				403129541E431DF7004CA4F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RouteNav;
+			productName = RouteNav;
+			productReference = 403129561E431DF7004CA4F8 /* RouteNav.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4031296C1E431DF7004CA4F8 /* RouteNavTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavTests" */;
+			buildPhases = (
+				403129691E431DF7004CA4F8 /* Sources */,
+				4031296A1E431DF7004CA4F8 /* Frameworks */,
+				4031296B1E431DF7004CA4F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4031296F1E431DF7004CA4F8 /* PBXTargetDependency */,
+			);
+			name = RouteNavTests;
+			productName = RouteNavTests;
+			productReference = 4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		403129771E431DF7004CA4F8 /* RouteNavUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavUITests" */;
+			buildPhases = (
+				403129741E431DF7004CA4F8 /* Sources */,
+				403129751E431DF7004CA4F8 /* Frameworks */,
+				403129761E431DF7004CA4F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4031297A1E431DF7004CA4F8 /* PBXTargetDependency */,
+			);
+			name = RouteNavUITests;
+			productName = RouteNavUITests;
+			productReference = 403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4031294E1E431DF7004CA4F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Andrew Donnelly";
+				TargetAttributes = {
+					403129551E431DF7004CA4F8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4JYLXVYYFP;
+						ProvisioningStyle = Automatic;
+					};
+					4031296C1E431DF7004CA4F8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4JYLXVYYFP;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 403129551E431DF7004CA4F8;
+					};
+					403129771E431DF7004CA4F8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4JYLXVYYFP;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 403129551E431DF7004CA4F8;
+					};
+				};
+			};
+			buildConfigurationList = 403129511E431DF7004CA4F8 /* Build configuration list for PBXProject "RouteNav" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4031294D1E431DF7004CA4F8;
+			productRefGroup = 403129571E431DF7004CA4F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				403129551E431DF7004CA4F8 /* RouteNav */,
+				4031296C1E431DF7004CA4F8 /* RouteNavTests */,
+				403129771E431DF7004CA4F8 /* RouteNavUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		403129541E431DF7004CA4F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */,
+				403129641E431DF7004CA4F8 /* Assets.xcassets in Resources */,
+				4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4031296B1E431DF7004CA4F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		403129761E431DF7004CA4F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		403129521E431DF7004CA4F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
+				4031295C1E431DF7004CA4F8 /* ViewController.swift in Sources */,
+				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		403129691E431DF7004CA4F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		403129741E431DF7004CA4F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4031296F1E431DF7004CA4F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 403129551E431DF7004CA4F8 /* RouteNav */;
+			targetProxy = 4031296E1E431DF7004CA4F8 /* PBXContainerItemProxy */;
+		};
+		4031297A1E431DF7004CA4F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 403129551E431DF7004CA4F8 /* RouteNav */;
+			targetProxy = 403129791E431DF7004CA4F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4031295D1E431DF7004CA4F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4031295E1E431DF7004CA4F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				403129661E431DF7004CA4F8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4031297F1E431DF7004CA4F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		403129801E431DF7004CA4F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		403129821E431DF7004CA4F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
+				INFOPLIST_FILE = RouteNav/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNav;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		403129831E431DF7004CA4F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
+				INFOPLIST_FILE = RouteNav/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNav;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		403129851E431DF7004CA4F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
+				INFOPLIST_FILE = RouteNavTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNav.app/RouteNav";
+			};
+			name = Debug;
+		};
+		403129861E431DF7004CA4F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
+				INFOPLIST_FILE = RouteNavTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNav.app/RouteNav";
+			};
+			name = Release;
+		};
+		403129881E431DF7004CA4F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
+				INFOPLIST_FILE = RouteNavUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RouteNav;
+			};
+			name = Debug;
+		};
+		403129891E431DF7004CA4F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
+				INFOPLIST_FILE = RouteNavUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = RouteNav;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		403129511E431DF7004CA4F8 /* Build configuration list for PBXProject "RouteNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4031297F1E431DF7004CA4F8 /* Debug */,
+				403129801E431DF7004CA4F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				403129821E431DF7004CA4F8 /* Debug */,
+				403129831E431DF7004CA4F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				403129851E431DF7004CA4F8 /* Debug */,
+				403129861E431DF7004CA4F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				403129881E431DF7004CA4F8 /* Debug */,
+				403129891E431DF7004CA4F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				403129611E431DF7004CA4F8 /* RouteNav.xcdatamodel */,
+			);
+			currentVersion = 403129611E431DF7004CA4F8 /* RouteNav.xcdatamodel */;
+			path = RouteNav.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4031294E1E431DF7004CA4F8 /* Project object */;
+}
