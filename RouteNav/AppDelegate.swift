@@ -8,15 +8,41 @@
 
 import UIKit
 import CoreData
+import p2_OAuth2
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let oauth2 = OAuth2CodeGrant(settings: [
+        "client_id": "1401",
+        "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59",
+        "authorize_uri": "https://www.strava.com/oauth/authorize",
+        "token_uri": "https://www.strava.com/oauth/token",
+        "redirect_uris": ["routeNav://localhost"],
+        "approval_prompt": "force",
+        "scope": "write",
+        "keychain": false,         // if you DON'T want keychain integration
+        "response_type" : "code",
+        ] as OAuth2JSON)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        oauth2.authConfig.authorizeEmbedded = false
+        oauth2.logger = OAuth2DebugLogger(.trace)
+        oauth2.clientId = "1401"
+        
+        oauth2.authorize() { authParameters, error in
+            if let params = authParameters {
+                print("Authorized! Access token is in `oauth2.accessToken`")
+                print("Authorized! Additional parameters: \(params)")
+            }
+            else {
+                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
+            }
+        }
+        
         return true
     }
 
@@ -87,6 +113,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+        // you should probably first check if this is the callback being opened
+        //if  {
+            // if your oauth2 instance lives somewhere else, adapt accordingly
+        oauth2.authParameters = ["client_id": "1401",
+                                 "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59"]
+        
+            oauth2.handleRedirectURL(url)
+        //}
+        
+        return true
     }
 
 }
