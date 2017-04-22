@@ -130,7 +130,12 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                 self.authBarButton?.image = UIImage(named:"973-user-selected")
                 // Show the routes
                 print(self.apiHelper.routes[0])
-                self.addTableView()
+                
+                DispatchQueue.main.async {
+                    // update some UI
+                    self.addTableView()
+                    }
+                
             }
             else
             {
@@ -157,7 +162,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         view.addSubview(tableView)
         
         let views = ["tableView": tableView]
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[tableView]|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: views))
         tableView.reloadData()
     }
