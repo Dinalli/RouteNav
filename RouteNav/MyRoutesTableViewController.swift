@@ -24,6 +24,26 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        if(apiHelper.authorisationToken == nil)
+        {
+            
+            let authorisationHandler = { (action:UIAlertAction!) -> Void in
+                self.authenticate()
+            }
+
+            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
+            alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
+            self.present(alertMessage, animated: true, completion: nil)
+            
+
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +53,10 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     @IBAction func authenticate(_ sender: Any) {
+        authenticate()
+    }
+    
+    func authenticate() {
         let web = WKWebView()
         web.translatesAutoresizingMaskIntoConstraints = false
         web.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
