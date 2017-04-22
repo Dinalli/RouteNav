@@ -12,7 +12,7 @@
         <!--Navigation Controller-->
         <scene sceneID="3wi-dW-6d7">
             <objects>
-                <navigationController id="fjl-F4-sau" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navController" id="fjl-F4-sau" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LSS-4r-xKG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -29,7 +29,7 @@
         <!--My Routes Table View Controller-->
         <scene sceneID="LBS-hr-2Jm">
             <objects>
-                <viewController id="zIC-wr-DWV" customClass="MyRoutesTableViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myRoutesVC" id="zIC-wr-DWV" customClass="MyRoutesTableViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vjf-8P-dFN"/>
                         <viewControllerLayoutGuide type="bottom" id="wgH-0B-OsW"/>
@@ -59,7 +59,7 @@
         <!--Route Sumary View Controller-->
         <scene sceneID="WKc-eC-z4j">
             <objects>
-                <viewController id="Rkg-Ea-qvg" customClass="RouteSumaryViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteSumaryViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Sf-pO-S8v"/>
                         <viewControllerLayoutGuide type="bottom" id="BY4-x3-IHo"/>
@@ -94,7 +94,7 @@
         <!--Full Route Detail View Controller-->
         <scene sceneID="g1f-SY-npr">
             <objects>
-                <viewController id="bjw-Ld-5wn" customClass="FullRouteDetailViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fullRouteVC" id="bjw-Ld-5wn" customClass="FullRouteDetailViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IL2-8M-Uej"/>
                         <viewControllerLayoutGuide type="bottom" id="cZd-ju-aog"/>
@@ -115,7 +115,7 @@
         <!--Route Navigation View Controller-->
         <scene sceneID="hEs-Bp-xH4">
             <objects>
-                <viewController id="D95-Wi-sUa" customClass="RouteNavigationViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouteNavVC" id="D95-Wi-sUa" customClass="RouteNavigationViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4j1-mr-mE2"/>
                         <viewControllerLayoutGuide type="bottom" id="w8e-x6-ZLu"/>
