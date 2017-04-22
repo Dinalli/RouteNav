@@ -1,0 +1,6 @@
+framework module Pods_RouteNav {
+  umbrella header "Pods-RouteNav-umbrella.h"
+
+  export *
+  module * { export * }
+}

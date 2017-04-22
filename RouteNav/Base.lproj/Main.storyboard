@@ -49,6 +49,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="authBarButton" destination="tzv-mY-A6W" id="OGl-nA-z1D"/>
+                        <segue destination="Rkg-Ea-qvg" kind="show" identifier="showSumarySegue" id="zRi-ha-TXy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onl-sw-WFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,7 +75,7 @@
                                     <navigationItem title="Title" id="Lqu-sP-wcN">
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="XTm-CM-c2r">
                                             <connections>
-                                                <segue destination="bjw-Ld-5wn" kind="show" id="pHC-pe-xfT"/>
+                                                <segue destination="bjw-Ld-5wn" kind="show" identifier="showFullRouteSegue" id="pHC-pe-xfT"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -103,6 +104,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="D95-Wi-sUa" kind="show" identifier="showRouteNavSegue" id="1i9-sI-sEk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gD5-sU-eBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,24 +129,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h4m-yb-7sT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2376" y="-817"/>
-        </scene>
-        <!--Strava Auth View Controller-->
-        <scene sceneID="NOz-Yi-FpT">
-            <objects>
-                <viewController id="orv-sl-MD1" customClass="StravaAuthViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XSs-fb-kHZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="0gS-V2-TJ6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A2f-8g-8g2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DBF-la-aP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-39" y="-1583"/>
         </scene>
     </scenes>
     <resources>
