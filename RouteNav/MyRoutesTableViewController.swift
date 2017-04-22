@@ -37,7 +37,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             let authorisationHandler = { (action:UIAlertAction!) -> Void in
                 self.authenticate()
             }
-
             let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
             alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
             self.present(alertMessage, animated: true, completion: nil)
@@ -76,7 +75,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         let request = navigationAction.request
         let url = request.url
-        if url?.scheme == "routenav"
+        if url?.scheme == "strvroute"
         {
             if UIApplication.shared .canOpenURL(url!)
             {
@@ -129,10 +128,15 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             if successFlag
             {
                 self.authBarButton?.image = UIImage(named:"973-user-selected")
+                // Show the routes
+                print(self.apiHelper.routes[0])
+                self.addTableView()
             }
             else
             {
-                
+                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
             }
         }
     }
@@ -142,21 +146,38 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
 
+    // MARK: - Table view processing
+    
+    func addTableView(){
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "routeCell")
+        view.addSubview(tableView)
+        
+        let views = ["tableView": tableView]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: views))
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.apiHelper.routes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath)
 
+        cell.textLabel?.text = self.apiHelper.routes[indexPath.row]["name"] as! String
         // Configure the cell...
 
         return cell

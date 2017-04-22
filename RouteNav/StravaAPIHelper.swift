@@ -19,7 +19,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
     var athlete: [String: Any]!
     var routes: Array<[String: Any]>!
     
-    let authUrl = URL(string: "https://www.strava.com/oauth/authorize?client_id=1401&response_type=code&redirect_uri=routeNav://localhost&scope=write&state=mystate&approval_prompt=force")
+    let authUrl = URL(string: "https://www.strava.com/oauth/authorize?client_id=1401&response_type=code&redirect_uri=strvroute://localhost&scope=write&state=mystate&approval_prompt=force")
     
     public func exchangeCodeForToken(_ code: String, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
@@ -55,10 +55,11 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         self.athlete = jsonResult!["athlete"] as? [String: Any]
                         let athleteId = self.athlete!["id"] as? Int
                         
-                        self.getRoutes(athleteId!)
-                        //success code
+                        self.getRoutes(athleteId!, completionHandler: { (successFlag) in
+                            return completionHandler(successFlag)
+                        })
                         
-                        return completionHandler(true)
+                        
                     } catch {
                         //failure code
                         return completionHandler(false)
@@ -73,7 +74,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         dataTask?.resume()
     }
     
-    public func getRoutes(_ athleteId: Int) {
+    public func getRoutes(_ athleteId: Int, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/athletes/\(athleteId)/routes")
         var request = URLRequest(url: authUrl!)
@@ -97,11 +98,13 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                             JSONSerialization.ReadingOptions.mutableContainers))
 
                         self.routes = jsonResult as! Array
-                        print(self.routes[0])
+                        
                         //success code
+                        return completionHandler(true)
                     } catch {
                         //failure code
                         print(httpResponse)
+                        return completionHandler(false)
                     }
                 }
                 else

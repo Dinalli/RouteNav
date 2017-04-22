@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         // you should probably first check if this is the callback being opened
         
-        if "routenav" == url.scheme {
+        if "strvroute" == url.scheme {
             if let vc = self.window?.rootViewController?.childViewControllers.first as? MyRoutesTableViewController {
                 vc.handleRedirectURL(url)
                 return true
