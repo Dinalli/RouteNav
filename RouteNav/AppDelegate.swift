@@ -8,44 +8,67 @@
 
 import UIKit
 import CoreData
-import p2_OAuth2
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let oauth2 = OAuth2CodeGrant(settings: [
-        "client_id": "1401",
-        "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59",
-        "authorize_uri": "https://www.strava.com/oauth/authorize",
-        "token_uri": "https://www.strava.com/oauth/token",
-        "redirect_uris": ["routeNav://localhost"],
-        "approval_prompt": "force",
-        "scope": "write",
-        "keychain": false,         // if you DON'T want keychain integration
-        "response_type" : "code",
-        ] as OAuth2JSON)
+//    var loader: OAuth2DataLoader?
+//    let oauth2 = OAuth2CodeGrant(settings: [
+//        "client_id": "1401",
+//        "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59",
+//        "authorize_uri": "https://www.strava.com/oauth/authorize",
+//        "token_uri": "https://www.strava.com/oauth/token",
+//        "redirect_uris": ["routeNav://localhost"],
+//        "approval_prompt": "force",
+//        "scope": "write",
+//        "keychain": false,         // if you DON'T want keychain integration
+//        "response_type" : "code",
+//        ] as OAuth2JSON)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        oauth2.authConfig.authorizeEmbedded = false
-        oauth2.logger = OAuth2DebugLogger(.trace)
-        oauth2.clientId = "1401"
+//        oauth2.authConfig.authorizeEmbedded = false
+//        oauth2.logger = OAuth2DebugLogger(.trace)
+//
+//        oauth2.authParameters = ["client_id": "1401",
+//                                 "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59", "authorize_uri": "https://www.strava.com/oauth/authorize"]
+//        oauth2.authorize() { authParameters, error in
+//            if let params = authParameters {
+//                print("Authorized! Access token is in `oauth2.accessToken`")
+//                print("Authorized! Additional parameters: \(params)")
+//            }
+//            else {
+//                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
+//            }
+//        }
         
-        oauth2.authorize() { authParameters, error in
-            if let params = authParameters {
-                print("Authorized! Access token is in `oauth2.accessToken`")
-                print("Authorized! Additional parameters: \(params)")
-            }
-            else {
-                print("Authorization was cancelled or went wrong: \(error)")   // error will not be nil
-            }
-        }
+//        oauth2.authParameters = ["client_id": "1401",
+//                                 "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59"]
+//        
+//        if oauth2.isAuthorizing {
+//            oauth2.abortAuthorization()
+//        }
+//        
+//        oauth2.authConfig.authorizeEmbedded = true
+//        oauth2.authConfig.authorizeContext = self
+//        let loader = OAuth2DataLoader(oauth2: oauth2)
+//        self.loader = loader
+//        
+//        loader.perform(request: userDataRequest) { response in
+//            do {
+//                let json = try response.responseJSON()
+//                //self.didGetUserdata(dict: json, loader: loader)
+//            }
+//            catch let error {
+//                print("Authorization went wrong: \(error)")
+//            }
+//        }
         
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -120,16 +143,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      open url: URL,
                      options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         // you should probably first check if this is the callback being opened
-        //if  {
-            // if your oauth2 instance lives somewhere else, adapt accordingly
-        oauth2.authParameters = ["client_id": "1401",
-                                 "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59"]
         
-            oauth2.handleRedirectURL(url)
-        //}
-        
+        if "routenav" == url.scheme {
+            if let vc = self.window?.rootViewController?.childViewControllers.first as? MyRoutesTableViewController {
+                vc.handleRedirectURL(url)
+                return true
+            }
+        }
+
         return true
     }
 
+}
+
+extension UINavigationController {
+    var rootViewController : UIViewController? {
+        return self.viewControllers.first
+    }
 }
 

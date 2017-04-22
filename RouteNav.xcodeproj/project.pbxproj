@@ -14,15 +14,13 @@
 		403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */; };
 		403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129711E431DF7004CA4F8 /* RouteNavTests.swift */; };
 		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
-		4031298E1E4321C9004CA4F8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031298D1E4321C9004CA4F8 /* FirstViewController.swift */; };
-		403129901E4321D6004CA4F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031298F1E4321D6004CA4F8 /* LoginViewController.swift */; };
-		403129961E432208004CA4F8 /* RouteNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129951E432208004CA4F8 /* RouteNavigatorViewController.swift */; };
 		403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */; };
-		4031299A1E432416004CA4F8 /* ChooseRoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129991E432416004CA4F8 /* ChooseRoutesTableViewController.swift */; };
-		40B42AC51E7AC61D00B8FA84 /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B42AC41E7AC61D00B8FA84 /* StravaAPIHelper.swift */; };
+		405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F31991E81B1890013457C /* StravaAPIHelper.swift */; };
+		40AD0A421EAA21DB00E06958 /* RouteSumaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A411EAA21DB00E06958 /* RouteSumaryViewController.swift */; };
+		40AD0A441EAA221E00E06958 /* FullRouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A431EAA221E00E06958 /* FullRouteDetailViewController.swift */; };
+		40AD0A461EAA224700E06958 /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A451EAA224700E06958 /* RouteNavigationViewController.swift */; };
 		40B42AC71E7ACB8B00B8FA84 /* StravaAthelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B42AC61E7ACB8B00B8FA84 /* StravaAthelete.swift */; };
 		40B42AC91E7ACB9A00B8FA84 /* StravaRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B42AC81E7ACB9A00B8FA84 /* StravaRoute.swift */; };
-		A7756678631BFC8BE0D0B8FB /* Pods_RouteNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40BCFA1A4CFB675E4DA0C7D0 /* Pods_RouteNav.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		271E19C4B9318923F947BA64 /* Pods-RouteNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNav.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav.release.xcconfig"; sourceTree = "<group>"; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
 		403129561E431DF7004CA4F8 /* RouteNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,16 +55,13 @@
 		403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavUITests.swift; sourceTree = "<group>"; };
 		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4031298D1E4321C9004CA4F8 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		4031298F1E4321D6004CA4F8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		403129951E432208004CA4F8 /* RouteNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigatorViewController.swift; sourceTree = "<group>"; };
 		403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRoutesTableViewController.swift; sourceTree = "<group>"; };
-		403129991E432416004CA4F8 /* ChooseRoutesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseRoutesTableViewController.swift; sourceTree = "<group>"; };
-		40B42AC41E7AC61D00B8FA84 /* StravaAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIHelper.swift; sourceTree = "<group>"; };
+		405F31991E81B1890013457C /* StravaAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIHelper.swift; sourceTree = "<group>"; };
+		40AD0A411EAA21DB00E06958 /* RouteSumaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSumaryViewController.swift; sourceTree = "<group>"; };
+		40AD0A431EAA221E00E06958 /* FullRouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullRouteDetailViewController.swift; sourceTree = "<group>"; };
+		40AD0A451EAA224700E06958 /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
 		40B42AC61E7ACB8B00B8FA84 /* StravaAthelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAthelete.swift; sourceTree = "<group>"; };
 		40B42AC81E7ACB9A00B8FA84 /* StravaRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaRoute.swift; sourceTree = "<group>"; };
-		40BCFA1A4CFB675E4DA0C7D0 /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC594B032151D9273F7D59A4 /* Pods-RouteNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNav.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7756678631BFC8BE0D0B8FB /* Pods_RouteNav.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,18 +89,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		400E09FB1E432D4900EE4118 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		400E09FC1E4350E900EE4118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				400E09FD1E4350E900EE4118 /* StravaSwift.framework */,
-				40BCFA1A4CFB675E4DA0C7D0 /* Pods_RouteNav.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,7 +105,6 @@
 				4031297B1E431DF7004CA4F8 /* RouteNavUITests */,
 				403129571E431DF7004CA4F8 /* Products */,
 				400E09FC1E4350E900EE4118 /* Frameworks */,
-				9C3C1B2C79465AE84CB76AFE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,13 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				40B42AC31E7AC47200B8FA84 /* StravaAPI */,
-				400E09FB1E432D4900EE4118 /* Frameworks */,
 				4031298C1E4320A6004CA4F8 /* Model */,
 				4031298B1E432099004CA4F8 /* UI */,
 				4031298A1E432078004CA4F8 /* ViewControllers */,
 				403129591E431DF7004CA4F8 /* AppDelegate.swift */,
 				403129631E431DF7004CA4F8 /* Assets.xcassets */,
-				403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */,
 				403129681E431DF7004CA4F8 /* Info.plist */,
 			);
 			path = RouteNav;
@@ -171,11 +153,10 @@
 		4031298A1E432078004CA4F8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4031298D1E4321C9004CA4F8 /* FirstViewController.swift */,
-				4031298F1E4321D6004CA4F8 /* LoginViewController.swift */,
-				403129951E432208004CA4F8 /* RouteNavigatorViewController.swift */,
 				403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */,
-				403129991E432416004CA4F8 /* ChooseRoutesTableViewController.swift */,
+				40AD0A411EAA21DB00E06958 /* RouteSumaryViewController.swift */,
+				40AD0A431EAA221E00E06958 /* FullRouteDetailViewController.swift */,
+				40AD0A451EAA224700E06958 /* RouteNavigationViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				4031295D1E431DF7004CA4F8 /* Main.storyboard */,
+				403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -199,20 +181,11 @@
 		40B42AC31E7AC47200B8FA84 /* StravaAPI */ = {
 			isa = PBXGroup;
 			children = (
-				40B42AC41E7AC61D00B8FA84 /* StravaAPIHelper.swift */,
 				40B42AC61E7ACB8B00B8FA84 /* StravaAthelete.swift */,
 				40B42AC81E7ACB9A00B8FA84 /* StravaRoute.swift */,
+				405F31991E81B1890013457C /* StravaAPIHelper.swift */,
 			);
 			name = StravaAPI;
-			sourceTree = "<group>";
-		};
-		9C3C1B2C79465AE84CB76AFE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				CC594B032151D9273F7D59A4 /* Pods-RouteNav.debug.xcconfig */,
-				271E19C4B9318923F947BA64 /* Pods-RouteNav.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,12 +195,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNav" */;
 			buildPhases = (
-				A7896168C6951BA5DB77BE05 /* [CP] Check Pods Manifest.lock */,
 				403129521E431DF7004CA4F8 /* Sources */,
 				403129531E431DF7004CA4F8 /* Frameworks */,
 				403129541E431DF7004CA4F8 /* Resources */,
-				33AAF5BBBBBE9396A8A0DA5E /* [CP] Embed Pods Frameworks */,
-				7C214D01EC2B8873E728925F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -353,66 +323,17 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		33AAF5BBBBBE9396A8A0DA5E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7C214D01EC2B8873E728925F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A7896168C6951BA5DB77BE05 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		403129521E431DF7004CA4F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AD0A461EAA224700E06958 /* RouteNavigationViewController.swift in Sources */,
 				40B42AC91E7ACB9A00B8FA84 /* StravaRoute.swift in Sources */,
-				403129901E4321D6004CA4F8 /* LoginViewController.swift in Sources */,
-				403129961E432208004CA4F8 /* RouteNavigatorViewController.swift in Sources */,
-				4031298E1E4321C9004CA4F8 /* FirstViewController.swift in Sources */,
-				40B42AC51E7AC61D00B8FA84 /* StravaAPIHelper.swift in Sources */,
-				4031299A1E432416004CA4F8 /* ChooseRoutesTableViewController.swift in Sources */,
+				40AD0A421EAA21DB00E06958 /* RouteSumaryViewController.swift in Sources */,
+				405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */,
 				40B42AC71E7ACB8B00B8FA84 /* StravaAthelete.swift in Sources */,
+				40AD0A441EAA221E00E06958 /* FullRouteDetailViewController.swift in Sources */,
 				403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
@@ -565,7 +486,6 @@
 		};
 		403129821E431DF7004CA4F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC594B032151D9273F7D59A4 /* Pods-RouteNav.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4JYLXVYYFP;
@@ -579,7 +499,6 @@
 		};
 		403129831E431DF7004CA4F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271E19C4B9318923F947BA64 /* Pods-RouteNav.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4JYLXVYYFP;

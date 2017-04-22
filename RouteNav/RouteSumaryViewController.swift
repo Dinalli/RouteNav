@@ -1,20 +1,19 @@
 //
-//  FirstViewController.swift
+//  RouteSumaryViewController.swift
 //  RouteNav
 //
-//  Created by Andrew Donnelly on 02/02/2017.
+//  Created by Andrew Donnelly on 21/04/2017.
 //  Copyright © 2017 Andrew Donnelly. All rights reserved.
 //
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class RouteSumaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
     }
 
     override func didReceiveMemoryWarning() {
