@@ -57,10 +57,10 @@
 		403129631E431DF7004CA4F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		403129661E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		403129681E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4031296D1E431DF7004CA4F8 /* STRVROUTETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STRVROUTETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129711E431DF7004CA4F8 /* RouteNavTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavTests.swift; sourceTree = "<group>"; };
 		403129731E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		403129781E431DF7004CA4F8 /* STRVROUTEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STRVROUTEUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavUITests.swift; sourceTree = "<group>"; };
 		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRoutesTableViewController.swift; sourceTree = "<group>"; };
@@ -133,8 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				403129561E431DF7004CA4F8 /* STRVROUTE.app */,
-				4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */,
-				403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */,
+				4031296D1E431DF7004CA4F8 /* STRVROUTETests.xctest */,
+				403129781E431DF7004CA4F8 /* STRVROUTEUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,9 +226,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		403129551E431DF7004CA4F8 /* RouteNav */ = {
+		403129551E431DF7004CA4F8 /* STRVROUTE */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNav" */;
+			buildConfigurationList = 403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "STRVROUTE" */;
 			buildPhases = (
 				1CAAE62232DB8B9E7AC96040 /* [CP] Check Pods Manifest.lock */,
 				403129521E431DF7004CA4F8 /* Sources */,
@@ -241,14 +241,14 @@
 			);
 			dependencies = (
 			);
-			name = RouteNav;
+			name = STRVROUTE;
 			productName = RouteNav;
 			productReference = 403129561E431DF7004CA4F8 /* STRVROUTE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4031296C1E431DF7004CA4F8 /* RouteNavTests */ = {
+		4031296C1E431DF7004CA4F8 /* STRVROUTETests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavTests" */;
+			buildConfigurationList = 403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "STRVROUTETests" */;
 			buildPhases = (
 				1400876B65BA7DAC5CAF7312 /* [CP] Check Pods Manifest.lock */,
 				403129691E431DF7004CA4F8 /* Sources */,
@@ -262,14 +262,14 @@
 			dependencies = (
 				4031296F1E431DF7004CA4F8 /* PBXTargetDependency */,
 			);
-			name = RouteNavTests;
+			name = STRVROUTETests;
 			productName = RouteNavTests;
-			productReference = 4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */;
+			productReference = 4031296D1E431DF7004CA4F8 /* STRVROUTETests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		403129771E431DF7004CA4F8 /* RouteNavUITests */ = {
+		403129771E431DF7004CA4F8 /* STRVROUTEUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavUITests" */;
+			buildConfigurationList = 403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "STRVROUTEUITests" */;
 			buildPhases = (
 				ABEBECB381CFF7007D479716 /* [CP] Check Pods Manifest.lock */,
 				403129741E431DF7004CA4F8 /* Sources */,
@@ -282,9 +282,9 @@
 			dependencies = (
 				4031297A1E431DF7004CA4F8 /* PBXTargetDependency */,
 			);
-			name = RouteNavUITests;
+			name = STRVROUTEUITests;
 			productName = RouteNavUITests;
-			productReference = 403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */;
+			productReference = 403129781E431DF7004CA4F8 /* STRVROUTEUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -319,7 +319,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 403129511E431DF7004CA4F8 /* Build configuration list for PBXProject "RouteNav" */;
+			buildConfigurationList = 403129511E431DF7004CA4F8 /* Build configuration list for PBXProject "STRVROUTE" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -332,9 +332,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				403129551E431DF7004CA4F8 /* RouteNav */,
-				4031296C1E431DF7004CA4F8 /* RouteNavTests */,
-				403129771E431DF7004CA4F8 /* RouteNavUITests */,
+				403129551E431DF7004CA4F8 /* STRVROUTE */,
+				4031296C1E431DF7004CA4F8 /* STRVROUTETests */,
+				403129771E431DF7004CA4F8 /* STRVROUTEUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -528,12 +528,12 @@
 /* Begin PBXTargetDependency section */
 		4031296F1E431DF7004CA4F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 403129551E431DF7004CA4F8 /* RouteNav */;
+			target = 403129551E431DF7004CA4F8 /* STRVROUTE */;
 			targetProxy = 4031296E1E431DF7004CA4F8 /* PBXContainerItemProxy */;
 		};
 		4031297A1E431DF7004CA4F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 403129551E431DF7004CA4F8 /* RouteNav */;
+			target = 403129551E431DF7004CA4F8 /* STRVROUTE */;
 			targetProxy = 403129791E431DF7004CA4F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -660,7 +660,7 @@
 				INFOPLIST_FILE = RouteNav/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE;
-				PRODUCT_NAME = STRVROUTE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -674,7 +674,7 @@
 				INFOPLIST_FILE = RouteNav/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE;
-				PRODUCT_NAME = STRVROUTE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -691,7 +691,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNav.app/RouteNav";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/STRVROUTE.app/STRVROUTE";
 			};
 			name = Debug;
 		};
@@ -707,7 +707,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNav.app/RouteNav";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/STRVROUTE.app/STRVROUTE";
 			};
 			name = Release;
 		};
@@ -744,7 +744,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		403129511E431DF7004CA4F8 /* Build configuration list for PBXProject "RouteNav" */ = {
+		403129511E431DF7004CA4F8 /* Build configuration list for PBXProject "STRVROUTE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4031297F1E431DF7004CA4F8 /* Debug */,
@@ -753,7 +753,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNav" */ = {
+		403129811E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "STRVROUTE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				403129821E431DF7004CA4F8 /* Debug */,
@@ -762,7 +762,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavTests" */ = {
+		403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "STRVROUTETests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				403129851E431DF7004CA4F8 /* Debug */,
@@ -771,7 +771,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavUITests" */ = {
+		403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "STRVROUTEUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				403129881E431DF7004CA4F8 /* Debug */,
