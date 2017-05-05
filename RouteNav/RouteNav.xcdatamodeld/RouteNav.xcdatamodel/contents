@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Athlete" representedClassName="Athlete" syncable="YES" codeGenerationType="class">
+        <attribute name="athlete_type" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="profile_medium" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="athleteroute" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Route" inverseName="routeathlete" inverseEntity="Route" syncable="YES"/>
+    </entity>
+    <entity name="Direction" representedClassName="Direction" syncable="YES" codeGenerationType="class">
+        <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="directionroute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="routedirection" inverseEntity="Route" syncable="YES"/>
+    </entity>
+    <entity name="Route" representedClassName="Route" syncable="YES" codeGenerationType="class">
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="elevation_gain" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routedesc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="routeathlete" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Athlete" inverseName="athleteroute" inverseEntity="Athlete" syncable="YES"/>
+        <relationship name="routedirection" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Direction" inverseName="directionroute" inverseEntity="Direction" syncable="YES"/>
+        <relationship name="routesegment" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Segment" inverseName="segmentroute" inverseEntity="Segment" syncable="YES"/>
+    </entity>
+    <entity name="Segment" representedClassName="Segment" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="segmentroute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="routesegment" inverseEntity="Route" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Route" positionX="-36" positionY="-190" width="128" height="178"/>
+        <element name="Segment" positionX="-288" positionY="-180" width="128" height="73"/>
+        <element name="Direction" positionX="205" positionY="-151" width="128" height="103"/>
+        <element name="Athlete" positionX="-38" positionY="-486" width="128" height="133"/>
+    </elements>
 </model>

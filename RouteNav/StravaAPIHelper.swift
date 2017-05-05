@@ -115,4 +115,46 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         })
         dataTask?.resume()
     }
+    
+    public func getRouteDetail(_ routeId: Int, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+        
+        let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(routeId)")
+        var request = URLRequest(url: authUrl!)
+        
+        request.addValue(" Bearer " + authorisationToken!, forHTTPHeaderField: "Authorization")
+        request.addValue(authorisationToken!, forHTTPHeaderField: "access_token")
+        
+        request.httpMethod = "GET"
+        
+        request.setValue("application/json", forHTTPHeaderField:"Content-Type")
+        request.timeoutInterval = 5.0
+        
+        dataTask = defaultSession.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
+                            JSONSerialization.ReadingOptions.mutableContainers))
+                        
+                        self.routes = jsonResult as! Array
+                        
+                        //success code
+                        return completionHandler(true)
+                    } catch {
+                        //failure code
+                        print(httpResponse)
+                        return completionHandler(false)
+                    }
+                }
+                else
+                {
+                    
+                }
+            }
+        })
+        dataTask?.resume()
+    }
 }

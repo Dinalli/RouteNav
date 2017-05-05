@@ -40,8 +40,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
             alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
             self.present(alertMessage, animated: true, completion: nil)
-            
-
         }
     }
 
@@ -161,9 +159,9 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "routeCell")
         view.addSubview(tableView)
         
-        let views = ["tableView": tableView]
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[tableView]|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: views))
+        let views: [String: AnyObject]  = ["tableView": tableView, "topLayoutGuide": self.topLayoutGuide]
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[tableView]-|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-[tableView]|", options: [], metrics: nil, views: views))
         tableView.reloadData()
     }
     
@@ -182,10 +180,14 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath)
 
-        cell.textLabel?.text = self.apiHelper.routes[indexPath.row]["name"] as! String
+        cell.textLabel?.text = self.apiHelper.routes[indexPath.row]["name"] as? String
         // Configure the cell...
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 
     /*

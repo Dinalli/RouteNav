@@ -117,6 +117,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		401F73EE1EBCBDCD00F0C4DF /* AutoGenModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AutoGenModel;
+			sourceTree = "<group>";
+		};
 		4031294D1E431DF7004CA4F8 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +202,7 @@
 		4031298C1E4320A6004CA4F8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				401F73EE1EBCBDCD00F0C4DF /* AutoGenModel */,
 				403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */,
 			);
 			name = Model;

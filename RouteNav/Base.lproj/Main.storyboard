@@ -29,7 +29,7 @@
         <!--My Routes Table View Controller-->
         <scene sceneID="LBS-hr-2Jm">
             <objects>
-                <viewController storyboardIdentifier="myRoutesVC" id="zIC-wr-DWV" customClass="MyRoutesTableViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myRoutesVC" id="zIC-wr-DWV" customClass="MyRoutesTableViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vjf-8P-dFN"/>
                         <viewControllerLayoutGuide type="bottom" id="wgH-0B-OsW"/>
@@ -39,16 +39,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bEw-kA-iIV">
-                        <barButtonItem key="rightBarButtonItem" image="973-user" id="tzv-mY-A6W">
-                            <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="authenticate:" destination="zIC-wr-DWV" id="dTl-vZ-DLg"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="bEw-kA-iIV"/>
                     <connections>
-                        <outlet property="authBarButton" destination="tzv-mY-A6W" id="OGl-nA-z1D"/>
                         <segue destination="Rkg-Ea-qvg" kind="show" identifier="showSumarySegue" id="zRi-ha-TXy"/>
                     </connections>
                 </viewController>
@@ -59,7 +51,7 @@
         <!--Route Sumary View Controller-->
         <scene sceneID="WKc-eC-z4j">
             <objects>
-                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteSumaryViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteSumaryViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Sf-pO-S8v"/>
                         <viewControllerLayoutGuide type="bottom" id="BY4-x3-IHo"/>
@@ -94,7 +86,7 @@
         <!--Full Route Detail View Controller-->
         <scene sceneID="g1f-SY-npr">
             <objects>
-                <viewController storyboardIdentifier="fullRouteVC" id="bjw-Ld-5wn" customClass="FullRouteDetailViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="fullRouteVC" id="bjw-Ld-5wn" customClass="FullRouteDetailViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IL2-8M-Uej"/>
                         <viewControllerLayoutGuide type="bottom" id="cZd-ju-aog"/>
@@ -115,7 +107,7 @@
         <!--Route Navigation View Controller-->
         <scene sceneID="hEs-Bp-xH4">
             <objects>
-                <viewController storyboardIdentifier="RouteNavVC" id="D95-Wi-sUa" customClass="RouteNavigationViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouteNavVC" id="D95-Wi-sUa" customClass="RouteNavigationViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4j1-mr-mE2"/>
                         <viewControllerLayoutGuide type="bottom" id="w8e-x6-ZLu"/>
@@ -131,7 +123,4 @@
             <point key="canvasLocation" x="2376" y="-817"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="973-user" width="28" height="24"/>
-    </resources>
 </document>
