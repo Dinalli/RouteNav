@@ -34,12 +34,14 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         if(apiHelper.authorisationToken == nil)
         {
             
-            let authorisationHandler = { (action:UIAlertAction!) -> Void in
-                self.authenticate()
-            }
-            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
-            alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
-            self.present(alertMessage, animated: true, completion: nil)
+//            let authorisationHandler = { (action:UIAlertAction!) -> Void in
+//                self.authenticate()
+//            }
+//            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
+//            alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
+//            self.present(alertMessage, animated: true, completion: nil)
+            
+            
         }
     }
 
