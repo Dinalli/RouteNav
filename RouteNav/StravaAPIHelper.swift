@@ -99,6 +99,8 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
 
                         self.routes = jsonResult as! Array
                         
+                        StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array)
+                        
                         //success code
                         return completionHandler(true)
                     } catch {

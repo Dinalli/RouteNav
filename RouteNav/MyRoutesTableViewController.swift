@@ -14,6 +14,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     let apiHelper = StravaAPIHelper()
     var webView: WKWebView?
     var tableView: UITableView?
+    
     @IBOutlet weak var authBarButton: UIBarButtonItem?
     
     override func viewDidLoad() {
@@ -27,21 +28,26 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         
     }
     
+    func setUpNotifications() {
+        NotificationCenter.default.addObserver(self, selector:  #selector(self.updateTableForNewData), name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+    }
+    
+    func removeNotifications() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
         if(apiHelper.authorisationToken == nil)
         {
-            
-//            let authorisationHandler = { (action:UIAlertAction!) -> Void in
-//                self.authenticate()
-//            }
-//            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
-//            alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
-//            self.present(alertMessage, animated: true, completion: nil)
-            
-            
+            let authorisationHandler = { (action:UIAlertAction!) -> Void in
+                self.authenticate()
+            }
+            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
+            alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
+            self.present(alertMessage, animated: true, completion: nil)
         }
     }
 
@@ -128,9 +134,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             if successFlag
             {
                 self.authBarButton?.image = UIImage(named:"973-user-selected")
-                // Show the routes
-                print(self.apiHelper.routes[0])
-                
                 DispatchQueue.main.async {
                     // update some UI
                     self.addTableView()
@@ -152,6 +155,10 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     // MARK: - Table view processing
+    
+    func updateTableForNewData() {
+        tableView?.reloadData()
+    }
     
     func addTableView(){
         let tableView = UITableView()
@@ -176,14 +183,16 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.apiHelper.routes.count
+        return StravaCoreDataHandler.sharedInstance.routes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath)
 
-        cell.textLabel?.text = self.apiHelper.routes[indexPath.row]["name"] as? String
-        // Configure the cell...
+        //cell.textLabel?.text = self.apiHelper.routes[indexPath.row]["name"] as? String
+        
+        let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row]
+        cell.textLabel?.text = route.value(forKeyPath: "name") as? String
 
         return cell
     }
