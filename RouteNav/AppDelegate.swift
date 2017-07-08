@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FIRApp.configure()
+        //FIRApp.configure()
         return true
     }
     
@@ -109,10 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // you should probably first check if this is the callback being opened
         
         if "strvroute" == url.scheme {
-            if let vc = self.window?.rootViewController?.childViewControllers.first as? MyRoutesTableViewController {
-                vc.handleRedirectURL(url)
-                return true
-            }
+            NotificationCenter.default.post(name: Notification.Name("SRAuthReturnNotification"), object: nil)
+            NotificationCenter.default.post(name: Notification.Name("SRHandleAuthRedirectURL"), object: url)
         }
 
         return true

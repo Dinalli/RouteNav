@@ -8,47 +8,44 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WKNavigationDelegate{
 
     let apiHelper = StravaAPIHelper()
     var webView: WKWebView?
     var tableView: UITableView?
+    var authVC: StravaAuthViewController?
     
     @IBOutlet weak var authBarButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
     }
     
     func setUpNotifications() {
         NotificationCenter.default.addObserver(self, selector:  #selector(self.updateTableForNewData), name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector:  #selector(self.handleRedirectURL), name: Notification.Name("SRHandleAuthRedirectURL"), object: nil)
     }
     
     func removeNotifications() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRHandleAuthReturnURL"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
-        
+        self.setUpNotifications()
         if(apiHelper.authorisationToken == nil)
         {
-            let authorisationHandler = { (action:UIAlertAction!) -> Void in
-                self.authenticate()
-            }
-            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes until you authorise the app with Strava. Tap the icon in the top right to start the Authorisation process.", preferredStyle: .actionSheet)
-            alertMessage.addAction(UIAlertAction(title: "Authenticate", style: .default, handler: authorisationHandler))
-            self.present(alertMessage, animated: true, completion: nil)
+            self.performSegue(withIdentifier: "showAuthPopover", sender: self)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.removeNotifications()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,84 +53,15 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func authenticate(_ sender: Any) {
-        authenticate()
-    }
-    
-    func authenticate() {
-        let web = WKWebView()
-        web.translatesAutoresizingMaskIntoConstraints = false
-        web.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
-        web.navigationDelegate = self
-        view.addSubview(web)
+    func handleRedirectURL(notification: NSNotification) {
         
-        let views = ["web": web]
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[web]|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[web]|", options: [], metrics: nil, views: views))
-        webView = web
-        web .load(URLRequest(url: apiHelper.authUrl!))
-    }
-    
-    // MARK: - Web View Delegate
-    
-    open func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Swift.Void) {
+        let url = notification.object as! NSURL
+        self.dismiss(animated: true, completion: nil)
         
-        let request = navigationAction.request
-        let url = request.url
-        if url?.scheme == "strvroute"
-        {
-            if UIApplication.shared .canOpenURL(url!)
-            {
-                UIApplication.shared .open(url!, options: [:], completionHandler: { (result) in
-                })
-            }
-            decisionHandler(.cancel)
-            return
-        }
-        decisionHandler(.allow)
-    }
-    
-    open func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        if "file" != webView.url?.scheme {
-            showLoadingIndicator()
-        }
-    }
-    
-    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        
-        hideLoadingIndicator()
-    }
-    
-    open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        if NSURLErrorDomain == error._domain && NSURLErrorCancelled == error._code {
-            return
-        }
-        // do we still need to intercept "WebKitErrorDomain" error 102?
-        showErrorMessage(error.localizedDescription, animated: true)
-    }
-    
-    func showErrorMessage(_ description :String, animated: Bool)
-    {
-        //self.nameLabel.text = description
-    }
-    
-    func showLoadingIndicator() {
-        // TODO: implement
-    }
-    
-    func hideLoadingIndicator() {
-        // TODO: implement
-    }
-    
-    open func handleRedirectURL(_ redirect: URL) {
-        
-        webView?.removeFromSuperview()
-        apiHelper.code = getQueryStringParameter(url: redirect.absoluteString, param: "code")
+        apiHelper.code = getQueryStringParameter(url: url.absoluteString!, param: "code")
         apiHelper.exchangeCodeForToken(apiHelper.code!) { (successFlag) in
             if successFlag
             {
-                self.authBarButton?.image = UIImage(named:"973-user-selected")
                 DispatchQueue.main.async {
                     // update some UI
                     self.addTableView()
@@ -198,7 +126,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("selected path \(indexPath) ")
     }
 
     /*

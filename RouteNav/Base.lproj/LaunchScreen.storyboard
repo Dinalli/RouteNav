@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,24 +22,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="api_logo_pwrdBy_strava_horiz_light" translatesAutoresizingMaskIntoConstraints="NO" id="hfY-9i-nga">
-                                <rect key="frame" x="26" y="485" width="252" height="63"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-photo-207779" translatesAutoresizingMaskIntoConstraints="NO" id="2jF-Ho-ZxP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="97U-yB-Qpe">
+                                <rect key="frame" x="140" y="497" width="40" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="QDV-la-uco"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="api_logo_pwrdBy_strava_horiz_light" translatesAutoresizingMaskIntoConstraints="NO" id="hfY-9i-nga">
+                                <rect key="frame" x="103" y="540" width="124" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Fve-2H-GcB"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98088198900222778" green="0.96126514673233032" blue="0.93182462453842163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hfY-9i-nga" secondAttribute="bottom" constant="20" id="MLI-86-hTd"/>
-                            <constraint firstItem="hfY-9i-nga" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="10" id="c0G-hP-0Rw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hfY-9i-nga" secondAttribute="trailing" constant="26" id="mVm-7e-hQw"/>
+                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="4Yt-bG-Q0O"/>
+                            <constraint firstItem="hfY-9i-nga" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="87" id="608-mu-a7E"/>
+                            <constraint firstAttribute="trailing" secondItem="2jF-Ho-ZxP" secondAttribute="trailing" id="EjN-j4-O0n"/>
+                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="acK-4b-OTZ"/>
+                            <constraint firstItem="97U-yB-Qpe" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="477" id="ggH-1t-yzM"/>
+                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="centerX" secondItem="97U-yB-Qpe" secondAttribute="centerX" id="h8M-cO-K13"/>
+                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="hKl-0C-hsZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hfY-9i-nga" secondAttribute="trailing" constant="77" id="nTb-yg-N0b"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hfY-9i-nga" secondAttribute="bottom" constant="8" symbolic="YES" id="sEX-gD-2NO"/>
+                            <constraint firstItem="hfY-9i-nga" firstAttribute="top" secondItem="97U-yB-Qpe" secondAttribute="bottom" constant="8" symbolic="YES" id="vgG-SW-ZeS"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="50.625" y="373.94366197183098"/>
         </scene>
     </scenes>
     <resources>
+        <image name="LogoIcon" width="60" height="60"/>
         <image name="api_logo_pwrdBy_strava_horiz_light" width="338" height="63"/>
+        <image name="pexels-photo-207779" width="1920" height="1280"/>
     </resources>
 </document>

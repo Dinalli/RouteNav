@@ -159,4 +159,5 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         })
         dataTask?.resume()
     }
+    
 }
