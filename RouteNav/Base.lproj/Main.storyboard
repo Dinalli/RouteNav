@@ -42,50 +42,26 @@
                             <imageView userInteractionEnabled="NO" alpha="0.81000000000000005" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-photo-207779" translatesAutoresizingMaskIntoConstraints="NO" id="iaH-Dz-b7I">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-Jf-LAR">
+                                <rect key="frame" x="140" y="100" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="gIc-6s-Xhg"/>
+                                </constraints>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-VZ-SzT">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LrG-xi-cl7">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uyq-qx-B8I">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ttj-5v-L7W">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <vibrancyEffect>
-                                                <blurEffect style="light"/>
-                                            </vibrancyEffect>
-                                        </visualEffectView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="uyq-qx-B8I" firstAttribute="leading" secondItem="LrG-xi-cl7" secondAttribute="leading" id="13q-vH-OBj"/>
-                                        <constraint firstItem="uyq-qx-B8I" firstAttribute="top" secondItem="LrG-xi-cl7" secondAttribute="top" id="Apd-4f-Fcc"/>
-                                        <constraint firstAttribute="bottom" secondItem="uyq-qx-B8I" secondAttribute="bottom" id="WBe-u9-8es"/>
-                                        <constraint firstAttribute="trailing" secondItem="uyq-qx-B8I" secondAttribute="trailing" id="ecY-4g-ZmB"/>
-                                    </constraints>
                                 </view>
                                 <vibrancyEffect>
                                     <blurEffect style="light"/>
                                 </vibrancyEffect>
                             </visualEffectView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect with Strava to load  your routes" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FgW-zy-3sm">
-                                <rect key="frame" x="21" y="230" width="278" height="36"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="VzD-GF-jjd"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="shadowColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <size key="shadowOffset" width="0.0" height="0.5"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="api_logo_pwrdBy_strava_horiz_light" translatesAutoresizingMaskIntoConstraints="NO" id="kaa-sZ-Qvk">
                                 <rect key="frame" x="59" y="480" width="201" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="MuN-te-kRg"/>
+                                    <constraint firstAttribute="height" constant="20" id="wHN-3f-Bl9"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYy-JB-HTY">
@@ -95,32 +71,48 @@
                                     <action selector="authenticate:" destination="4EO-pR-Eat" eventType="touchUpInside" id="OLY-HZ-4eM"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will need to connect your Strava account to use this app." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FgW-zy-3sm">
+                                <rect key="frame" x="56" y="230" width="207" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="wqg-5o-LKU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="shadowColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="0.0" height="0.5"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="centerX" secondItem="gYy-JB-HTY" secondAttribute="centerX" id="31t-3P-hxX"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="leading" secondItem="roQ-VZ-SzT" secondAttribute="leading" id="6EC-RF-t1r"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="centerX" secondItem="kaa-sZ-Qvk" secondAttribute="centerX" id="6k0-qo-nDs"/>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="210" id="CKX-rh-5MN"/>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="5" id="Dqk-7l-Xbu"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="trailing" secondItem="roQ-VZ-SzT" secondAttribute="trailing" id="F5j-kf-Dbu"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leading" id="GQU-Fp-v0j"/>
-                            <constraint firstItem="1Un-Cw-0S8" firstAttribute="top" secondItem="kaa-sZ-Qvk" secondAttribute="bottom" constant="68" id="Ilh-Lq-umu"/>
-                            <constraint firstAttribute="trailing" secondItem="iaH-Dz-b7I" secondAttribute="trailing" id="SLY-RH-HsU"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="bottom" secondItem="1Un-Cw-0S8" secondAttribute="top" id="YGc-IE-tpZ"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="top" secondItem="BCJ-N1-Imb" secondAttribute="top" id="YT3-UJ-oNr"/>
-                            <constraint firstItem="kaa-sZ-Qvk" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="43" id="Znr-EL-5yJ"/>
-                            <constraint firstItem="gYy-JB-HTY" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="242" id="j5G-4U-NYY"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="centerY" secondItem="gYy-JB-HTY" secondAttribute="centerY" id="oX0-R8-Zwq"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="centerX" secondItem="gYy-JB-HTY" secondAttribute="centerX" id="qJv-w0-e4v"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="top" secondItem="roQ-VZ-SzT" secondAttribute="top" id="tWa-yq-YX2"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="bottom" secondItem="1Un-Cw-0S8" secondAttribute="top" id="wSV-l8-wWD"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="top" secondItem="iaH-Dz-b7I" secondAttribute="top" id="0Zy-6c-itM"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="bottom" secondItem="1Un-Cw-0S8" secondAttribute="top" id="6iF-Ag-Tjv"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="centerX" secondItem="FgW-zy-3sm" secondAttribute="centerX" id="IHD-38-eog"/>
+                            <constraint firstItem="1Un-Cw-0S8" firstAttribute="top" secondItem="kaa-sZ-Qvk" secondAttribute="bottom" constant="68" id="Ihe-qn-4eq"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="centerX" secondItem="kaa-sZ-Qvk" secondAttribute="centerX" id="Joi-ei-YYN"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="centerY" secondItem="gYy-JB-HTY" secondAttribute="centerY" id="L5x-4W-trf"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leading" id="QE9-t3-QZc"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="top" secondItem="Rhk-Jf-LAR" secondAttribute="bottom" constant="90" id="VTM-XF-pal"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="trailing" secondItem="roQ-VZ-SzT" secondAttribute="trailing" id="YcB-aQ-BRG"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="leading" secondItem="iaH-Dz-b7I" secondAttribute="leading" id="Z6i-3f-Cpj"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="top" secondItem="BCJ-N1-Imb" secondAttribute="top" id="aMw-cf-ALz"/>
+                            <constraint firstItem="gYy-JB-HTY" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="242" id="ay3-Zk-MNO"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="centerX" secondItem="gYy-JB-HTY" secondAttribute="centerX" id="bPM-dV-Dx0"/>
+                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="centerX" secondItem="FgW-zy-3sm" secondAttribute="centerX" id="cj3-VU-C5j"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="40" id="edj-fe-Ruy"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="210" id="ixu-p2-mTh"/>
+                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="80" id="nbB-Xm-yEL"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="bottom" secondItem="1Un-Cw-0S8" secondAttribute="top" id="oKj-M8-v85"/>
+                            <constraint firstAttribute="trailing" secondItem="iaH-Dz-b7I" secondAttribute="trailing" id="peU-93-ZrS"/>
+                            <constraint firstItem="kaa-sZ-Qvk" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="43" id="ufI-oP-Xht"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="authButton" destination="gYy-JB-HTY" id="RRJ-kO-dYj"/>
                         <outlet property="backgroundImage" destination="iaH-Dz-b7I" id="lnL-kR-ldM"/>
                         <outlet property="instructionLabel" destination="FgW-zy-3sm" id="x3O-VY-HA2"/>
+                        <outlet property="logoIcon" destination="Rhk-Jf-LAR" id="N3f-qQ-e9E"/>
                         <outlet property="powerByImage" destination="kaa-sZ-Qvk" id="ZDh-AB-b56"/>
                     </connections>
                 </viewController>
@@ -228,8 +220,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LogoIcon" width="60" height="60"/>
         <image name="api_logo_pwrdBy_strava_horiz_light" width="338" height="63"/>
         <image name="btn_strava_connectwith_orange" width="193" height="48"/>
-        <image name="pexels-photo-207779" width="1920" height="1280"/>
+        <image name="pexels-photo-207779" width="960" height="640"/>
     </resources>
 </document>

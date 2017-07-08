@@ -56,23 +56,28 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     func handleRedirectURL(notification: NSNotification) {
         
         let url = notification.object as! NSURL
-        self.dismiss(animated: true, completion: nil)
         
         apiHelper.code = getQueryStringParameter(url: url.absoluteString!, param: "code")
-        apiHelper.exchangeCodeForToken(apiHelper.code!) { (successFlag) in
-            if successFlag
-            {
-                DispatchQueue.main.async {
-                    // update some UI
-                    self.addTableView()
+        
+        if apiHelper.code != nil {
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            apiHelper.exchangeCodeForToken(apiHelper.code!) { (successFlag) in
+                if successFlag
+                {
+                    DispatchQueue.main.async {
+                        // update some UI
+                        self.addTableView()
                     }
-                
-            }
-            else
-            {
-                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
-                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                self.present(alertMessage, animated: true, completion: nil)
+                    
+                }
+                else
+                {
+                    let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    self.present(alertMessage, animated: true, completion: nil)
+                }
             }
         }
     }

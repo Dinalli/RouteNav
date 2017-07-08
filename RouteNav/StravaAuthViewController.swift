@@ -11,6 +11,7 @@ import SafariServices
 
 class StravaAuthViewController: UIViewController {
     
+    @IBOutlet weak var logoIcon: UIImageView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var powerByImage: UIImageView!
@@ -37,24 +38,28 @@ class StravaAuthViewController: UIViewController {
         instructionLabel.alpha = 0.0
         instructionLabel.textColor = .gray
         backgroundImage.alpha=0.0
+        logoIcon.alpha=0.0
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.powerByImage.alpha = 1.0
-            self.authButton.alpha = 1.0
+            self.backgroundImage.alpha = 1.0
+            
         }, completion: nil)
         
         UIView.animate(withDuration: 0.5, animations: {
             self.powerByImage.alpha = 1.0
-            self.instructionLabel.alpha = 1.0
+            self.logoIcon.alpha=1.0
+            
             
         }, completion: nil)
         
-        UIView.animate(withDuration: 2.0, animations: {
-            self.backgroundImage.alpha = 1.0
+        UIView.animate(withDuration: 6.0, animations: {
+            self.authButton.alpha = 1.0
+            self.instructionLabel.alpha = 1.0
         }, completion: nil)
         
     }

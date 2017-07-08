@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,12 +23,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-photo-207779" translatesAutoresizingMaskIntoConstraints="NO" id="2jF-Ho-ZxP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="97U-yB-Qpe">
                                 <rect key="frame" x="140" y="497" width="40" height="35"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="97U-yB-Qpe" secondAttribute="height" multiplier="8:7" id="9w0-BI-TIP"/>
                                     <constraint firstAttribute="width" constant="40" id="QDV-la-uco"/>
                                 </constraints>
                             </imageView>
@@ -38,15 +37,12 @@
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="4Yt-bG-Q0O"/>
                             <constraint firstItem="hfY-9i-nga" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="87" id="608-mu-a7E"/>
-                            <constraint firstAttribute="trailing" secondItem="2jF-Ho-ZxP" secondAttribute="trailing" id="EjN-j4-O0n"/>
-                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="acK-4b-OTZ"/>
                             <constraint firstItem="97U-yB-Qpe" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="477" id="ggH-1t-yzM"/>
-                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="centerX" secondItem="97U-yB-Qpe" secondAttribute="centerX" id="h8M-cO-K13"/>
-                            <constraint firstItem="2jF-Ho-ZxP" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="hKl-0C-hsZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hfY-9i-nga" secondAttribute="trailing" constant="77" id="nTb-yg-N0b"/>
+                            <constraint firstItem="97U-yB-Qpe" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nVE-ho-caO"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hfY-9i-nga" secondAttribute="bottom" constant="8" symbolic="YES" id="sEX-gD-2NO"/>
                             <constraint firstItem="hfY-9i-nga" firstAttribute="top" secondItem="97U-yB-Qpe" secondAttribute="bottom" constant="8" symbolic="YES" id="vgG-SW-ZeS"/>
                         </constraints>
@@ -60,6 +56,5 @@
     <resources>
         <image name="LogoIcon" width="60" height="60"/>
         <image name="api_logo_pwrdBy_strava_horiz_light" width="338" height="63"/>
-        <image name="pexels-photo-207779" width="1920" height="1280"/>
     </resources>
 </document>
