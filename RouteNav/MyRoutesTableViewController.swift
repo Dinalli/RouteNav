@@ -17,8 +17,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     var tableView: UITableView?
     var authVC: StravaAuthViewController?
     
-    @IBOutlet weak var authBarButton: UIBarButtonItem?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -70,7 +68,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                         // update some UI
                         self.addTableView()
                     }
-                    
                 }
                 else
                 {
@@ -90,7 +87,9 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Table view processing
     
     func updateTableForNewData() {
-        tableView?.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+           self.tableView?.reloadData()
+        }
     }
     
     func addTableView(){
@@ -121,9 +120,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath)
-
-        //cell.textLabel?.text = self.apiHelper.routes[indexPath.row]["name"] as? String
-        
         let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row]
         cell.textLabel?.text = route.value(forKeyPath: "name") as? String
 

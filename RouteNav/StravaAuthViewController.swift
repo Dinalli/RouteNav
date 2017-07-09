@@ -25,7 +25,6 @@ class StravaAuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setUpNotifications()
         startAnimatingBackgroundImages()
@@ -36,7 +35,7 @@ class StravaAuthViewController: UIViewController {
         powerByImage.alpha = 0.0
         authButton.alpha = 0.0
         instructionLabel.alpha = 0.0
-        instructionLabel.textColor = .gray
+        instructionLabel.textColor = .white
         backgroundImage.alpha=0.0
         logoIcon.alpha=0.0
     }
