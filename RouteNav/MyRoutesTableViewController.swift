@@ -97,7 +97,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "routeCell")
+        tableView.register(UINib(nibName: "RouteTableViewCell", bundle: nil), forCellReuseIdentifier: "RouteTableViewCell")
         view.addSubview(tableView)
         
         let views: [String: AnyObject]  = ["tableView": tableView, "topLayoutGuide": self.topLayoutGuide]
@@ -119,9 +119,13 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "routeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RouteTableViewCell", for: indexPath) as! RouteTableViewCell
         let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row]
-        cell.textLabel?.text = route.value(forKeyPath: "name") as? String
+        
+        cell.routeNameLabel?.text = route.value(forKeyPath: "name") as? String
+        cell.distanceLabel?.text = route.value(forKeyPath: "distance") as? String
+        cell.elevationLabel?.text = route.value(forKeyPath: "elevation_gain") as? String
+        cell.timeLabel?.text = route.value(forKeyPath: "estmovingtime") as? String
 
         return cell
     }
