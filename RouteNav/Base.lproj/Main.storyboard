@@ -131,18 +131,35 @@
                     <view key="view" contentMode="scaleToFill" id="jdH-H5-0j5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ya1-XZ-csR">
+                                <rect key="frame" x="-1" y="-1" width="320" height="569"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="zIC-wr-DWV" id="D2y-ck-BPX"/>
+                                    <outlet property="delegate" destination="zIC-wr-DWV" id="ECd-Gr-Ylt"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="centerY" secondItem="jdH-H5-0j5" secondAttribute="centerY" id="31C-y2-q8k"/>
+                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="leading" secondItem="jdH-H5-0j5" secondAttribute="leadingMargin" constant="-17" id="97c-Bv-hoL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ya1-XZ-csR" secondAttribute="trailing" constant="-15" id="Kud-kA-bl7"/>
+                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="bottom" secondItem="wgH-0B-OsW" secondAttribute="top" id="zAR-eP-8Wj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bEw-kA-iIV"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="Ya1-XZ-csR" id="6LP-QZ-ddf"/>
                         <segue destination="Rkg-Ea-qvg" kind="show" identifier="showSumarySegue" id="zRi-ha-TXy"/>
                         <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" id="OU3-9X-nAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onl-sw-WFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-39" y="-824"/>
+            <point key="canvasLocation" x="-39.375" y="-825"/>
         </scene>
         <!--Route Sumary View Controller-->
         <scene sceneID="WKc-eC-z4j">

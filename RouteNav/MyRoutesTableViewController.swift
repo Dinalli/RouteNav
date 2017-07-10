@@ -13,12 +13,14 @@ import SafariServices
 class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WKNavigationDelegate{
 
     let apiHelper = StravaAPIHelper()
+    let srtHelper = SRTHelperFunctions()
     var webView: WKWebView?
-    var tableView: UITableView?
+    @IBOutlet weak var tableView: UITableView?
     var authVC: StravaAuthViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView!.register(UINib(nibName: "RouteTableViewCell", bundle: nil), forCellReuseIdentifier: "RouteTableViewCell")
     }
     
     func setUpNotifications() {
@@ -66,7 +68,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                 {
                     DispatchQueue.main.async {
                         // update some UI
-                        self.addTableView()
+                         self.tableView!.reloadData()
                     }
                 }
                 else
@@ -92,20 +94,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func addTableView(){
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UINib(nibName: "RouteTableViewCell", bundle: nil), forCellReuseIdentifier: "RouteTableViewCell")
-        view.addSubview(tableView)
-        
-        let views: [String: AnyObject]  = ["tableView": tableView, "topLayoutGuide": self.topLayoutGuide]
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[tableView]-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-[tableView]|", options: [], metrics: nil, views: views))
-        tableView.reloadData()
-    }
-    
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -120,13 +108,22 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteTableViewCell", for: indexPath) as! RouteTableViewCell
-        let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row]
+        let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row] as! Route
         
-        cell.routeNameLabel?.text = route.value(forKeyPath: "name") as? String
-        cell.distanceLabel?.text = route.value(forKeyPath: "distance") as? String
-        cell.elevationLabel?.text = route.value(forKeyPath: "elevation_gain") as? String
-        cell.timeLabel?.text = route.value(forKeyPath: "estmovingtime") as? String
-
+        cell.routeNameLabel?.text = route.name
+        cell.distanceLabel?.text = String(route.distance/100) + "km"
+        cell.elevationLabel?.text = String(route.elevation_gain) + "m"
+        cell.timeLabel?.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
+        
+        if(route.type == 1)
+        {
+            cell.mapIcon.image = UIImage(named: "bikeIcon")
+        }
+        else
+        {
+            cell.mapIcon.image = UIImage(named: "runIcon")
+        }
+        
         return cell
     }
     

@@ -56,7 +56,7 @@ class StravaAuthViewController: UIViewController {
             
         }, completion: nil)
         
-        UIView.animate(withDuration: 6.0, animations: {
+        UIView.animate(withDuration: 3.5, animations: {
             self.authButton.alpha = 1.0
             self.instructionLabel.alpha = 1.0
         }, completion: nil)
