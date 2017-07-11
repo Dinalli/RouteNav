@@ -14,6 +14,12 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="directionroute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="routedirection" inverseEntity="Route" syncable="YES"/>
     </entity>
+    <entity name="Map" representedClassName="Map" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="resource_state" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="summary_polyline" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="maproute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="routemap" inverseEntity="Route" syncable="YES"/>
+    </entity>
     <entity name="Route" representedClassName="Route" syncable="YES" codeGenerationType="class">
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="elevation_gain" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -24,6 +30,7 @@
         <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="routeathlete" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Athlete" inverseName="athleteroute" inverseEntity="Athlete" syncable="YES"/>
         <relationship name="routedirection" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Direction" inverseName="directionroute" inverseEntity="Direction" syncable="YES"/>
+        <relationship name="routemap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="maproute" inverseEntity="Map" syncable="YES"/>
         <relationship name="routesegment" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Segment" inverseName="segmentroute" inverseEntity="Segment" syncable="YES"/>
     </entity>
     <entity name="Segment" representedClassName="Segment" syncable="YES" codeGenerationType="class">
@@ -33,7 +40,8 @@
     <elements>
         <element name="Athlete" positionX="-38" positionY="-486" width="128" height="133"/>
         <element name="Direction" positionX="205" positionY="-151" width="128" height="103"/>
-        <element name="Route" positionX="-36" positionY="-190" width="128" height="193"/>
+        <element name="Route" positionX="16" positionY="-157" width="128" height="208"/>
         <element name="Segment" positionX="-288" positionY="-180" width="128" height="73"/>
+        <element name="Map" positionX="-216" positionY="-369" width="128" height="103"/>
     </elements>
 </model>

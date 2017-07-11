@@ -38,8 +38,12 @@ class StravaCoreDataHandler: NSObject {
                 NSEntityDescription.entity(forEntityName: "Route",
                                            in: managedContext)!
             
+            let mapentity =
+                NSEntityDescription.entity(forEntityName: "Map",
+                                           in: managedContext)!
+            
             let route = NSManagedObject(entity: entity,
-                                        insertInto: managedContext)
+                                        insertInto: managedContext) as! Route
             
             route.setValue(routeDetail["name"] as? String, forKeyPath: "name")
             route.setValue(routeDetail["estimated_moving_time"] as? NSNumber, forKeyPath: "estmovingtime")
@@ -48,8 +52,14 @@ class StravaCoreDataHandler: NSObject {
             route.setValue(routeDetail["elevation_gain"] as? NSNumber, forKeyPath: "elevation_gain")
             route.setValue(routeDetail["description"] as? String, forKeyPath: "routedesc")
             
-//            sub_type
-//            map
+            let map = NSManagedObject(entity: mapentity, insertInto: managedContext) as! Map
+            let mapData:[String: Any] = routeDetail["map"] as! Dictionary
+            
+            map.setValue(mapData["id"] as? NSNumber, forKeyPath: "id")
+            map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
+            map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
+            
+            route.routemap = map 
             
             do {
                 try managedContext.save()

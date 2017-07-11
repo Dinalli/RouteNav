@@ -18,5 +18,19 @@ class SRTHelperFunctions: NSObject {
         
         return ("\(hours):\(mins):\(secs)")
     }
+}
 
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = URL(string: urlString) {
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else { return }
+                
+                DispatchQueue.main.sync() {
+                    self.image = UIImage(data: data)
+                }
+            }
+            task.resume()
+        }
+    }
 }
