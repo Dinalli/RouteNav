@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
-class RouteNavigationViewController: UIViewController {
+class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate {
     
     var route: Route?
+    var currentLocation: CLLocation?
+    let locationManager = CLLocationManager.init()
+    @IBOutlet weak var mapView: MKMapView?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -18,14 +22,74 @@ class RouteNavigationViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Request Permission for users location
+        if !CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        startLocationUpdates()
         // Do any additional setup after loading the view.
+        mapView?.showsUserLocation = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func startLocationUpdates() {
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.startUpdatingLocation()
     }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        switch status {
+        case .notDetermined:
+            // If status has not yet been determied, ask for authorization
+            manager.requestWhenInUseAuthorization()
+            break
+        case .authorizedWhenInUse:
+            // If authorized when in use
+            startLocationUpdates()
+            break
+        case .authorizedAlways:
+            // If always authorized
+            startLocationUpdates()
+            break
+        case .restricted:
+            // If restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .denied:
+            // If user denied your app access to Location Services, but can grant access from Settings.app
+            break
+        }
+    }
+    
+    func stopLocationUpdates() {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        defer { currentLocation = locations.last }
+        
+        if currentLocation == nil {
+            // Zoom to user location
+            if let userLocation = locations.last {
+                let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
+                mapView!.setRegion(viewRegion, animated: false)
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Did fail location manager with error \(error.localizedDescription)")
+    }
+    
+    
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
 
     /*

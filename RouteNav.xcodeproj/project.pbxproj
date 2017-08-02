@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		241154357B10F80B754F7A76 /* Pods_RouteNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463FD9BD630C5A6AB65E7AFA /* Pods_RouteNav.framework */; };
+		400B6D431F32466D0094E76C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400B6D421F32466D0094E76C /* MapKit.framework */; };
 		4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129591E431DF7004CA4F8 /* AppDelegate.swift */; };
 		4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4031295D1E431DF7004CA4F8 /* Main.storyboard */; };
 		403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */; };
@@ -51,6 +52,7 @@
 		0CEE47B86ECFBD8FF7B2026D /* Pods_RouteNavTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNavTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A519723F5F6F49D94DCBED /* Pods-RouteNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNav.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav.debug.xcconfig"; sourceTree = "<group>"; };
 		3CA5A0A26F8E9B16E90201EB /* Pods-RouteNavUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.release.xcconfig"; sourceTree = "<group>"; };
+		400B6D421F32466D0094E76C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
 		403129561E431DF7004CA4F8 /* STRVROUTE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STRVROUTE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40866E921F11326200778CCC /* AdSupport.framework in Frameworks */,
+				400B6D431F32466D0094E76C /* MapKit.framework in Frameworks */,
 				241154357B10F80B754F7A76 /* Pods_RouteNav.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +117,7 @@
 		400E09FC1E4350E900EE4118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				400B6D421F32466D0094E76C /* MapKit.framework */,
 				40866E911F11326200778CCC /* AdSupport.framework */,
 				400E09FD1E4350E900EE4118 /* StravaSwift.framework */,
 				463FD9BD630C5A6AB65E7AFA /* Pods_RouteNav.framework */,
@@ -333,6 +337,14 @@
 						DevelopmentTeam = 4JYLXVYYFP;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					4031296C1E431DF7004CA4F8 = {
 						CreatedOnToolsVersion = 8.2.1;
