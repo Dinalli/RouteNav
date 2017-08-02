@@ -1,5 +1,5 @@
 //
-//  RouteNavigationViewController.swift
+//  RouteSumaryViewController.swift
 //  RouteNav
 //
 //  Created by Andrew Donnelly on 21/04/2017.
@@ -9,7 +9,13 @@
 import UIKit
 
 class RouteNavigationViewController: UIViewController {
-
+    
+    var route: Route?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.presentTransparentNavigationBar()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

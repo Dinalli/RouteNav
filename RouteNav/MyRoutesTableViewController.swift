@@ -17,6 +17,12 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     var webView: WKWebView?
     @IBOutlet weak var tableView: UITableView?
     var authVC: StravaAuthViewController?
+    var selectedRoute: Route?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.hideTransparentNavigationBar()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,5 +138,31 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected path \(indexPath) ")
+        selectedRoute = StravaCoreDataHandler.sharedInstance.routes[indexPath.row] as? Route
+        self.performSegue(withIdentifier: "showSumarySegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSumarySegue" {
+            let rsvc = segue.destination as! RouteNavigationViewController
+            rsvc.route = selectedRoute
+        }
+    }
+}
+
+extension UINavigationController {
+    
+    public func presentTransparentNavigationBar() {
+        navigationBar.setBackgroundImage(UIImage(), for:UIBarMetrics.default)
+        navigationBar.isTranslucent = true
+        navigationBar.shadowImage = UIImage()
+        setNavigationBarHidden(false, animated:true)
+    }
+    
+    public func hideTransparentNavigationBar() {
+        setNavigationBarHidden(true, animated:false)
+        navigationBar.setBackgroundImage(UINavigationBar.appearance().backgroundImage(for: UIBarMetrics.default), for:UIBarMetrics.default)
+        navigationBar.isTranslucent = UINavigationBar.appearance().isTranslucent
+        navigationBar.shadowImage = UINavigationBar.appearance().shadowImage
     }
 }

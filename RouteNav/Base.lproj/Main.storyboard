@@ -151,6 +151,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bEw-kA-iIV"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Ya1-XZ-csR" id="6LP-QZ-ddf"/>
                         <segue destination="Rkg-Ea-qvg" kind="show" identifier="showSumarySegue" id="zRi-ha-TXy"/>
@@ -161,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="-39.375" y="-825"/>
         </scene>
-        <!--Route Sumary View Controller-->
+        <!--Route Navigation View Controller-->
         <scene sceneID="WKc-eC-z4j">
             <objects>
-                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteSumaryViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteNavigationViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0Sf-pO-S8v"/>
                         <viewControllerLayoutGuide type="bottom" id="BY4-x3-IHo"/>
@@ -178,11 +179,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="Lqu-sP-wcN">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="XTm-CM-c2r">
-                                            <connections>
-                                                <segue destination="bjw-Ld-5wn" kind="show" identifier="showFullRouteSegue" id="pHC-pe-xfT"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="XTm-CM-c2r"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -195,45 +192,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OI7-gD-y5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="795" y="-817"/>
-        </scene>
-        <!--Full Route Detail View Controller-->
-        <scene sceneID="g1f-SY-npr">
-            <objects>
-                <viewController storyboardIdentifier="fullRouteVC" id="bjw-Ld-5wn" customClass="FullRouteDetailViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IL2-8M-Uej"/>
-                        <viewControllerLayoutGuide type="bottom" id="cZd-ju-aog"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qVh-ki-3th">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <segue destination="D95-Wi-sUa" kind="show" identifier="showRouteNavSegue" id="1i9-sI-sEk"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gD5-sU-eBO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1599" y="-818"/>
-        </scene>
-        <!--Route Navigation View Controller-->
-        <scene sceneID="hEs-Bp-xH4">
-            <objects>
-                <viewController storyboardIdentifier="RouteNavVC" id="D95-Wi-sUa" customClass="RouteNavigationViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4j1-mr-mE2"/>
-                        <viewControllerLayoutGuide type="bottom" id="w8e-x6-ZLu"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eXe-ZQ-fiZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h4m-yb-7sT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2376" y="-817"/>
         </scene>
     </scenes>
     <resources>
