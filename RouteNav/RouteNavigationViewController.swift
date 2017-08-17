@@ -11,7 +11,8 @@ import MapKit
 
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate {
     
-    var route: Route?
+    let apiHelper = StravaAPIHelper()
+    var route: Route!
     var currentLocation: CLLocation?
     let locationManager = CLLocationManager.init()
     @IBOutlet weak var mapView: MKMapView?
@@ -31,6 +32,33 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         startLocationUpdates()
         // Do any additional setup after loading the view.
         mapView?.showsUserLocation = true
+        
+        for routeDirection in route.routedirection! {
+            let routeDirectionObject = routeDirection as! Direction
+            print("direction name \(routeDirectionObject.name!)")
+        }
+        
+        for rotueSegment in route.routesegment! {
+            let routeSegmentObject = rotueSegment as! Direction
+            print("segment name \(routeSegmentObject.name!)")
+        }
+        
+        self.getRouteDetail()
+    }
+    
+    func getRouteDetail() {
+        apiHelper.getRouteDetail(route) { (successFlag) in
+            if successFlag
+            {
+
+            }
+            else
+            {
+                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
+            }
+        }
     }
     
     func startLocationUpdates() {

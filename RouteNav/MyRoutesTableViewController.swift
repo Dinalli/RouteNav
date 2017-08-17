@@ -43,7 +43,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         super.viewDidAppear(animated)
         self.setUpNotifications()
-        if(apiHelper.authorisationToken == nil)
+        if(authorisationToken == nil)
         {
             self.performSegue(withIdentifier: "showAuthPopover", sender: self)
         }

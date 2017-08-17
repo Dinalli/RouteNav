@@ -9,15 +9,18 @@
 import UIKit
 import WebKit
 
+var authorisationToken :String?
+
 class StravaAPIHelper: NSObject, WKNavigationDelegate {
     
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
-    var authorisationToken :String?
+    //var authorisationToken :String?
     var code: String?
     var token: String!
     var athlete: [String: Any]!
     var routes: Array<[String: Any]>!
+    var routeDetail: Array<[String: Any]>!
     
     let authUrl = URL(string: "https://www.strava.com/oauth/authorize?client_id=1401&response_type=code&redirect_uri=strvroute://localhost&scope=write&state=mystate&approval_prompt=force")
     
@@ -51,7 +54,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers)) as? [String: Any]
                         
-                        self.authorisationToken = jsonResult!["access_token"] as? String
+                        authorisationToken = jsonResult!["access_token"] as? String
                         self.athlete = jsonResult!["athlete"] as? [String: Any]
                         let athleteId = self.athlete!["id"] as? Int
                         
@@ -121,9 +124,9 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         dataTask?.resume()
     }
     
-    public func getRouteDetail(_ routeId: Int, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getRouteDetail(_ route: Route, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
-        let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(routeId)")
+        let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(route.id)/streams")
         var request = URLRequest(url: authUrl!)
         
         request.addValue(" Bearer " + authorisationToken!, forHTTPHeaderField: "Authorization")
@@ -144,7 +147,24 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         
-                        self.routes = jsonResult as! Array
+                        print(jsonResult)
+                        
+                        let routeStreamArray: Array<[String: Any]>! = jsonResult as! Array
+                        
+                        for routeDetail:[String: Any] in routeStreamArray {
+                        
+                            if let streamDictionary = routeDetail as? Dictionary<String, AnyObject> {
+                                
+                                let typeString = streamDictionary["type"] as? String
+                                
+                                if typeString == "latlng" {
+                                    DispatchQueue.main.async {
+                                        
+                                        StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array)
+                                    }
+                                }
+                            }
+                        }
                         
                         //success code
                         return completionHandler(true)
@@ -156,11 +176,10 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                 }
                 else
                 {
-                    
+                   print(httpResponse)
                 }
             }
         })
         dataTask?.resume()
     }
-    
 }
