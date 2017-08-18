@@ -135,7 +135,9 @@ class StravaCoreDataHandler: NSObject {
         
         if(routes.count > 0)
         {
-            NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+            }
         }
         
     }

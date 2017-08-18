@@ -137,7 +137,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected path \(indexPath) ")
         selectedRoute = StravaCoreDataHandler.sharedInstance.routes[indexPath.row] as? Route
         self.performSegue(withIdentifier: "showSumarySegue", sender: self)
     }

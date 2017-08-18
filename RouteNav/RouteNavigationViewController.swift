@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate {
+class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
@@ -32,6 +32,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         startLocationUpdates()
         // Do any additional setup after loading the view.
         mapView?.showsUserLocation = true
+        mapView?.delegate = self
         
         for routeDirection in route.routedirection! {
             let routeDirectionObject = routeDirection as! Direction
@@ -50,7 +51,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         apiHelper.getRouteDetail(route) { (successFlag) in
             if successFlag
             {
-
+                self.addRouteToMap()
             }
             else
             {
@@ -113,6 +114,24 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     
+    func addRouteToMap() {
+        
+        for case let coordObject as Coordinates in route.routeroutecoord! {
+            
+            let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
+            // Drop a pin
+            let dropPin = MKPointAnnotation()
+            dropPin.coordinate = locationCoord
+            dropPin.title = route.name
+            self.mapView!.addAnnotation(dropPin)
+        }
+        
+        DispatchQueue.main.async {
+            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+        }
+    }
+    
+    
 //
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
@@ -130,4 +149,27 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
     */
 
+}
+
+func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    if (annotation is MKUserLocation) {
+        //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
+        //return nil so map draws default view for it (eg. blue dot)...
+        return nil
+    }
+    
+    let reuseId = "test"
+    
+    let anView = mapView.dequeueReusableAnnotationView(withIdentifier:reuseId)
+    if anView == nil {
+        let anView:MKAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        anView.image = UIImage(named:"xaxas")
+        anView.canShowCallout = true
+    }
+    else {
+        //we are re-using a view, update its annotation reference...
+        anView?.annotation = annotation
+    }
+    
+    return anView
 }

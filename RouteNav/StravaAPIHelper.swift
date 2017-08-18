@@ -146,9 +146,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                     do {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
-                        
-                        print(jsonResult)
-                        
+
                         let routeStreamArray: Array<[String: Any]>! = jsonResult as! Array
                         
                         for routeDetail:[String: Any] in routeStreamArray {
@@ -158,10 +156,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 let typeString = streamDictionary["type"] as? String
                                 
                                 if typeString == "latlng" {
-                                    DispatchQueue.main.async {
-                                        
                                         StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array)
-                                    }
                                 }
                             }
                         }
