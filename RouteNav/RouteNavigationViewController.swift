@@ -13,14 +13,31 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
+    var polyOverlay: MKPolyline!
     var currentLocation: CLLocation?
     let locationManager = CLLocationManager.init()
+    var polylineCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     @IBOutlet weak var mapView: MKMapView?
+
+    func setUpNotifications() {
+        NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
+    }
+    
+    func removeNotifications() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setUpNotifications()
         self.navigationController?.presentTransparentNavigationBar()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.removeNotifications()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,11 +66,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     func getRouteDetail() {
         apiHelper.getRouteDetail(route) { (successFlag) in
-            if successFlag
-            {
-                self.addRouteToMap()
-            }
-            else
+            if !successFlag
             {
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
                 alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
@@ -124,10 +137,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             dropPin.coordinate = locationCoord
             dropPin.title = route.name
             self.mapView!.addAnnotation(dropPin)
+            polylineCoordinates.append(locationCoord)
         }
+        
+        polyOverlay = MKPolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+            self.mapView!.add(self.polyOverlay, level: .aboveLabels)
         }
     }
     
@@ -148,7 +165,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polylineRender: MKPolylineRenderer = MKPolylineRenderer(polyline: self.polyOverlay)
+        polylineRender.lineWidth = 7.0
+        polylineRender.strokeColor = UIColor.blue
+        
+        return polylineRender
+    }
 }
 
 func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
@@ -173,3 +197,5 @@ func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -
     
     return anView
 }
+
+

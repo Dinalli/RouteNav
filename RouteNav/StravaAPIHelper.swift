@@ -156,7 +156,11 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 let typeString = streamDictionary["type"] as? String
                                 
                                 if typeString == "latlng" {
+                                        // update some UI
+                                    
+                                    DispatchQueue.main.async {
                                         StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array)
+                                    }
                                 }
                             }
                         }

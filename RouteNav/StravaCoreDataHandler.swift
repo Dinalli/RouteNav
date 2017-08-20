@@ -133,10 +133,10 @@ class StravaCoreDataHandler: NSObject {
             }
         }
         
-        if(routes.count > 0)
+        if(coordinatesArray.count > 0)
         {
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
             }
         }
         
