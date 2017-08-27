@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Foundation
 
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -17,8 +18,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var currentLocation: CLLocation?
     let locationManager = CLLocationManager.init()
     var polylineCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
+    var navigationCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     @IBOutlet weak var mapView: MKMapView?
-
+    @IBOutlet weak var directionArrowImageView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var directionText: UITextView!
+    
     func setUpNotifications() {
         NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
     }
@@ -31,6 +36,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         super.viewWillAppear(animated)
         self.setUpNotifications()
         self.navigationController?.presentTransparentNavigationBar()
+        self.navigationItem.title = "loading..."
+        self.getRouteDetail()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -60,8 +67,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             let routeSegmentObject = rotueSegment as! Direction
             print("segment name \(routeSegmentObject.name!)")
         }
-        
-        self.getRouteDetail()
     }
     
     func getRouteDetail() {
@@ -71,6 +76,10 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
                 alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 self.present(alertMessage, animated: true, completion: nil)
+                self.navigationItem.title = "Error loading route."
+            }
+            else {
+                self.navigationItem.title = "drawing route on map."
             }
         }
     }
@@ -120,51 +129,74 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 mapView!.setRegion(viewRegion, animated: false)
             }
         }
+        
+        updateDirections(currentLocation: locations.last!)
+    }
+    
+    func updateDirections(currentLocation: CLLocation) {
+        
+        if(self.navigationCoordinates.count > 0)
+        {
+            let nextNavigationLocation = CLLocation.init(latitude: (self.navigationCoordinates.first?.latitude)!,
+                                                         longitude: (self.navigationCoordinates.first?.longitude)!)
+            let currentDistance = currentLocation.distance(from: nextNavigationLocation)
+            
+            if (currentDistance < 1000)
+            {
+                // Not much point as you are near there, so lets remove it.
+                self.navigationCoordinates.removeFirst()
+            }else{
+            
+                self.distanceLabel.text = String(format: "%.02f km", arguments: [(currentDistance/1000)] )
+                let degrees = currentLocation.bearingDegreesTo(location: nextNavigationLocation)                
+                self.directionArrowImageView.image = UIImage.init(named: "bluearrowup")
+                self.directionArrowImageView.transform =
+                    CGAffineTransform(rotationAngle: CGFloat(currentLocation.getRadiansFrom(degrees: degrees)))
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Did fail location manager with error \(error.localizedDescription)")
     }
-    
-    
+ 
     func addRouteToMap() {
         
         for case let coordObject as Coordinates in route.routeroutecoord! {
-            
             let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
-            // Drop a pin
-            let dropPin = MKPointAnnotation()
-            dropPin.coordinate = locationCoord
-            dropPin.title = route.name
-            self.mapView!.addAnnotation(dropPin)
             polylineCoordinates.append(locationCoord)
         }
+        
+        // Drop a pin
+        let startObject = route.routeroutecoord?.firstObject as! Coordinates
+        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = startlocationCoord
+        dropPin.title = "start"
+        self.mapView!.addAnnotation(dropPin)
+        
+        // Drop a pin
+        let endObject = route.routeroutecoord?.firstObject as! Coordinates
+        let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
+        dropPin.coordinate = endlocationCoord
+        dropPin.title = "end"
+        self.mapView!.addAnnotation(dropPin)
+        
+        navigationCoordinates = polylineCoordinates
         
         polyOverlay = MKPolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
-            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+        //self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
             self.mapView!.add(self.polyOverlay, level: .aboveLabels)
+            self.navigationItem.title = self.route.name
         }
     }
-    
-    
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    */
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRender: MKPolylineRenderer = MKPolylineRenderer(polyline: self.polyOverlay)
@@ -195,6 +227,44 @@ func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -
     }
     
     return anView
+}
+
+extension CLLocation {
+    
+    
+    func getRadiansFrom(degrees: Double ) -> Double {
+        return degrees * .pi / 180
+    }
+    
+    func getDegreesFrom(radians: Double) -> Double {
+        return radians * 180 / .pi
+    }
+    
+    
+    func bearingRadianTo(location: CLLocation) -> Double {
+        
+        let lat1 = self.getRadiansFrom(degrees: self.coordinate.latitude)
+        let lon1 = self.getRadiansFrom(degrees: self.coordinate.longitude)
+        
+        let lat2 = self.getRadiansFrom(degrees: location.coordinate.latitude)
+        let lon2 = self.getRadiansFrom(degrees: location.coordinate.longitude)
+        
+        let dLon = lon2 - lon1
+        
+        let y = sin(dLon) * cos(lat2)
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        
+        var radiansBearing = atan2(y, x)
+        
+        if radiansBearing < 0.0 {
+            radiansBearing += 2 * .pi
+        }
+        return radiansBearing
+    }
+    
+    func bearingDegreesTo(location: CLLocation) -> Double {
+        return self.getDegreesFrom(radians: self.bearingRadianTo(location: location))
+    }
 }
 
 

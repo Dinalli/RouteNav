@@ -118,7 +118,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row] as! Route
         
         cell.routeNameLabel?.text = route.name
-        cell.distanceLabel?.text = String(route.distance/100) + "km"
+        cell.distanceLabel?.text = String(format: "%.02f km", arguments: [(route.distance/1000)] )
         cell.elevationLabel?.text = String(route.elevation_gain) + "m"
         cell.timeLabel?.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
         
@@ -168,6 +168,7 @@ extension UINavigationController {
     public func presentTransparentNavigationBar() {
         navigationBar.setBackgroundImage(UIImage(), for:UIBarMetrics.default)
         navigationBar.isTranslucent = true
+        navigationBar.alpha = 0.2
         navigationBar.shadowImage = UIImage()
         setNavigationBarHidden(false, animated:true)
     }

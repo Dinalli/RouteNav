@@ -15,7 +15,6 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
     
     let defaultSession = URLSession(configuration: .default)
     var dataTask: URLSessionDataTask?
-    //var authorisationToken :String?
     var code: String?
     var token: String!
     var athlete: [String: Any]!
