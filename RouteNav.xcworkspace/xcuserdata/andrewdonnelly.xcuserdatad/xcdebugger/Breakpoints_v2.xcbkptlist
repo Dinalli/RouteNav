@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RouteNav/RouteNavigationViewController.swift"
-            timestampString = "524930397.53198"
+            timestampString = "525525763.892859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "mapView(mapView:viewForAnnotation:)"
-            landmarkType = "9">
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

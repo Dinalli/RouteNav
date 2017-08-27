@@ -170,7 +170,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let polylineRender: MKPolylineRenderer = MKPolylineRenderer(polyline: self.polyOverlay)
         polylineRender.lineWidth = 7.0
         polylineRender.strokeColor = UIColor.blue
-        
         return polylineRender
     }
 }

@@ -27,6 +27,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView!.register(UINib(nibName: "RouteTableViewCell", bundle: nil), forCellReuseIdentifier: "RouteTableViewCell")
+        self.tableView!.addSubview(self.refreshControl)
     }
     
     func setUpNotifications() {
@@ -147,6 +148,20 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             rsvc.route = selectedRoute
         }
     }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        tableView?.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+
+
 }
 
 extension UINavigationController {
