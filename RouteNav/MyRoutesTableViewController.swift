@@ -122,14 +122,15 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         cell.elevationLabel?.text = String(route.elevation_gain) + "m"
         cell.timeLabel?.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
         
-//        if(route.type == 1)
-//        {
-//            cell.mapIcon.image = UIImage(named: "bikeIcon")
-//        }
-//        else
-//        {
-//            cell.mapIcon.image = UIImage(named: "runIcon")
-//        }
+        if(route.type == 1)
+        {
+            cell.routeType.image = UIImage(named: "bikeIcon")
+        }
+        else
+        {
+            cell.routeType.image = UIImage(named: "runIcon")
+        }
+        
         let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=150x150&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         cell.mapIcon.imageFromUrl(urlString: encodedStr!)
@@ -160,8 +161,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         return refreshControl
     }()
-
-
 }
 
 extension UINavigationController {

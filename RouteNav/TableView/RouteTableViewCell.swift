@@ -15,6 +15,7 @@ class RouteTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var elevationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var routeType: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
