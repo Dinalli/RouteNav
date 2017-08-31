@@ -54,6 +54,7 @@
 		3CA5A0A26F8E9B16E90201EB /* Pods-RouteNavUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.release.xcconfig"; sourceTree = "<group>"; };
 		400B6D421F32466D0094E76C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
+		400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pugneys to Nostell.gpx"; sourceTree = "<group>"; };
 		403129561E431DF7004CA4F8 /* STRVROUTE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STRVROUTE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4031295E1E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				409559801F135C5900050BDD /* Common */,
 				40EDDE731F129B770057EE65 /* TableView */,
 				40866E901F11324D00778CCC /* Frameworks */,

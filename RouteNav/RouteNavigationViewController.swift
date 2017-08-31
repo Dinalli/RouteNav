@@ -20,9 +20,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var polylineCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     var navigationCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     @IBOutlet weak var mapView: MKMapView?
-    @IBOutlet weak var directionArrowImageView: UIImageView!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var directionText: UITextView!
     
     func setUpNotifications() {
         NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
@@ -57,6 +54,15 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         // Do any additional setup after loading the view.
         mapView?.showsUserLocation = true
         mapView?.delegate = self
+        mapView?.showsCompass = true
+        mapView?.isZoomEnabled = true
+        mapView?.showsScale = true
+        
+        //mapView?.mapType = .hybrid
+        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
+//        mapView?.camera.pitch = 85.0
+//        mapView?.camera.altitude = 223.0
+//        mapView?.setCamera(mapView!.camera, animated: true)
         
         for routeDirection in route.routedirection! {
             let routeDirectionObject = routeDirection as! Direction
@@ -89,6 +95,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.startUpdatingLocation()
+        
+        if (CLLocationManager .headingAvailable())
+        {
+            locationManager.headingFilter = kCLHeadingFilterNone
+            locationManager.startUpdatingHeading()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -117,19 +129,28 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     func stopLocationUpdates() {
         locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
+    }
+    
+    func locationManagerShouldDisplayHeadingCalibration(_ manager: CLLocationManager) -> Bool {
+        return true
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+//        mapView!.camera.heading = newHeading.magneticHeading
+//        mapView!.camera.pitch = 85.0
+//        mapView!.camera.altitude = 223.0
+//        mapView!.setCamera(mapView!.camera, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         defer { currentLocation = locations.last }
         
-        if currentLocation == nil {
-            // Zoom to user location
-            if let userLocation = locations.last {
-                let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
-                mapView!.setRegion(viewRegion, animated: false)
-            }
-        }
-        
+//        // Zoom to user location
+//        if let userLocation = locations.last {
+//            let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1250, 1250)
+//            mapView!.setRegion(viewRegion, animated: true)
+//        }
         updateDirections(currentLocation: locations.last!)
     }
     
@@ -147,11 +168,11 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.navigationCoordinates.removeFirst()
             }else{
             
-                self.distanceLabel.text = String(format: "%.02f km", arguments: [(currentDistance/1000)] )
-                let degrees = currentLocation.bearingDegreesTo(location: nextNavigationLocation)                
-                self.directionArrowImageView.image = UIImage.init(named: "bluearrowup")
-                self.directionArrowImageView.transform =
-                    CGAffineTransform(rotationAngle: CGFloat(currentLocation.getRadiansFrom(degrees: degrees)))
+                //self.distanceLabel.text = String(format: "%.02f km", arguments: [(currentDistance/1000)] )
+//                let degrees = currentLocation.bearingDegreesTo(location: nextNavigationLocation)
+//                self.directionArrowImageView.image = UIImage.init(named: "bluearrowup")
+//                self.directionArrowImageView.transform =
+//                    CGAffineTransform(rotationAngle: CGFloat(currentLocation.getRadiansFrom(degrees: degrees)))
             }
         }
     }
