@@ -156,7 +156,6 @@
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				409559801F135C5900050BDD /* Common */,
 				40EDDE731F129B770057EE65 /* TableView */,
-				40866E901F11324D00778CCC /* Frameworks */,
 				40B42AC31E7AC47200B8FA84 /* StravaAPI */,
 				4031298C1E4320A6004CA4F8 /* Model */,
 				4031298B1E432099004CA4F8 /* UI */,
@@ -212,13 +211,6 @@
 				40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		40866E901F11324D00778CCC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		409559801F135C5900050BDD /* Common */ = {

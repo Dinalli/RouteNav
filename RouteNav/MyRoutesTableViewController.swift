@@ -18,6 +18,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView?
     var authVC: StravaAuthViewController?
     var selectedRoute: Route?
+    var authorising: Bool = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,8 +45,9 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         super.viewDidAppear(animated)
         self.setUpNotifications()
-        if(authorisationToken == nil)
+        if(authorisationToken == nil && !authorising)
         {
+            authorising = true
             self.performSegue(withIdentifier: "showAuthPopover", sender: self)
         }
     }
@@ -75,7 +77,16 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                 {
                     DispatchQueue.main.async {
                         // update some UI
-                         self.tableView!.reloadData()
+                        
+                        if self.apiHelper.routes.count == 0 {
+                            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, it doesnt look like you have any routes. You can create routes on Strava to import.", preferredStyle: .actionSheet)
+                            alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                            self.present(alertMessage, animated: true, completion: nil)
+                        }
+                        else{
+                            self.tableView!.reloadData()
+                        }
+                        
                     }
                 }
                 else
@@ -84,6 +95,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                     alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                     self.present(alertMessage, animated: true, completion: nil)
                 }
+                self.authorising = false 
             }
         }
     }

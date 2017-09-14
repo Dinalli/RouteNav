@@ -59,10 +59,10 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.showsScale = true
         
         //mapView?.mapType = .hybrid
-        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
-//        mapView?.camera.pitch = 85.0
-//        mapView?.camera.altitude = 223.0
-//        mapView?.setCamera(mapView!.camera, animated: true)
+//        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
+        mapView?.camera.pitch = 85.0
+        mapView?.camera.altitude = 223.0
+        mapView?.setCamera(mapView!.camera, animated: true)
         
         for routeDirection in route.routedirection! {
             let routeDirectionObject = routeDirection as! Direction
@@ -137,24 +137,47 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-//        mapView!.camera.heading = newHeading.magneticHeading
-//        mapView!.camera.pitch = 85.0
-//        mapView!.camera.altitude = 223.0
-//        mapView!.setCamera(mapView!.camera, animated: true)
+        mapView!.camera.heading = newHeading.magneticHeading
+        mapView!.camera.centerCoordinate = (manager.location?.coordinate)!
+        mapView!.camera.pitch = 85.0
+        mapView!.camera.altitude = 223.0
+        mapView!.setCamera(mapView!.camera, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         defer { currentLocation = locations.last }
         
-//        // Zoom to user location
+        // Zoom to user location
 //        if let userLocation = locations.last {
 //            let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1250, 1250)
 //            mapView!.setRegion(viewRegion, animated: true)
 //        }
-        updateDirections(currentLocation: locations.last!)
+//        updateDirections(currentLocation: locations.last!)
     }
     
     func updateDirections(currentLocation: CLLocation) {
+        
+        let request = MKDirectionsRequest()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = MKMapItem.forCurrentLocation()
+        request.requestsAlternateRoutes = false
+        
+        let directions = MKDirections(request: request)
+        
+        directions.calculate(completionHandler: {(response, error) in
+            
+            if error != nil {
+                print("Error getting directions")
+            } else {
+                for route in (response?.routes)! {
+                    
+//                    routeMap.add(route.polyline,
+//                                 level: MKOverlayLevel.aboveRoads)
+                    for step in route.steps {
+                        print(step.instructions)
+                    }
+                }            }
+        })
         
         if(self.navigationCoordinates.count > 0)
         {
