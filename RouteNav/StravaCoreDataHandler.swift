@@ -32,14 +32,6 @@ class StravaCoreDataHandler: NSObject {
                 NSEntityDescription.entity(forEntityName: "Map",
                                            in: managedContext)!
             
-            let directionentity =
-                NSEntityDescription.entity(forEntityName: "Direction",
-                                           in: managedContext)!
-            
-            let segmententity =
-                NSEntityDescription.entity(forEntityName: "Segment",
-                                           in: managedContext)!
-            
             let route = NSManagedObject(entity: entity,
                                         insertInto: managedContext) as! Route
             
@@ -60,34 +52,6 @@ class StravaCoreDataHandler: NSObject {
             map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
             route.routemap = map 
             
-            // add direction data
-            let directionArray = routeDetail["directions"] as? Array<[String: Any]>
-            
-            if(directionArray != nil)
-            {
-                for directionDetail:[String: Any] in directionArray! {
-                    let direction = NSManagedObject(entity: directionentity, insertInto: managedContext) as! Direction
-                    direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
-                    direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
-                    direction.setValue(directionDetail["name"] as? String, forKeyPath: "name")
-                    route.addToRoutedirection(direction)
-                }
-            }
-            
-            // add segment data
-            let segmentArray = routeDetail["segments"] as? Array<[String: Any]>
-            
-            if(segmentArray != nil)
-            {
-                for segmentDetail:[String: Any] in segmentArray! {
-                    let segment = NSManagedObject(entity: segmententity, insertInto: managedContext) as! Segment
-                    segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
-                    segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
-                    segment.setValue(segmentDetail["name"] as? String, forKeyPath: "name")
-                    route.addToRoutesegment(segment)
-                }
-            }
-            
             do {
                 try managedContext.save()
                 routes.append(route)
@@ -103,7 +67,7 @@ class StravaCoreDataHandler: NSObject {
 
     }
     
-    public func addRouteDetail(route: Route, routesDetailArray: Array<[String: Any]>!) {
+    public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!) {
         
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -112,33 +76,48 @@ class StravaCoreDataHandler: NSObject {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
-//        // add direction data
-//        let directionArray = routesDetailArray["directions"] as? Array<[String: Any]>
-//
-//        if(directionArray != nil)
-//        {
-//            for directionDetail:[String: Any] in directionArray! {
-//                let direction = NSManagedObject(entity: directionentity, insertInto: managedContext) as! Direction
-//                direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
-//                direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
-//                direction.setValue(directionDetail["name"] as? String, forKeyPath: "name")
-//                route.addToRoutedirection(direction)
-//            }
-//        }
-//
-//        // add segment data
-//        let segmentArray = routesDetailArray["segments"] as? Array<[String: Any]>
-//
-//        if(segmentArray != nil)
-//        {
-//            for segmentDetail:[String: Any] in segmentArray! {
-//                let segment = NSManagedObject(entity: segmententity, insertInto: managedContext) as! Segment
-//                segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
-//                segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
-//                segment.setValue(segmentDetail["name"] as? String, forKeyPath: "name")
-//                route.addToRoutesegment(segment)
-//            }
-//        }
+        let directionentity =
+            NSEntityDescription.entity(forEntityName: "Direction",
+                                       in: managedContext)!
+        
+        let segmententity =
+            NSEntityDescription.entity(forEntityName: "Segment",
+                                       in: managedContext)!
+        // add direction data
+        let directionArray = routesDetailArray["directions"] as? Array<[String: Any]>
+
+        if(directionArray != nil)
+        {
+            for directionDetail:[String: Any] in directionArray! {
+                let direction = NSManagedObject(entity: directionentity, insertInto: managedContext) as! Direction
+                direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
+                direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
+                direction.setValue(directionDetail["name"] as? String, forKeyPath: "name")
+                route.addToRoutedirection(direction)
+            }
+        }
+
+        // add segment data
+        let segmentArray = routesDetailArray["segments"] as? Array<[String: Any]>
+
+        if(segmentArray != nil)
+        {
+            for segmentDetail:[String: Any] in segmentArray! {
+                let segment = NSManagedObject(entity: segmententity, insertInto: managedContext) as! Segment
+                segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
+                segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
+                segment.setValue(segmentDetail["name"] as? String, forKeyPath: "name")
+                segment.setValue(segmentDetail["average_grade"] as? NSNumber, forKeyPath: "average_grade")
+                segment.setValue(segmentDetail["distance"] as? NSNumber, forKeyPath: "distance")
+                segment.setValue(segmentDetail["elevation_high"] as? NSNumber, forKeyPath: "elevation_high")
+                segment.setValue(segmentDetail["elevation_low"] as? NSNumber, forKeyPath: "elevation_low")
+                segment.setValue(segmentDetail["end_latitude"] as? NSNumber, forKeyPath: "end_latitude")
+                segment.setValue(segmentDetail["end_longitude"] as? NSNumber, forKeyPath: "end_longitude")
+                segment.setValue(segmentDetail["start_latitude"] as? NSNumber, forKeyPath: "start_latitude")
+                segment.setValue(segmentDetail["start_longitude"] as? NSNumber, forKeyPath: "start_longitude")
+                route.addToRoutesegment(segment)
+            }
+        }
         
         do {
             try managedContext.save()

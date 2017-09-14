@@ -11,6 +11,9 @@ import MapKit
 import Foundation
 
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    @IBOutlet weak var OverlayView: UIView!
+    @IBOutlet weak var DetailView: UIView!
+    @IBOutlet weak var ShadeView: UIView!
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
@@ -31,10 +34,17 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.OverlayView.layer.cornerRadius = 7.0
+        self.DetailView.layer.cornerRadius = 7.0
+        self.ShadeView.layer.cornerRadius = 7.0
+        
         self.setUpNotifications()
         self.navigationController?.presentTransparentNavigationBar()
         self.navigationItem.title = "loading..."
         self.getRouteDetail()
+        
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

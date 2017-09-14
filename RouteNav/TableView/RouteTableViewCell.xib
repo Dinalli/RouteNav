@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -76,8 +76,8 @@
                         <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIc-AD-bq0">
-                        <rect key="frame" x="287" y="0.0" width="30" height="30"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hIc-AD-bq0">
+                        <rect key="frame" x="282" y="5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="G1c-Gb-EgD"/>
                         </constraints>
@@ -88,7 +88,7 @@
                     <constraint firstItem="yqp-Vq-S2D" firstAttribute="leading" secondItem="wEH-DB-Xtj" secondAttribute="trailing" constant="8" symbolic="YES" id="3ky-GC-uwZ"/>
                     <constraint firstItem="BWR-Bz-GLE" firstAttribute="centerY" secondItem="aaM-oI-PmD" secondAttribute="centerY" id="4rI-tN-eMa"/>
                     <constraint firstItem="5Qm-9k-qRe" firstAttribute="leading" secondItem="BWR-Bz-GLE" secondAttribute="leading" id="5Ju-UI-cH7"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hIc-AD-bq0" secondAttribute="trailing" constant="-5" id="7rV-ft-Deb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hIc-AD-bq0" secondAttribute="trailing" id="7rV-ft-Deb"/>
                     <constraint firstItem="aaM-oI-PmD" firstAttribute="leading" secondItem="yqp-Vq-S2D" secondAttribute="leading" id="8N5-U5-f7X"/>
                     <constraint firstItem="BWR-Bz-GLE" firstAttribute="top" secondItem="K4l-DG-xFK" secondAttribute="bottom" constant="2" id="Bah-9G-vyb"/>
                     <constraint firstItem="2mV-9j-Q4h" firstAttribute="leading" secondItem="aaM-oI-PmD" secondAttribute="leading" id="DyL-t1-4L1"/>
@@ -98,7 +98,7 @@
                     <constraint firstItem="BWR-Bz-GLE" firstAttribute="firstBaseline" secondItem="aaM-oI-PmD" secondAttribute="firstBaseline" id="Kuc-EH-WWT"/>
                     <constraint firstItem="5Qm-9k-qRe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="17" id="Lai-Ur-ZFp"/>
                     <constraint firstItem="wEH-DB-Xtj" firstAttribute="top" secondItem="yqp-Vq-S2D" secondAttribute="top" id="Saq-Q7-Okn"/>
-                    <constraint firstItem="hIc-AD-bq0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UDx-Hv-ao0"/>
+                    <constraint firstItem="hIc-AD-bq0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="UDx-Hv-ao0"/>
                     <constraint firstAttribute="trailingMargin" secondItem="aaM-oI-PmD" secondAttribute="trailing" constant="-14" id="Upm-2G-geM"/>
                     <constraint firstItem="K4l-DG-xFK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-9" id="V2L-vh-vtN"/>
                     <constraint firstItem="K4l-DG-xFK" firstAttribute="leading" secondItem="5Qm-9k-qRe" secondAttribute="leading" id="VYw-h0-qEp"/>
@@ -108,7 +108,7 @@
                     <constraint firstItem="5Qm-9k-qRe" firstAttribute="centerY" secondItem="2mV-9j-Q4h" secondAttribute="centerY" id="Zqi-yG-JDh"/>
                     <constraint firstAttribute="bottomMargin" secondItem="XAn-HY-tQN" secondAttribute="bottom" constant="-4.5" id="ZsI-JV-FSl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2mV-9j-Q4h" secondAttribute="trailing" constant="17" id="d2p-QW-4Kn"/>
-                    <constraint firstItem="aaM-oI-PmD" firstAttribute="top" secondItem="hIc-AD-bq0" secondAttribute="bottom" constant="8" symbolic="YES" id="eJS-4l-ylD"/>
+                    <constraint firstItem="aaM-oI-PmD" firstAttribute="top" secondItem="hIc-AD-bq0" secondAttribute="bottom" constant="2" id="eJS-4l-ylD"/>
                     <constraint firstItem="XAn-HY-tQN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iA2-ms-sQi"/>
                     <constraint firstItem="wEH-DB-Xtj" firstAttribute="top" secondItem="5Qm-9k-qRe" secondAttribute="bottom" constant="33" id="niK-go-9OP"/>
                     <constraint firstItem="aaM-oI-PmD" firstAttribute="leading" secondItem="BWR-Bz-GLE" secondAttribute="trailing" constant="2" id="qzr-Md-36j"/>

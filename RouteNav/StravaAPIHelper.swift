@@ -205,7 +205,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
 print(jsonResult)
                         DispatchQueue.main.async {
                             // update some UI
-                            //StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as! Array)
+                            StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>)
                         }
                         
                         //success code

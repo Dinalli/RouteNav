@@ -147,6 +147,14 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         cell.mapIcon.imageFromUrl(urlString: encodedStr!)
         
+        
+        cell.mapIcon.layer.cornerRadius = 7.0
+        cell.routeType.layer.cornerRadius = 7.0
+        cell.mapIcon.layer.borderColor = UIColor.black.cgColor
+        cell.routeType.layer.borderColor = UIColor.orange.cgColor
+        cell.mapIcon.layer.borderWidth = 1
+        cell.routeType.layer.borderWidth = 1
+        
         return cell
     }
     
