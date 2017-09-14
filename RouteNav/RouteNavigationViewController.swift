@@ -76,7 +76,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func getRouteDetail() {
-        apiHelper.getRouteDetail(route) { (successFlag) in
+        apiHelper.getRouteStream(route) { (successFlag) in
             if !successFlag
             {
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
@@ -86,6 +86,19 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             }
             else {
                 self.navigationItem.title = "drawing route on map."
+            }
+        }
+        
+        apiHelper.getRouteDetail(route) { (successFlag) in
+            if !successFlag
+            {
+                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
+                self.navigationItem.title = "Error loading route."
+            }
+            else {
+                self.navigationItem.title = "getting route details"
             }
         }
     }

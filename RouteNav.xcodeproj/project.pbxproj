@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		241154357B10F80B754F7A76 /* Pods_RouteNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463FD9BD630C5A6AB65E7AFA /* Pods_RouteNav.framework */; };
 		400B6D431F32466D0094E76C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400B6D421F32466D0094E76C /* MapKit.framework */; };
+		402CECC51F6B049C00C1FC3E /* SegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402CECC41F6B049C00C1FC3E /* SegmentViewController.swift */; };
 		4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129591E431DF7004CA4F8 /* AppDelegate.swift */; };
 		4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4031295D1E431DF7004CA4F8 /* Main.storyboard */; };
 		403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 		400B6D421F32466D0094E76C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
 		400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pugneys to Nostell.gpx"; sourceTree = "<group>"; };
+		402CECC41F6B049C00C1FC3E /* SegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentViewController.swift; sourceTree = "<group>"; };
 		403129561E431DF7004CA4F8 /* STRVROUTE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STRVROUTE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4031295E1E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */,
 				40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */,
+				402CECC41F6B049C00C1FC3E /* SegmentViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */,
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
 				403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */,
+				402CECC51F6B049C00C1FC3E /* SegmentViewController.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
 			);

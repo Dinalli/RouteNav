@@ -103,6 +103,57 @@ class StravaCoreDataHandler: NSObject {
 
     }
     
+    public func addRouteDetail(route: Route, routesDetailArray: Array<[String: Any]>!) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+//        // add direction data
+//        let directionArray = routesDetailArray["directions"] as? Array<[String: Any]>
+//
+//        if(directionArray != nil)
+//        {
+//            for directionDetail:[String: Any] in directionArray! {
+//                let direction = NSManagedObject(entity: directionentity, insertInto: managedContext) as! Direction
+//                direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
+//                direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
+//                direction.setValue(directionDetail["name"] as? String, forKeyPath: "name")
+//                route.addToRoutedirection(direction)
+//            }
+//        }
+//
+//        // add segment data
+//        let segmentArray = routesDetailArray["segments"] as? Array<[String: Any]>
+//
+//        if(segmentArray != nil)
+//        {
+//            for segmentDetail:[String: Any] in segmentArray! {
+//                let segment = NSManagedObject(entity: segmententity, insertInto: managedContext) as! Segment
+//                segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
+//                segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
+//                segment.setValue(segmentDetail["name"] as? String, forKeyPath: "name")
+//                route.addToRoutesegment(segment)
+//            }
+//        }
+        
+        do {
+            try managedContext.save()
+            routes.append(route)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        if(routes.count > 0)
+        {
+            NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+        }
+        
+    }
+    
     public func addCoordinatesToRoute(route: Route, coordinatesArray : Array<Array<Any>>!) {
         
         guard let appDelegate =
@@ -141,14 +192,7 @@ class StravaCoreDataHandler: NSObject {
         }
         
     }
-    
-    
-    // Add Direction
-    
-    // Add Segment
-    
-    
-    
+
     // Save 
     
     public func saveCoreData() {
