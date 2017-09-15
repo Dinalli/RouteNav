@@ -164,7 +164,7 @@
                     <connections>
                         <outlet property="tableView" destination="Ya1-XZ-csR" id="6LP-QZ-ddf"/>
                         <segue destination="Rkg-Ea-qvg" kind="show" identifier="showSumarySegue" id="zRi-ha-TXy"/>
-                        <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" id="OU3-9X-nAs"/>
+                        <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" modalTransitionStyle="crossDissolve" id="OU3-9X-nAs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onl-sw-WFS" userLabel="First Responder" sceneMemberID="firstResponder"/>

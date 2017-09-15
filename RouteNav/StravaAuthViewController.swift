@@ -43,22 +43,16 @@ class StravaAuthViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1.5, animations: {
-            self.powerByImage.alpha = 1.0
+        UIView.animate(withDuration: 2.0, animations: {
             self.backgroundImage.alpha = 1.0
             
         }, completion: nil)
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.powerByImage.alpha = 1.0
-            self.logoIcon.alpha=1.0
-            
-            
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 3.5, animations: {
             self.authButton.alpha = 1.0
             self.instructionLabel.alpha = 1.0
+            self.logoIcon.alpha=1.0
+            self.powerByImage.alpha = 1.0
         }, completion: nil)
         
     }
