@@ -12,16 +12,10 @@ import CoreData
 class StravaCoreDataHandler: NSObject {
     
     var routes: [NSManagedObject] = []
+    var managedContext: NSManagedObjectContext!
     static let sharedInstance = StravaCoreDataHandler()
 
-    public func addRoutes(routesArray: Array<[String: Any]>!) {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
+    public func addRoutes(routesArray: Array<[String: Any]>!, managedContext: NSManagedObjectContext) {
         
         for routeDetail:[String: Any] in routesArray {
             let entity =
@@ -67,14 +61,7 @@ class StravaCoreDataHandler: NSObject {
 
     }
     
-    public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!) {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
+    public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let directionentity =
             NSEntityDescription.entity(forEntityName: "Direction",
@@ -118,29 +105,11 @@ class StravaCoreDataHandler: NSObject {
                 route.addToRoutesegment(segment)
             }
         }
-        
-        do {
-            try managedContext.save()
-            routes.append(route)
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-        
-        if(routes.count > 0)
-        {
-            NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
-        }
-        
+        saveCoreData(managedContext: managedContext)
+        completionHandler(true)
     }
     
-    public func addCoordinatesToRoute(route: Route, coordinatesArray : Array<Array<Any>>!) {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
+    public func addCoordinatesToRoute(route: Route, coordinatesArray : Array<Array<Any>>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         for coordObjectIndex in 0...coordinatesArray.count-1 {
             
@@ -154,35 +123,33 @@ class StravaCoreDataHandler: NSObject {
             coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
             coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
             route.addToRouteroutecoord(coordinateObject)
+        }
+        saveCoreData(managedContext: managedContext)
+        completionHandler(true)
+    }
+    
+    public func addCoordinatesToSegment(segment: Segment, coordinatesArray : Array<Array<Any>>!, managedContext: NSManagedObjectContext,completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+        
+        for coordObjectIndex in 0...coordinatesArray.count-1 {
             
-            do {
-                try managedContext.save()
-                self.routes.append(route)
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
+            let coords =
+                NSEntityDescription.entity(forEntityName: "Coordinates",
+                                           in: managedContext)!
+            
+            let coordinateObject = NSManagedObject(entity: coords,
+                                                   insertInto: managedContext) as! Coordinates
+            
+            coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
+            coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
+            segment.addToSegmentcoordinates(coordinateObject)
+ 
         }
-        
-        if(coordinatesArray.count > 0)
-        {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
-            }
-        }
-        
+        saveCoreData(managedContext: managedContext)
+        completionHandler(true)
     }
 
-    // Save 
-    
-    public func saveCoreData() {
-        
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
+    public func saveCoreData(managedContext: NSManagedObjectContext) {
+
         do {
             try managedContext.save()
  

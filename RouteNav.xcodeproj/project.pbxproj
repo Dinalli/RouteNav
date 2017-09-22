@@ -18,6 +18,7 @@
 		403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129711E431DF7004CA4F8 /* RouteNavTests.swift */; };
 		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
 		403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */; };
+		403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AF66D1F75857900EF0A9D /* RoutePolyline.swift */; };
 		405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F31991E81B1890013457C /* StravaAPIHelper.swift */; };
 		4084CB5B1F72FA8800D92DF3 /* RouteARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084CB5A1F72FA8800D92DF3 /* RouteARViewController.swift */; };
 		40866E8F1F111FFD00778CCC /* StravaAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */; };
@@ -119,6 +120,7 @@
 		4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavUITests.swift; sourceTree = "<group>"; };
 		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRoutesTableViewController.swift; sourceTree = "<group>"; };
+		403AF66D1F75857900EF0A9D /* RoutePolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePolyline.swift; sourceTree = "<group>"; };
 		405F31991E81B1890013457C /* StravaAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIHelper.swift; sourceTree = "<group>"; };
 		4084CB5A1F72FA8800D92DF3 /* RouteARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteARViewController.swift; sourceTree = "<group>"; };
 		40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAuthViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
+				403AF6681F7583EA00EF0A9D /* MapOverlay */,
 				409559801F135C5900050BDD /* Common */,
 				40EDDE731F129B770057EE65 /* TableView */,
 				40B42AC31E7AC47200B8FA84 /* StravaAPI */,
@@ -286,6 +289,14 @@
 				40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		403AF6681F7583EA00EF0A9D /* MapOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				403AF66D1F75857900EF0A9D /* RoutePolyline.swift */,
+			);
+			name = MapOverlay;
 			sourceTree = "<group>";
 		};
 		409559801F135C5900050BDD /* Common */ = {
@@ -495,6 +506,7 @@
 					};
 					40F507BE1F75515F00E6993C = {
 						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 4JYLXVYYFP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -703,6 +715,7 @@
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
 				403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */,
 				402CECC51F6B049C00C1FC3E /* SegmentViewController.swift in Sources */,
+				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				4084CB5B1F72FA8800D92DF3 /* RouteARViewController.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
@@ -991,6 +1004,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Strvroutewatchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1012,6 +1026,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "Strvroutewatchapp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import Foundation
+import CoreData
 
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var OverlayView: UIView!
@@ -22,7 +23,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
-    var polyOverlay: MKPolyline!
+    var routePolyline: RoutePolyline!
+    var segmentPolyline: MKPolyline!
     var currentLocation: CLLocation?
 
     let locationManager = CLLocationManager.init()
@@ -31,17 +33,27 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var mapView: MKMapView?
     var tracking: Bool = false
     var polylinePosistion: Int!
+    var managedContext: NSManagedObjectContext!
     
     func setUpNotifications() {
-        NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRAddRoutesToMapNotification"), object: nil)
     }
     
     func removeNotifications() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
+//        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRAddRoutesToMapNotification"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if(self.managedContext == nil) {
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            
+            self.managedContext = appDelegate.persistentContainer.viewContext
+        }
         
         self.OverlayView.layer.cornerRadius = 7.0
         self.DetailView.layer.cornerRadius = 7.0
@@ -78,21 +90,13 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         polylinePosistion = 0
     }
     
-    func getRouteDetail() {
-        apiHelper.getRouteStream(route) { (successFlag) in
-            if !successFlag
-            {
-                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
-                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                self.present(alertMessage, animated: true, completion: nil)
-                self.navigationItem.title = "Error loading route."
-            }
-            else {
-                self.navigationItem.title = "drawing route on map."
-            }
+    func getRouteStream() {
+        
+        DispatchQueue.main.async {
+            self.navigationItem.title = "obtaining route steams"
         }
         
-        apiHelper.getRouteDetail(route) { (successFlag) in
+        apiHelper.getRouteStream(route, managedContext: managedContext) { (successFlag) in
             if !successFlag
             {
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
@@ -101,24 +105,69 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.navigationItem.title = "Error loading route."
             }
             else {
-                self.navigationItem.title = "getting route details"
+                DispatchQueue.main.async {
+                    self.navigationItem.title = "got route streams"
+                }
+                
+                self.getSegmentStreams()
+            }
+        }
+    }
+        
+    func getRouteDetail() {
+        apiHelper.getRouteDetail(route, managedContext: managedContext) { (successFlag) in
+            if !successFlag
+            {
+                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
+                self.navigationItem.title = "Error loading route."
+            }
+            else {
+                DispatchQueue.main.async {
+                    self.navigationItem.title = "getting route details"
+                    self.segmentsLabel.text = "\(self.route.routesegment?.count ?? 0)"
+                }
                 
                 for routeDirection in self.route.routedirection! {
                     let routeDirectionObject = routeDirection as! Direction
                     print("direction name \(routeDirectionObject.name!)")
                 }
                 
-                for rotueSegment in self.route.routesegment! {
-                    let routeSegmentObject = rotueSegment as! Segment
-                    print("segment name \(routeSegmentObject.name!)")
-                }
-                
-                DispatchQueue.main.async {
-                    self.segmentsLabel.text = "\(self.route.routesegment?.count ?? 0)"
-                }
+                self.getRouteStream()
             }
         }
     }
+    
+    func getSegmentStreams() {
+        
+        for routeSegment in self.route.routesegment! {
+            let routeSegmentObject = routeSegment as! Segment
+            
+            self.apiHelper.getSegmentStream(routeSegmentObject, managedContext: self.managedContext) { (successFlag) in
+                if !successFlag
+                {
+                    let alertMessage = UIAlertController(title: "No Segment", message: "Sorry, we cannot get segment as something went wrong.", preferredStyle: .actionSheet)
+                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    self.present(alertMessage, animated: true, completion: nil)
+                    self.navigationItem.title = "Error loading segment."
+                }
+                else {
+                    print("data for \(routeSegmentObject.name ?? "Segment") on map.")
+                    
+                    DispatchQueue.main.async {
+                        self.showSegmentsOnMap(segmentObject: routeSegmentObject)
+                    }
+                }
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.navigationItem.title = "got segment data"
+            self.addRouteToMap()
+        }
+    }
+    
     @IBAction func trackingTapped(_ sender: Any) {
         
         if tracking {
@@ -193,11 +242,33 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
-    func showSegmentsOnMap(currentLocation: CLLocation) {
-        //Segements
-        // Distance to next segment
-        // Colour polyline for segment
-        // Segment start and end pins
+    func showSegmentsOnMap(segmentObject :Segment) {
+        
+        // Drop a pin
+        let startObject = segmentObject.segmentcoordinates?.firstObject as! Coordinates
+        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
+        let dropPin = MKPointAnnotation()
+        dropPin.coordinate = startlocationCoord
+        dropPin.title = "\(segmentObject.name ?? "segment") start"
+        self.mapView!.addAnnotation(dropPin)
+        
+        // Drop a pin
+        let endObject = segmentObject.segmentcoordinates?.lastObject as! Coordinates
+        let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
+        dropPin.coordinate = endlocationCoord
+        dropPin.title = "\(segmentObject.name ?? "segment") end"
+        self.mapView!.addAnnotation(dropPin)
+        
+        var segmentCoordinatesArray: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
+            for case let coordObject as Coordinates in segmentObject.segmentcoordinates! {
+                let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
+                segmentCoordinatesArray.append(locationCoord)
+            }
+        
+        segmentPolyline = MKPolyline.init(coordinates: segmentCoordinatesArray, count: segmentCoordinatesArray.count)
+        segmentPolyline.title = segmentObject.name
+        
+        self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
     }
     
     func updateSegments(currentLocation: CLLocation) {
@@ -213,6 +284,29 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         // get points to end
         // loop through until heading change calc distance between each
         // calc distance to end
+        
+        
+        //       var myRoute : MKRoute?
+        //        var directionsRequest = MKDirectionsRequest()
+        //        var placemarks = [MKMapItem]()
+        //        for item in list {
+        //            var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(item["location"]["coordinate"]["x"].doubleValue), longitude: CLLocationDegrees(item["location"]["coordinate"]["y"].doubleValue)), addressDictionary: nil )
+        //            placemarks.append(MKMapItem(placemark: placemark))
+        //        }
+        //        directionsRequest.transportType = MKDirectionsTransportType.Automobile
+        //        for (k, item) in enumerate(placemarks) {
+        //            if k < (placemarks.count - 1) {
+        //                directionsRequest.setSource(item)
+        //                directionsRequest.setDestination(placemarks[k+1])
+        //                var directions = MKDirections(request: directionsRequest)
+        //                directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
+        //                    if error == nil {
+        //                        self.myRoute = response.routes[0] as? MKRoute
+        //                        self.mapView.addOverlay(self.myRoute?.polyline)
+        //                    }
+        //                }
+        //            }
+        //        }
         
         let request = MKDirectionsRequest()
         request.source = MKMapItem.forCurrentLocation()
@@ -279,7 +373,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         self.mapView!.addAnnotation(dropPin)
         
         // Drop a pin
-        let endObject = route.routeroutecoord?.firstObject as! Coordinates
+        let endObject = route.routeroutecoord?.lastObject as! Coordinates
         let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
         dropPin.coordinate = endlocationCoord
         dropPin.title = "end"
@@ -287,35 +381,13 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         navigationCoordinates = polylineCoordinates
         
-        polyOverlay = MKPolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
+        routePolyline = RoutePolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
-            self.mapView!.add(self.polyOverlay, level: .aboveRoads)
+            self.mapView!.add(self.routePolyline, level: .aboveRoads)
             self.navigationItem.title = self.route.name
         }
-
- //       var myRoute : MKRoute?
-//        var directionsRequest = MKDirectionsRequest()
-//        var placemarks = [MKMapItem]()
-//        for item in list {
-//            var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(item["location"]["coordinate"]["x"].doubleValue), longitude: CLLocationDegrees(item["location"]["coordinate"]["y"].doubleValue)), addressDictionary: nil )
-//            placemarks.append(MKMapItem(placemark: placemark))
-//        }
-//        directionsRequest.transportType = MKDirectionsTransportType.Automobile
-//        for (k, item) in enumerate(placemarks) {
-//            if k < (placemarks.count - 1) {
-//                directionsRequest.setSource(item)
-//                directionsRequest.setDestination(placemarks[k+1])
-//                var directions = MKDirections(request: directionsRequest)
-//                directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
-//                    if error == nil {
-//                        self.myRoute = response.routes[0] as? MKRoute
-//                        self.mapView.addOverlay(self.myRoute?.polyline)
-//                    }
-//                }
-//            }
-//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -323,35 +395,47 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let polylineRender: MKPolylineRenderer = MKPolylineRenderer(polyline: self.polyOverlay)
-        polylineRender.lineWidth = 1.0
-        polylineRender.strokeColor = UIColor.blue
-        return polylineRender
-    }
-}
-
-func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-    if (annotation is MKUserLocation) {
-        //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
-        //return nil so map draws default view for it (eg. blue dot)...
-        return nil
-    }
-    
-    let reuseId = "test"
-    
-    let anView = mapView.dequeueReusableAnnotationView(withIdentifier:reuseId)
-    if anView == nil {
-        let anView:MKAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-        anView.image = UIImage(named:"xaxas")
-        anView.canShowCallout = true
-    }
-    else {
-        //we are re-using a view, update its annotation reference...
-        anView?.annotation = annotation
+        
+        print("polyline view renderer")
+        if overlay is RoutePolyline {
+            let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRender.lineWidth = 1.0
+            polylineRender.strokeColor = UIColor.blue
+            return polylineRender
+        } else {
+            print("SEGMENT ************")
+            let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRender.lineWidth = 2.0
+            polylineRender.strokeColor = UIColor.red
+            return polylineRender
+        }
     }
     
-    return anView
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if (annotation is MKUserLocation) {
+            //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
+            //return nil so map draws default view for it (eg. blue dot)...
+            return nil
+        }
+        
+        let reuseId = "test"
+        
+        let anView = mapView.dequeueReusableAnnotationView(withIdentifier:reuseId)
+        if anView == nil {
+            let anView:MKAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            anView.image = UIImage(named:"xaxas")
+            anView.canShowCallout = true
+        }
+        else {
+            //we are re-using a view, update its annotation reference...
+            anView?.annotation = annotation
+        }
+        
+        return anView
+    }
 }
 
 extension CLLocation {

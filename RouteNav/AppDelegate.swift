@@ -14,18 +14,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-//    var loader: OAuth2DataLoader?
-//    let oauth2 = OAuth2CodeGrant(settings: [
-//        "client_id": "1401",
-//        "client_secret": "967b9297f6f1c9a0a8fe10a021cf211fa35b4d59",
-//        "authorize_uri": "https://www.strava.com/oauth/authorize",
-//        "token_uri": "https://www.strava.com/oauth/token",
-//        "redirect_uris": ["routeNav://localhost"],
-//        "approval_prompt": "force",
-//        "scope": "write",
-//        "keychain": false,         // if you DON'T want keychain integration
-//        "response_type" : "code",
-//        ] as OAuth2JSON)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

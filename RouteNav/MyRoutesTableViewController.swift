@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 import SafariServices
+import CoreData
 
 class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, WKNavigationDelegate{
 
@@ -19,10 +20,20 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     var authVC: StravaAuthViewController?
     var selectedRoute: Route?
     var authorising: Bool = false
+    var managedContext: NSManagedObjectContext!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.hideTransparentNavigationBar()
+        
+        if(self.managedContext == nil) {
+            guard let appDelegate =
+                UIApplication.shared.delegate as? AppDelegate else {
+                    return
+            }
+            
+            self.managedContext = appDelegate.persistentContainer.viewContext
+        }
     }
     
     override func viewDidLoad() {
@@ -75,19 +86,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             apiHelper.exchangeCodeForToken(apiHelper.code!) { (successFlag) in
                 if successFlag
                 {
-                    DispatchQueue.main.async {
-                        // update some UI
-                        
-                        if self.apiHelper.routes.count == 0 {
-                            let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, it doesnt look like you have any routes. You can create routes on Strava to import.", preferredStyle: .actionSheet)
-                            alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                            self.present(alertMessage, animated: true, completion: nil)
-                        }
-                        else{
-                            self.tableView!.reloadData()
-                        }
-                        
-                    }
+                    self.getRoutesData()
                 }
                 else
                 {
@@ -98,6 +97,31 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                 self.authorising = false 
             }
         }
+    }
+    
+    
+    func getRoutesData() {
+        
+        self.apiHelper.getRoutes(apiHelper.athleteId, managedContext:  self.managedContext, completionHandler: { (successFlag) in
+            if successFlag
+            {
+                if self.apiHelper.routes.count == 0 {
+                    let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, it doesnt look like you have any routes. You can create routes on Strava to import.", preferredStyle: .actionSheet)
+                    alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alertMessage, animated: true, completion: nil)
+                }
+                else{
+                    self.updateTableForNewData()
+                }
+            }
+            else
+            {
+                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
+            }
+        })
+        
     }
     
     func getQueryStringParameter(url: String, param: String) -> String? {
@@ -146,7 +170,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
         let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=150x150&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         cell.mapIcon.imageFromUrl(urlString: encodedStr!)
-        
         
         cell.mapIcon.layer.cornerRadius = 7.0
         cell.routeType.layer.cornerRadius = 7.0

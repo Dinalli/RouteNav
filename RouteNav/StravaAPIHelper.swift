@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import CoreData
 
 var authorisationToken :String?
 
@@ -18,9 +19,11 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
     var code: String?
     var token: String!
     var athlete: [String: Any]!
+    var athleteId: Int!
     var routes: Array<[String: Any]>!
     var routeDetail: Array<[String: Any]>!
-    
+    var segmentDetail: Array<[String: Any]>!
+
     let authUrl = URL(string: "https://www.strava.com/oauth/authorize?client_id=1401&response_type=code&redirect_uri=strvroute://localhost&scope=write&state=mystate&approval_prompt=force")
     
     public func exchangeCodeForToken(_ code: String, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
@@ -55,13 +58,8 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         
                         authorisationToken = jsonResult!["access_token"] as? String
                         self.athlete = jsonResult!["athlete"] as? [String: Any]
-                        let athleteId = self.athlete!["id"] as? Int
-                        
-                        self.getRoutes(athleteId!, completionHandler: { (successFlag) in
-                            return completionHandler(successFlag)
-                        })
-                        
-                        
+                        self.athleteId = self.athlete!["id"] as? Int
+                        return completionHandler(true)
                     } catch {
                         //failure code
                         return completionHandler(false)
@@ -76,7 +74,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         dataTask?.resume()
     }
     
-    public func getRoutes(_ athleteId: Int, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getRoutes(_ athleteId: Int, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/athletes/\(athleteId)/routes")
         var request = URLRequest(url: authUrl!)
@@ -99,12 +97,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         self.routes = jsonResult as! Array
-                        
-                        DispatchQueue.main.async {
-                            // update some UI
-                            StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array)
-                        }
-
+                        StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array, managedContext: managedContext)
                         //success code
                         return completionHandler(true)
                     } catch {
@@ -115,14 +108,14 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                 }
                 else
                 {
-                    
+                    return completionHandler(false)
                 }
             }
         })
         dataTask?.resume()
     }
     
-    public func getRouteStream(_ route: Route, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getRouteStream(_ route: Route, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(route.id)/streams")
         var request = URLRequest(url: authUrl!)
@@ -149,38 +142,86 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         
                         for routeDetail:[String: Any] in routeStreamArray {
                         
-                            if let streamDictionary = routeDetail as? Dictionary<String, AnyObject> {
+                            if let streamDictionary = routeDetail as Dictionary<String, AnyObject>! {
                                 
                                 let typeString = streamDictionary["type"] as? String
                                 
                                 if typeString == "latlng" {
-                                        // update some UI
                                     
-                                    DispatchQueue.main.async {
-                                        StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array)
-                                    }
+                                    StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, managedContext: managedContext, completionHandler: { (successFlag) in
+                                        //success code
+                                        return completionHandler(successFlag)
+                                    })
                                 }
                             }
                         }
-                        
-                        //success code
-                        return completionHandler(true)
                     } catch {
                         //failure code
-                        print(httpResponse)
                         return completionHandler(false)
                     }
                 }
                 else
                 {
-                   print(httpResponse)
+                   return completionHandler(false)
                 }
             }
         })
         dataTask?.resume()
     }
     
-    public func getRouteDetail(_ route: Route, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getSegmentStream(_ segment: Segment, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+        
+        let authUrl = URL(string: "https://www.strava.com/api/v3/segments/\(segment.id)/streams")
+        var request = URLRequest(url: authUrl!)
+        
+        request.addValue(" Bearer " + authorisationToken!, forHTTPHeaderField: "Authorization")
+        request.addValue(authorisationToken!, forHTTPHeaderField: "access_token")
+        
+        request.httpMethod = "GET"
+        
+        request.setValue("application/json", forHTTPHeaderField:"Content-Type")
+        request.timeoutInterval = 5.0
+        
+        dataTask = defaultSession.dataTask(with: request, completionHandler: { (data, response, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
+                            JSONSerialization.ReadingOptions.mutableContainers))
+                        let segmentStreamArray: Array<[String: Any]>! = jsonResult as! Array
+print(jsonResult)
+                        for segmentDetail:[String: Any] in segmentStreamArray {
+                            
+                            if let streamDictionary = segmentDetail as Dictionary<String, AnyObject>! {
+                                
+                                let typeString = streamDictionary["type"] as? String
+                                
+                                if typeString == "latlng" {
+                                    StravaCoreDataHandler.sharedInstance.addCoordinatesToSegment(segment: segment, coordinatesArray: streamDictionary["data"] as! Array, managedContext: managedContext, completionHandler: { (successFlag) in
+                                        //success code
+                                        return completionHandler(successFlag)
+                                    })
+                                }
+                            }
+                        }
+                    } catch {
+                        //failure code
+                        return completionHandler(false)
+                    }
+                }
+                else
+                {
+                    return completionHandler(false)
+                }
+            }
+        })
+        dataTask?.resume()
+    }
+    
+    public func getRouteDetail(_ route: Route, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(route.id)")
         var request = URLRequest(url: authUrl!)
@@ -203,22 +244,18 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
 
-                        DispatchQueue.main.async {
-                            // update some UI
-                            StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>)
-                        }
-                        
-                        //success code
-                        return completionHandler(true)
+                        StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>, managedContext: managedContext, completionHandler: { (successFlag) in
+                            //success code
+                            return completionHandler(successFlag)
+                        })
                     } catch {
                         //failure code
-                        print(httpResponse)
                         return completionHandler(false)
                     }
                 }
                 else
                 {
-                    print(httpResponse)
+                    return completionHandler(false)
                 }
             }
         })
