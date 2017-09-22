@@ -202,7 +202,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                     do {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
-print(jsonResult)
+
                         DispatchQueue.main.async {
                             // update some UI
                             StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>)

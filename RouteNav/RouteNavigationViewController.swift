@@ -13,16 +13,24 @@ import Foundation
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var OverlayView: UIView!
     @IBOutlet weak var DetailView: UIView!
+    @IBOutlet weak var routeTimeLabel: UILabel!
+    @IBOutlet weak var routeDistanceLabel: UILabel!
     @IBOutlet weak var ShadeView: UIView!
+    @IBOutlet weak var segmentsLabel: UILabel!
+    @IBOutlet weak var stepDistance: UILabel!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
     var polyOverlay: MKPolyline!
     var currentLocation: CLLocation?
+
     let locationManager = CLLocationManager.init()
     var polylineCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     var navigationCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     @IBOutlet weak var mapView: MKMapView?
+    var tracking: Bool = false
+    var polylinePosistion: Int!
     
     func setUpNotifications() {
         NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRUpdateRoutesToMapNotification"), object: nil)
@@ -43,8 +51,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         self.navigationController?.presentTransparentNavigationBar()
         self.navigationItem.title = "loading..."
         self.getRouteDetail()
-        
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -59,30 +65,17 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         if !CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
         }
-        
-        startLocationUpdates()
-        // Do any additional setup after loading the view.
         mapView?.showsUserLocation = true
         mapView?.delegate = self
         mapView?.showsCompass = true
         mapView?.isZoomEnabled = true
         mapView?.showsScale = true
         
-        //mapView?.mapType = .hybrid
 //        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
         mapView?.camera.pitch = 85.0
         mapView?.camera.altitude = 223.0
         mapView?.setCamera(mapView!.camera, animated: true)
-        
-        for routeDirection in route.routedirection! {
-            let routeDirectionObject = routeDirection as! Direction
-            print("direction name \(routeDirectionObject.name!)")
-        }
-        
-        for rotueSegment in route.routesegment! {
-            let routeSegmentObject = rotueSegment as! Direction
-            print("segment name \(routeSegmentObject.name!)")
-        }
+        polylinePosistion = 0
     }
     
     func getRouteDetail() {
@@ -109,8 +102,33 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             }
             else {
                 self.navigationItem.title = "getting route details"
+                
+                for routeDirection in self.route.routedirection! {
+                    let routeDirectionObject = routeDirection as! Direction
+                    print("direction name \(routeDirectionObject.name!)")
+                }
+                
+                for rotueSegment in self.route.routesegment! {
+                    let routeSegmentObject = rotueSegment as! Segment
+                    print("segment name \(routeSegmentObject.name!)")
+                }
+                
+                DispatchQueue.main.async {
+                    self.segmentsLabel.text = "\(self.route.routesegment?.count ?? 0)"
+                }
             }
         }
+    }
+    @IBAction func trackingTapped(_ sender: Any) {
+        
+        if tracking {
+            stopLocationUpdates()
+            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+        }
+        else {
+            startLocationUpdates()
+        }
+        tracking = !tracking
     }
     
     func startLocationUpdates() {
@@ -162,27 +180,43 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         mapView!.camera.heading = newHeading.magneticHeading
         mapView!.camera.centerCoordinate = (manager.location?.coordinate)!
-        mapView!.camera.pitch = 85.0
-        mapView!.camera.altitude = 223.0
+        mapView!.camera.pitch = 60.0
+        mapView!.camera.altitude = 100.0
         mapView!.setCamera(mapView!.camera, animated: true)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        defer { currentLocation = locations.last }
-        
-        // Zoom to user location
-//        if let userLocation = locations.last {
-//            let viewRegion = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 1250, 1250)
-//            mapView!.setRegion(viewRegion, animated: true)
-//        }
-//        updateDirections(currentLocation: locations.last!)
+        defer {
+            currentLocation = locations.last
+            updateDirections(currentLocation: currentLocation!)
+            updateSegments(currentLocation: currentLocation!)
+        }
+    }
+    
+    func showSegmentsOnMap(currentLocation: CLLocation) {
+        //Segements
+        // Distance to next segment
+        // Colour polyline for segment
+        // Segment start and end pins
+    }
+    
+    func updateSegments(currentLocation: CLLocation) {
+        //Segements
+        // Distance to next segment
+        // Colour polyline for segment
+        // Segment start and end pins
     }
     
     func updateDirections(currentLocation: CLLocation) {
         
+        // Get nearest point
+        // get points to end
+        // loop through until heading change calc distance between each
+        // calc distance to end
+        
         let request = MKDirectionsRequest()
         request.source = MKMapItem.forCurrentLocation()
-        request.destination = MKMapItem.forCurrentLocation()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: getClosestLocation(location: currentLocation, locationsCordinates: navigationCoordinates)!))
         request.requestsAlternateRoutes = false
         
         let directions = MKDirections(request: request)
@@ -193,34 +227,36 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 print("Error getting directions")
             } else {
                 for route in (response?.routes)! {
-                    
-//                    routeMap.add(route.polyline,
-//                                 level: MKOverlayLevel.aboveRoads)
                     for step in route.steps {
-                        print(step.instructions)
+                        print("\(step.instructions) - \(step.distance)")
+                        self.instructionsLabel.text = step.instructions
+                        self.stepDistance.text = "\(step.distance)"
                     }
-                }            }
+                }
+            }
         })
         
-        if(self.navigationCoordinates.count > 0)
-        {
-            let nextNavigationLocation = CLLocation.init(latitude: (self.navigationCoordinates.first?.latitude)!,
-                                                         longitude: (self.navigationCoordinates.first?.longitude)!)
-            let currentDistance = currentLocation.distance(from: nextNavigationLocation)
-            
-            if (currentDistance < 1000)
-            {
-                // Not much point as you are near there, so lets remove it.
-                self.navigationCoordinates.removeFirst()
-            }else{
-            
-                //self.distanceLabel.text = String(format: "%.02f km", arguments: [(currentDistance/1000)] )
-//                let degrees = currentLocation.bearingDegreesTo(location: nextNavigationLocation)
-//                self.directionArrowImageView.image = UIImage.init(named: "bluearrowup")
-//                self.directionArrowImageView.transform =
-//                    CGAffineTransform(rotationAngle: CGFloat(currentLocation.getRadiansFrom(degrees: degrees)))
+        polylinePosistion = polylinePosistion + 1
+        if(polylinePosistion == route.routeroutecoord?.count) {
+            polylinePosistion = 0
+        }
+    }
+    
+    private func getClosestLocation(location: CLLocation, locationsCordinates: [CLLocationCoordinate2D]) -> CLLocationCoordinate2D? {
+        var closestLocation: (distance: Double, coordinates: CLLocationCoordinate2D)?
+        
+        for loc in locationsCordinates {
+            let locCoord = CLLocation(latitude: loc.latitude, longitude: loc.longitude)
+            let distance = round(location.distance(from: locCoord)) as Double
+            if closestLocation == nil {
+                closestLocation = (distance, loc)
+            } else {
+                if distance < closestLocation!.distance {
+                    closestLocation = (distance, loc)
+                }
             }
         }
+        return closestLocation?.coordinates
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -254,10 +290,32 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         polyOverlay = MKPolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
-        //self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
-            self.mapView!.add(self.polyOverlay, level: .aboveLabels)
+            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+            self.mapView!.add(self.polyOverlay, level: .aboveRoads)
             self.navigationItem.title = self.route.name
         }
+
+ //       var myRoute : MKRoute?
+//        var directionsRequest = MKDirectionsRequest()
+//        var placemarks = [MKMapItem]()
+//        for item in list {
+//            var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(item["location"]["coordinate"]["x"].doubleValue), longitude: CLLocationDegrees(item["location"]["coordinate"]["y"].doubleValue)), addressDictionary: nil )
+//            placemarks.append(MKMapItem(placemark: placemark))
+//        }
+//        directionsRequest.transportType = MKDirectionsTransportType.Automobile
+//        for (k, item) in enumerate(placemarks) {
+//            if k < (placemarks.count - 1) {
+//                directionsRequest.setSource(item)
+//                directionsRequest.setDestination(placemarks[k+1])
+//                var directions = MKDirections(request: directionsRequest)
+//                directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
+//                    if error == nil {
+//                        self.myRoute = response.routes[0] as? MKRoute
+//                        self.mapView.addOverlay(self.myRoute?.polyline)
+//                    }
+//                }
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -267,7 +325,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRender: MKPolylineRenderer = MKPolylineRenderer(polyline: self.polyOverlay)
-        polylineRender.lineWidth = 7.0
+        polylineRender.lineWidth = 1.0
         polylineRender.strokeColor = UIColor.blue
         return polylineRender
     }
@@ -297,8 +355,7 @@ func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -
 }
 
 extension CLLocation {
-    
-    
+
     func getRadiansFrom(degrees: Double ) -> Double {
         return degrees * .pi / 180
     }
@@ -306,7 +363,6 @@ extension CLLocation {
     func getDegreesFrom(radians: Double) -> Double {
         return radians * 180 / .pi
     }
-    
     
     func bearingRadianTo(location: CLLocation) -> Double {
         
