@@ -158,9 +158,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteTableViewCell", for: indexPath) as! RouteTableViewCell
-        let route = routes[indexPath.row] as Route
-        print(type(of:route))
-        
+        let route = routes[indexPath.row] as Route        
         cell.routeNameLabel?.text = route.routename
         cell.distanceLabel?.text = String(format: "%.02f km", arguments: [(route.distance/1000)] )
         cell.elevationLabel?.text = String(route.elevation_gain) + "m"

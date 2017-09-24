@@ -109,13 +109,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     self.navigationItem.title = "got route streams"
                 }
                 
-                self.getSegmentStreams()
+                self.addRouteToMap()
+                //self.getSegmentStreams()
             }
         }
     }
         
     func getRouteDetail() {
-        apiHelper.getRouteDetail(route, managedContext: managedContext) { (successFlag) in
+        apiHelper.getRouteDetail(route) { (successFlag) in
             if !successFlag
             {
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
@@ -144,7 +145,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         for routeSegment in self.route.routesegment! {
             let routeSegmentObject = routeSegment as! Segment
             
-            self.apiHelper.getSegmentStream(routeSegmentObject, managedContext: self.managedContext) { (successFlag) in
+            self.apiHelper.getSegmentStream(routeSegmentObject) { (successFlag) in
                 if !successFlag
                 {
                     let alertMessage = UIAlertController(title: "No Segment", message: "Sorry, we cannot get segment as something went wrong.", preferredStyle: .actionSheet)

@@ -152,10 +152,12 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 
                                 if typeString == "latlng" {
                                     
-                                    StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, managedContext: managedContext, completionHandler: { (successFlag) in
-                                        //success code
-                                        return completionHandler(successFlag)
-                                    })
+                                    DispatchQueue.main.async {
+                                        StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, managedContext: managedContext, completionHandler: { (successFlag) in
+                                            //success code
+                                            return completionHandler(successFlag)
+                                        })
+                                    }
                                 }
                             }
                         }
@@ -173,7 +175,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         dataTask?.resume()
     }
     
-    public func getSegmentStream(_ segment: Segment, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getSegmentStream(_ segment: Segment, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/segments/\(segment.id)/streams")
         var request = URLRequest(url: authUrl!)
@@ -203,10 +205,12 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 let typeString = streamDictionary["type"] as? String
                                 
                                 if typeString == "latlng" {
-                                    StravaCoreDataHandler.sharedInstance.addCoordinatesToSegment(segment: segment, coordinatesArray: streamDictionary["data"] as! Array, managedContext: managedContext, completionHandler: { (successFlag) in
-                                        //success code
-                                        return completionHandler(successFlag)
-                                    })
+                                    DispatchQueue.main.async {
+                                        StravaCoreDataHandler.sharedInstance.addCoordinatesToSegment(segment: segment, coordinatesArray: streamDictionary["data"] as! Array, completionHandler: { (successFlag) in
+                                            //success code
+                                            return completionHandler(successFlag)
+                                        })
+                                    }
                                 }
                             }
                         }
@@ -224,7 +228,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         dataTask?.resume()
     }
     
-    public func getRouteDetail(_ route: Route, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getRouteDetail(_ route: Route, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(route.id)")
         var request = URLRequest(url: authUrl!)
@@ -246,11 +250,16 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                     do {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
+                        
+                        DispatchQueue.main.async {
+                            
+                            StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>, completionHandler: { (successFlag) in
+                                //success code
+                                return completionHandler(successFlag)
+                            })
+                            
+                        }
 
-                        StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>, managedContext: managedContext, completionHandler: { (successFlag) in
-                            //success code
-                            return completionHandler(successFlag)
-                        })
                     } catch {
                         //failure code
                         return completionHandler(false)

@@ -17,16 +17,9 @@ class StravaCoreDataHandler: NSObject {
     
     public func fetchRoutes() -> Array<Route> {
         
-        //let container = NSPersistentContainer(name: "RouteNav")
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         var fetchedRoutes:[Route]!
         
-//        container.loadPersistentStores { (storeDescription, error) in
-//            if let error = error {
-//                fatalError("Failed to load store: \(error)")
-//            }
-//        }
-
         container.viewContext.performAndWait {
             do {
                 let routeFetch = NSFetchRequest<Route>(entityName: "Route")
@@ -45,13 +38,6 @@ class StravaCoreDataHandler: NSObject {
     public func addRoutes(routesArray: Array<[String: Any]>!) {
         
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
-        
-        //let container = NSPersistentContainer(name: "RouteNav")
-//        container.loadPersistentStores { (storeDescription, error) in
-//            if let error = error {
-//                fatalError("Failed to load store: \(error)")
-//            }
-//        }
         
         container.viewContext.performAndWait {
 
@@ -100,103 +86,123 @@ class StravaCoreDataHandler: NSObject {
         }
     }
     
-    public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
-        let directionentity =
-            NSEntityDescription.entity(forEntityName: "Direction",
-                                       in: managedContext)!
+        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         
-        let segmententity =
-            NSEntityDescription.entity(forEntityName: "Segment",
-                                       in: managedContext)!
-        // add direction data
-        let directionArray = routesDetailArray["directions"] as? Array<[String: Any]>
-
-        if(directionArray != nil)
-        {
-            for directionDetail:[String: Any] in directionArray! {
-                let direction = NSManagedObject(entity: directionentity, insertInto: managedContext) as! Direction
-                direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
-                direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
-                direction.setValue(directionDetail["name"] as? String, forKeyPath: "directionname")
-                route.addToRoutedirection(direction)
+        container.viewContext.performAndWait {
+            
+            let directionentity =
+                NSEntityDescription.entity(forEntityName: "Direction",
+                                           in: container.viewContext)!
+            
+            let segmententity =
+                NSEntityDescription.entity(forEntityName: "Segment",
+                                           in: container.viewContext)!
+            // add direction data
+            let directionArray = routesDetailArray["directions"] as? Array<[String: Any]>
+            
+            if(directionArray != nil)
+            {
+                for directionDetail:[String: Any] in directionArray! {
+                    let direction = NSManagedObject(entity: directionentity, insertInto: container.viewContext) as! Direction
+                    direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
+                    direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
+                    direction.setValue(directionDetail["name"] as? String, forKeyPath: "directionname")
+                    route.addToRoutedirection(direction)
+                }
             }
-        }
-
-        // add segment data
-        let segmentArray = routesDetailArray["segments"] as? Array<[String: Any]>
-
-        if(segmentArray != nil)
-        {
-            for segmentDetail:[String: Any] in segmentArray! {
-                let segment = NSManagedObject(entity: segmententity, insertInto: managedContext) as! Segment
-                segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
-                segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
-                segment.setValue(segmentDetail["name"] as? String, forKeyPath: "segmentname")
-                segment.setValue(segmentDetail["average_grade"] as? NSNumber, forKeyPath: "average_grade")
-                segment.setValue(segmentDetail["distance"] as? NSNumber, forKeyPath: "distance")
-                segment.setValue(segmentDetail["elevation_high"] as? NSNumber, forKeyPath: "elevation_high")
-                segment.setValue(segmentDetail["elevation_low"] as? NSNumber, forKeyPath: "elevation_low")
-                segment.setValue(segmentDetail["end_latitude"] as? NSNumber, forKeyPath: "end_latitude")
-                segment.setValue(segmentDetail["end_longitude"] as? NSNumber, forKeyPath: "end_longitude")
-                segment.setValue(segmentDetail["start_latitude"] as? NSNumber, forKeyPath: "start_latitude")
-                segment.setValue(segmentDetail["start_longitude"] as? NSNumber, forKeyPath: "start_longitude")
-                route.addToRoutesegment(segment)
+            
+            // add segment data
+            let segmentArray = routesDetailArray["segments"] as? Array<[String: Any]>
+            
+            if(segmentArray != nil)
+            {
+                for segmentDetail:[String: Any] in segmentArray! {
+                    let segment = NSManagedObject(entity: segmententity, insertInto: container.viewContext) as! Segment
+                    segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
+                    segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
+                    segment.setValue(segmentDetail["name"] as? String, forKeyPath: "segmentname")
+                    segment.setValue(segmentDetail["average_grade"] as? NSNumber, forKeyPath: "average_grade")
+                    segment.setValue(segmentDetail["distance"] as? NSNumber, forKeyPath: "distance")
+                    segment.setValue(segmentDetail["elevation_high"] as? NSNumber, forKeyPath: "elevation_high")
+                    segment.setValue(segmentDetail["elevation_low"] as? NSNumber, forKeyPath: "elevation_low")
+                    segment.setValue(segmentDetail["end_latitude"] as? NSNumber, forKeyPath: "end_latitude")
+                    segment.setValue(segmentDetail["end_longitude"] as? NSNumber, forKeyPath: "end_longitude")
+                    segment.setValue(segmentDetail["start_latitude"] as? NSNumber, forKeyPath: "start_latitude")
+                    segment.setValue(segmentDetail["start_longitude"] as? NSNumber, forKeyPath: "start_longitude")
+                    route.addToRoutesegment(segment)
+                }
             }
+            
+            do {
+                try container.viewContext.save()
+            } catch let error as NSError {
+                // handle error
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+            completionHandler(true)
         }
-        saveCoreData(managedContext: managedContext)
-        completionHandler(true)
     }
     
     public func addCoordinatesToRoute(route: Route, coordinatesArray : Array<Array<Any>>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
-        for coordObjectIndex in 0...coordinatesArray.count-1 {
+        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        
+        container.viewContext.performAndWait {
             
-            let coords =
-                NSEntityDescription.entity(forEntityName: "Coordinates",
-                                           in: managedContext)!
-            
-            let coordinateObject = NSManagedObject(entity: coords,
-                                        insertInto: managedContext) as! Coordinates
-            
-            coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
-            coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
-            route.addToRouteroutecoord(coordinateObject)
-            
-            saveCoreData(managedContext: managedContext)
+            for coordObjectIndex in 0...coordinatesArray.count-1 {
+                
+                let coords =
+                    NSEntityDescription.entity(forEntityName: "Coordinates",
+                                               in: container.viewContext)!
+                
+                let coordinateObject = NSManagedObject(entity: coords,
+                                                       insertInto: container.viewContext) as! Coordinates
+                
+                coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
+                coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
+                route.addToRouteroutecoord(coordinateObject)
+                
+                do {
+                    try container.viewContext.save()
+                } catch let error as NSError {
+                    // handle error
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+            }
+            completionHandler(true)
         }
-        completionHandler(true)
     }
     
-    public func addCoordinatesToSegment(segment: Segment, coordinatesArray : Array<Array<Any>>!, managedContext: NSManagedObjectContext,completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func addCoordinatesToSegment(segment: Segment, coordinatesArray : Array<Array<Any>>!,completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
-        for coordObjectIndex in 0...coordinatesArray.count-1 {
+        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        
+        container.viewContext.performAndWait {
             
-            let coords =
-                NSEntityDescription.entity(forEntityName: "SegmentCoordinates",
-                                           in: managedContext)!
-            
-            let coordinateObject = NSManagedObject(entity: coords,
-                                                   insertInto: managedContext) as! SegmentCoordinates
-            
-            coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
-            coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
+            for coordObjectIndex in 0...coordinatesArray.count-1 {
+                
+                let coords =
+                    NSEntityDescription.entity(forEntityName: "SegmentCoordinates",
+                                               in: container.viewContext)!
+                
+                let coordinateObject = NSManagedObject(entity: coords,
+                                                       insertInto: managedContext) as! SegmentCoordinates
+                
+                coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
+                coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
 
-            segment.addToSegmentCoord(coordinateObject)
-            saveCoreData(managedContext: managedContext)
+                do {
+                    try container.viewContext.save()
+                } catch let error as NSError {
+                    // handle error
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+            }
         }
         
         completionHandler(true)
     }
-
-    public func saveCoreData(managedContext: NSManagedObjectContext) {
-
-        do {
-            try managedContext.save()
- 
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-
 }
