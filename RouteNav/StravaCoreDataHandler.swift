@@ -13,7 +13,6 @@ class StravaCoreDataHandler: NSObject {
     
     var managedContext: NSManagedObjectContext!
     static let sharedInstance = StravaCoreDataHandler()
-
     
     public func fetchRoutes() -> Array<Route> {
         
@@ -79,10 +78,7 @@ class StravaCoreDataHandler: NSObject {
                 print("Could not save. \(error), \(error.userInfo)")
             }
             
-//            if(self.routes.count > 0)
-//            {
-                NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
-//            }
+            NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
         }
     }
     
@@ -146,7 +142,7 @@ class StravaCoreDataHandler: NSObject {
         }
     }
     
-    public func addCoordinatesToRoute(route: Route, coordinatesArray : Array<Array<Any>>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func addCoordinatesToRoute(route: Route, coordinatesArray : Array<Array<Any>>!, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         
@@ -189,11 +185,12 @@ class StravaCoreDataHandler: NSObject {
                                                in: container.viewContext)!
                 
                 let coordinateObject = NSManagedObject(entity: coords,
-                                                       insertInto: managedContext) as! SegmentCoordinates
+                                                       insertInto: container.viewContext) as! SegmentCoordinates
                 
                 coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
                 coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
-
+                segment.addToSegmentCoord(coordinateObject)
+                
                 do {
                     try container.viewContext.save()
                 } catch let error as NSError {

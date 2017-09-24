@@ -35,14 +35,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var polylinePosistion: Int!
     var managedContext: NSManagedObjectContext!
     
-    func setUpNotifications() {
-//        NotificationCenter.default.addObserver(self, selector:  #selector(self.addRouteToMap), name: Notification.Name("SRAddRoutesToMapNotification"), object: nil)
-    }
-    
-    func removeNotifications() {
-//        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRAddRoutesToMapNotification"), object: nil)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -59,15 +51,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         self.DetailView.layer.cornerRadius = 7.0
         self.ShadeView.layer.cornerRadius = 7.0
         
-        self.setUpNotifications()
         self.navigationController?.presentTransparentNavigationBar()
         self.navigationItem.title = "loading..."
         self.getRouteDetail()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        self.removeNotifications()
     }
     
     override func viewDidLoad() {
@@ -108,9 +94,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 DispatchQueue.main.async {
                     self.navigationItem.title = "got route streams"
                 }
-                
-                self.addRouteToMap()
-                //self.getSegmentStreams()
+
+                self.getSegmentStreams()
             }
         }
     }
@@ -393,9 +378,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         if overlay is RoutePolyline {
@@ -405,7 +388,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             return polylineRender
         } else {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 2.0
+            polylineRender.lineWidth = 8.0
             polylineRender.strokeColor = UIColor.red
             return polylineRender
         }

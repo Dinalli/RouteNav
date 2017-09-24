@@ -153,7 +153,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 if typeString == "latlng" {
                                     
                                     DispatchQueue.main.async {
-                                        StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, managedContext: managedContext, completionHandler: { (successFlag) in
+                                        StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, completionHandler: { (successFlag) in
                                             //success code
                                             return completionHandler(successFlag)
                                         })
