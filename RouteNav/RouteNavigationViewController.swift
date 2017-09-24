@@ -35,6 +35,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var polylinePosistion: Int!
     var managedContext: NSManagedObjectContext!
     
+    
+    //MARK : ViewController Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -75,6 +78,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.setCamera(mapView!.camera, animated: true)
         polylinePosistion = 0
     }
+    
+    //MARK : Get Data
     
     func getRouteStream() {
         
@@ -152,6 +157,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    //MARK : Location methods
+    
     @IBAction func trackingTapped(_ sender: Any) {
         
         if tracking {
@@ -224,35 +231,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             updateDirections(currentLocation: currentLocation!)
             updateSegments(currentLocation: currentLocation!)
         }
-    }
-    
-    func showSegmentsOnMap(segmentObject :Segment) {
-        
-        // Drop a pin
-        let startObject = segmentObject.segmentCoord?.firstObject as! SegmentCoordinates
-        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
-        let dropPin = MKPointAnnotation()
-        dropPin.coordinate = startlocationCoord
-        dropPin.title = "\(segmentObject.segmentname ?? "segment") start"
-        self.mapView!.addAnnotation(dropPin)
-        
-        // Drop a pin
-        let endObject = segmentObject.segmentCoord?.lastObject as! SegmentCoordinates
-        let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
-        dropPin.coordinate = endlocationCoord
-        dropPin.title = "\(segmentObject.segmentname ?? "segment") end"
-        self.mapView!.addAnnotation(dropPin)
-        
-        var segmentCoordinatesArray: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
-            for case let coordObject as Coordinates in segmentObject.segmentCoord! {
-                let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
-                segmentCoordinatesArray.append(locationCoord)
-            }
-        
-        segmentPolyline = MKPolyline.init(coordinates: segmentCoordinatesArray, count: segmentCoordinatesArray.count)
-        segmentPolyline.title = segmentObject.segmentname
-        
-        self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
     }
     
     func updateSegments(currentLocation: CLLocation) {
@@ -368,9 +346,40 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         routePolyline = RoutePolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
-            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
             self.mapView!.add(self.routePolyline, level: .aboveRoads)
             self.navigationItem.title = self.route.routename
+        }
+    }
+    
+    func showSegmentsOnMap(segmentObject :Segment) {
+        
+        // Drop a pin
+        let startObject = segmentObject.segmentCoord?.firstObject as! SegmentCoordinates
+        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
+        let startDropPin = MKPointAnnotation()
+        startDropPin.coordinate = startlocationCoord
+        startDropPin.title = "\(segmentObject.segmentname ?? "segment") start"
+        self.mapView!.addAnnotation(startDropPin)
+        
+        // Drop a pin
+        let endObject = segmentObject.segmentCoord?.lastObject as! SegmentCoordinates
+        let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
+        let endDropPin = MKPointAnnotation()
+        endDropPin.coordinate = endlocationCoord
+        endDropPin.title = "\(segmentObject.segmentname ?? "segment") end"
+        self.mapView!.addAnnotation(endDropPin)
+        
+        var segmentCoordinatesArray: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
+        for case let coordObject as SegmentCoordinates in segmentObject.segmentCoord! {
+            let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
+            segmentCoordinatesArray.append(locationCoord)
+        }
+        
+        segmentPolyline = MKPolyline.init(coordinates: segmentCoordinatesArray, count: segmentCoordinatesArray.count)
+        segmentPolyline.title = segmentObject.segmentname
+        
+        DispatchQueue.main.async {
+            self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
         }
     }
 
@@ -383,13 +392,13 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         if overlay is RoutePolyline {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 1.0
+            polylineRender.lineWidth = 2.0
             polylineRender.strokeColor = UIColor.blue
             return polylineRender
         } else {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 8.0
-            polylineRender.strokeColor = UIColor.red
+            polylineRender.lineWidth = 4.0
+            polylineRender.strokeColor = UIColor.orange
             return polylineRender
         }
     }
