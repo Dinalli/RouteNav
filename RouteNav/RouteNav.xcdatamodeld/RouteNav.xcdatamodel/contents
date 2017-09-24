@@ -12,7 +12,6 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="coordroute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="routeroutecoord" inverseEntity="Route" syncable="YES"/>
-        <relationship name="segmentCordinate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Segment" inverseName="segmentcoordinates" inverseEntity="Segment" syncable="YES"/>
     </entity>
     <entity name="Direction" representedClassName="Direction" syncable="YES" codeGenerationType="class">
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,7 +36,7 @@
         <relationship name="routeathlete" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Athlete" inverseName="athleteroute" inverseEntity="Athlete" syncable="YES"/>
         <relationship name="routedirection" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Direction" inverseName="directionroute" inverseEntity="Direction" syncable="YES"/>
         <relationship name="routemap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="maproute" inverseEntity="Map" syncable="YES"/>
-        <relationship name="routeroutecoord" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Coordinates" inverseName="coordroute" inverseEntity="Coordinates" syncable="YES"/>
+        <relationship name="routeroutecoord" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Coordinates" inverseName="coordroute" inverseEntity="Coordinates" syncable="YES"/>
         <relationship name="routesegment" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Segment" inverseName="segmentroute" inverseEntity="Segment" syncable="YES"/>
     </entity>
     <entity name="Segment" representedClassName="Segment" syncable="YES" codeGenerationType="class">
@@ -52,15 +51,21 @@
         <attribute name="resource_state" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="start_latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="start_longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="segmentcoordinates" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Coordinates" inverseName="segmentCordinate" inverseEntity="Coordinates" syncable="YES"/>
+        <relationship name="segmentCoord" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SegmentCoordinates" inverseName="coordSegments" inverseEntity="SegmentCoordinates" syncable="YES"/>
         <relationship name="segmentroute" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="routesegment" inverseEntity="Route" syncable="YES"/>
+    </entity>
+    <entity name="SegmentCoordinates" representedClassName="SegmentCoordinates" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="coordSegments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Segment" inverseName="segmentCoord" inverseEntity="Segment" syncable="YES"/>
     </entity>
     <elements>
         <element name="Athlete" positionX="-38" positionY="-486" width="128" height="133"/>
-        <element name="Coordinates" positionX="214" positionY="18" width="128" height="103"/>
+        <element name="Coordinates" positionX="214" positionY="18" width="128" height="88"/>
         <element name="Direction" positionX="205" positionY="-151" width="128" height="103"/>
         <element name="Map" positionX="-216" positionY="-369" width="128" height="103"/>
         <element name="Route" positionX="-38" positionY="-151" width="128" height="223"/>
-        <element name="Segment" positionX="-209" positionY="-7" width="128" height="238"/>
+        <element name="Segment" positionX="-441" positionY="-378" width="128" height="238"/>
+        <element name="SegmentCoordinates" positionX="-434" positionY="-73" width="128" height="88"/>
     </elements>
 </model>

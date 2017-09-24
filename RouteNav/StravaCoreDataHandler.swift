@@ -11,54 +11,87 @@ import CoreData
 
 class StravaCoreDataHandler: NSObject {
     
-    var routes: [NSManagedObject] = []
     var managedContext: NSManagedObjectContext!
     static let sharedInstance = StravaCoreDataHandler()
 
-    public func addRoutes(routesArray: Array<[String: Any]>!, managedContext: NSManagedObjectContext) {
+    
+    public func getAllRoutes() -> Array<Route> {
         
-        for routeDetail:[String: Any] in routesArray {
-            let entity =
-                NSEntityDescription.entity(forEntityName: "Route",
-                                           in: managedContext)!
-            
-            let mapentity =
-                NSEntityDescription.entity(forEntityName: "Map",
-                                           in: managedContext)!
-            
-            let route = NSManagedObject(entity: entity,
-                                        insertInto: managedContext) as! Route
-            
-            route.setValue(routeDetail["id"] as? NSNumber, forKeyPath: "id")
-            route.setValue(routeDetail["name"] as? String, forKeyPath: "name")
-            route.setValue(routeDetail["estimated_moving_time"] as? NSNumber, forKeyPath: "estmovingtime")
-            route.setValue(routeDetail["type"] as? NSNumber, forKeyPath: "type")
-            route.setValue(routeDetail["distance"] as? NSNumber, forKeyPath: "distance")
-            route.setValue(routeDetail["elevation_gain"] as? NSNumber, forKeyPath: "elevation_gain")
-            route.setValue(routeDetail["description"] as? String, forKeyPath: "routedesc")
-            
-            // add map data
-            let map = NSManagedObject(entity: mapentity, insertInto: managedContext) as! Map
-            let mapData:[String: Any] = routeDetail["map"] as! Dictionary
-            
-            map.setValue(mapData["id"] as? NSNumber, forKeyPath: "id")
-            map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
-            map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
-            route.routemap = map 
-            
-            do {
-                try managedContext.save()
-                routes.append(route)
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
+        let container = NSPersistentContainer(name: "RouteNav")
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                fatalError("Failed to load store: \(error)")
             }
         }
         
-        if(routes.count > 0)
-        {
-            NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+        let context = container.viewContext
+        var request = NSFetchRequest<NSFetchRequestResult>()
+        request = Route.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let fetchedRoutes = try context.fetch(request) as! [Route]
+            return fetchedRoutes
+        } catch {
+            fatalError("Failed to fetch Routes: \(error)")
         }
-
+    }
+    
+    public func addRoutes(routesArray: Array<[String: Any]>!) {
+        
+        let container = NSPersistentContainer(name: "RouteNav")
+        container.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                fatalError("Failed to load store: \(error)")
+            }
+        }
+        
+        container.performBackgroundTask({ (context) in
+            // ... do some task on the context
+            for routeDetail:[String: Any] in routesArray {
+                let entity =
+                    NSEntityDescription.entity(forEntityName: "Route",
+                                               in: context)!
+                
+                let mapentity =
+                    NSEntityDescription.entity(forEntityName: "Map",
+                                               in: context)!
+                
+                let route = NSManagedObject(entity: entity,
+                                            insertInto: context) as! Route
+                
+                route.setValue(routeDetail["id"] as? NSNumber, forKeyPath: "id")
+                route.setValue(routeDetail["name"] as? String, forKeyPath: "name")
+                route.setValue(routeDetail["estimated_moving_time"] as? NSNumber, forKeyPath: "estmovingtime")
+                route.setValue(routeDetail["type"] as? NSNumber, forKeyPath: "type")
+                route.setValue(routeDetail["distance"] as? NSNumber, forKeyPath: "distance")
+                route.setValue(routeDetail["elevation_gain"] as? NSNumber, forKeyPath: "elevation_gain")
+                route.setValue(routeDetail["description"] as? String, forKeyPath: "routedesc")
+                
+                // add map data
+                let map = NSManagedObject(entity: mapentity, insertInto: context) as! Map
+                let mapData:[String: Any] = routeDetail["map"] as! Dictionary
+                
+                map.setValue(mapData["id"] as? NSNumber, forKeyPath: "id")
+                map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
+                map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
+                route.routemap = map
+                //self.routes.append(route)
+                
+            }
+            // save the context
+            do {
+                try context.save()
+            } catch let error as NSError {
+                // handle error
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+//            if(self.routes.count > 0)
+//            {
+                NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
+//            }
+        })
     }
     
     public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
@@ -123,8 +156,9 @@ class StravaCoreDataHandler: NSObject {
             coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
             coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
             route.addToRouteroutecoord(coordinateObject)
+            
+            saveCoreData(managedContext: managedContext)
         }
-        saveCoreData(managedContext: managedContext)
         completionHandler(true)
     }
     
@@ -133,18 +167,19 @@ class StravaCoreDataHandler: NSObject {
         for coordObjectIndex in 0...coordinatesArray.count-1 {
             
             let coords =
-                NSEntityDescription.entity(forEntityName: "Coordinates",
+                NSEntityDescription.entity(forEntityName: "SegmentCoordinates",
                                            in: managedContext)!
             
             let coordinateObject = NSManagedObject(entity: coords,
-                                                   insertInto: managedContext) as! Coordinates
+                                                   insertInto: managedContext) as! SegmentCoordinates
             
             coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
             coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
-            segment.addToSegmentcoordinates(coordinateObject)
- 
+
+            segment.addToSegmentCoord(coordinateObject)
+            saveCoreData(managedContext: managedContext)
         }
-        saveCoreData(managedContext: managedContext)
+        
         completionHandler(true)
     }
 

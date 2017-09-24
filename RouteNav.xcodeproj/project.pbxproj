@@ -474,7 +474,7 @@
 					403129551E431DF7004CA4F8 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4JYLXVYYFP;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -488,14 +488,14 @@
 					4031296C1E431DF7004CA4F8 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4JYLXVYYFP;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 403129551E431DF7004CA4F8;
 					};
 					403129771E431DF7004CA4F8 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4JYLXVYYFP;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 403129551E431DF7004CA4F8;
 					};

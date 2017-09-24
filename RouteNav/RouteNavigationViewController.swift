@@ -153,8 +153,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     self.navigationItem.title = "Error loading segment."
                 }
                 else {
-                    print("data for \(routeSegmentObject.name ?? "Segment") on map.")
-                    
                     DispatchQueue.main.async {
                         self.showSegmentsOnMap(segmentObject: routeSegmentObject)
                     }
@@ -245,7 +243,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     func showSegmentsOnMap(segmentObject :Segment) {
         
         // Drop a pin
-        let startObject = segmentObject.segmentcoordinates?.firstObject as! Coordinates
+        let startObject = segmentObject.segmentCoord?.firstObject as! SegmentCoordinates
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
         let dropPin = MKPointAnnotation()
         dropPin.coordinate = startlocationCoord
@@ -253,14 +251,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         self.mapView!.addAnnotation(dropPin)
         
         // Drop a pin
-        let endObject = segmentObject.segmentcoordinates?.lastObject as! Coordinates
+        let endObject = segmentObject.segmentCoord?.lastObject as! SegmentCoordinates
         let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
         dropPin.coordinate = endlocationCoord
         dropPin.title = "\(segmentObject.name ?? "segment") end"
         self.mapView!.addAnnotation(dropPin)
         
         var segmentCoordinatesArray: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
-            for case let coordObject as Coordinates in segmentObject.segmentcoordinates! {
+            for case let coordObject as Coordinates in segmentObject.segmentCoord! {
                 let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
                 segmentCoordinatesArray.append(locationCoord)
             }
@@ -399,14 +397,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
-        print("polyline view renderer")
         if overlay is RoutePolyline {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRender.lineWidth = 1.0
             polylineRender.strokeColor = UIColor.blue
             return polylineRender
         } else {
-            print("SEGMENT ************")
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRender.lineWidth = 2.0
             polylineRender.strokeColor = UIColor.red

@@ -74,7 +74,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         dataTask?.resume()
     }
     
-    public func getRoutes(_ athleteId: Int, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func getRoutes(_ athleteId: Int, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
         let authUrl = URL(string: "https://www.strava.com/api/v3/athletes/\(athleteId)/routes")
         var request = URLRequest(url: authUrl!)
@@ -97,7 +97,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         self.routes = jsonResult as! Array
-                        StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array, managedContext: managedContext)
+                        StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array)
                         //success code
                         return completionHandler(true)
                     } catch {
@@ -192,7 +192,6 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         let segmentStreamArray: Array<[String: Any]>! = jsonResult as! Array
-print(jsonResult)
                         for segmentDetail:[String: Any] in segmentStreamArray {
                             
                             if let streamDictionary = segmentDetail as Dictionary<String, AnyObject>! {

@@ -66,6 +66,8 @@
 		<string>gps</string>
 		<string>armv7</string>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

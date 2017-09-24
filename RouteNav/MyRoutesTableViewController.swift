@@ -21,6 +21,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     var selectedRoute: Route?
     var authorising: Bool = false
     var managedContext: NSManagedObjectContext!
+    var routes: Array<Route>!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,14 +54,13 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         super.viewDidAppear(animated)
         self.setUpNotifications()
         if(authorisationToken == nil && !authorising)
         {
             authorising = true
             self.performSegue(withIdentifier: "showAuthPopover", sender: self)
-        }
+        } 
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -102,7 +102,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func getRoutesData() {
         
-        self.apiHelper.getRoutes(apiHelper.athleteId, managedContext:  self.managedContext, completionHandler: { (successFlag) in
+        self.apiHelper.getRoutes(apiHelper.athleteId, completionHandler: { (successFlag) in
             if successFlag
             {
                 if self.apiHelper.routes.count == 0 {
@@ -121,7 +121,6 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                 self.present(alertMessage, animated: true, completion: nil)
             }
         })
-        
     }
     
     func getQueryStringParameter(url: String, param: String) -> String? {
@@ -132,8 +131,8 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Table view processing
     
     func updateTableForNewData() {
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-           self.tableView?.reloadData()
+        DispatchQueue.main.async {
+            self.tableView?.reloadData()
         }
     }
     
@@ -146,12 +145,12 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return StravaCoreDataHandler.sharedInstance.routes.count
+        return routes.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteTableViewCell", for: indexPath) as! RouteTableViewCell
-        let route = StravaCoreDataHandler.sharedInstance.routes[indexPath.row] as! Route
+        let route = routes[indexPath.row]
         
         cell.routeNameLabel?.text = route.name
         cell.distanceLabel?.text = String(format: "%.02f km", arguments: [(route.distance/1000)] )
@@ -182,7 +181,7 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRoute = StravaCoreDataHandler.sharedInstance.routes[indexPath.row] as? Route
+        selectedRoute = routes[indexPath.row]
         self.performSegue(withIdentifier: "showSumarySegue", sender: self)
     }
     
