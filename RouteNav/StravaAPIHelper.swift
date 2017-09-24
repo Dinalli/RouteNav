@@ -97,7 +97,11 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         self.routes = jsonResult as! Array
-                        StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array)
+                        
+                        DispatchQueue.main.async {
+                            StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array)
+                        }
+
                         //success code
                         return completionHandler(true)
                     } catch {

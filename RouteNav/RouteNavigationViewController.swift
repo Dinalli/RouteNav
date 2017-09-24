@@ -131,7 +131,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 
                 for routeDirection in self.route.routedirection! {
                     let routeDirectionObject = routeDirection as! Direction
-                    print("direction name \(routeDirectionObject.name!)")
+                    print("direction name \(routeDirectionObject.directionname!)")
                 }
                 
                 self.getRouteStream()
@@ -247,14 +247,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
         let dropPin = MKPointAnnotation()
         dropPin.coordinate = startlocationCoord
-        dropPin.title = "\(segmentObject.name ?? "segment") start"
+        dropPin.title = "\(segmentObject.segmentname ?? "segment") start"
         self.mapView!.addAnnotation(dropPin)
         
         // Drop a pin
         let endObject = segmentObject.segmentCoord?.lastObject as! SegmentCoordinates
         let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
         dropPin.coordinate = endlocationCoord
-        dropPin.title = "\(segmentObject.name ?? "segment") end"
+        dropPin.title = "\(segmentObject.segmentname ?? "segment") end"
         self.mapView!.addAnnotation(dropPin)
         
         var segmentCoordinatesArray: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
@@ -264,7 +264,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             }
         
         segmentPolyline = MKPolyline.init(coordinates: segmentCoordinatesArray, count: segmentCoordinatesArray.count)
-        segmentPolyline.title = segmentObject.name
+        segmentPolyline.title = segmentObject.segmentname
         
         self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
     }
@@ -384,7 +384,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         DispatchQueue.main.async {
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
             self.mapView!.add(self.routePolyline, level: .aboveRoads)
-            self.navigationItem.title = self.route.name
+            self.navigationItem.title = self.route.routename
         }
     }
 

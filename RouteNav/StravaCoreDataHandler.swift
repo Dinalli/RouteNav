@@ -15,53 +15,61 @@ class StravaCoreDataHandler: NSObject {
     static let sharedInstance = StravaCoreDataHandler()
 
     
-    public func getAllRoutes() -> Array<Route> {
+    public func fetchRoutes() -> Array<Route> {
         
-        let container = NSPersistentContainer(name: "RouteNav")
-        container.loadPersistentStores { (storeDescription, error) in
-            if let error = error {
-                fatalError("Failed to load store: \(error)")
+        //let container = NSPersistentContainer(name: "RouteNav")
+        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+        var fetchedRoutes:[Route]!
+        
+//        container.loadPersistentStores { (storeDescription, error) in
+//            if let error = error {
+//                fatalError("Failed to load store: \(error)")
+//            }
+//        }
+
+        container.viewContext.performAndWait {
+            do {
+                let routeFetch = NSFetchRequest<Route>(entityName: "Route")
+                routeFetch.returnsObjectsAsFaults = false
+                
+                fetchedRoutes = try container.viewContext.fetch(routeFetch) as [Route]
+                
+            } catch {
+                fatalError("Failed to fetch Routes: \(error)")
             }
         }
         
-        let context = container.viewContext
-        var request = NSFetchRequest<NSFetchRequestResult>()
-        request = Route.fetchRequest()
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            let fetchedRoutes = try context.fetch(request) as! [Route]
-            return fetchedRoutes
-        } catch {
-            fatalError("Failed to fetch Routes: \(error)")
-        }
+        return fetchedRoutes
     }
     
     public func addRoutes(routesArray: Array<[String: Any]>!) {
         
-        let container = NSPersistentContainer(name: "RouteNav")
-        container.loadPersistentStores { (storeDescription, error) in
-            if let error = error {
-                fatalError("Failed to load store: \(error)")
-            }
-        }
+        let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         
-        container.performBackgroundTask({ (context) in
+        //let container = NSPersistentContainer(name: "RouteNav")
+//        container.loadPersistentStores { (storeDescription, error) in
+//            if let error = error {
+//                fatalError("Failed to load store: \(error)")
+//            }
+//        }
+        
+        container.viewContext.performAndWait {
+
             // ... do some task on the context
             for routeDetail:[String: Any] in routesArray {
                 let entity =
                     NSEntityDescription.entity(forEntityName: "Route",
-                                               in: context)!
+                                               in: container.viewContext)!
                 
                 let mapentity =
                     NSEntityDescription.entity(forEntityName: "Map",
-                                               in: context)!
+                                               in: container.viewContext)!
                 
                 let route = NSManagedObject(entity: entity,
-                                            insertInto: context) as! Route
+                                            insertInto: container.viewContext) as! Route
                 
                 route.setValue(routeDetail["id"] as? NSNumber, forKeyPath: "id")
-                route.setValue(routeDetail["name"] as? String, forKeyPath: "name")
+                route.setValue(routeDetail["name"] as? String, forKeyPath: "routename")
                 route.setValue(routeDetail["estimated_moving_time"] as? NSNumber, forKeyPath: "estmovingtime")
                 route.setValue(routeDetail["type"] as? NSNumber, forKeyPath: "type")
                 route.setValue(routeDetail["distance"] as? NSNumber, forKeyPath: "distance")
@@ -69,19 +77,17 @@ class StravaCoreDataHandler: NSObject {
                 route.setValue(routeDetail["description"] as? String, forKeyPath: "routedesc")
                 
                 // add map data
-                let map = NSManagedObject(entity: mapentity, insertInto: context) as! Map
+                let map = NSManagedObject(entity: mapentity, insertInto: container.viewContext) as! Map
                 let mapData:[String: Any] = routeDetail["map"] as! Dictionary
                 
                 map.setValue(mapData["id"] as? NSNumber, forKeyPath: "id")
                 map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
                 map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
                 route.routemap = map
-                //self.routes.append(route)
-                
             }
             // save the context
             do {
-                try context.save()
+                try container.viewContext.save()
             } catch let error as NSError {
                 // handle error
                 print("Could not save. \(error), \(error.userInfo)")
@@ -91,7 +97,7 @@ class StravaCoreDataHandler: NSObject {
 //            {
                 NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
 //            }
-        })
+        }
     }
     
     public func addRouteDetail(route: Route, routesDetailArray: Dictionary<String, AnyObject>!, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
@@ -112,7 +118,7 @@ class StravaCoreDataHandler: NSObject {
                 let direction = NSManagedObject(entity: directionentity, insertInto: managedContext) as! Direction
                 direction.setValue(directionDetail["action"] as? NSNumber, forKeyPath: "action")
                 direction.setValue(directionDetail["distance"] as? NSNumber, forKeyPath: "distance")
-                direction.setValue(directionDetail["name"] as? String, forKeyPath: "name")
+                direction.setValue(directionDetail["name"] as? String, forKeyPath: "directionname")
                 route.addToRoutedirection(direction)
             }
         }
@@ -126,7 +132,7 @@ class StravaCoreDataHandler: NSObject {
                 let segment = NSManagedObject(entity: segmententity, insertInto: managedContext) as! Segment
                 segment.setValue(segmentDetail["id"] as? NSNumber, forKeyPath: "id")
                 segment.setValue(segmentDetail["resource_state"] as? NSNumber, forKeyPath: "resource_state")
-                segment.setValue(segmentDetail["name"] as? String, forKeyPath: "name")
+                segment.setValue(segmentDetail["name"] as? String, forKeyPath: "segmentname")
                 segment.setValue(segmentDetail["average_grade"] as? NSNumber, forKeyPath: "average_grade")
                 segment.setValue(segmentDetail["distance"] as? NSNumber, forKeyPath: "distance")
                 segment.setValue(segmentDetail["elevation_high"] as? NSNumber, forKeyPath: "elevation_high")

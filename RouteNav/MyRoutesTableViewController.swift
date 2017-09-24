@@ -111,6 +111,9 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
                     self.present(alertMessage, animated: true, completion: nil)
                 }
                 else{
+                    DispatchQueue.main.async {
+                        self.routes = StravaCoreDataHandler.sharedInstance.fetchRoutes()
+                    }
                     self.updateTableForNewData()
                 }
             }
@@ -145,14 +148,20 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return routes.count
+        if (routes != nil) {
+            print("********************************** Route Count [\(routes.count)]")
+            return routes.count
+        } else {
+            return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RouteTableViewCell", for: indexPath) as! RouteTableViewCell
-        let route = routes[indexPath.row]
+        let route = routes[indexPath.row] as Route
+        print(type(of:route))
         
-        cell.routeNameLabel?.text = route.name
+        cell.routeNameLabel?.text = route.routename
         cell.distanceLabel?.text = String(format: "%.02f km", arguments: [(route.distance/1000)] )
         cell.elevationLabel?.text = String(route.elevation_gain) + "m"
         cell.timeLabel?.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
