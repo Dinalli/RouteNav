@@ -346,7 +346,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         routePolyline = RoutePolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
-            self.mapView!.add(self.routePolyline, level: .aboveRoads)
+            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+            self.mapView!.add(self.routePolyline, level: .aboveLabels)
             self.navigationItem.title = self.route.routename
         }
     }
@@ -379,7 +380,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         segmentPolyline.title = segmentObject.segmentname
         
         DispatchQueue.main.async {
-            self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
+            self.mapView!.add(self.segmentPolyline, level: .aboveLabels)
         }
     }
 

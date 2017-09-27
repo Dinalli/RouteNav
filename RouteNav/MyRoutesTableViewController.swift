@@ -34,6 +34,8 @@ class MyRoutesTableViewController: UIViewController, UITableViewDelegate, UITabl
             }
             
             self.managedContext = appDelegate.persistentContainer.viewContext
+            
+            StravaCoreDataHandler.sharedInstance.clearCoreData()
         }
     }
     
