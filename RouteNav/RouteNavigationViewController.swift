@@ -56,7 +56,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         self.navigationController?.presentTransparentNavigationBar()
         self.navigationItem.title = "loading..."
-        self.getRouteDetail()
+        
+        if (self.route.routesegment?.count == 0) {
+            self.getRouteDetail()
+        } else {
+            self.addRouteToMap()
+        }
     }
     
     override func viewDidLoad() {
@@ -218,17 +223,19 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        mapView!.camera.heading = newHeading.magneticHeading
-        mapView!.camera.centerCoordinate = (manager.location?.coordinate)!
-        mapView!.camera.pitch = 60.0
-        mapView!.camera.altitude = 100.0
-        mapView!.setCamera(mapView!.camera, animated: true)
+        if manager.location != nil {
+            mapView!.camera.heading = newHeading.magneticHeading
+            mapView!.camera.centerCoordinate = (manager.location?.coordinate)!
+            mapView!.camera.pitch = 60.0
+            mapView!.camera.altitude = 100.0
+            mapView!.setCamera(mapView!.camera, animated: true)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         defer {
             currentLocation = locations.last
-            updateDirections(currentLocation: currentLocation!)
+            //updateDirections(currentLocation: currentLocation!)
             updateSegments(currentLocation: currentLocation!)
         }
     }
@@ -236,8 +243,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     func updateSegments(currentLocation: CLLocation) {
         //Segements
         // Distance to next segment
-        // Colour polyline for segment
-        // Segment start and end pins
+        
+        //Get nearest point
     }
     
     func updateDirections(currentLocation: CLLocation) {

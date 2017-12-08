@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fjl-F4-sau">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fjl-F4-sau">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,20 +28,20 @@
                         <color key="tintColor" red="0.94509803920000002" green="0.41568627450000001" blue="0.12941176469999999" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="zIC-wr-DWV" kind="relationship" relationship="rootViewController" id="mvv-G3-TpF"/>
+                        <segue destination="DDB-oO-6Y1" kind="relationship" relationship="rootViewController" id="DqG-sx-OLH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hh5-2i-8Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-818" y="-823"/>
+            <point key="canvasLocation" x="-953" y="-112"/>
         </scene>
         <!--Strava Auth View Controller-->
         <scene sceneID="nXp-jR-eBi">
             <objects>
                 <viewController storyboardIdentifier="authViewController" id="4EO-pR-Eat" customClass="StravaAuthViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KHj-PD-1Ol"/>
-                        <viewControllerLayoutGuide type="bottom" id="1Un-Cw-0S8"/>
+                        <viewControllerLayoutGuide type="top" id="cSi-zl-8xJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="I7L-xC-xUY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BCJ-N1-Imb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -50,11 +49,13 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" alpha="0.81000000000000005" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-photo-207779" translatesAutoresizingMaskIntoConstraints="NO" id="iaH-Dz-b7I">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.1058823529" green="0.63529411759999999" blue="0.7843137255" alpha="1" colorSpace="deviceRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-Jf-LAR">
                                 <rect key="frame" x="140" y="100" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="gIc-6s-Xhg"/>
+                                    <constraint firstAttribute="height" constant="40" id="VLH-Rt-Oe0"/>
+                                    <constraint firstAttribute="width" constant="40" id="a2x-7P-vuy"/>
                                 </constraints>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-VZ-SzT">
@@ -70,11 +71,14 @@
                             <imageView userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="api_logo_pwrdBy_strava_horiz_light" translatesAutoresizingMaskIntoConstraints="NO" id="kaa-sZ-Qvk">
                                 <rect key="frame" x="59" y="480" width="201" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="wHN-3f-Bl9"/>
+                                    <constraint firstAttribute="height" constant="20" id="kjQ-1K-thY"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYy-JB-HTY">
                                 <rect key="frame" x="64" y="262" width="193" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="lEg-vS-Oim"/>
+                                </constraints>
                                 <state key="normal" image="btn_strava_connectwith_orange"/>
                                 <connections>
                                     <action selector="authenticate:" destination="4EO-pR-Eat" eventType="touchUpInside" id="OLY-HZ-4eM"/>
@@ -84,7 +88,7 @@
                                 <rect key="frame" x="56" y="230" width="207" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="wqg-5o-LKU"/>
+                                    <constraint firstAttribute="height" constant="36" id="QoZ-MQ-or7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,28 +97,26 @@
                                 <size key="shadowOffset" width="0.0" height="0.5"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="1" green="0.80392156859999997" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="top" secondItem="iaH-Dz-b7I" secondAttribute="top" id="0Zy-6c-itM"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="bottom" secondItem="1Un-Cw-0S8" secondAttribute="top" id="6iF-Ag-Tjv"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="centerX" secondItem="FgW-zy-3sm" secondAttribute="centerX" id="IHD-38-eog"/>
-                            <constraint firstItem="1Un-Cw-0S8" firstAttribute="top" secondItem="kaa-sZ-Qvk" secondAttribute="bottom" constant="68" id="Ihe-qn-4eq"/>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="centerX" secondItem="kaa-sZ-Qvk" secondAttribute="centerX" id="Joi-ei-YYN"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="centerY" secondItem="gYy-JB-HTY" secondAttribute="centerY" id="L5x-4W-trf"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leading" id="QE9-t3-QZc"/>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="top" secondItem="Rhk-Jf-LAR" secondAttribute="bottom" constant="90" id="VTM-XF-pal"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="trailing" secondItem="roQ-VZ-SzT" secondAttribute="trailing" id="YcB-aQ-BRG"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="leading" secondItem="iaH-Dz-b7I" secondAttribute="leading" id="Z6i-3f-Cpj"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="top" secondItem="BCJ-N1-Imb" secondAttribute="top" id="aMw-cf-ALz"/>
-                            <constraint firstItem="gYy-JB-HTY" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="242" id="ay3-Zk-MNO"/>
-                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="centerX" secondItem="gYy-JB-HTY" secondAttribute="centerX" id="bPM-dV-Dx0"/>
-                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="centerX" secondItem="FgW-zy-3sm" secondAttribute="centerX" id="cj3-VU-C5j"/>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="40" id="edj-fe-Ruy"/>
-                            <constraint firstItem="FgW-zy-3sm" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="210" id="ixu-p2-mTh"/>
-                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="top" secondItem="KHj-PD-1Ol" secondAttribute="bottom" constant="80" id="nbB-Xm-yEL"/>
-                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="bottom" secondItem="1Un-Cw-0S8" secondAttribute="top" id="oKj-M8-v85"/>
-                            <constraint firstAttribute="trailing" secondItem="iaH-Dz-b7I" secondAttribute="trailing" id="peU-93-ZrS"/>
-                            <constraint firstItem="kaa-sZ-Qvk" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="43" id="ufI-oP-Xht"/>
+                            <constraint firstItem="kaa-sZ-Qvk" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="43" id="46v-Qz-q8s"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="centerY" secondItem="gYy-JB-HTY" secondAttribute="centerY" id="49p-VU-cbC"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leadingMargin" constant="40" id="9FH-0Q-Hc4"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="top" secondItem="iaH-Dz-b7I" secondAttribute="top" id="AEa-HR-7Ha"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="bottom" secondItem="I7L-xC-xUY" secondAttribute="top" id="BhA-wZ-S8W"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="leading" secondItem="BCJ-N1-Imb" secondAttribute="leading" id="DL0-1u-x5H"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="trailing" secondItem="roQ-VZ-SzT" secondAttribute="trailing" id="Eo5-5t-5w2"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="top" secondItem="Rhk-Jf-LAR" secondAttribute="bottom" constant="90" id="HSj-bd-nNN"/>
+                            <constraint firstItem="FgW-zy-3sm" firstAttribute="centerX" secondItem="kaa-sZ-Qvk" secondAttribute="centerX" id="IcN-f2-eLj"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="bottom" secondItem="I7L-xC-xUY" secondAttribute="top" id="LPT-h4-teh"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="leading" secondItem="iaH-Dz-b7I" secondAttribute="leading" id="Loq-IJ-eGA"/>
+                            <constraint firstAttribute="trailing" secondItem="roQ-VZ-SzT" secondAttribute="trailing" id="T0b-Ko-1UW"/>
+                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="centerX" secondItem="FgW-zy-3sm" secondAttribute="centerX" id="VeC-Mm-VjB"/>
+                            <constraint firstItem="iaH-Dz-b7I" firstAttribute="top" secondItem="BCJ-N1-Imb" secondAttribute="top" id="XmE-fG-A5e"/>
+                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="centerX" secondItem="gYy-JB-HTY" secondAttribute="centerX" id="b1o-dg-MrW"/>
+                            <constraint firstItem="roQ-VZ-SzT" firstAttribute="centerX" secondItem="Rhk-Jf-LAR" secondAttribute="centerX" id="hKs-yC-dDK"/>
+                            <constraint firstItem="I7L-xC-xUY" firstAttribute="top" secondItem="kaa-sZ-Qvk" secondAttribute="bottom" constant="68" id="lmI-Dx-1Dx"/>
+                            <constraint firstItem="Rhk-Jf-LAR" firstAttribute="top" secondItem="cSi-zl-8xJ" secondAttribute="bottom" constant="80" id="yBU-rB-3vq"/>
                         </constraints>
                     </view>
                     <connections>
@@ -134,8 +136,8 @@
             <objects>
                 <viewController storyboardIdentifier="myRoutesVC" id="zIC-wr-DWV" customClass="MyRoutesTableViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vjf-8P-dFN"/>
-                        <viewControllerLayoutGuide type="bottom" id="wgH-0B-OsW"/>
+                        <viewControllerLayoutGuide type="top" id="Urf-hu-HZf"/>
+                        <viewControllerLayoutGuide type="bottom" id="fyJ-tN-C3k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jdH-H5-0j5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -155,7 +157,7 @@
                             <constraint firstItem="Ya1-XZ-csR" firstAttribute="centerY" secondItem="jdH-H5-0j5" secondAttribute="centerY" id="31C-y2-q8k"/>
                             <constraint firstItem="Ya1-XZ-csR" firstAttribute="leading" secondItem="jdH-H5-0j5" secondAttribute="leadingMargin" constant="-17" id="97c-Bv-hoL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ya1-XZ-csR" secondAttribute="trailing" constant="-15" id="Kud-kA-bl7"/>
-                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="bottom" secondItem="wgH-0B-OsW" secondAttribute="top" id="zAR-eP-8Wj"/>
+                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="bottom" secondItem="fyJ-tN-C3k" secondAttribute="top" id="zAR-eP-8Wj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bEw-kA-iIV"/>
@@ -169,15 +171,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Onl-sw-WFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-39.375" y="-825"/>
+            <point key="canvasLocation" x="-953" y="-803"/>
+        </scene>
+        <!--Map Routes View Controller-->
+        <scene sceneID="8wI-bc-vqm">
+            <objects>
+                <viewController id="DDB-oO-6Y1" customClass="MapRoutesViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="V9I-9X-YSh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </mapView>
+                    <navigationItem key="navigationItem" id="Uyq-ez-gPa"/>
+                    <connections>
+                        <outlet property="RoutesMapView" destination="V9I-9X-YSh" id="IXg-wi-Zny"/>
+                        <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" modalTransitionStyle="crossDissolve" id="V6E-ug-e44"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ETW-zz-hOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="-111"/>
         </scene>
         <!--Route Navigation View Controller-->
         <scene sceneID="WKc-eC-z4j">
             <objects>
                 <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteNavigationViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0Sf-pO-S8v"/>
-                        <viewControllerLayoutGuide type="bottom" id="BY4-x3-IHo"/>
+                        <viewControllerLayoutGuide type="top" id="Xt6-EL-QR2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wv9-cP-2RB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ov8-Aj-tId">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -306,11 +326,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="rxa-D4-UZ8" secondAttribute="trailing" id="3jx-d3-Jfi"/>
                             <constraint firstItem="yLe-g3-clB" firstAttribute="leading" secondItem="Ov8-Aj-tId" secondAttribute="leading" id="8Kx-SI-dl7"/>
-                            <constraint firstItem="BY4-x3-IHo" firstAttribute="top" secondItem="yLe-g3-clB" secondAttribute="bottom" id="KoT-HC-0JC"/>
-                            <constraint firstItem="BY4-x3-IHo" firstAttribute="top" secondItem="rxa-D4-UZ8" secondAttribute="bottom" id="LNe-ra-9x2"/>
+                            <constraint firstItem="Wv9-cP-2RB" firstAttribute="top" secondItem="yLe-g3-clB" secondAttribute="bottom" id="KoT-HC-0JC"/>
+                            <constraint firstItem="Wv9-cP-2RB" firstAttribute="top" secondItem="rxa-D4-UZ8" secondAttribute="bottom" id="LNe-ra-9x2"/>
                             <constraint firstAttribute="trailing" secondItem="N5c-8L-KFE" secondAttribute="trailing" id="NUf-Tk-0U8"/>
                             <constraint firstItem="N5c-8L-KFE" firstAttribute="top" secondItem="Ov8-Aj-tId" secondAttribute="top" id="SDt-ef-o3v"/>
-                            <constraint firstItem="BY4-x3-IHo" firstAttribute="top" secondItem="N5c-8L-KFE" secondAttribute="bottom" id="dQr-hH-PB1"/>
+                            <constraint firstItem="Wv9-cP-2RB" firstAttribute="top" secondItem="N5c-8L-KFE" secondAttribute="bottom" id="dQr-hH-PB1"/>
                             <constraint firstAttribute="trailing" secondItem="yLe-g3-clB" secondAttribute="trailing" id="dn9-vx-12g"/>
                             <constraint firstItem="rxa-D4-UZ8" firstAttribute="leading" secondItem="Ov8-Aj-tId" secondAttribute="leading" id="sfX-ux-kTK"/>
                             <constraint firstItem="N5c-8L-KFE" firstAttribute="leading" secondItem="Ov8-Aj-tId" secondAttribute="leading" id="udk-nj-hbs"/>
@@ -342,4 +362,7 @@
         <image name="btn_strava_connectwith_orange" width="193" height="48"/>
         <image name="pexels-photo-207779" width="960" height="640"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="V6E-ug-e44"/>
+    </inferredMetricsTieBreakers>
 </document>
