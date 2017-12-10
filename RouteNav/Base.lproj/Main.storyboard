@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fjl-F4-sau">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fjl-F4-sau">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hh5-2i-8Td" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-953" y="-112"/>
+            <point key="canvasLocation" x="-1191" y="-112"/>
         </scene>
         <!--Strava Auth View Controller-->
         <scene sceneID="nXp-jR-eBi">
@@ -129,49 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AV2-Gh-Rbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-43.125" y="-1505.2816901408451"/>
-        </scene>
-        <!--My Routes Table View Controller-->
-        <scene sceneID="LBS-hr-2Jm">
-            <objects>
-                <viewController storyboardIdentifier="myRoutesVC" id="zIC-wr-DWV" customClass="MyRoutesTableViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Urf-hu-HZf"/>
-                        <viewControllerLayoutGuide type="bottom" id="fyJ-tN-C3k"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jdH-H5-0j5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ya1-XZ-csR">
-                                <rect key="frame" x="-1" y="-1" width="320" height="569"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="zIC-wr-DWV" id="D2y-ck-BPX"/>
-                                    <outlet property="delegate" destination="zIC-wr-DWV" id="ECd-Gr-Ylt"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="centerY" secondItem="jdH-H5-0j5" secondAttribute="centerY" id="31C-y2-q8k"/>
-                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="leading" secondItem="jdH-H5-0j5" secondAttribute="leadingMargin" constant="-17" id="97c-Bv-hoL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ya1-XZ-csR" secondAttribute="trailing" constant="-15" id="Kud-kA-bl7"/>
-                            <constraint firstItem="Ya1-XZ-csR" firstAttribute="bottom" secondItem="fyJ-tN-C3k" secondAttribute="top" id="zAR-eP-8Wj"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bEw-kA-iIV"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="tableView" destination="Ya1-XZ-csR" id="6LP-QZ-ddf"/>
-                        <segue destination="Rkg-Ea-qvg" kind="show" identifier="showSumarySegue" id="zRi-ha-TXy"/>
-                        <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" modalTransitionStyle="crossDissolve" id="OU3-9X-nAs"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Onl-sw-WFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-953" y="-803"/>
+            <point key="canvasLocation" x="-341" y="-873"/>
         </scene>
         <!--Map Routes View Controller-->
         <scene sceneID="8wI-bc-vqm">
@@ -189,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETW-zz-hOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-39" y="-111"/>
+            <point key="canvasLocation" x="-324" y="-113"/>
         </scene>
         <!--Route Navigation View Controller-->
         <scene sceneID="WKc-eC-z4j">
@@ -352,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OI7-gD-y5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="-817.6056338028169"/>
+            <point key="canvasLocation" x="728" y="-113"/>
         </scene>
     </scenes>
     <resources>
@@ -362,7 +320,4 @@
         <image name="btn_strava_connectwith_orange" width="193" height="48"/>
         <image name="pexels-photo-207779" width="960" height="640"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="V6E-ug-e44"/>
-    </inferredMetricsTieBreakers>
 </document>

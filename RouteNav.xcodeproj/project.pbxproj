@@ -16,7 +16,6 @@
 		403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */; };
 		403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129711E431DF7004CA4F8 /* RouteNavTests.swift */; };
 		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
-		403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */; };
 		403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AF66D1F75857900EF0A9D /* RoutePolyline.swift */; };
 		405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F31991E81B1890013457C /* StravaAPIHelper.swift */; };
 		4072BE771FD579710004525E /* MapRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4072BE761FD579710004525E /* MapRoutesViewController.swift */; };
@@ -24,6 +23,7 @@
 		40866E921F11326200778CCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40866E911F11326200778CCC /* AdSupport.framework */; };
 		409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409559811F135C9800050BDD /* SRTHelperFunctions.swift */; };
 		40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */; };
+		40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8E7271FDACF050034590A /* RouteAnnotation.swift */; };
 		40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */; };
 		40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */; };
 		40F1AC661EBCE84C006CD74B /* StravaCoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */; };
@@ -117,7 +117,6 @@
 		403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavUITests.swift; sourceTree = "<group>"; };
 		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRoutesTableViewController.swift; sourceTree = "<group>"; };
 		403AF66D1F75857900EF0A9D /* RoutePolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePolyline.swift; sourceTree = "<group>"; };
 		405F31991E81B1890013457C /* StravaAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIHelper.swift; sourceTree = "<group>"; };
 		4072BE761FD579710004525E /* MapRoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRoutesViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		40866E911F11326200778CCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		409559811F135C9800050BDD /* SRTHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTHelperFunctions.swift; sourceTree = "<group>"; };
 		40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
+		40D8E7271FDACF050034590A /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
 		40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaCoreDataHandler.swift; sourceTree = "<group>"; };
@@ -263,7 +263,6 @@
 		4031298A1E432078004CA4F8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				403129971E432405004CA4F8 /* MyRoutesTableViewController.swift */,
 				40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */,
 				4072BE761FD579710004525E /* MapRoutesViewController.swift */,
 			);
@@ -292,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				403AF66D1F75857900EF0A9D /* RoutePolyline.swift */,
+				40D8E7271FDACF050034590A /* RouteAnnotation.swift */,
 			);
 			name = MapOverlay;
 			sourceTree = "<group>";
@@ -711,9 +711,9 @@
 				40866E8F1F111FFD00778CCC /* StravaAuthViewController.swift in Sources */,
 				40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */,
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
-				403129981E432406004CA4F8 /* MyRoutesTableViewController.swift in Sources */,
 				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
+				40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

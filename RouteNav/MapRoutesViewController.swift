@@ -12,7 +12,7 @@ import SafariServices
 import CoreData
 import MapKit
 
-class MapRoutesViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
 
     let apiHelper = StravaAPIHelper()
     let srtHelper = SRTHelperFunctions()
@@ -24,6 +24,13 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate, MKMa
     var managedContext: NSManagedObjectContext!
     var routes: Array<Route>!
     let locationManager = CLLocationManager.init()
+    var loadingOverlay = UIImageView()
+    
+    let backgroundImagesArray = [UIImage(named: "cycling-bicycle-riding-sport-38296")!,UIImage(named: "pexels-photo-207779")!,UIImage(named: "pexels-photo-287398")!]
+    var svc: SFSafariViewController?
+    var index = 0
+    let animationDuration: TimeInterval = 0.5
+    let switchingInterval: TimeInterval = 2.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +70,48 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate, MKMa
         {
             authorising = true
             self.performSegue(withIdentifier: "showAuthPopover", sender: self)
+            setUpLoadingOverlay()
         }
+    }
+    
+    func setUpLoadingOverlay() {
+        loadingOverlay.translatesAutoresizingMaskIntoConstraints = false
+        loadingOverlay.contentMode = .scaleToFill
+        self.view .addSubview(loadingOverlay)
+        
+        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
+                                                                           options: NSLayoutFormatOptions.init(rawValue: 0),
+                                                                           metrics: nil,
+                                                                           views: ["loadingOverlay":loadingOverlay]))
+        
+        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlay]|",
+                                                                           options: NSLayoutFormatOptions.init(rawValue: 0),
+                                                                           metrics: nil,
+                                                                           views: ["loadingOverlay":loadingOverlay]))
+        
+
+        startAnimatingBackgroundImages()
+    }
+    
+    func startAnimatingBackgroundImages()
+    {
+        CATransaction.begin()
+        
+        CATransaction.setAnimationDuration(animationDuration)
+        CATransaction.setCompletionBlock {
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.switchingInterval) {
+                self.startAnimatingBackgroundImages()
+            }
+        }
+        
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        loadingOverlay.layer.add(transition, forKey: kCATransition)
+        loadingOverlay.image = backgroundImagesArray[index]
+        
+        CATransaction.commit()
+        
+        index = index < backgroundImagesArray.count - 1 ? index + 1 : 0
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -72,7 +120,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate, MKMa
     }
     
     func setUpNotifications() {
-//        NotificationCenter.default.addObserver(self, selector:  #selector(self.getRouteDetails), name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector:  #selector(self.handleRedirectURL), name: Notification.Name("SRHandleAuthRedirectURL"), object: nil)
     }
     
@@ -247,36 +294,63 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate, MKMa
         // Drop a pin
         let startObject = route.routeroutecoord?.firstObject as! Coordinates
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
-        let dropPin = MKPointAnnotation()
-        dropPin.coordinate = startlocationCoord
-        dropPin.title = route.routename
+        let dropPin = RouteAnnotation(title: route.routename!, coordinate: startlocationCoord, subtitle:String(format: "%.02f km", arguments: [(route.distance/1000)] ) + " time:" + srtHelper.getStringFrom(seconds: route.estmovingtime), route: route)
         self.RoutesMapView!.addAnnotation(dropPin)
 
         DispatchQueue.main.async {
             self.RoutesMapView!.showAnnotations(self.RoutesMapView!.annotations, animated: true)
         }
     }
-    
+}
+
+extension MapRoutesViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if (annotation is MKUserLocation) {
-            //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
-            //return nil so map draws default view for it (eg. blue dot)...
+        
+        guard !annotation.isKind(of:MKUserLocation.self) else {
             return nil
         }
         
-        let reuseId = "test"
+        let routeAnnotation = annotation as! RouteAnnotation
         
-        let anView = mapView.dequeueReusableAnnotationView(withIdentifier:reuseId)
-        if anView == nil {
-            let anView:MKAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView.image = UIImage(named:"xaxas")
-            anView.canShowCallout = true
+        let reuseId = "RouteAnnotationViewID"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier:reuseId)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            annotationView!.calloutOffset = CGPoint(x: -15, y: 15)
+            annotationView!.tintColor = UIColor.orange
+            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView!.canShowCallout = true
         }
         else {
             //we are re-using a view, update its annotation reference...
-            anView?.annotation = annotation
+            annotationView!.annotation = annotation
         }
-        return anView
+        
+        if routeAnnotation.route.type == 2 {
+            annotationView!.image = UIImage(named: "runMapIcon.png")
+        } else {
+            annotationView!.image = UIImage(named: "bikeMapIcon.png")
+        }
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("SELECTED")
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("TAPPED")
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("REGION DID CHANGE ")
+        self.loadingOverlay .removeFromSuperview()
+    }
+    
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        print("DID FINISH RENDERING")
     }
 }
 
