@@ -143,6 +143,7 @@
                     <connections>
                         <outlet property="RoutesMapView" destination="V9I-9X-YSh" id="IXg-wi-Zny"/>
                         <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" modalTransitionStyle="crossDissolve" id="V6E-ug-e44"/>
+                        <segue destination="Rkg-Ea-qvg" kind="showDetail" identifier="showDetail" id="tMS-eY-5Ax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETW-zz-hOI" userLabel="First Responder" sceneMemberID="firstResponder"/>

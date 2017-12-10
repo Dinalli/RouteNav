@@ -342,6 +342,11 @@ extension MapRoutesViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("TAPPED")
+        if control == view.rightCalloutAccessoryView {
+            let routeAnnotation = view.annotation as! RouteAnnotation
+            selectedRoute = routeAnnotation.route
+            self.performSegue(withIdentifier: "showDetail", sender: self)
+        }
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -351,6 +356,14 @@ extension MapRoutesViewController: MKMapViewDelegate {
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         print("DID FINISH RENDERING")
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let rnc:RouteNavigationViewController = segue.destination as! RouteNavigationViewController
+            rnc.route = selectedRoute
+        }
     }
 }
 
