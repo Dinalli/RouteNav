@@ -263,6 +263,7 @@
 		4031298A1E432078004CA4F8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */,
 				40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */,
 				4072BE761FD579710004525E /* MapRoutesViewController.swift */,
 			);
@@ -308,7 +309,6 @@
 			isa = PBXGroup;
 			children = (
 				405F31991E81B1890013457C /* StravaAPIHelper.swift */,
-				40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */,
 			);
 			name = StravaAPI;
 			sourceTree = "<group>";

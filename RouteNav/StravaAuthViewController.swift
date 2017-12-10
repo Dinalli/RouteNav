@@ -20,8 +20,8 @@ class StravaAuthViewController: UIViewController {
     let backgroundImagesArray = [UIImage(named: "cycling-bicycle-riding-sport-38296")!,UIImage(named: "pexels-photo-207779")!,UIImage(named: "pexels-photo-287398")!]
     var svc: SFSafariViewController?
     var index = 0
-    let animationDuration: TimeInterval = 0.5
-    let switchingInterval: TimeInterval = 2.5
+    let animationDuration: TimeInterval = 2.5
+    let switchingInterval: TimeInterval = 0.15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,18 +43,16 @@ class StravaAuthViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.backgroundImage.alpha = 1.0
-            
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             self.authButton.alpha = 1.0
             self.instructionLabel.alpha = 1.0
             self.logoIcon.alpha=1.0
             self.powerByImage.alpha = 1.0
         }, completion: nil)
-        
     }
     
     
