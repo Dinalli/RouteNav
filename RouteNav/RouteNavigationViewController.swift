@@ -35,6 +35,10 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var polylinePosistion: Int!
     var managedContext: NSManagedObjectContext!
     
+    let distance: CLLocationDistance = 650
+    let pitch: CGFloat = 85
+    let heading = 0.0
+    var camera: MKMapCamera?
     
     //MARK : ViewController Lifecycle
     
@@ -71,16 +75,24 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         if !CLLocationManager.locationServicesEnabled() {
             locationManager.requestWhenInUseAuthorization()
         }
+        mapView?.mapType = .standard
         mapView?.showsUserLocation = true
         mapView?.delegate = self
         mapView?.showsCompass = true
         mapView?.isZoomEnabled = true
         mapView?.showsScale = true
+        mapView?.showsBuildings = true
+        mapView?.showsPointsOfInterest = true
+        //mapView?.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
         
-        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
-        mapView?.camera.pitch = 85.0
-        mapView?.camera.altitude = 223.0
-        mapView?.setCamera(mapView!.camera, animated: true)
+        let startObject = route.routeroutecoord?.firstObject as! Coordinates
+        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
+        
+        self.camera = MKMapCamera(lookingAtCenter: startlocationCoord,
+                                  fromDistance: distance,
+                                  pitch: pitch,
+                                  heading: heading)
+        mapView?.camera = self.camera!
         polylinePosistion = 0
     }
     
@@ -184,7 +196,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         if (CLLocationManager .headingAvailable())
         {
-            locationManager.headingFilter = kCLHeadingFilterNone
+            locationManager.headingFilter = 1
             locationManager.startUpdatingHeading()
         }
     }
@@ -224,19 +236,24 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         if manager.location != nil {
-            mapView!.camera.heading = newHeading.magneticHeading
-            mapView!.camera.centerCoordinate = (manager.location?.coordinate)!
-//            mapView!.camera.pitch = 60.0
-//            mapView!.camera.altitude = 100.0
-            mapView!.setCamera(mapView!.camera, animated: true)
+            self.camera?.heading = newHeading.magneticHeading
+            self.camera?.centerCoordinate = (manager.location?.coordinate)!
+            mapView?.setCamera(self.camera!, animated: true)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         defer {
+            
+            if currentLocation != nil {
+                self.camera?.centerCoordinate = locations.last!.coordinate
+                self.camera?.heading = (currentLocation?.bearingDegreesTo(location: locations.last!))!
+                mapView?.setCamera(self.camera!, animated: true)
+                //updateDirections(currentLocation: currentLocation!)
+                //updateSegments(currentLocation: currentLocation!)
+            }
+            
             currentLocation = locations.last
-            //updateDirections(currentLocation: currentLocation!)
-            updateSegments(currentLocation: currentLocation!)
         }
     }
     
