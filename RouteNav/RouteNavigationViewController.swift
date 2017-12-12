@@ -77,7 +77,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.isZoomEnabled = true
         mapView?.showsScale = true
         
-//        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
+        mapView?.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: true)
         mapView?.camera.pitch = 85.0
         mapView?.camera.altitude = 223.0
         mapView?.setCamera(mapView!.camera, animated: true)
@@ -226,8 +226,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         if manager.location != nil {
             mapView!.camera.heading = newHeading.magneticHeading
             mapView!.camera.centerCoordinate = (manager.location?.coordinate)!
-            mapView!.camera.pitch = 60.0
-            mapView!.camera.altitude = 100.0
+//            mapView!.camera.pitch = 60.0
+//            mapView!.camera.altitude = 100.0
             mapView!.setCamera(mapView!.camera, animated: true)
         }
     }
