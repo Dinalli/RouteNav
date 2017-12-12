@@ -13,7 +13,7 @@ class RouteAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     let subtitle: String?
     let route: Route
-    
+
     init(title: String, coordinate: CLLocationCoordinate2D, subtitle: String, route: Route) {
 
         self.title = title

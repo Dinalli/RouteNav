@@ -313,27 +313,28 @@ extension MapRoutesViewController: MKMapViewDelegate {
         let routeAnnotation = annotation as! RouteAnnotation
         
         let reuseId = "RouteAnnotationViewID"
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier:reuseId)
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            annotationView!.calloutOffset = CGPoint(x: -15, y: 15)
-            annotationView!.tintColor = UIColor.orange
-            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            annotationView!.canShowCallout = true
-        }
-        else {
+        var view: MKMarkerAnnotationView
+        // 4
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            as? MKMarkerAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
             //we are re-using a view, update its annotation reference...
-            annotationView!.annotation = annotation
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            view.calloutOffset = CGPoint(x: -15, y: 15)
+            view.tintColor = UIColor.orange
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            view.canShowCallout = true
         }
         
         if routeAnnotation.route.type == 2 {
-            annotationView!.image = UIImage(named: "runMapIcon.png")
+            view.glyphImage = UIImage(named: "runMapIcon.png")
         } else {
-            annotationView!.image = UIImage(named: "bikeMapIcon.png")
+            view.glyphImage = UIImage(named: "bikeMapIcon.png")
         }
-        return annotationView
+
+        return view
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

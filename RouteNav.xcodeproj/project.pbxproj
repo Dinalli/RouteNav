@@ -12,7 +12,6 @@
 		4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129591E431DF7004CA4F8 /* AppDelegate.swift */; };
 		4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4031295D1E431DF7004CA4F8 /* Main.storyboard */; };
 		403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */; };
-		403129641E431DF7004CA4F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 403129631E431DF7004CA4F8 /* Assets.xcassets */; };
 		403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */; };
 		403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129711E431DF7004CA4F8 /* RouteNavTests.swift */; };
 		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
@@ -23,6 +22,8 @@
 		40866E921F11326200778CCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40866E911F11326200778CCC /* AdSupport.framework */; };
 		409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409559811F135C9800050BDD /* SRTHelperFunctions.swift */; };
 		40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */; };
+		40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */; };
+		40BC517E1FDFDE2B00F180B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40BC517D1FDFDE2B00F180B2 /* Assets.xcassets */; };
 		40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8E7271FDACF050034590A /* RouteAnnotation.swift */; };
 		40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */; };
 		40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */; };
@@ -108,7 +109,6 @@
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4031295E1E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		403129611E431DF7004CA4F8 /* RouteNav.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RouteNav.xcdatamodel; sourceTree = "<group>"; };
-		403129631E431DF7004CA4F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		403129661E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		403129681E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +124,8 @@
 		40866E911F11326200778CCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		409559811F135C9800050BDD /* SRTHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTHelperFunctions.swift; sourceTree = "<group>"; };
 		40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
+		40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotationView.swift; sourceTree = "<group>"; };
+		40BC517D1FDFDE2B00F180B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40D8E7271FDACF050034590A /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
@@ -235,9 +237,9 @@
 				4031298B1E432099004CA4F8 /* UI */,
 				4031298A1E432078004CA4F8 /* ViewControllers */,
 				403129591E431DF7004CA4F8 /* AppDelegate.swift */,
-				403129631E431DF7004CA4F8 /* Assets.xcassets */,
 				40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */,
 				403129681E431DF7004CA4F8 /* Info.plist */,
+				40BC517D1FDFDE2B00F180B2 /* Assets.xcassets */,
 			);
 			path = RouteNav;
 			sourceTree = "<group>";
@@ -293,6 +295,7 @@
 			children = (
 				403AF66D1F75857900EF0A9D /* RoutePolyline.swift */,
 				40D8E7271FDACF050034590A /* RouteAnnotation.swift */,
+				40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */,
 			);
 			name = MapOverlay;
 			sourceTree = "<group>";
@@ -537,9 +540,9 @@
 			files = (
 				403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */,
 				40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */,
-				403129641E431DF7004CA4F8 /* Assets.xcassets in Resources */,
 				4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */,
 				40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */,
+				40BC517E1FDFDE2B00F180B2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */,
+				40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */,
 				405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */,
 				40F1AC661EBCE84C006CD74B /* StravaCoreDataHandler.swift in Sources */,
 				4072BE771FD579710004525E /* MapRoutesViewController.swift in Sources */,
