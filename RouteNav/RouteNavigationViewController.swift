@@ -45,6 +45,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationController?.isNavigationBarHidden = false
+        
         if(self.managedContext == nil) {
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -58,14 +60,15 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         self.DetailView.layer.cornerRadius = 7.0
         self.ShadeView.layer.cornerRadius = 7.0
         
-        self.navigationController?.presentTransparentNavigationBar()
-        self.navigationItem.title = "loading..."
-        
         if (self.route.routesegment?.count == 0) {
             self.getRouteDetail()
         } else {
             self.addRouteToMap()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidLoad() {

@@ -46,8 +46,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.hideTransparentNavigationBar()
-        
+
         if(self.managedContext == nil) {
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
@@ -55,11 +54,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             }
             
             self.managedContext = appDelegate.persistentContainer.viewContext
-            
             StravaCoreDataHandler.sharedInstance.clearCoreData()
-            
-            self.navigationController?.presentTransparentNavigationBar()
-            self.navigationItem.title = "loading routes..."
+            self.navigationController?.isNavigationBarHidden = false
+            self.navigationController?.hideTransparentNavigationBar()
         }
     }
     
@@ -209,10 +206,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                     self.navigationItem.title = "Error loading route."
                 }
                 else {
-                    DispatchQueue.main.async {
-                        self.navigationItem.title = "getting route details"
-                    }
-                    
                     self.getRouteStream(route: route)
                 }
             }
@@ -220,10 +213,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func getRouteStream(route : Route) {
-        
-        DispatchQueue.main.async {
-            self.navigationItem.title = "obtaining route steams"
-        }
         
         apiHelper.getRouteStream(route, managedContext: managedContext) { (successFlag) in
             if !successFlag
@@ -234,10 +223,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                 self.navigationItem.title = "Error loading route."
             }
             else {
-                DispatchQueue.main.async {
-                    self.navigationItem.title = "got route streams"
-                }
-                
                 self.addRoutesToMap(route: route)
             }
         }
@@ -354,16 +339,12 @@ extension MapRoutesViewController: MKMapViewDelegate {
         return view
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("SELECTED")
-    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("TAPPED")
+
         if control == view.rightCalloutAccessoryView {
             let routeAnnotation = view.annotation as! RouteAnnotation
             selectedRoute = routeAnnotation.route
-            self.performSegue(withIdentifier: "showDetail", sender: self)
+            self.performSegue(withIdentifier: "showDetailSegue", sender: self)
         }
     }
     
@@ -378,9 +359,10 @@ extension MapRoutesViewController: MKMapViewDelegate {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "showDetailSegue" {
             let rnc:RouteNavigationViewController = segue.destination as! RouteNavigationViewController
             rnc.route = selectedRoute
+            navigationController?.setNavigationBarHidden(navigationController?.isNavigationBarHidden == false, animated: true)
         }
     }
 }
