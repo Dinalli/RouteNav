@@ -12,14 +12,12 @@ import Foundation
 import CoreData
 
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    @IBOutlet weak var OverlayView: UIView!
-    @IBOutlet weak var DetailView: UIView!
+
     @IBOutlet weak var routeTimeLabel: UILabel!
     @IBOutlet weak var routeDistanceLabel: UILabel!
     @IBOutlet weak var ShadeView: UIView!
-    @IBOutlet weak var segmentsLabel: UILabel!
-    @IBOutlet weak var stepDistance: UILabel!
-    @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var instructionLabel: UILabel!
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
@@ -40,6 +38,11 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     let heading = 0.0
     var camera: MKMapCamera?
     
+    var timer = Timer()
+    var startTime = TimeInterval()
+    
+    var travelledDistance: Double!
+    
     //MARK : ViewController Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +59,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             self.managedContext = appDelegate.persistentContainer.viewContext
         }
         
-        self.OverlayView.layer.cornerRadius = 7.0
-        self.DetailView.layer.cornerRadius = 7.0
         self.ShadeView.layer.cornerRadius = 7.0
         
         if (self.route.routesegment?.count == 0) {
@@ -137,7 +138,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             else {
                 DispatchQueue.main.async {
                     self.navigationItem.title = "getting route details"
-                    self.segmentsLabel.text = "\(self.route.routesegment?.count ?? 0)"
+                    //self.segmentsLabel.text = "\(self.route.routesegment?.count ?? 0)"
                 }
                 
                 for routeDirection in self.route.routedirection! {
@@ -183,12 +184,36 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         if tracking {
             stopLocationUpdates()
+            timer.invalidate()
+            DispatchQueue.main.async {
+                self.goButton.setTitle("GO", for: UIControlState.normal)
+            }
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
         }
         else {
+            self.travelledDistance = 0
             startLocationUpdates()
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate
+            DispatchQueue.main.async {
+                self.goButton.setTitle("STOP", for: UIControlState.normal)
+            }
         }
         tracking = !tracking
+    }
+    
+    func updateTimer() {
+        let currentTime = NSDate.timeIntervalSinceReferenceDate
+        var elapsedTime: TimeInterval = currentTime - startTime
+        let minutes = UInt8(elapsedTime / 60.0)
+        elapsedTime -= (TimeInterval(minutes) * 60)
+        let seconds = UInt8(elapsedTime)
+        elapsedTime -= TimeInterval(seconds)
+        let fraction = UInt8(elapsedTime * 100)
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+        let strFraction = String(format: "%02d", fraction)
+        routeTimeLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
     }
     
     func startLocationUpdates() {
@@ -252,50 +277,19 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.camera?.centerCoordinate = locations.last!.coordinate
                 self.camera?.heading = (currentLocation?.bearingDegreesTo(location: locations.last!))!
                 mapView?.setCamera(self.camera!, animated: true)
-                //updateDirections(currentLocation: currentLocation!)
-                //updateSegments(currentLocation: currentLocation!)
+                updateDirections(currentLocation: currentLocation!)
+                
+                self.travelledDistance = self.travelledDistance + round( (locations.last?.distance(from: currentLocation!))!) as Double
+                
+                DispatchQueue.main.async {
+                    self.routeDistanceLabel.text = "\(self.travelledDistance! / 1000) km"
+                }
             }
-            
             currentLocation = locations.last
         }
     }
     
-    func updateSegments(currentLocation: CLLocation) {
-        //Segements
-        // Distance to next segment
-        
-        //Get nearest point
-    }
-    
     func updateDirections(currentLocation: CLLocation) {
-        
-        // Get nearest point
-        // get points to end
-        // loop through until heading change calc distance between each
-        // calc distance to end
-        
-        
-        //       var myRoute : MKRoute?
-        //        var directionsRequest = MKDirectionsRequest()
-        //        var placemarks = [MKMapItem]()
-        //        for item in list {
-        //            var placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(item["location"]["coordinate"]["x"].doubleValue), longitude: CLLocationDegrees(item["location"]["coordinate"]["y"].doubleValue)), addressDictionary: nil )
-        //            placemarks.append(MKMapItem(placemark: placemark))
-        //        }
-        //        directionsRequest.transportType = MKDirectionsTransportType.Automobile
-        //        for (k, item) in enumerate(placemarks) {
-        //            if k < (placemarks.count - 1) {
-        //                directionsRequest.setSource(item)
-        //                directionsRequest.setDestination(placemarks[k+1])
-        //                var directions = MKDirections(request: directionsRequest)
-        //                directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
-        //                    if error == nil {
-        //                        self.myRoute = response.routes[0] as? MKRoute
-        //                        self.mapView.addOverlay(self.myRoute?.polyline)
-        //                    }
-        //                }
-        //            }
-        //        }
         
         let request = MKDirectionsRequest()
         request.source = MKMapItem.forCurrentLocation()
@@ -311,9 +305,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             } else {
                 for route in (response?.routes)! {
                     for step in route.steps {
-                        print("\(step.instructions) - \(step.distance)")
-                        self.instructionsLabel.text = step.instructions
-                        self.stepDistance.text = "\(step.distance)"
+                        if( step.instructions != "Arrive at the destination" && step.instructions != "The destination is on your left" && step.instructions != "The destination is on your right") {
+                            print("\(step.instructions)")
+                            DispatchQueue.main.async {
+                                self.instructionLabel.text = step.instructions
+                            }
+                        }
                     }
                 }
             }
