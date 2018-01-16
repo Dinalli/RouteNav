@@ -125,11 +125,35 @@
                         <outlet property="RoutesMapView" destination="V9I-9X-YSh" id="IXg-wi-Zny"/>
                         <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" id="V6E-ug-e44"/>
                         <segue destination="Rkg-Ea-qvg" kind="show" identifier="showDetailSegue" id="mXm-ZM-EaO"/>
+                        <segue destination="B6v-54-laf" kind="popoverPresentation" identifier="onBoardSegue" popoverAnchorView="V9I-9X-YSh" id="JpL-cc-0LQ">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETW-zz-hOI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-324" y="-113"/>
+        </scene>
+        <!--On Boarding View Controller-->
+        <scene sceneID="ftx-Fm-h4O">
+            <objects>
+                <viewController id="B6v-54-laf" customClass="onBoardingViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="egb-aM-MyJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="DVW-c3-dpx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VZs-ba-eTT" customClass="OnboardingView" customModule="OnboardingKit">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="onboardingView" destination="VZs-ba-eTT" id="WFi-CH-aPc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qcz-gN-9S3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-313" y="640"/>
         </scene>
         <!--Title-->
         <scene sceneID="WKc-eC-z4j">

@@ -13,9 +13,11 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+  - OnboardingKit (0.0.5)
 
 DEPENDENCIES:
   - Firebase/Core
+  - OnboardingKit
 
 SPEC CHECKSUMS:
   Firebase: 21bf4a89d3f01bfbe11adc3a5d934a4a3d3a5fd6
@@ -23,7 +25,8 @@ SPEC CHECKSUMS:
   FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
   FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  OnboardingKit: 44b085c9e1e191a61fe1caea2bb581645fac1dc1
 
-PODFILE CHECKSUM: 2e7f9ca34f605a3d0c6a04363faffaa0256d9689
+PODFILE CHECKSUM: 42146ca0037538e35e9cf7bcbceea716a00d38f8
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.3.1

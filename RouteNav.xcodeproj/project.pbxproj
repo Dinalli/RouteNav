@@ -17,6 +17,8 @@
 		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
 		403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AF66D1F75857900EF0A9D /* RoutePolyline.swift */; };
 		405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F31991E81B1890013457C /* StravaAPIHelper.swift */; };
+		407111BA200CFDC100530974 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407111B9200CFDC100530974 /* DataModel.swift */; };
+		407111BE200D04E900530974 /* onBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407111BD200D04E900530974 /* onBoardingViewController.swift */; };
 		4072BE771FD579710004525E /* MapRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4072BE761FD579710004525E /* MapRoutesViewController.swift */; };
 		40866E8F1F111FFD00778CCC /* StravaAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */; };
 		40866E921F11326200778CCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40866E911F11326200778CCC /* AdSupport.framework */; };
@@ -119,6 +121,8 @@
 		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		403AF66D1F75857900EF0A9D /* RoutePolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePolyline.swift; sourceTree = "<group>"; };
 		405F31991E81B1890013457C /* StravaAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIHelper.swift; sourceTree = "<group>"; };
+		407111B9200CFDC100530974 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		407111BD200D04E900530974 /* onBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingViewController.swift; sourceTree = "<group>"; };
 		4072BE761FD579710004525E /* MapRoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRoutesViewController.swift; sourceTree = "<group>"; };
 		40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAuthViewController.swift; sourceTree = "<group>"; };
 		40866E911F11326200778CCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -183,6 +187,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		625FE31D7C9F291B5476777F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -228,6 +239,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				407111BF200D058B00530974 /* onBoarding */,
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				403AF6681F7583EA00EF0A9D /* MapOverlay */,
 				409559801F135C5900050BDD /* Common */,
@@ -298,6 +310,15 @@
 				40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */,
 			);
 			name = MapOverlay;
+			sourceTree = "<group>";
+		};
+		407111BF200D058B00530974 /* onBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				407111B9200CFDC100530974 /* DataModel.swift */,
+				407111BD200D04E900530974 /* onBoardingViewController.swift */,
+			);
+			name = onBoarding;
 			sourceTree = "<group>";
 		};
 		409559801F135C5900050BDD /* Common */ = {
@@ -416,6 +437,7 @@
 				403129751E431DF7004CA4F8 /* Frameworks */,
 				403129761E431DF7004CA4F8 /* Resources */,
 				48B6E816C5DFFABA98750374 /* [CP] Copy Pods Resources */,
+				705DEAAD7403BCC546D3B408 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -433,6 +455,7 @@
 			buildPhases = (
 				40F507B11F75515E00E6993C /* Resources */,
 				40F507D41F75515F00E6993C /* Embed App Extensions */,
+				625FE31D7C9F291B5476777F /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -586,13 +609,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RouteNavTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1CAAE62232DB8B9E7AC96040 /* [CP] Check Pods Manifest.lock */ = {
@@ -601,13 +627,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RouteNav-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2FFB08F6332706F34BE51D47 /* [CP] Embed Pods Frameworks */ = {
@@ -616,9 +645,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/OnboardingKit/OnboardingKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OnboardingKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -655,19 +689,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ABEBECB381CFF7007D479716 /* [CP] Check Pods Manifest.lock */ = {
+		705DEAAD7403BCC546D3B408 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABEBECB381CFF7007D479716 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RouteNavUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BCEB2ADD70F5C5D7902A26AF /* [CP] Copy Pods Resources */ = {
@@ -713,10 +765,12 @@
 				40F1AC661EBCE84C006CD74B /* StravaCoreDataHandler.swift in Sources */,
 				4072BE771FD579710004525E /* MapRoutesViewController.swift in Sources */,
 				40866E8F1F111FFD00778CCC /* StravaAuthViewController.swift in Sources */,
+				407111BA200CFDC100530974 /* DataModel.swift in Sources */,
 				40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */,
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
 				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
+				407111BE200D04E900530974 /* onBoardingViewController.swift in Sources */,
 				40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
 			);
