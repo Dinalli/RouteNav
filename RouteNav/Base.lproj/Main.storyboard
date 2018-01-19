@@ -142,18 +142,37 @@
                         <viewControllerLayoutGuide type="top" id="egb-aM-MyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="DVW-c3-dpx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VZs-ba-eTT" customClass="OnboardingView" customModule="OnboardingKit">
+                    <view key="view" contentMode="scaleToFill" id="VZs-ba-eTT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaQ-qp-QBP" customClass="OnboardingView" customModule="OnboardingKit">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz7-Wr-b9A">
+                                <rect key="frame" x="300" y="50" width="74" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="SKIP">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextTapped:" destination="B6v-54-laf" eventType="touchUpInside" id="8F2-xc-U6m"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <outlet property="onboardingView" destination="VZs-ba-eTT" id="WFi-CH-aPc"/>
+                        <outlet property="nextButton" destination="fz7-Wr-b9A" id="O7l-Mc-CNk"/>
+                        <outlet property="onboardingView" destination="YaQ-qp-QBP" id="lou-La-JMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcz-gN-9S3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="640"/>
+            <point key="canvasLocation" x="-314.39999999999998" y="639.90147783251234"/>
         </scene>
         <!--Title-->
         <scene sceneID="WKc-eC-z4j">

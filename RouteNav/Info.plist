@@ -52,7 +52,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We require your location to allow us to help navigate you</string>
+	<string>We need to use your location to show you where you are on a Map in relation to your routes, we also need it to track you as you navigate.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

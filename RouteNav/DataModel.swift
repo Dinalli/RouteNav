@@ -15,7 +15,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
   public var willShow: ((Int) -> Void)?
   
   public func numberOfPages() -> Int {
-    return 2
+    return 4
   }
   
   public func onboardingView(_ onboardingView: OnboardingView, configurationForPage page: Int) -> OnboardingConfiguration {
@@ -23,25 +23,47 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
       
     case 0:
       return OnboardingConfiguration(
-        image: UIImage(named: "pexels-photo-287398")!,
+        image: UIImage(named: "LogoIcon")!,
         itemImage: UIImage(named: "LogoIcon")!,
-        pageTitle: "PhotoFIT",
-        pageDescription: "A new kind of fittness tracking! \n\n100% free, because great health should be accessible to all!",
-        backgroundImage: nil,
-        topBackgroundImage: nil,
-        bottomBackgroundImage: nil
+        pageTitle: "Connect to Strava",
+        pageDescription: "You will need to connect to your Strava account \n to use this app. \n Connect using facebook, google+ or Strava account.",
+        backgroundImage: UIImage(named: "cycling-bicycle-riding-sport-38296"),
+        topBackgroundImage: UIImage(named: "BackgroundOrange"),
+        bottomBackgroundImage: UIImage(named: "WavesImage")
       )
-      
+        
     case 1:
+        return OnboardingConfiguration(
+            image: UIImage(named: "LogoIcon")!,
+            itemImage: UIImage(named: "LogoIcon")!,
+            pageTitle: "Location",
+            pageDescription: "We need to use your location to show you \n where you are on a Map in relation to your routes,\n  we also need it to track you as you navigate.",
+            backgroundImage: UIImage(named: "pexels-photo-287398"),
+            topBackgroundImage: UIImage(named: "BackgroundOrange"),
+            bottomBackgroundImage: UIImage(named: "WavesImage")
+        )
+      
+    case 2:
       return OnboardingConfiguration(
-        image: UIImage(named: "pexels-photo-287398")!,
+        image: UIImage(named: "LogoIcon")!,
         itemImage: UIImage(named: "LogoIcon")!,
-        pageTitle: "Body Metrics",
-        pageDescription: "Body metrics will never be the same! \n\nTrack bodyweight, body fat, and add a snap shot of your progress!",
-        backgroundImage: nil,
-        topBackgroundImage: nil,
-        bottomBackgroundImage: nil
+        pageTitle: "Download Routes",
+        pageDescription: "Download your saved routes, \n \n View route details on the Map",
+        backgroundImage: UIImage(named: "RouteMaps"),
+        topBackgroundImage: UIImage(named: "BackgroundOrange"),
+        bottomBackgroundImage: UIImage(named: "WavesImage")
       )
+        
+    case 3:
+        return OnboardingConfiguration(
+            image: UIImage(named: "LogoIcon")!,
+            itemImage: UIImage(named: "LogoIcon")!,
+            pageTitle: "Navigate",
+            pageDescription: "Select a route to Navigate \n\n Track your progress",
+            backgroundImage: UIImage(named: "Navigate"),
+            topBackgroundImage: UIImage(named: "BackgroundOrange"),
+            bottomBackgroundImage: UIImage(named: "WavesImage")
+        )
       
     default:
       fatalError("Out of range!")
