@@ -25,13 +25,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     var routes: Array<Route>!
     let locationManager = CLLocationManager.init()
     
+    var loadingTextLabel: UILabel!
     var loadingOverlayView = UIView()
-    var loadingOverlayImage = UIImageView()
-    
-    let loadingImagesArray = [UIImage(named: "frame_0")!,
-                                 UIImage(named: "frame_1")!,
-                                 UIImage(named: "frame_2")!,
-                                 UIImage(named: "frame_3")!]
+    var loadingIconImageView = UIImageView()
     
     let backgroundImagesArray = [UIImage(named: "cycling-bicycle-riding-sport-38296")!,UIImage(named: "pexels-photo-207779")!,UIImage(named: "pexels-photo-287398")!]
     
@@ -86,29 +82,39 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         else if(authorisationToken == nil && !authorising) {
             authorising = true
             self.performSegue(withIdentifier: "showAuthPopover", sender: self)
-            setUpLoadingOverlay()
         }
     }
     
     func setUpLoadingOverlay() {
 
         loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
-        loadingOverlayImage = UIImageView(frame: CGRect(x: 50, y: 50, width: 100, height: 100))
-        loadingOverlayImage.contentMode = .scaleAspectFit
-        loadingOverlayImage.animationImages = loadingImagesArray
         
         loadingOverlayView .backgroundColor = UIColor.black
         loadingOverlayView .alpha = 0.5
         
-        let loadingTextLabel: UILabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height/2, width: self.view.frame.size.width, height: 60))
+        loadingTextLabel = UILabel(frame: CGRect(x: 0, y: (self.view.frame.size.height/2)+30, width: self.view.frame.size.width, height: 60))
         loadingTextLabel.text = "Loading your routes, please wait..."
         loadingTextLabel.textAlignment = .center
         loadingTextLabel.textColor = UIColor.white
         
+        loadingIconImageView.image = UIImage(named: "bikeMapIcon")
+        loadingIconImageView.frame = CGRect(x: -50, y: self.view.bounds.height/2, width: 50, height: 50)
+        
         loadingOverlayView.addSubview(loadingTextLabel)
+        loadingOverlayView.addSubview(loadingIconImageView)
         
         self.view .addSubview(loadingOverlayView)
-        self.view.addSubview(loadingOverlayImage)
+        
+        UIView.animate(withDuration: 2.5, delay: 0,
+                       options: [.repeat, .curveEaseInOut],
+                       animations: {
+      
+                            self.loadingIconImageView.frame = CGRect(x: self.view.bounds.width+50, y: self.view.bounds.height/2, width: 50, height: 50)
+                            self.view.setNeedsLayout();
+                       
+                        },
+                       completion: nil
+        )
         
         self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingText]|",
                                                                  options: NSLayoutFormatOptions.init(rawValue: 0),
@@ -119,19 +125,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                                                                  options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                  metrics: nil,
                                                                  views: ["loadingText":loadingTextLabel]))
-        
-        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlayImage(100)]|",
-                                                                               options: NSLayoutFormatOptions.init(rawValue: 0),
-                                                                               metrics: nil,
-                                                                               views: ["loadingOverlayImage":loadingOverlayImage]))
-        
-        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlayImage(100)]|",
-                                                                               options: NSLayoutFormatOptions.init(rawValue: 0),
-                                                                               metrics: nil,
-                                                                               views: ["loadingOverlayImage":loadingOverlayImage]))
-        
-        
-        
+
         self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
                                                                            options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                            metrics: nil,
@@ -141,9 +135,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                                                                            options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                            metrics: nil,
                                                                            views: ["loadingOverlay":loadingOverlayView]))
-        
 
-        loadingOverlayImage.startAnimating()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -173,6 +165,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             apiHelper.exchangeCodeForToken(apiHelper.code!) { (successFlag) in
                 if successFlag
                 {
+                    DispatchQueue.main.async {
+                        self.setUpLoadingOverlay()
+                    }
                     self.getRoutesData()
                 }
                 else
@@ -224,6 +219,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                     self.navigationItem.title = "Error loading route."
                 }
                 else {
+                    self.loadingTextLabel.text = "Getting data for \(route.routename!)"
                     self.getRouteStream(route: route)
                 }
             }
@@ -242,6 +238,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             }
             else {
                 self.addRoutesToMap(route: route)
+                self.loadingTextLabel.text = "Adding \(route.routename!) to Map"
             }
         }
     }
@@ -368,8 +365,6 @@ extension MapRoutesViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print("REGION DID CHANGE ")
-        self.loadingOverlayView .removeFromSuperview()
-        self.loadingOverlayImage .removeFromSuperview()
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
@@ -379,6 +374,7 @@ extension MapRoutesViewController: MKMapViewDelegate {
             self.locationManager.requestWhenInUseAuthorization()
         }
         self.startLocationUpdates()
+        self.loadingOverlayView .removeFromSuperview()
     }
     
     
