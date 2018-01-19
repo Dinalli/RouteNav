@@ -432,7 +432,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         if (annotation is MKUserLocation) {
             //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
             //return nil so map draws default view for it (eg. blue dot)...
-            return nil
+            let anView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "userLocation")
+            anView.glyphImage = UIImage(named: "bikeMapIcon.png")
+            return anView
         }
         
         let reuseId = "test"

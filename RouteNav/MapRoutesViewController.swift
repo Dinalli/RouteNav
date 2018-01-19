@@ -24,9 +24,18 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     var managedContext: NSManagedObjectContext!
     var routes: Array<Route>!
     let locationManager = CLLocationManager.init()
-    var loadingOverlay = UIImageView()
+    
+    var loadingOverlayView = UIView()
+    var loadingOverlayImage = UIImageView()
+    
+    let loadingImagesArray = [UIImage(named: "frame_0")!,
+                                 UIImage(named: "frame_1")!,
+                                 UIImage(named: "frame_2")!,
+                                 UIImage(named: "frame_3")!]
     
     let backgroundImagesArray = [UIImage(named: "cycling-bicycle-riding-sport-38296")!,UIImage(named: "pexels-photo-207779")!,UIImage(named: "pexels-photo-287398")!]
+    
+    
     var svc: SFSafariViewController?
     var index = 0
     let animationDuration: TimeInterval = 0.5
@@ -36,6 +45,12 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         RoutesMapView?.showsUserLocation = true
         RoutesMapView?.delegate = self
+        
+        // Request Permission for users location
+        if !CLLocationManager.locationServicesEnabled() {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        self.startLocationUpdates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,60 +91,59 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setUpLoadingOverlay() {
-        loadingOverlay.translatesAutoresizingMaskIntoConstraints = false
-        loadingOverlay.contentMode = .scaleAspectFill
+
+        loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        loadingOverlayImage = UIImageView(frame: CGRect(x: 50, y: 50, width: 100, height: 100))
+        loadingOverlayImage.contentMode = .scaleAspectFit
+        loadingOverlayImage.animationImages = loadingImagesArray
+        
+        loadingOverlayView .backgroundColor = UIColor.black
+        loadingOverlayView .alpha = 0.5
         
         let loadingTextLabel: UILabel = UILabel(frame: CGRect(x: 0, y: self.view.frame.size.height/2, width: self.view.frame.size.width, height: 60))
         loadingTextLabel.text = "Loading your routes, please wait..."
         loadingTextLabel.textAlignment = .center
         loadingTextLabel.textColor = UIColor.white
         
-        loadingOverlay.addSubview(loadingTextLabel)
-        self.view .addSubview(loadingOverlay)
+        loadingOverlayView.addSubview(loadingTextLabel)
         
-        self.loadingOverlay .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingText]|",
+        self.view .addSubview(loadingOverlayView)
+        self.view.addSubview(loadingOverlayImage)
+        
+        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingText]|",
                                                                  options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                  metrics: nil,
                                                                  views: ["loadingText":loadingTextLabel]))
         
-        self.loadingOverlay .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingText]|",
+        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingText]|",
                                                                  options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                  metrics: nil,
                                                                  views: ["loadingText":loadingTextLabel]))
+        
+        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlayImage(100)]|",
+                                                                               options: NSLayoutFormatOptions.init(rawValue: 0),
+                                                                               metrics: nil,
+                                                                               views: ["loadingOverlayImage":loadingOverlayImage]))
+        
+        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlayImage(100)]|",
+                                                                               options: NSLayoutFormatOptions.init(rawValue: 0),
+                                                                               metrics: nil,
+                                                                               views: ["loadingOverlayImage":loadingOverlayImage]))
+        
+        
         
         self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
                                                                            options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                            metrics: nil,
-                                                                           views: ["loadingOverlay":loadingOverlay]))
+                                                                           views: ["loadingOverlay":loadingOverlayView]))
         
         self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlay]|",
                                                                            options: NSLayoutFormatOptions.init(rawValue: 0),
                                                                            metrics: nil,
-                                                                           views: ["loadingOverlay":loadingOverlay]))
+                                                                           views: ["loadingOverlay":loadingOverlayView]))
         
 
-        startAnimatingBackgroundImages()
-    }
-    
-    func startAnimatingBackgroundImages()
-    {
-        CATransaction.begin()
-        
-        CATransaction.setAnimationDuration(animationDuration)
-        CATransaction.setCompletionBlock {
-            DispatchQueue.main.asyncAfter(deadline: .now() + self.switchingInterval) {
-                self.startAnimatingBackgroundImages()
-            }
-        }
-        
-        let transition = CATransition()
-        transition.type = kCATransitionFade
-        loadingOverlay.layer.add(transition, forKey: kCATransition)
-        loadingOverlay.image = backgroundImagesArray[index]
-        
-        CATransaction.commit()
-        
-        index = index < backgroundImagesArray.count - 1 ? index + 1 : 0
+        loadingOverlayImage.startAnimating()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -354,7 +368,8 @@ extension MapRoutesViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print("REGION DID CHANGE ")
-        self.loadingOverlay .removeFromSuperview()
+        self.loadingOverlayView .removeFromSuperview()
+        self.loadingOverlayImage .removeFromSuperview()
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
