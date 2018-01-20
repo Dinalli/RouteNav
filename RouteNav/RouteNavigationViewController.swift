@@ -61,11 +61,13 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         self.ShadeView.layer.cornerRadius = 7.0
         
-        if (self.route.routesegment?.count == 0) {
-            self.getRouteDetail()
-        } else {
-            self.addRouteToMap()
-        }
+//        if (self.route.routesegment?.count == 0) {
+//            self.getRouteDetail()
+//        } else {
+//            self.addRouteToMap()
+//        }
+        
+        self.getRouteStream()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,7 +89,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.showsScale = true
         mapView?.showsBuildings = true
         mapView?.showsPointsOfInterest = true
-        //mapView?.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
+        mapView?.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
         
         let startObject = route.routeroutecoord?.firstObject as! Coordinates
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
@@ -150,10 +152,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.navigationItem.title = "Error loading route."
             }
             else {
-                DispatchQueue.main.async {
-                    self.navigationItem.title = "got route streams"
-                }
-
                 self.getSegmentStreams()
             }
         }
@@ -169,11 +167,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.navigationItem.title = "Error loading route."
             }
             else {
-                DispatchQueue.main.async {
-                    self.navigationItem.title = "getting route details"
-                    //self.segmentsLabel.text = "\(self.route.routesegment?.count ?? 0)"
-                }
-                
                 for routeDirection in self.route.routedirection! {
                     let routeDirectionObject = routeDirection as! Direction
                     print("direction name \(routeDirectionObject.directionname!)")
@@ -426,12 +419,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         if overlay is RoutePolyline {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 2.0
+            polylineRender.lineWidth = 10.0
             polylineRender.strokeColor = UIColor.blue
             return polylineRender
         } else {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 4.0
+            polylineRender.lineWidth = 8.0
             polylineRender.strokeColor = UIColor.orange
             return polylineRender
         }

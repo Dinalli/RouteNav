@@ -59,7 +59,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
             image: UIImage(named: "LogoIcon")!,
             itemImage: UIImage(named: "blackBikeIcon")!,
             pageTitle: "Navigate",
-            pageDescription: "Select a route to Navigate \n\n Track your progress",
+            pageDescription: "Select a route to Navigate \n\n Track your progress, See segments as you ride",
             backgroundImage: UIImage(named: "Navigate"),
             topBackgroundImage: UIImage(named: "BackgroundOrange"),
             bottomBackgroundImage: UIImage(named: "WavesImage")
