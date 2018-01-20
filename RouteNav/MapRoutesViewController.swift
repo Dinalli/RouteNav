@@ -25,7 +25,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     var routes: Array<Route>!
     let locationManager = CLLocationManager.init()
     
-    var loadingTextLabel: UILabel!
+    var loadingTextLabel = UILabel()
     var loadingOverlayView = UIView()
     var loadingIconImageView = UIImageView()
     
@@ -86,10 +86,14 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         loadingOverlayView .backgroundColor = UIColor.black
         loadingOverlayView .alpha = 0.5
         
-        loadingTextLabel = UILabel(frame: CGRect(x: 0, y: (self.view.frame.size.height/2)+30, width: self.view.frame.size.width, height: 60))
+        loadingTextLabel.frame = CGRect(x: 0, y: (self.view.frame.size.height/2)+40, width: self.view.frame.size.width, height: 80)
         loadingTextLabel.text = "Loading your routes, please wait..."
         loadingTextLabel.textAlignment = .center
         loadingTextLabel.textColor = UIColor.white
+        loadingTextLabel.layer.borderWidth = 1.0
+        loadingTextLabel.layer.borderColor = UIColor.black.cgColor
+        loadingTextLabel.numberOfLines = 0
+        loadingTextLabel.sizeToFit()
         
         loadingIconImageView.image = UIImage(named: "bikeMapIcon")
         loadingIconImageView.frame = CGRect(x: 0, y: self.view.bounds.height/2, width: 50, height: 50)
@@ -110,15 +114,15 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                        completion: nil
         )
         
-        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingText]|",
-                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-                                                                 metrics: nil,
-                                                                 views: ["loadingText":loadingTextLabel]))
-        
-        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingText]|",
-                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-                                                                 metrics: nil,
-                                                                 views: ["loadingText":loadingTextLabel]))
+//        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[loadingText]-|",
+//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
+//                                                                 metrics: nil,
+//                                                                 views: ["loadingText":loadingTextLabel]))
+//
+//        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[loadingText]-|",
+//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
+//                                                                 metrics: nil,
+//                                                                 views: ["loadingText":loadingTextLabel]))
 
         self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
                                                                            options: NSLayoutFormatOptions.init(rawValue: 0),
@@ -146,7 +150,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("SRHandleAuthReturnURL"), object: nil)
     }
 
-    func handleRedirectURL(notification: NSNotification) {
+    @objc func handleRedirectURL(notification: NSNotification) {
         
         let url = notification.object as! NSURL
         
@@ -339,6 +343,12 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             self.RoutesMapView!.showAnnotations(self.RoutesMapView!.annotations, animated: true)
         }
     }
+    
+    func removeLoadingOverlays() {
+        self.loadingIconImageView .removeFromSuperview()
+        self.loadingTextLabel .removeFromSuperview()
+        self.loadingOverlayView .removeFromSuperview()
+    }
 }
 
 extension MapRoutesViewController: MKMapViewDelegate {
@@ -390,9 +400,12 @@ extension MapRoutesViewController: MKMapViewDelegate {
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         print("DID FINISH RENDERING")
         self.startLocationUpdates()
-        self.loadingOverlayView .removeFromSuperview()
     }
     
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        print("DID LOADING MAP")
+        self.removeLoadingOverlays()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailSegue" {

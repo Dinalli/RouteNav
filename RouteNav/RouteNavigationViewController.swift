@@ -228,7 +228,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         tracking = !tracking
     }
     
-    func updateTimer() {
+    @objc func updateTimer() {
         let currentTime = NSDate.timeIntervalSinceReferenceDate
         var elapsedTime: TimeInterval = currentTime - startTime
         let minutes = UInt8(elapsedTime / 60.0)
@@ -284,7 +284,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.travelledDistance = self.travelledDistance + round( (locations.last?.distance(from: currentLocation!))!) as Double
                 
                 DispatchQueue.main.async {
-                    self.routeDistanceLabel.text = "\(self.travelledDistance! / 1000) km"
+                    var formattedDistance: Double = self.travelledDistance / 1000
+                    self.routeDistanceLabel.text = "\(formattedDistance.truncate(places: 2)) km"
                 }
             }
             currentLocation = locations.last
@@ -520,5 +521,14 @@ extension CLLocation {
         return self.getDegreesFrom(radians: self.bearingRadianTo(location: location))
     }
 }
+
+extension Double
+{
+    func truncate(places : Int)-> Double
+    {
+        return Double(floor(pow(10.0, Double(places)) * self)/pow(10.0, Double(places)))
+    }
+}
+
 
 

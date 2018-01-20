@@ -96,7 +96,7 @@ class StravaAuthViewController: UIViewController {
         self.present(self.svc!, animated: true, completion: nil)
     }
     
-    func authCompleted()
+    @objc func authCompleted()
     {
         self.dismiss(animated: true, completion: nil)
         self .removeNotifications()

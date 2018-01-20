@@ -65,8 +65,8 @@
 		09ABFF190E74EF0CBF7F390DA91E22EF /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		0C8F04E1D5D3EB39A9CFD7381E407EBC /* Pods-RouteNavUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavUITests-frameworks.sh"; sourceTree = "<group>"; };
 		108770C401003AC13C45E374DEAFD906 /* PageItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageItemView.swift; path = Source/PageItemView.swift; sourceTree = "<group>"; };
-		18D6F47E1D6CFFDD8D0EC7A3CFCC02E9 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B12A66845D21BD075F209CD8227C75E /* Pods_RouteNavUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RouteNavUITests.framework; path = "Pods-RouteNavUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18D6F47E1D6CFFDD8D0EC7A3CFCC02E9 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B12A66845D21BD075F209CD8227C75E /* Pods_RouteNavUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNavUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAF6ED3B0ECA4BD3CA5F0EF39C9E1FF /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		1CA0A8D49DAA99D954FF4FDBD32AB730 /* TZSpacerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TZSpacerView.swift; path = Source/TZStackView/TZSpacerView.swift; sourceTree = "<group>"; };
 		1D0872778DD10DB6A1162AF328EEB3A2 /* OnboardingKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OnboardingKit-dummy.m"; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		230C5A633940386ED52153FBB2B818A5 /* PageControlView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageControlView.swift; path = Source/PageControlView.swift; sourceTree = "<group>"; };
 		23A88BAE4BDC42511E1BED7DF373B1F4 /* Pods-RouteNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNav.release.xcconfig"; sourceTree = "<group>"; };
 		267E6E56F657BFF0967E60B78DFEE84D /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
-		336CDEBA9C51983C790796F35A7110E6 /* Pods-RouteNav.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RouteNav.modulemap"; sourceTree = "<group>"; };
+		336CDEBA9C51983C790796F35A7110E6 /* Pods-RouteNav.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RouteNav.modulemap"; sourceTree = "<group>"; };
 		385C3D954AF7B96F19986420BA97E6AA /* CompletionObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompletionObject.swift; path = Source/CompletionObject.swift; sourceTree = "<group>"; };
 		399C4EE542F87AF8E3F737E222F04577 /* Pods-RouteNav-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNav-frameworks.sh"; sourceTree = "<group>"; };
 		3A664A00AEA2DA27A0A1FB451F687DF2 /* Pods-RouteNavTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RouteNavTests-umbrella.h"; sourceTree = "<group>"; };
@@ -86,15 +86,15 @@
 		50D3F3C73E4227B668FDD95CB7320182 /* Pods-RouteNavUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavUITests-resources.sh"; sourceTree = "<group>"; };
 		54121AF025FC78952DBD6C1FFB9A8856 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		54A0C1A76F5C31F2EB7F976DB0CF9108 /* OnboardingKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OnboardingKit.xcconfig; sourceTree = "<group>"; };
-		575EB304A4F0FF5B28D756F4EBDD4718 /* Pods-RouteNavTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RouteNavTests.modulemap"; sourceTree = "<group>"; };
+		575EB304A4F0FF5B28D756F4EBDD4718 /* Pods-RouteNavTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RouteNavTests.modulemap"; sourceTree = "<group>"; };
 		5A5CE7D7A93C352970556E5B59A189D9 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = Source/OnboardingView.swift; sourceTree = "<group>"; };
 		63192035F30D95340BCDE0C2990A73E0 /* Pods-RouteNav-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RouteNav-dummy.m"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		6C58D2E0DFD916FA2D802D858C528761 /* Pods-RouteNavUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNavUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		72B4DC0BBAC3D032877BE92E62EDA9A7 /* Pods-RouteNavTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RouteNavTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		74CCE25E6F6D0243927011DB96465746 /* Anchor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Anchor.swift; path = Source/Anchor.swift; sourceTree = "<group>"; };
-		78CA3688121986D8990B24F314002E42 /* OnboardingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OnboardingKit.framework; path = OnboardingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		790B0A85281D9BBCA8FC670BB6E73D6B /* Pods-RouteNavUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RouteNavUITests.modulemap"; sourceTree = "<group>"; };
+		78CA3688121986D8990B24F314002E42 /* OnboardingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnboardingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		790B0A85281D9BBCA8FC670BB6E73D6B /* Pods-RouteNavUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RouteNavUITests.modulemap"; sourceTree = "<group>"; };
 		79481DCE73732D129F62CA20C1CA8798 /* Pods-RouteNav-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RouteNav-umbrella.h"; sourceTree = "<group>"; };
 		7A410024E55DBF35B76E80D08FD9E650 /* OnboardingViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingViewDataSource.swift; path = Source/OnboardingViewDataSource.swift; sourceTree = "<group>"; };
 		7F37BC965A9FE1EE6614908D51E2F47D /* PageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageView.swift; path = Source/PageView.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		86A32259819BA0C1C3D6012A6364DF1D /* Pods-RouteNavTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavTests-resources.sh"; sourceTree = "<group>"; };
 		9017CDAE1679C044DCE6B4E308679C7B /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
 		921A4E01F22A93EF36C4893536041592 /* Pods-RouteNavTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavTests.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		99885D7024D7120E571F96EE6C9E7C5C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D48F799F54D4D447416638FE762619B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F265541C5443054D37413B76D293E59 /* Pods-RouteNavTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNavTests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -115,19 +115,19 @@
 		BDFAA957C7AEED84C46C9B7BC32C9E48 /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TZStackViewDistribution.swift; path = Source/TZStackView/TZStackViewDistribution.swift; sourceTree = "<group>"; };
 		C03C0D68AFC4EE2E0C3DCA1504A2EA15 /* OnboardingKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OnboardingKit-umbrella.h"; sourceTree = "<group>"; };
 		C0BD53B166D4BD1C591D233EEC034285 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2A30756FCEDB73CD96A4EDC4C4193A9 /* OnboardingKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = OnboardingKit.modulemap; sourceTree = "<group>"; };
+		C2A30756FCEDB73CD96A4EDC4C4193A9 /* OnboardingKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OnboardingKit.modulemap; sourceTree = "<group>"; };
 		CB155D8C499E9EF6A5A4D2EE73BEDF8B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
 		CBF037F11B1FD875312B1AAAB109E06C /* Pods-RouteNav-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RouteNav-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CF67D4E0E13A1F09B4B7C22050C69001 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		CF67D4E0E13A1F09B4B7C22050C69001 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		CFD7FCD71B3A85AA4DC460FD27C46168 /* OnboardingViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingViewDelegate.swift; path = Source/OnboardingViewDelegate.swift; sourceTree = "<group>"; };
 		D25EF7FB4C4A161E713D0A582A5DF5A1 /* Pods-RouteNavUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D4CC7ADFF269B7DBB0E5E0D18CA0C686 /* Pods-RouteNavTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavTests.release.xcconfig"; sourceTree = "<group>"; };
-		D675DCF6A74725265B4109EBBBB709F7 /* Pods_RouteNavTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RouteNavTests.framework; path = "Pods-RouteNavTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D675DCF6A74725265B4109EBBBB709F7 /* Pods_RouteNavTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNavTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0623EF41FEF147F23155311B7A60BD1 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		E39D87B814350B84A80CA620283CD581 /* OnboardingConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingConfiguration.swift; path = Source/OnboardingConfiguration.swift; sourceTree = "<group>"; };
 		EA6D16ED52802996FF0B2EAFC98C12CA /* Pods-RouteNavUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RouteNavUITests-dummy.m"; sourceTree = "<group>"; };
 		F9B20BB59BE9B990F32AB56B3D760239 /* CGRect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGRect.swift; path = Source/CGRect.swift; sourceTree = "<group>"; };
-		FA1D6492B49110F159038650E9752338 /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RouteNav.framework; path = "Pods-RouteNav.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA1D6492B49110F159038650E9752338 /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC2A9F62C1D564957EB65ED648AE5715 /* Pods-RouteNav-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNav-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,7 +198,6 @@
 			children = (
 				481FF90DC85815063F83EC40226C6501 /* Frameworks */,
 			);
-			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -209,7 +208,6 @@
 				F66EB931C5759A9F1B77FA2CE2C629E0 /* NSData+zlib */,
 				7E0068602B6767085E0615FEFF589C65 /* Support Files */,
 			);
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
@@ -319,7 +317,6 @@
 				BDFAA957C7AEED84C46C9B7BC32C9E48 /* TZStackViewDistribution.swift */,
 				D8545086CF2A377999EB9046A0ECCCE1 /* Support Files */,
 			);
-			name = OnboardingKit;
 			path = OnboardingKit;
 			sourceTree = "<group>";
 		};
@@ -328,7 +325,6 @@
 			children = (
 				3A4B7FBE03F92E5E780A760D7E38CCE0 /* Frameworks */,
 			);
-			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -337,7 +333,6 @@
 			children = (
 				4A42390589B8551D168ABBADD4C1C050 /* Core */,
 			);
-			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -421,7 +416,6 @@
 			children = (
 				8D7316D540F5FD5F4F55E682B0A9D2F3 /* Frameworks */,
 			);
-			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -580,7 +574,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
+				TargetAttributes = {
+					F8A8CBFF1852C8799E0C347F22EB29EE = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -728,6 +727,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -790,7 +790,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -854,7 +855,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

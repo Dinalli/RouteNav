@@ -13,8 +13,6 @@
 		4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4031295D1E431DF7004CA4F8 /* Main.storyboard */; };
 		403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */; };
 		403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 403129651E431DF7004CA4F8 /* LaunchScreen.storyboard */; };
-		403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129711E431DF7004CA4F8 /* RouteNavTests.swift */; };
-		4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */; };
 		403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AF66D1F75857900EF0A9D /* RoutePolyline.swift */; };
 		405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F31991E81B1890013457C /* StravaAPIHelper.swift */; };
 		407111BA200CFDC100530974 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407111B9200CFDC100530974 /* DataModel.swift */; };
@@ -40,25 +38,9 @@
 		40F507D01F75515F00E6993C /* Strvroutewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 40F507B31F75515E00E6993C /* Strvroutewatchapp.app */; };
 		40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */; };
 		40FF5E442013772A00816EC0 /* CustomActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF5E432013772A00816EC0 /* CustomActivity.swift */; };
-		D21B996CA3D30279F2105FF9 /* Pods_RouteNavUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A800AAA9C0CC634E0F9D58D5 /* Pods_RouteNavUITests.framework */; };
-		FCDE9729137F5DF5F7A5C5CF /* Pods_RouteNavTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEE47B86ECFBD8FF7B2026D /* Pods_RouteNavTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4031296E1E431DF7004CA4F8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 403129551E431DF7004CA4F8;
-			remoteInfo = RouteNav;
-		};
-		403129791E431DF7004CA4F8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 403129551E431DF7004CA4F8;
-			remoteInfo = RouteNav;
-		};
 		40F507C11F75515F00E6993C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
@@ -114,10 +96,8 @@
 		403129611E431DF7004CA4F8 /* RouteNav.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RouteNav.xcdatamodel; sourceTree = "<group>"; };
 		403129661E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		403129681E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129711E431DF7004CA4F8 /* RouteNavTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavTests.swift; sourceTree = "<group>"; };
 		403129731E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4031297C1E431DF7004CA4F8 /* RouteNavUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavUITests.swift; sourceTree = "<group>"; };
 		4031297E1E431DF7004CA4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		403AF66D1F75857900EF0A9D /* RoutePolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePolyline.swift; sourceTree = "<group>"; };
@@ -163,22 +143,6 @@
 				40866E921F11326200778CCC /* AdSupport.framework in Frameworks */,
 				400B6D431F32466D0094E76C /* MapKit.framework in Frameworks */,
 				241154357B10F80B754F7A76 /* Pods_RouteNav.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4031296A1E431DF7004CA4F8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FCDE9729137F5DF5F7A5C5CF /* Pods_RouteNavTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		403129751E431DF7004CA4F8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D21B996CA3D30279F2105FF9 /* Pods_RouteNavUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,8 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				403129561E431DF7004CA4F8 /* STRVROUTE.app */,
-				4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */,
-				403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */,
 				40F507B31F75515E00E6993C /* Strvroutewatchapp.app */,
 				40F507BF1F75515F00E6993C /* Strvroutewatchapp Extension.appex */,
 			);
@@ -418,48 +380,6 @@
 			productReference = 403129561E431DF7004CA4F8 /* STRVROUTE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4031296C1E431DF7004CA4F8 /* RouteNavTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavTests" */;
-			buildPhases = (
-				1400876B65BA7DAC5CAF7312 /* [CP] Check Pods Manifest.lock */,
-				403129691E431DF7004CA4F8 /* Sources */,
-				4031296A1E431DF7004CA4F8 /* Frameworks */,
-				4031296B1E431DF7004CA4F8 /* Resources */,
-				DA4398B615C22232B695BD6A /* [CP] Embed Pods Frameworks */,
-				BCEB2ADD70F5C5D7902A26AF /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4031296F1E431DF7004CA4F8 /* PBXTargetDependency */,
-			);
-			name = RouteNavTests;
-			productName = RouteNavTests;
-			productReference = 4031296D1E431DF7004CA4F8 /* RouteNavTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		403129771E431DF7004CA4F8 /* RouteNavUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavUITests" */;
-			buildPhases = (
-				ABEBECB381CFF7007D479716 /* [CP] Check Pods Manifest.lock */,
-				403129741E431DF7004CA4F8 /* Sources */,
-				403129751E431DF7004CA4F8 /* Frameworks */,
-				403129761E431DF7004CA4F8 /* Resources */,
-				48B6E816C5DFFABA98750374 /* [CP] Copy Pods Resources */,
-				705DEAAD7403BCC546D3B408 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4031297A1E431DF7004CA4F8 /* PBXTargetDependency */,
-			);
-			name = RouteNavUITests;
-			productName = RouteNavUITests;
-			productReference = 403129781E431DF7004CA4F8 /* RouteNavUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		40F507B21F75515E00E6993C /* Strvroutewatchapp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40F507D51F75515F00E6993C /* Build configuration list for PBXNativeTarget "Strvroutewatchapp" */;
@@ -508,7 +428,7 @@
 					403129551E431DF7004CA4F8 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 4JYLXVYYFP;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -518,20 +438,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					4031296C1E431DF7004CA4F8 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4JYLXVYYFP;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 403129551E431DF7004CA4F8;
-					};
-					403129771E431DF7004CA4F8 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4JYLXVYYFP;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 403129551E431DF7004CA4F8;
 					};
 					40F507B21F75515E00E6993C = {
 						CreatedOnToolsVersion = 9.0;
@@ -559,8 +465,6 @@
 			projectRoot = "";
 			targets = (
 				403129551E431DF7004CA4F8 /* RouteNav */,
-				4031296C1E431DF7004CA4F8 /* RouteNavTests */,
-				403129771E431DF7004CA4F8 /* RouteNavUITests */,
 				40F507B21F75515E00E6993C /* Strvroutewatchapp */,
 				40F507BE1F75515F00E6993C /* Strvroutewatchapp Extension */,
 			);
@@ -577,20 +481,6 @@
 				4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */,
 				40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */,
 				40BC517E1FDFDE2B00F180B2 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4031296B1E431DF7004CA4F8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		403129761E431DF7004CA4F8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,24 +504,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1400876B65BA7DAC5CAF7312 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RouteNavTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1CAAE62232DB8B9E7AC96040 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -685,84 +557,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		48B6E816C5DFFABA98750374 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		705DEAAD7403BCC546D3B408 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ABEBECB381CFF7007D479716 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RouteNavUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BCEB2ADD70F5C5D7902A26AF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNavTests/Pods-RouteNavTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DA4398B615C22232B695BD6A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNavTests/Pods-RouteNavTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -788,22 +582,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		403129691E431DF7004CA4F8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				403129721E431DF7004CA4F8 /* RouteNavTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		403129741E431DF7004CA4F8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4031297D1E431DF7004CA4F8 /* RouteNavUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		40F507BB1F75515F00E6993C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -817,16 +595,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4031296F1E431DF7004CA4F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 403129551E431DF7004CA4F8 /* RouteNav */;
-			targetProxy = 4031296E1E431DF7004CA4F8 /* PBXContainerItemProxy */;
-		};
-		4031297A1E431DF7004CA4F8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 403129551E431DF7004CA4F8 /* RouteNav */;
-			targetProxy = 403129791E431DF7004CA4F8 /* PBXContainerItemProxy */;
-		};
 		40F507C21F75515F00E6993C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 40F507BE1F75515F00E6993C /* Strvroutewatchapp Extension */;
@@ -983,7 +751,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE;
 				PRODUCT_NAME = STRVROUTE;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -998,69 +767,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE;
 				PRODUCT_NAME = STRVROUTE;
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		403129851E431DF7004CA4F8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A55D10F91BBF3379F99D6D4 /* Pods-RouteNavTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				INFOPLIST_FILE = RouteNavTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNav.app/RouteNav";
-			};
-			name = Debug;
-		};
-		403129861E431DF7004CA4F8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0932CDF291FA89229D4AED34 /* Pods-RouteNavTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				INFOPLIST_FILE = RouteNavTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNav.app/RouteNav";
-			};
-			name = Release;
-		};
-		403129881E431DF7004CA4F8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FFF14E89AFA13351A594524 /* Pods-RouteNavUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				INFOPLIST_FILE = RouteNavUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = RouteNav;
-			};
-			name = Debug;
-		};
-		403129891E431DF7004CA4F8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CA5A0A26F8E9B16E90201EB /* Pods-RouteNavUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				INFOPLIST_FILE = RouteNavUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.RouteNavUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = RouteNav;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1171,24 +879,6 @@
 			buildConfigurations = (
 				403129821E431DF7004CA4F8 /* Debug */,
 				403129831E431DF7004CA4F8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		403129841E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				403129851E431DF7004CA4F8 /* Debug */,
-				403129861E431DF7004CA4F8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		403129871E431DF7004CA4F8 /* Build configuration list for PBXNativeTarget "RouteNavUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				403129881E431DF7004CA4F8 /* Debug */,
-				403129891E431DF7004CA4F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
