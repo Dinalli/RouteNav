@@ -454,6 +454,35 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         return anView
     }
+    
+    @IBAction func showAction(_ sender: Any) {
+        let sharingItems = [AnyObject]() // nothing to share...
+        
+        let mapChangeCustomActivity = CustomActivity(title: "Map Type", imageName: "globe") {
+            let alertView = UIAlertController(title: "Change Map Type", message: "", preferredStyle: .alert)
+            let standAction = UIAlertAction(title: "Standard", style: .default, handler: { (alert) in
+                self.mapView?.mapType = .standard
+            })
+            let hybridAction = UIAlertAction(title: "Hybrid", style: .default, handler: { (alert) in
+                self.mapView?.mapType = .hybrid
+            })
+            let satAction = UIAlertAction(title: "Satellite", style: .default, handler: { (alert) in
+                self.mapView?.mapType = .satellite
+            })
+            alertView.addAction(standAction)
+            alertView.addAction(hybridAction)
+            alertView.addAction(satAction)
+            self.present(alertView, animated: true, completion: nil)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems:sharingItems, applicationActivities:[mapChangeCustomActivity])
+        
+        activityViewController.excludedActivityTypes = [UIActivityType.mail, UIActivityType.airDrop, UIActivityType.message, UIActivityType.assignToContact, UIActivityType.postToFacebook, UIActivityType.print, UIActivityType.copyToPasteboard, UIActivityType.saveToCameraRoll]
+        
+        activityViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
+        
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 extension CLLocation {

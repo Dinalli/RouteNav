@@ -256,7 +256,13 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="tE7-cx-nhw"/>
+                    <navigationItem key="navigationItem" title="Title" id="tE7-cx-nhw">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="TAb-9k-DMs">
+                            <connections>
+                                <action selector="showAction:" destination="Rkg-Ea-qvg" id="MQL-2s-Hbb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ShadeView" destination="yLe-g3-clB" id="jnb-CG-jQe"/>

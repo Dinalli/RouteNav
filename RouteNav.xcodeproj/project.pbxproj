@@ -39,6 +39,7 @@
 		40F507CB1F75515F00E6993C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F507CA1F75515F00E6993C /* Assets.xcassets */; };
 		40F507D01F75515F00E6993C /* Strvroutewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 40F507B31F75515E00E6993C /* Strvroutewatchapp.app */; };
 		40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */; };
+		40FF5E442013772A00816EC0 /* CustomActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF5E432013772A00816EC0 /* CustomActivity.swift */; };
 		D21B996CA3D30279F2105FF9 /* Pods_RouteNavUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A800AAA9C0CC634E0F9D58D5 /* Pods_RouteNavUITests.framework */; };
 		FCDE9729137F5DF5F7A5C5CF /* Pods_RouteNavTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEE47B86ECFBD8FF7B2026D /* Pods_RouteNavTests.framework */; };
 /* End PBXBuildFile section */
@@ -146,6 +147,7 @@
 		40F507CC1F75515F00E6993C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40F507CD1F75515F00E6993C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		40FF5E432013772A00816EC0 /* CustomActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivity.swift; sourceTree = "<group>"; };
 		463FD9BD630C5A6AB65E7AFA /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FFF14E89AFA13351A594524 /* Pods-RouteNavUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A55D10F91BBF3379F99D6D4 /* Pods-RouteNavTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavTests/Pods-RouteNavTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				40FF5E422013770100816EC0 /* New Group */,
 				407111BF200D058B00530974 /* onBoarding */,
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				403AF6681F7583EA00EF0A9D /* MapOverlay */,
@@ -367,6 +370,14 @@
 				40F507CD1F75515F00E6993C /* PushNotificationPayload.apns */,
 			);
 			path = "Strvroutewatchapp Extension";
+			sourceTree = "<group>";
+		};
+		40FF5E422013770100816EC0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				40FF5E432013772A00816EC0 /* CustomActivity.swift */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		C0D918AD73888F1379816BE1 /* Pods */ = {
@@ -759,6 +770,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40FF5E442013772A00816EC0 /* CustomActivity.swift in Sources */,
 				40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */,
 				40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */,
 				405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */,
