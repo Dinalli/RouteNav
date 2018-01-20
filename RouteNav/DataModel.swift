@@ -24,7 +24,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
     case 0:
       return OnboardingConfiguration(
         image: UIImage(named: "LogoIcon")!,
-        itemImage: UIImage(named: "LogoIcon")!,
+        itemImage: UIImage(named: "blackBikeIcon")!,
         pageTitle: "Connect to Strava",
         pageDescription: "You will need to connect to your Strava account \n to use this app. \n Connect using facebook, google+ or Strava account.",
         backgroundImage: UIImage(named: "cycling-bicycle-riding-sport-38296"),
@@ -35,7 +35,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
     case 1:
         return OnboardingConfiguration(
             image: UIImage(named: "LogoIcon")!,
-            itemImage: UIImage(named: "LogoIcon")!,
+            itemImage: UIImage(named: "blackBikeIcon")!,
             pageTitle: "Location",
             pageDescription: "We need to use your location to show you \n where you are on a Map in relation to your routes,\n  we also need it to track you as you navigate.",
             backgroundImage: UIImage(named: "pexels-photo-287398"),
@@ -46,7 +46,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
     case 2:
       return OnboardingConfiguration(
         image: UIImage(named: "LogoIcon")!,
-        itemImage: UIImage(named: "LogoIcon")!,
+        itemImage: UIImage(named: "blackBikeIcon")!,
         pageTitle: "Download Routes",
         pageDescription: "Download your saved routes, \n \n View route details on the Map",
         backgroundImage: UIImage(named: "RouteMaps"),
@@ -57,7 +57,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
     case 3:
         return OnboardingConfiguration(
             image: UIImage(named: "LogoIcon")!,
-            itemImage: UIImage(named: "LogoIcon")!,
+            itemImage: UIImage(named: "blackBikeIcon")!,
             pageTitle: "Navigate",
             pageDescription: "Select a route to Navigate \n\n Track your progress",
             backgroundImage: UIImage(named: "Navigate"),

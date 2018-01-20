@@ -41,12 +41,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         RoutesMapView?.showsUserLocation = true
         RoutesMapView?.delegate = self
-        
-        // Request Permission for users location
-        if !CLLocationManager.locationServicesEnabled() {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
-        self.startLocationUpdates()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,7 +92,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         loadingTextLabel.textColor = UIColor.white
         
         loadingIconImageView.image = UIImage(named: "bikeMapIcon")
-        loadingIconImageView.frame = CGRect(x: -50, y: self.view.bounds.height/2, width: 50, height: 50)
+        loadingIconImageView.frame = CGRect(x: 0, y: self.view.bounds.height/2, width: 50, height: 50)
         
         loadingOverlayView.addSubview(loadingTextLabel)
         loadingOverlayView.addSubview(loadingIconImageView)
@@ -266,6 +260,33 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func enableLocationServices() {
+        locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            startLocationUpdates()
+            break
+            
+        case .authorizedWhenInUse:
+            // Enable basic location features
+            startLocationUpdates()
+            break
+            
+        case .authorizedAlways:
+            // Enable any of your app's location features
+            startLocationUpdates()
+            break
+        }
+    }
+
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         switch status {
@@ -364,15 +385,10 @@ extension MapRoutesViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print("REGION DID CHANGE ")
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         print("DID FINISH RENDERING")
-        // Request Permission for users location
-        if !CLLocationManager.locationServicesEnabled() {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
         self.startLocationUpdates()
         self.loadingOverlayView .removeFromSuperview()
     }

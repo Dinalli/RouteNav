@@ -76,8 +76,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         super.viewDidLoad()
         
         // Request Permission for users location
-        if !CLLocationManager.locationServicesEnabled() {
-            locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            enableLocationServices()
         }
         mapView?.mapType = .standard
         mapView?.showsUserLocation = true
@@ -98,6 +98,39 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                                   heading: heading)
         mapView?.camera = self.camera!
         polylinePosistion = 0
+    }
+    
+    func enableLocationServices() {
+        locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            let alertController = UIAlertController(
+                title: "Location Access Disabled",
+                message: "In order to track your location on the Route we need this enabled., please open this app's settings and set location access to 'While In Use'.",
+                preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+                if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            alertController.addAction(openAction)
+            self.present(alertController, animated: true, completion: nil)
+            break
+            
+        default:
+            break
+        }
     }
     
     //MARK : Get Data
@@ -226,30 +259,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         {
             locationManager.headingFilter = 1
             locationManager.startUpdatingHeading()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        
-        switch status {
-        case .notDetermined:
-            // If status has not yet been determied, ask for authorization
-            manager.requestWhenInUseAuthorization()
-            break
-        case .authorizedWhenInUse:
-            // If authorized when in use
-            startLocationUpdates()
-            break
-        case .authorizedAlways:
-            // If always authorized
-            startLocationUpdates()
-            break
-        case .restricted:
-            // If restricted by e.g. parental controls. User can't enable Location Services
-            break
-        case .denied:
-            // If user denied your app access to Location Services, but can grant access from Settings.app
-            break
         }
     }
     

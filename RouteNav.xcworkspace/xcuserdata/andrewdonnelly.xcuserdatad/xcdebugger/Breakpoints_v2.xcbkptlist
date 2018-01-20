@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RouteNav/RouteNavigationViewController.swift"
-            timestampString = "538076522.724251"
+            timestampString = "538141142.955525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "435"
-            endingLineNumber = "435"
-            landmarkName = "mapView(_:viewFor:)"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "enableLocationServices()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
