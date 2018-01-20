@@ -23,7 +23,6 @@
 		409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409559811F135C9800050BDD /* SRTHelperFunctions.swift */; };
 		40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */; };
 		40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */; };
-		40BC517E1FDFDE2B00F180B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40BC517D1FDFDE2B00F180B2 /* Assets.xcassets */; };
 		40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8E7271FDACF050034590A /* RouteAnnotation.swift */; };
 		40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */; };
 		40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */; };
@@ -38,6 +37,7 @@
 		40F507D01F75515F00E6993C /* Strvroutewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 40F507B31F75515E00E6993C /* Strvroutewatchapp.app */; };
 		40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */; };
 		40FF5E442013772A00816EC0 /* CustomActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF5E432013772A00816EC0 /* CustomActivity.swift */; };
+		40FF5E4720139EA100816EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FF5E4620139EA100816EC0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,6 @@
 		409559811F135C9800050BDD /* SRTHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTHelperFunctions.swift; sourceTree = "<group>"; };
 		40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
 		40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotationView.swift; sourceTree = "<group>"; };
-		40BC517D1FDFDE2B00F180B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40D8E7271FDACF050034590A /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,6 +127,7 @@
 		40F507CD1F75515F00E6993C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40FF5E432013772A00816EC0 /* CustomActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivity.swift; sourceTree = "<group>"; };
+		40FF5E4620139EA100816EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		463FD9BD630C5A6AB65E7AFA /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FFF14E89AFA13351A594524 /* Pods-RouteNavUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A55D10F91BBF3379F99D6D4 /* Pods-RouteNavTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavTests/Pods-RouteNavTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +203,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				40FF5E4620139EA100816EC0 /* Assets.xcassets */,
 				40FF5E422013770100816EC0 /* New Group */,
 				407111BF200D058B00530974 /* onBoarding */,
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
@@ -216,7 +217,6 @@
 				403129591E431DF7004CA4F8 /* AppDelegate.swift */,
 				40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */,
 				403129681E431DF7004CA4F8 /* Info.plist */,
-				40BC517D1FDFDE2B00F180B2 /* Assets.xcassets */,
 			);
 			path = RouteNav;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 				40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */,
 				4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */,
 				40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */,
-				40BC517E1FDFDE2B00F180B2 /* Assets.xcassets in Resources */,
+				40FF5E4720139EA100816EC0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
