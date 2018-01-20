@@ -84,16 +84,13 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
         
         loadingOverlayView .backgroundColor = UIColor.black
-        loadingOverlayView .alpha = 0.5
+        loadingOverlayView .alpha = 0.6
         
         loadingTextLabel.frame = CGRect(x: 0, y: (self.view.frame.size.height/2)+40, width: self.view.frame.size.width, height: 80)
         loadingTextLabel.text = "Loading your routes, please wait..."
         loadingTextLabel.textAlignment = .center
         loadingTextLabel.textColor = UIColor.white
-        loadingTextLabel.layer.borderWidth = 1.0
-        loadingTextLabel.layer.borderColor = UIColor.black.cgColor
         loadingTextLabel.numberOfLines = 0
-        loadingTextLabel.sizeToFit()
         
         loadingIconImageView.image = UIImage(named: "bikeMapIcon")
         loadingIconImageView.frame = CGRect(x: 0, y: self.view.bounds.height/2, width: 50, height: 50)
@@ -113,16 +110,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                         },
                        completion: nil
         )
-        
-//        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[loadingText]-|",
-//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-//                                                                 metrics: nil,
-//                                                                 views: ["loadingText":loadingTextLabel]))
-//
-//        self.loadingOverlayView .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[loadingText]-|",
-//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-//                                                                 metrics: nil,
-//                                                                 views: ["loadingText":loadingTextLabel]))
 
         self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
                                                                            options: NSLayoutFormatOptions.init(rawValue: 0),
