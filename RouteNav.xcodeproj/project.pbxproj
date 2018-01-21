@@ -27,55 +27,18 @@
 		40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */; };
 		40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */; };
 		40F1AC661EBCE84C006CD74B /* StravaCoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */; };
-		40F507B71F75515F00E6993C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F507B51F75515F00E6993C /* Interface.storyboard */; };
-		40F507B91F75515F00E6993C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F507B81F75515F00E6993C /* Assets.xcassets */; };
-		40F507C01F75515F00E6993C /* Strvroutewatchapp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 40F507BF1F75515F00E6993C /* Strvroutewatchapp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		40F507C51F75515F00E6993C /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F507C41F75515F00E6993C /* InterfaceController.swift */; };
-		40F507C71F75515F00E6993C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F507C61F75515F00E6993C /* ExtensionDelegate.swift */; };
-		40F507C91F75515F00E6993C /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F507C81F75515F00E6993C /* NotificationController.swift */; };
-		40F507CB1F75515F00E6993C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40F507CA1F75515F00E6993C /* Assets.xcassets */; };
-		40F507D01F75515F00E6993C /* Strvroutewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 40F507B31F75515E00E6993C /* Strvroutewatchapp.app */; };
 		40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */; };
 		40FF5E442013772A00816EC0 /* CustomActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40FF5E432013772A00816EC0 /* CustomActivity.swift */; };
 		40FF5E4720139EA100816EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40FF5E4620139EA100816EC0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		40F507C11F75515F00E6993C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40F507BE1F75515F00E6993C;
-			remoteInfo = "Strvroutewatchapp Extension";
-		};
-		40F507CE1F75515F00E6993C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4031294E1E431DF7004CA4F8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 40F507B21F75515E00E6993C;
-			remoteInfo = Strvroutewatchapp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		40F507D41F75515F00E6993C /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				40F507C01F75515F00E6993C /* Strvroutewatchapp Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		40F507D81F75515F00E6993C /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				40F507D01F75515F00E6993C /* Strvroutewatchapp.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +50,7 @@
 		0CEE47B86ECFBD8FF7B2026D /* Pods_RouteNavTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNavTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A519723F5F6F49D94DCBED /* Pods-RouteNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNav.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav.debug.xcconfig"; sourceTree = "<group>"; };
 		3CA5A0A26F8E9B16E90201EB /* Pods-RouteNavUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouteNavUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.release.xcconfig"; sourceTree = "<group>"; };
+		40040E6D2014F84000193FE4 /* RouteNav.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RouteNav.entitlements; sourceTree = "<group>"; };
 		400B6D421F32466D0094E76C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
 		400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pugneys to Nostell.gpx"; sourceTree = "<group>"; };
@@ -114,17 +78,6 @@
 		40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
 		40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaCoreDataHandler.swift; sourceTree = "<group>"; };
-		40F507B31F75515E00E6993C /* Strvroutewatchapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Strvroutewatchapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		40F507B61F75515F00E6993C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		40F507B81F75515F00E6993C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		40F507BA1F75515F00E6993C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40F507BF1F75515F00E6993C /* Strvroutewatchapp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Strvroutewatchapp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		40F507C41F75515F00E6993C /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		40F507C61F75515F00E6993C /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		40F507C81F75515F00E6993C /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		40F507CA1F75515F00E6993C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		40F507CC1F75515F00E6993C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		40F507CD1F75515F00E6993C /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40FF5E432013772A00816EC0 /* CustomActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivity.swift; sourceTree = "<group>"; };
 		40FF5E4620139EA100816EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,20 +96,6 @@
 				40866E921F11326200778CCC /* AdSupport.framework in Frameworks */,
 				400B6D431F32466D0094E76C /* MapKit.framework in Frameworks */,
 				241154357B10F80B754F7A76 /* Pods_RouteNav.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40F507BC1F75515F00E6993C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		625FE31D7C9F291B5476777F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,8 +121,6 @@
 				403129581E431DF7004CA4F8 /* RouteNav */,
 				403129701E431DF7004CA4F8 /* RouteNavTests */,
 				4031297B1E431DF7004CA4F8 /* RouteNavUITests */,
-				40F507B41F75515F00E6993C /* Strvroutewatchapp */,
-				40F507C31F75515F00E6993C /* Strvroutewatchapp Extension */,
 				403129571E431DF7004CA4F8 /* Products */,
 				400E09FC1E4350E900EE4118 /* Frameworks */,
 				C0D918AD73888F1379816BE1 /* Pods */,
@@ -194,8 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				403129561E431DF7004CA4F8 /* RouteNav.app */,
-				40F507B31F75515E00E6993C /* Strvroutewatchapp.app */,
-				40F507BF1F75515F00E6993C /* Strvroutewatchapp Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +138,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				40040E6D2014F84000193FE4 /* RouteNav.entitlements */,
 				40FF5E4620139EA100816EC0 /* Assets.xcassets */,
 				40FF5E422013770100816EC0 /* New Group */,
 				407111BF200D058B00530974 /* onBoarding */,
@@ -311,29 +247,6 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		40F507B41F75515F00E6993C /* Strvroutewatchapp */ = {
-			isa = PBXGroup;
-			children = (
-				40F507B51F75515F00E6993C /* Interface.storyboard */,
-				40F507B81F75515F00E6993C /* Assets.xcassets */,
-				40F507BA1F75515F00E6993C /* Info.plist */,
-			);
-			path = Strvroutewatchapp;
-			sourceTree = "<group>";
-		};
-		40F507C31F75515F00E6993C /* Strvroutewatchapp Extension */ = {
-			isa = PBXGroup;
-			children = (
-				40F507C41F75515F00E6993C /* InterfaceController.swift */,
-				40F507C61F75515F00E6993C /* ExtensionDelegate.swift */,
-				40F507C81F75515F00E6993C /* NotificationController.swift */,
-				40F507CA1F75515F00E6993C /* Assets.xcassets */,
-				40F507CC1F75515F00E6993C /* Info.plist */,
-				40F507CD1F75515F00E6993C /* PushNotificationPayload.apns */,
-			);
-			path = "Strvroutewatchapp Extension";
-			sourceTree = "<group>";
-		};
 		40FF5E422013770100816EC0 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,47 +286,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				40F507CF1F75515F00E6993C /* PBXTargetDependency */,
 			);
 			name = RouteNav;
 			productName = RouteNav;
 			productReference = 403129561E431DF7004CA4F8 /* RouteNav.app */;
 			productType = "com.apple.product-type.application";
-		};
-		40F507B21F75515E00E6993C /* Strvroutewatchapp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40F507D51F75515F00E6993C /* Build configuration list for PBXNativeTarget "Strvroutewatchapp" */;
-			buildPhases = (
-				40F507B11F75515E00E6993C /* Resources */,
-				40F507D41F75515F00E6993C /* Embed App Extensions */,
-				625FE31D7C9F291B5476777F /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				40F507C21F75515F00E6993C /* PBXTargetDependency */,
-			);
-			name = Strvroutewatchapp;
-			productName = Strvroutewatchapp;
-			productReference = 40F507B31F75515E00E6993C /* Strvroutewatchapp.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		40F507BE1F75515F00E6993C /* Strvroutewatchapp Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40F507D11F75515F00E6993C /* Build configuration list for PBXNativeTarget "Strvroutewatchapp Extension" */;
-			buildPhases = (
-				40F507BB1F75515F00E6993C /* Sources */,
-				40F507BC1F75515F00E6993C /* Frameworks */,
-				40F507BD1F75515F00E6993C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Strvroutewatchapp Extension";
-			productName = "Strvroutewatchapp Extension";
-			productReference = 40F507BF1F75515F00E6993C /* Strvroutewatchapp Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -434,20 +311,16 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
-					};
-					40F507B21F75515E00E6993C = {
-						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = 4JYLXVYYFP;
-						ProvisioningStyle = Automatic;
-					};
-					40F507BE1F75515F00E6993C = {
-						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = 4JYLXVYYFP;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -465,8 +338,6 @@
 			projectRoot = "";
 			targets = (
 				403129551E431DF7004CA4F8 /* RouteNav */,
-				40F507B21F75515E00E6993C /* Strvroutewatchapp */,
-				40F507BE1F75515F00E6993C /* Strvroutewatchapp Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -481,23 +352,6 @@
 				4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */,
 				40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */,
 				40FF5E4720139EA100816EC0 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40F507B11F75515E00E6993C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40F507B91F75515F00E6993C /* Assets.xcassets in Resources */,
-				40F507B71F75515F00E6993C /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		40F507BD1F75515F00E6993C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40F507CB1F75515F00E6993C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,30 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		40F507BB1F75515F00E6993C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				40F507C91F75515F00E6993C /* NotificationController.swift in Sources */,
-				40F507C71F75515F00E6993C /* ExtensionDelegate.swift in Sources */,
-				40F507C51F75515F00E6993C /* InterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		40F507C21F75515F00E6993C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40F507BE1F75515F00E6993C /* Strvroutewatchapp Extension */;
-			targetProxy = 40F507C11F75515F00E6993C /* PBXContainerItemProxy */;
-		};
-		40F507CF1F75515F00E6993C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 40F507B21F75515E00E6993C /* Strvroutewatchapp */;
-			targetProxy = 40F507CE1F75515F00E6993C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4031295D1E431DF7004CA4F8 /* Main.storyboard */ = {
@@ -622,14 +453,6 @@
 				403129661E431DF7004CA4F8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		40F507B51F75515F00E6993C /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				40F507B61F75515F00E6993C /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -665,6 +488,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -721,6 +545,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4JYLXVYYFP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -745,6 +570,7 @@
 			baseConfigurationReference = 19A519723F5F6F49D94DCBED /* Pods-RouteNav.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RouteNav/RouteNav.entitlements;
 				DEVELOPMENT_TEAM = 4JYLXVYYFP;
 				INFOPLIST_FILE = RouteNav/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -761,6 +587,7 @@
 			baseConfigurationReference = D4081F193694BD807CAC3693 /* Pods-RouteNav.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RouteNav/RouteNav.entitlements;
 				DEVELOPMENT_TEAM = 4JYLXVYYFP;
 				INFOPLIST_FILE = RouteNav/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -769,96 +596,6 @@
 				PRODUCT_NAME = RouteNav;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		40F507D21F75515F00E6993C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Strvroutewatchapp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		40F507D31F75515F00E6993C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "Strvroutewatchapp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
-		40F507D61F75515F00E6993C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				IBSC_MODULE = Strvroutewatchapp_Extension;
-				INFOPLIST_FILE = Strvroutewatchapp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		40F507D71F75515F00E6993C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4JYLXVYYFP;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				IBSC_MODULE = Strvroutewatchapp_Extension;
-				INFOPLIST_FILE = Strvroutewatchapp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -879,24 +616,6 @@
 			buildConfigurations = (
 				403129821E431DF7004CA4F8 /* Debug */,
 				403129831E431DF7004CA4F8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40F507D11F75515F00E6993C /* Build configuration list for PBXNativeTarget "Strvroutewatchapp Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40F507D21F75515F00E6993C /* Debug */,
-				40F507D31F75515F00E6993C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		40F507D51F75515F00E6993C /* Build configuration list for PBXNativeTarget "Strvroutewatchapp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				40F507D61F75515F00E6993C /* Debug */,
-				40F507D71F75515F00E6993C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

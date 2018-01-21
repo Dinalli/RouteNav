@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "403129551E431DF7004CA4F8"
-               BuildableName = "STRVROUTE.app"
+               BuildableName = "RouteNav.app"
                BlueprintName = "RouteNav"
                ReferencedContainer = "container:RouteNav.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "403129551E431DF7004CA4F8"
-            BuildableName = "STRVROUTE.app"
+            BuildableName = "RouteNav.app"
             BlueprintName = "RouteNav"
             ReferencedContainer = "container:RouteNav.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "403129551E431DF7004CA4F8"
-            BuildableName = "STRVROUTE.app"
+            BuildableName = "RouteNav.app"
             BlueprintName = "RouteNav"
             ReferencedContainer = "container:RouteNav.xcodeproj">
          </BuildableReference>
@@ -107,7 +107,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "403129551E431DF7004CA4F8"
-            BuildableName = "STRVROUTE.app"
+            BuildableName = "RouteNav.app"
             BlueprintName = "RouteNav"
             ReferencedContainer = "container:RouteNav.xcodeproj">
          </BuildableReference>
