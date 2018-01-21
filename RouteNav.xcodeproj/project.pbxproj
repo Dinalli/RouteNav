@@ -90,7 +90,7 @@
 		400B6D421F32466D0094E76C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
 		400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pugneys to Nostell.gpx"; sourceTree = "<group>"; };
-		403129561E431DF7004CA4F8 /* STRVROUTE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STRVROUTE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		403129561E431DF7004CA4F8 /* RouteNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4031295E1E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		403129611E431DF7004CA4F8 /* RouteNav.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RouteNav.xcdatamodel; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		403129571E431DF7004CA4F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				403129561E431DF7004CA4F8 /* STRVROUTE.app */,
+				403129561E431DF7004CA4F8 /* RouteNav.app */,
 				40F507B31F75515E00E6993C /* Strvroutewatchapp.app */,
 				40F507BF1F75515F00E6993C /* Strvroutewatchapp Extension.appex */,
 			);
@@ -377,7 +377,7 @@
 			);
 			name = RouteNav;
 			productName = RouteNav;
-			productReference = 403129561E431DF7004CA4F8 /* STRVROUTE.app */;
+			productReference = 403129561E431DF7004CA4F8 /* RouteNav.app */;
 			productType = "com.apple.product-type.application";
 		};
 		40F507B21F75515E00E6993C /* Strvroutewatchapp */ = {
@@ -750,7 +750,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE;
-				PRODUCT_NAME = STRVROUTE;
+				PRODUCT_NAME = RouteNav;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -766,7 +766,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.dinalli.STRVROUTE;
-				PRODUCT_NAME = STRVROUTE;
+				PRODUCT_NAME = RouteNav;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
