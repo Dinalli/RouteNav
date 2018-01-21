@@ -29,8 +29,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     var loadingOverlayView = UIView()
     var loadingIconImageView = UIImageView()
     
-    let backgroundImagesArray = [UIImage(named: "cycling-bicycle-riding-sport-38296")!,UIImage(named: "pexels-photo-207779")!,UIImage(named: "pexels-photo-287398")!]
+    var routeCount:Int64 = 0
     
+    let backgroundImagesArray = [UIImage(named: "cycling-bicycle-riding-sport-38296")!,UIImage(named: "pexels-photo-207779")!,UIImage(named: "pexels-photo-287398")!]
     
     var svc: SFSafariViewController?
     var index = 0
@@ -54,8 +55,13 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             
             self.managedContext = appDelegate.persistentContainer.viewContext
             StravaCoreDataHandler.sharedInstance.clearCoreData()
-            self.navigationController?.isNavigationBarHidden = false
-            self.navigationController?.hideTransparentNavigationBar()
+            //self.navigationController?.isNavigationBarHidden = false
+            //self.navigationController?.hideTransparentNavigationBar()
+            
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+            self.navigationController?.navigationBar.backgroundColor = .clear
+            self.navigationController?.navigationBar.isTranslucent = true
         }
     }
     
@@ -122,6 +128,17 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                                                                            views: ["loadingOverlay":loadingOverlayView]))
 
     }
+    
+    @IBAction func refeshData(_ sender: UIBarButtonItem) {
+        print("REFRESHDATA")
+        
+        DispatchQueue.main.async {
+            self.setUpLoadingOverlay()
+            self.RoutesMapView.removeAnnotations(self.RoutesMapView.annotations)
+        }
+        self.getRoutesData()
+    }
+    
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -329,6 +346,13 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         DispatchQueue.main.async {
             self.RoutesMapView!.showAnnotations(self.RoutesMapView!.annotations, animated: true)
         }
+        
+        if(routeCount == routes.count-1) {
+            removeLoadingOverlays()
+        } else {
+            print("Routes Count \(routeCount) - \(routes.count)")
+            routeCount = routeCount + 1
+        }
     }
     
     func removeLoadingOverlays() {
@@ -391,7 +415,7 @@ extension MapRoutesViewController: MKMapViewDelegate {
     
     func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
         print("DID LOADING MAP")
-        self.removeLoadingOverlays()
+        //self.removeLoadingOverlays()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

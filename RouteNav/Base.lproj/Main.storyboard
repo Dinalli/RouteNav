@@ -35,7 +35,7 @@
         <!--Strava Auth View Controller-->
         <scene sceneID="nXp-jR-eBi">
             <objects>
-                <viewController storyboardIdentifier="authViewController" id="4EO-pR-Eat" customClass="StravaAuthViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authViewController" id="4EO-pR-Eat" customClass="StravaAuthViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cSi-zl-8xJ"/>
                         <viewControllerLayoutGuide type="bottom" id="I7L-xC-xUY"/>
@@ -115,12 +115,18 @@
         <!--Map Routes View Controller-->
         <scene sceneID="8wI-bc-vqm">
             <objects>
-                <viewController id="DDB-oO-6Y1" customClass="MapRoutesViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DDB-oO-6Y1" customClass="MapRoutesViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="V9I-9X-YSh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </mapView>
-                    <navigationItem key="navigationItem" id="Uyq-ez-gPa"/>
+                    <navigationItem key="navigationItem" id="Uyq-ez-gPa">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="refresh" id="c8t-Pe-YvY">
+                            <connections>
+                                <action selector="refeshData:" destination="DDB-oO-6Y1" id="fLj-Xj-XRW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="RoutesMapView" destination="V9I-9X-YSh" id="IXg-wi-Zny"/>
                         <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" id="V6E-ug-e44"/>
@@ -137,7 +143,7 @@
         <!--On Boarding View Controller-->
         <scene sceneID="ftx-Fm-h4O">
             <objects>
-                <viewController id="B6v-54-laf" customClass="onBoardingViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="B6v-54-laf" customClass="onBoardingViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="egb-aM-MyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="DVW-c3-dpx"/>
@@ -177,7 +183,7 @@
         <!--Title-->
         <scene sceneID="WKc-eC-z4j">
             <objects>
-                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteNavigationViewController" customModule="STRVROUTE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="routeSumaryVC" id="Rkg-Ea-qvg" customClass="RouteNavigationViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xt6-EL-QR2"/>
                         <viewControllerLayoutGuide type="bottom" id="Wv9-cP-2RB"/>
@@ -280,5 +286,6 @@
         <image name="api_logo_pwrdBy_strava_horiz_light" width="338" height="63"/>
         <image name="btn_strava_connectwith_orange" width="193" height="48"/>
         <image name="pexels-photo-207779" width="960" height="640"/>
+        <image name="refresh" width="48" height="48"/>
     </resources>
 </document>
