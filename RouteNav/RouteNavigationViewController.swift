@@ -70,10 +70,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         self.getRouteStream()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

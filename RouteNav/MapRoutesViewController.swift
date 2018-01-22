@@ -132,10 +132,12 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func refeshData(_ sender: UIBarButtonItem) {
         print("REFRESHDATA")
         
+        
         DispatchQueue.main.async {
             self.setUpLoadingOverlay()
             self.RoutesMapView.removeAnnotations(self.RoutesMapView.annotations)
         }
+        StravaCoreDataHandler.sharedInstance.clearCoreData()
         self.getRoutesData()
     }
     
@@ -350,7 +352,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         if(routeCount == routes.count-1) {
             removeLoadingOverlays()
         } else {
-            print("Routes Count \(routeCount) - \(routes.count)")
+            print("Routes Count \(route.routename!) \(routeCount) - \(routes.count)")
             routeCount = routeCount + 1
         }
     }
