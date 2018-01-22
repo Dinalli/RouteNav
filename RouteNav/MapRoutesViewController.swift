@@ -350,6 +350,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if(routeCount == routes.count-1) {
+            routeCount = 0
             removeLoadingOverlays()
         } else {
             print("Routes Count \(route.routename!) \(routeCount) - \(routes.count)")
