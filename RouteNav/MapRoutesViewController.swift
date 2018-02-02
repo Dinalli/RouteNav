@@ -425,6 +425,7 @@ extension MapRoutesViewController: MKMapViewDelegate {
         if segue.identifier == "showDetailSegue" {
             let rnc:RouteNavigationViewController = segue.destination as! RouteNavigationViewController
             rnc.route = selectedRoute
+            navigationController?.navigationBar.backItem?.title = ""
             navigationController?.setNavigationBarHidden(navigationController?.isNavigationBarHidden == false, animated: true)
         }
     }

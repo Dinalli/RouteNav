@@ -15,9 +15,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 
     @IBOutlet weak var routeTimeLabel: UILabel!
     @IBOutlet weak var routeDistanceLabel: UILabel!
-    @IBOutlet weak var ShadeView: UIView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var instructionLabel: UILabel!
+    
+    @IBOutlet weak var ShadeView: UIView!
+    @IBOutlet weak var directionView: UIView!
+    @IBOutlet weak var buttonView: UIView!
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
@@ -49,6 +52,10 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         super.viewWillAppear(animated)
         
         self.navigationController?.isNavigationBarHidden = false
+        DispatchQueue.main.async {
+            self.navigationItem.title = ""
+            self.navigationController?.navigationBar.backItem?.title = ""
+        }
         
         if(self.managedContext == nil) {
             guard let appDelegate =
@@ -60,18 +67,15 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
         
         self.ShadeView.layer.cornerRadius = 7.0
-        
-//        if (self.route.routesegment?.count == 0) {
-//            self.getRouteDetail()
-//        } else {
-//            self.addRouteToMap()
-//        }
-        
+        self.buttonView.layer.cornerRadius = 7.0        
         self.getRouteStream()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        directionView.isHidden = true
+        ShadeView.isHidden = true
         
         // Request Permission for users location
         if CLLocationManager.locationServicesEnabled() {
@@ -135,17 +139,13 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     func getRouteStream() {
         
-        DispatchQueue.main.async {
-            self.navigationItem.title = "obtaining route steams"
-        }
-        
+
         apiHelper.getRouteStream(route, managedContext: managedContext) { (successFlag) in
             if !successFlag
             {
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
                 alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 self.present(alertMessage, animated: true, completion: nil)
-                self.navigationItem.title = "Error loading route."
             }
             else {
                 self.getSegmentStreams()
@@ -160,7 +160,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
                 alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 self.present(alertMessage, animated: true, completion: nil)
-                self.navigationItem.title = "Error loading route."
             }
             else {
                 for routeDirection in self.route.routedirection! {
@@ -184,7 +183,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     let alertMessage = UIAlertController(title: "No Segment", message: "Sorry, we cannot get segment as something went wrong.", preferredStyle: .actionSheet)
                     alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                     self.present(alertMessage, animated: true, completion: nil)
-                    self.navigationItem.title = "Error loading segment."
                 }
                 else {
                     DispatchQueue.main.async {
@@ -195,7 +193,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
         
         DispatchQueue.main.async {
-            self.navigationItem.title = "got segment data"
             self.addRouteToMap()
         }
     }
@@ -205,6 +202,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     @IBAction func trackingTapped(_ sender: Any) {
         
         if tracking {
+            ShadeView.isHidden = true
+            directionView.isHidden = true
+            buttonView.isHidden = false
             stopLocationUpdates()
             timer.invalidate()
             DispatchQueue.main.async {
@@ -213,6 +213,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
         }
         else {
+            ShadeView.isHidden = false
+            directionView.isHidden = false
+            buttonView.isHidden = true
             self.travelledDistance = 0
             startLocationUpdates()
             timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
@@ -371,7 +374,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         DispatchQueue.main.async {
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
             self.mapView!.add(self.routePolyline, level: .aboveLabels)
-            self.navigationItem.title = self.route.routename
         }
     }
     
