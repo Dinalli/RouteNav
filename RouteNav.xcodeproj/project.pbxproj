@@ -23,6 +23,9 @@
 		409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409559811F135C9800050BDD /* SRTHelperFunctions.swift */; };
 		40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */; };
 		40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */; };
+		40BE764220264DAD00132D9A /* MapPullUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BE764020264DAD00132D9A /* MapPullUpViewController.swift */; };
+		40BE764320264DAD00132D9A /* MapPullUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BE764120264DAD00132D9A /* MapPullUpViewController.xib */; };
+		40BE764520265BB400132D9A /* MapPullUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BE764420265BB400132D9A /* MapPullUpDelegate.swift */; };
 		40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8E7271FDACF050034590A /* RouteAnnotation.swift */; };
 		40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */; };
 		40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */; };
@@ -74,6 +77,9 @@
 		409559811F135C9800050BDD /* SRTHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTHelperFunctions.swift; sourceTree = "<group>"; };
 		40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
 		40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotationView.swift; sourceTree = "<group>"; };
+		40BE764020264DAD00132D9A /* MapPullUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPullUpViewController.swift; sourceTree = "<group>"; };
+		40BE764120264DAD00132D9A /* MapPullUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPullUpViewController.xib; sourceTree = "<group>"; };
+		40BE764420265BB400132D9A /* MapPullUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPullUpDelegate.swift; sourceTree = "<group>"; };
 		40D8E7271FDACF050034590A /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		40EDDE6F1F129B6A0057EE65 /* RouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewCell.swift; sourceTree = "<group>"; };
 		40EDDE701F129B6A0057EE65 /* RouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteTableViewCell.xib; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				40870B84202628EA00E26F9C /* MapPullUpView */,
 				40040E6D2014F84000193FE4 /* RouteNav.entitlements */,
 				40FF5E4620139EA100816EC0 /* Assets.xcassets */,
 				40FF5E422013770100816EC0 /* New Group */,
@@ -220,6 +227,16 @@
 				407111BD200D04E900530974 /* onBoardingViewController.swift */,
 			);
 			name = onBoarding;
+			sourceTree = "<group>";
+		};
+		40870B84202628EA00E26F9C /* MapPullUpView */ = {
+			isa = PBXGroup;
+			children = (
+				40BE764420265BB400132D9A /* MapPullUpDelegate.swift */,
+				40BE764020264DAD00132D9A /* MapPullUpViewController.swift */,
+				40BE764120264DAD00132D9A /* MapPullUpViewController.xib */,
+			);
+			name = MapPullUpView;
 			sourceTree = "<group>";
 		};
 		409559801F135C5900050BDD /* Common */ = {
@@ -348,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				403129671E431DF7004CA4F8 /* LaunchScreen.storyboard in Resources */,
+				40BE764320264DAD00132D9A /* MapPullUpViewController.xib in Resources */,
 				40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */,
 				4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */,
 				40EDDE721F129B6A0057EE65 /* RouteTableViewCell.xib in Resources */,
@@ -425,8 +443,10 @@
 				40F1AC661EBCE84C006CD74B /* StravaCoreDataHandler.swift in Sources */,
 				4072BE771FD579710004525E /* MapRoutesViewController.swift in Sources */,
 				40866E8F1F111FFD00778CCC /* StravaAuthViewController.swift in Sources */,
+				40BE764220264DAD00132D9A /* MapPullUpViewController.swift in Sources */,
 				407111BA200CFDC100530974 /* DataModel.swift in Sources */,
 				40EDDE711F129B6A0057EE65 /* RouteTableViewCell.swift in Sources */,
+				40BE764520265BB400132D9A /* MapPullUpDelegate.swift in Sources */,
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
 				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,

@@ -11,16 +11,11 @@ import MapKit
 import Foundation
 import CoreData
 
-class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-
-    @IBOutlet weak var routeTimeLabel: UILabel!
-    @IBOutlet weak var routeDistanceLabel: UILabel!
-    @IBOutlet weak var goButton: UIButton!
+class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapPullUpDelegate {
+    
     @IBOutlet weak var instructionLabel: UILabel!
     
-    @IBOutlet weak var ShadeView: UIView!
     @IBOutlet weak var directionView: UIView!
-    @IBOutlet weak var buttonView: UIView!
     
     let apiHelper = StravaAPIHelper()
     var route: Route!
@@ -65,17 +60,22 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             
             self.managedContext = appDelegate.persistentContainer.viewContext
         }
-        
-        self.ShadeView.layer.cornerRadius = 7.0
-        self.buttonView.layer.cornerRadius = 7.0        
         self.getRouteStream()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addMapPullUpView()
+        DispatchQueue.main.async {
+            self.navigationItem.title = ""
+            self.navigationController?.navigationBar.backItem?.title = ""
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         directionView.isHidden = true
-        ShadeView.isHidden = true
         
         // Request Permission for users location
         if CLLocationManager.locationServicesEnabled() {
@@ -100,6 +100,20 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                                   heading: heading)
         mapView?.camera = self.camera!
         polylinePosistion = 0
+
+    }
+    
+    func addMapPullUpView() {
+        let mapPullUpVC = MapPullUpViewController()
+        
+        mapPullUpVC.delegate = self
+        self.addChildViewController(mapPullUpVC)
+        self.view.addSubview(mapPullUpVC.view)
+        mapPullUpVC.didMove(toParentViewController: self)
+        
+        let height = view.frame.height
+        let width  = view.frame.width
+        mapPullUpVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY-60, width: width, height: height)
     }
     
     func enableLocationServices() {
@@ -199,34 +213,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     //MARK : Location methods
     
-    @IBAction func trackingTapped(_ sender: Any) {
-        
-        if tracking {
-            ShadeView.isHidden = true
-            directionView.isHidden = true
-            buttonView.isHidden = false
-            stopLocationUpdates()
-            timer.invalidate()
-            DispatchQueue.main.async {
-                self.goButton.setTitle("GO", for: UIControlState.normal)
-            }
-            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
-        }
-        else {
-            ShadeView.isHidden = false
-            directionView.isHidden = false
-            buttonView.isHidden = true
-            self.travelledDistance = 0
-            startLocationUpdates()
-            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
-            startTime = NSDate.timeIntervalSinceReferenceDate
-            DispatchQueue.main.async {
-                self.goButton.setTitle("STOP", for: UIControlState.normal)
-            }
-        }
-        tracking = !tracking
-    }
-    
     @objc func updateTimer() {
         let currentTime = NSDate.timeIntervalSinceReferenceDate
         var elapsedTime: TimeInterval = currentTime - startTime
@@ -238,7 +224,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let strMinutes = String(format: "%02d", minutes)
         let strSeconds = String(format: "%02d", seconds)
         let strFraction = String(format: "%02d", fraction)
-        routeTimeLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
+        //routeTimeLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
     }
     
     func startLocationUpdates() {
@@ -284,7 +270,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 
                 DispatchQueue.main.async {
                     var formattedDistance: Double = self.travelledDistance / 1000
-                    self.routeDistanceLabel.text = "\(formattedDistance.truncate(places: 2)) km"
+                    //self.routeDistanceLabel.text = "\(formattedDistance.truncate(places: 2)) km"
                 }
             }
             currentLocation = locations.last
@@ -454,33 +440,49 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         return anView
     }
     
-    @IBAction func showAction(_ sender: Any) {
-        let sharingItems = [AnyObject]() // nothing to share...
+    func changeMapView(_ sender: Any) {
+        let mapChoiceControl:UISegmentedControl = (sender as? UISegmentedControl)!
         
-        let mapChangeCustomActivity = CustomActivity(title: "Map Type", imageName: "globe") {
-            let alertView = UIAlertController(title: "Change Map Type", message: "", preferredStyle: .alert)
-            let standAction = UIAlertAction(title: "Standard", style: .default, handler: { (alert) in
-                self.mapView?.mapType = .standard
-            })
-            let hybridAction = UIAlertAction(title: "Hybrid", style: .default, handler: { (alert) in
-                self.mapView?.mapType = .hybrid
-            })
-            let satAction = UIAlertAction(title: "Satellite", style: .default, handler: { (alert) in
-                self.mapView?.mapType = .satellite
-            })
-            alertView.addAction(standAction)
-            alertView.addAction(hybridAction)
-            alertView.addAction(satAction)
-            self.present(alertView, animated: true, completion: nil)
+        switch  mapChoiceControl.selectedSegmentIndex {
+        case 0:
+            self.mapView?.mapType = .standard
+            break
+        case 1:
+            self.mapView?.mapType = .hybrid
+            break
+        case 2:
+            self.mapView?.mapType = .satellite
+            break
+        default:
+            self.mapView?.mapType = .standard
         }
+    }
+    
+    func actionButtonTapped(_ sender: Any) {
+
+        let actionButton:UIButton = (sender as? UIButton)!
         
-        let activityViewController = UIActivityViewController(activityItems:sharingItems, applicationActivities:[mapChangeCustomActivity])
-        
-        activityViewController.excludedActivityTypes = [UIActivityType.mail, UIActivityType.airDrop, UIActivityType.message, UIActivityType.assignToContact, UIActivityType.postToFacebook, UIActivityType.print, UIActivityType.copyToPasteboard, UIActivityType.saveToCameraRoll]
-        
-        activityViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
-        
-        self.present(activityViewController, animated: true, completion: nil)
+        if tracking {
+            directionView.isHidden = true
+            DispatchQueue.main.async {
+                actionButton .setTitle("START", for: .normal)
+            }
+            stopLocationUpdates()
+            timer.invalidate()
+            
+            self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
+        }
+        else {
+            directionView.isHidden = false
+            self.travelledDistance = 0
+            startLocationUpdates()
+            timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updateTimer), userInfo: nil, repeats: true)
+            startTime = NSDate.timeIntervalSinceReferenceDate
+            DispatchQueue.main.async {
+                actionButton .setTitle("STOP", for: .normal)
+            }
+        }
+        tracking = !tracking
     }
 }
 
