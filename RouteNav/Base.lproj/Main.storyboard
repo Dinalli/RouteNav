@@ -152,17 +152,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YaQ-qp-QBP" customClass="OnboardingView" customModule="OnboardingKit">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaQ-qp-QBP" customClass="OnboardingView" customModule="OnboardingKit">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz7-Wr-b9A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz7-Wr-b9A">
                                 <rect key="frame" x="300" y="50" width="74" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="c9D-ZA-r87"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="SKIP">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="1" green="0.80392156859999997" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="nextTapped:" destination="B6v-54-laf" eventType="touchUpInside" id="8F2-xc-U6m"/>
@@ -170,6 +171,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="fz7-Wr-b9A" secondAttribute="trailing" constant="-15" id="8bT-W5-OmY"/>
+                            <constraint firstItem="YaQ-qp-QBP" firstAttribute="top" secondItem="VZs-ba-eTT" secondAttribute="top" id="bgm-1k-N9E"/>
+                            <constraint firstAttribute="trailing" secondItem="YaQ-qp-QBP" secondAttribute="trailing" id="jy6-bW-Vdf"/>
+                            <constraint firstItem="YaQ-qp-QBP" firstAttribute="bottom" secondItem="DVW-c3-dpx" secondAttribute="top" id="ne4-Su-S4l"/>
+                            <constraint firstItem="YaQ-qp-QBP" firstAttribute="leading" secondItem="VZs-ba-eTT" secondAttribute="leading" id="xAV-UC-3dT"/>
+                            <constraint firstItem="fz7-Wr-b9A" firstAttribute="top" secondItem="egb-aM-MyJ" secondAttribute="bottom" constant="30" id="yuU-ae-tGW"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="fz7-Wr-b9A" id="O7l-Mc-CNk"/>
@@ -178,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qcz-gN-9S3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-314.39999999999998" y="639.90147783251234"/>
+            <point key="canvasLocation" x="-314.39999999999998" y="639.13043478260875"/>
         </scene>
         <!--Title-->
         <scene sceneID="WKc-eC-z4j">

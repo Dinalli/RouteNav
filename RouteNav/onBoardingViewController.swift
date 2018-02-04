@@ -30,11 +30,7 @@ class onBoardingViewController: UIViewController, CLLocationManagerDelegate {
         model.willShow = { page in
             
             self.nextButton .setTitle("SKIP", for: .normal)
-            if page != 3 {
-                self.nextButton .setTitleColor(.white, for: .normal)
-            }
             if page == 3 {
-                self.nextButton .setTitleColor(.black, for: .normal)
                 self.nextButton .setTitle("DONE", for: .normal)
             }
             if page == 2 {
