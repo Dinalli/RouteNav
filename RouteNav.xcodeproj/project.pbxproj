@@ -147,7 +147,7 @@
 				40870B84202628EA00E26F9C /* MapPullUpView */,
 				40040E6D2014F84000193FE4 /* RouteNav.entitlements */,
 				40FF5E4620139EA100816EC0 /* Assets.xcassets */,
-				40FF5E422013770100816EC0 /* New Group */,
+				40FF5E422013770100816EC0 /* Activity */,
 				407111BF200D058B00530974 /* onBoarding */,
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				403AF6681F7583EA00EF0A9D /* MapOverlay */,
@@ -264,12 +264,12 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		40FF5E422013770100816EC0 /* New Group */ = {
+		40FF5E422013770100816EC0 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
 				40FF5E432013772A00816EC0 /* CustomActivity.swift */,
 			);
-			name = "New Group";
+			name = Activity;
 			sourceTree = "<group>";
 		};
 		C0D918AD73888F1379816BE1 /* Pods */ = {

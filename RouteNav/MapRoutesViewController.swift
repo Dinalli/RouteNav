@@ -78,6 +78,7 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
         }
         else if(authorisationToken == nil && !authorising) {
             authorising = true
+            NotificationCenter.default.addObserver(self, selector:  #selector(self.handleRedirectURL), name: Notification.Name("SRHandleAuthRedirectURL"), object: nil)
             self.performSegue(withIdentifier: "showAuthPopover", sender: self)
         }
     }
@@ -128,8 +129,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func refeshData(_ sender: UIBarButtonItem) {
         print("REFRESHDATA")
-        
-        
         DispatchQueue.main.async {
             self.setUpLoadingOverlay()
             self.RoutesMapView.removeAnnotations(self.RoutesMapView.annotations)
@@ -145,16 +144,14 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setUpNotifications() {
-        NotificationCenter.default.addObserver(self, selector:  #selector(self.handleRedirectURL), name: Notification.Name("SRHandleAuthRedirectURL"), object: nil)
     }
     
     func removeNotifications() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRHandleAuthReturnURL"), object: nil)
     }
 
     @objc func handleRedirectURL(notification: NSNotification) {
-        
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("SRHandleAuthRedirectURL"), object: nil)
         let url = notification.object as! NSURL
         
         apiHelper.code = getQueryStringParameter(url: url.absoluteString!, param: "code")
@@ -168,8 +165,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                 {
                     DispatchQueue.main.async {
                         self.setUpLoadingOverlay()
+                        StravaCoreDataHandler.sharedInstance.clearCoreData()
+                        self.getRoutesData()
                     }
-                    self.getRoutesData()
                 }
                 else
                 {

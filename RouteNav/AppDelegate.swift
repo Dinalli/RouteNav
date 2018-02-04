@@ -103,7 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NotificationCenter.default.post(name: Notification.Name("SRAuthReturnNotification"), object: nil)
             NotificationCenter.default.post(name: Notification.Name("SRHandleAuthRedirectURL"), object: url)
         }
-
         return true
     }
 
