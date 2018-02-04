@@ -10,9 +10,13 @@ import UIKit
 
 class MapPullUpViewController: UIViewController {
 
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     public weak var delegate: MapPullUpDelegate? 
     
-    let fullView: CGFloat = 100
+    var fullView: CGFloat {
+        return UIScreen.main.bounds.height - 250
+    }
     var partialView: CGFloat {
         return UIScreen.main.bounds.height - 100
     }
@@ -89,15 +93,15 @@ class MapPullUpViewController: UIViewController {
     }
     
     func prepareBackgroundView(){
-        let blurEffect = UIBlurEffect.init(style: .dark)
-        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
-        let bluredView = UIVisualEffectView.init(effect: blurEffect)
-        bluredView.contentView.addSubview(visualEffect)
-
-        visualEffect.frame = UIScreen.main.bounds
-        bluredView.frame = UIScreen.main.bounds
-
-        view.insertSubview(bluredView, at: 0)
+//        let blurEffect = UIBlurEffect.init(style: .dark)
+//        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
+//        let bluredView = UIVisualEffectView.init(effect: blurEffect)
+//        bluredView.contentView.addSubview(visualEffect)
+//
+//        visualEffect.frame = UIScreen.main.bounds
+//        bluredView.frame = UIScreen.main.bounds
+//
+//        view.insertSubview(bluredView, at: 0)
     }
 
     @IBAction func actionTapped(_ sender: Any) {
@@ -110,5 +114,13 @@ class MapPullUpViewController: UIViewController {
         if (delegate != nil) {
             delegate?.changeMapView(sender)
         }
+    }
+    
+    func updateTimeLabel(_ timeText: String) {
+        self.timeLabel.text = timeText
+    }
+    
+    func updateDistnaceLabel(_ distanceText: String) {
+        self.distanceLabel.text = distanceText
     }
 }

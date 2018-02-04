@@ -55,9 +55,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             
             self.managedContext = appDelegate.persistentContainer.viewContext
             StravaCoreDataHandler.sharedInstance.clearCoreData()
-            //self.navigationController?.isNavigationBarHidden = false
-            //self.navigationController?.hideTransparentNavigationBar()
-            
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
             self.navigationController?.navigationBar.backgroundColor = .clear
@@ -414,11 +411,6 @@ extension MapRoutesViewController: MKMapViewDelegate {
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         print("DID FINISH RENDERING")
         self.startLocationUpdates()
-    }
-    
-    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
-        print("DID LOADING MAP")
-        //self.removeLoadingOverlays()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

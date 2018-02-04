@@ -17,6 +17,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     @IBOutlet weak var directionView: UIView!
     
+    let mapPullUpVC = MapPullUpViewController()
+    
     let apiHelper = StravaAPIHelper()
     var route: Route!
     var routePolyline: RoutePolyline!
@@ -104,8 +106,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
     
     func addMapPullUpView() {
-        let mapPullUpVC = MapPullUpViewController()
-        
         mapPullUpVC.delegate = self
         self.addChildViewController(mapPullUpVC)
         self.view.addSubview(mapPullUpVC.view)
@@ -224,6 +224,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let strMinutes = String(format: "%02d", minutes)
         let strSeconds = String(format: "%02d", seconds)
         let strFraction = String(format: "%02d", fraction)
+        mapPullUpVC.updateTimeLabel("\(strMinutes):\(strSeconds):\(strFraction)")
         //routeTimeLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
     }
     
@@ -265,12 +266,11 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.camera?.heading = (currentLocation?.bearingDegreesTo(location: locations.last!))!
                 mapView?.setCamera(self.camera!, animated: true)
                 updateDirections(currentLocation: currentLocation!)
-                
                 self.travelledDistance = self.travelledDistance + round( (locations.last?.distance(from: currentLocation!))!) as Double
                 
                 DispatchQueue.main.async {
                     var formattedDistance: Double = self.travelledDistance / 1000
-                    //self.routeDistanceLabel.text = "\(formattedDistance.truncate(places: 2)) km"
+                    self.mapPullUpVC.updateDistnaceLabel("\(formattedDistance.truncate(places: 2)) km")
                 }
             }
             currentLocation = locations.last
@@ -404,12 +404,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         if overlay is RoutePolyline {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 10.0
+            polylineRender.lineWidth = 2.0
             polylineRender.strokeColor = UIColor.blue
             return polylineRender
         } else {
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRender.lineWidth = 8.0
+            polylineRender.lineWidth = 4.0
             polylineRender.strokeColor = UIColor.orange
             return polylineRender
         }
@@ -483,6 +483,17 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             }
         }
         tracking = !tracking
+    }
+    
+    func removeMap() {
+        mapView?.delegate = nil
+        mapView?.removeFromSuperview()
+        mapView = nil
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        removeMap()
     }
 }
 
