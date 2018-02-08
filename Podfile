@@ -12,14 +12,4 @@ target 'RouteNav' do
   pod 'Firebase/Core'
   pod 'OnboardingKit'
 
-  target 'RouteNavTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'RouteNavUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end

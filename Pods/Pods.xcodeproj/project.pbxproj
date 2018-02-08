@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08AC42A0636E77A4109EEC2B75750E43 /* Pods-RouteNavTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A664A00AEA2DA27A0A1FB451F687DF2 /* Pods-RouteNavTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		18BADBED23BBEF33EFDF487BEC97DF2D /* TZStackViewDistribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFAA957C7AEED84C46C9B7BC32C9E48 /* TZStackViewDistribution.swift */; };
 		2349D55F013B7FC3054C70940CD1723F /* CompletionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C3D954AF7B96F19986420BA97E6AA /* CompletionObject.swift */; };
 		3329F33C194BC68D255C541144A25ABA /* OnboardingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39D87B814350B84A80CA620283CD581 /* OnboardingConfiguration.swift */; };
@@ -15,18 +14,14 @@
 		4FFDC42F9FB459D77EB11DA62961F341 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B20BB59BE9B990F32AB56B3D760239 /* CGRect.swift */; };
 		5151A81BE7BD3A70614526080EAA3592 /* PageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108770C401003AC13C45E374DEAFD906 /* PageItemView.swift */; };
 		541C5362289CC44D4F067D097F231250 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 54121AF025FC78952DBD6C1FFB9A8856 /* GTMDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		60C3AF513390F2105DDD5BB17C900669 /* Pods-RouteNavTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 05FDC0D96279DD4D9C38F68794914EBA /* Pods-RouteNavTests-dummy.m */; };
 		672A8ED4547C1A9D76E44DEF97D21985 /* TZStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001DF24C98BE606C176135A36C2F7D15 /* TZStackView.swift */; };
 		6E166F7A349782B726AB5AE4EF252C58 /* OnboardingKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C03C0D68AFC4EE2E0C3DCA1504A2EA15 /* OnboardingKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7180FFF050CB06BEBD55789F58828465 /* Pods-RouteNav-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 79481DCE73732D129F62CA20C1CA8798 /* Pods-RouteNav-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7292474A741C16294962959845956F42 /* Pods-RouteNavUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6D16ED52802996FF0B2EAFC98C12CA /* Pods-RouteNavUITests-dummy.m */; };
+		7180FFF050CB06BEBD55789F58828465 /* Pods-RouteNav-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E99F02A8BA84DE169EED0786AF927B2 /* Pods-RouteNav-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80FD8F8CC29878828ABF78B269D046C0 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F37BC965A9FE1EE6614908D51E2F47D /* PageView.swift */; };
 		81E4B6988FF26F9249B79C6C8CC667B4 /* GoogleToolboxForMac-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0623EF41FEF147F23155311B7A60BD1 /* GoogleToolboxForMac-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93D51748565CFEB9490FBA7DA993C5C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		B05A54793B08817493F67E6932438F79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		B12525D9B87C11615C9C491E4A07F5FB /* Pods-RouteNav-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63192035F30D95340BCDE0C2990A73E0 /* Pods-RouteNav-dummy.m */; };
+		B12525D9B87C11615C9C491E4A07F5FB /* Pods-RouteNav-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4EAAEC5419FECC36332C2A774E524 /* Pods-RouteNav-dummy.m */; };
 		B250A7FBBBC254B7182D3D98D04BCBE8 /* OnboardingKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0872778DD10DB6A1162AF328EEB3A2 /* OnboardingKit-dummy.m */; };
-		B2CAA3188BECBF3197DEA3D667EF487E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		BD1C4189B3C2358C6C7D314C153424E0 /* OnboardingViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD7FCD71B3A85AA4DC460FD27C46168 /* OnboardingViewDelegate.swift */; };
 		D0E003E309218FA0FE769A3ED283E9E2 /* OnboardingViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A410024E55DBF35B76E80D08FD9E650 /* OnboardingViewDataSource.swift */; };
 		D4E9DF8EEF71A07C4D835D442F4740F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -34,7 +29,6 @@
 		E40580E5BBDE28E10468B9D1819530D7 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CCE25E6F6D0243927011DB96465746 /* Anchor.swift */; };
 		E61B838A0C78972A910D003E92940C20 /* TZStackViewAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550411FA8F79CF000E6280DDE64EE83 /* TZStackViewAlignment.swift */; };
 		E75FB82AE888B53422CD847E82508B9A /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5CE7D7A93C352970556E5B59A189D9 /* OnboardingView.swift */; };
-		E825C007D634F3ACD01C2B7969C72DC8 /* Pods-RouteNavUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E1338D4D45070ECD6D5AFD5076CA1CE /* Pods-RouteNavUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAB2797DF7959632FB2F06955431F008 /* PageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230C5A633940386ED52153FBB2B818A5 /* PageControlView.swift */; };
 		EE8F9C766FB98E0F966F4CB860F18AE9 /* TZSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA0A8D49DAA99D954FF4FDBD32AB730 /* TZSpacerView.swift */; };
 		F7D889906DECB078EAAECB9D4A320E9C /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B8D24DEEEAD84EA12C04FFD914B782 /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -60,99 +54,61 @@
 
 /* Begin PBXFileReference section */
 		001DF24C98BE606C176135A36C2F7D15 /* TZStackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TZStackView.swift; path = Source/TZStackView/TZStackView.swift; sourceTree = "<group>"; };
-		05FDC0D96279DD4D9C38F68794914EBA /* Pods-RouteNavTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RouteNavTests-dummy.m"; sourceTree = "<group>"; };
-		06C1D7125E6E9FF53EE7BF9349C3382C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09ABFF190E74EF0CBF7F390DA91E22EF /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		0C8F04E1D5D3EB39A9CFD7381E407EBC /* Pods-RouteNavUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavUITests-frameworks.sh"; sourceTree = "<group>"; };
+		0A79FCD4E6EDB63DDA879233528B5B10 /* Pods-RouteNav-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNav-frameworks.sh"; sourceTree = "<group>"; };
 		108770C401003AC13C45E374DEAFD906 /* PageItemView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageItemView.swift; path = Source/PageItemView.swift; sourceTree = "<group>"; };
-		18D6F47E1D6CFFDD8D0EC7A3CFCC02E9 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B12A66845D21BD075F209CD8227C75E /* Pods_RouteNavUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNavUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BAF6ED3B0ECA4BD3CA5F0EF39C9E1FF /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		1CA0A8D49DAA99D954FF4FDBD32AB730 /* TZSpacerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TZSpacerView.swift; path = Source/TZStackView/TZSpacerView.swift; sourceTree = "<group>"; };
 		1D0872778DD10DB6A1162AF328EEB3A2 /* OnboardingKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OnboardingKit-dummy.m"; sourceTree = "<group>"; };
-		226E88D21F5E724440424550DB6A34D6 /* Pods-RouteNavUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RouteNavUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		230C5A633940386ED52153FBB2B818A5 /* PageControlView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageControlView.swift; path = Source/PageControlView.swift; sourceTree = "<group>"; };
-		23A88BAE4BDC42511E1BED7DF373B1F4 /* Pods-RouteNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNav.release.xcconfig"; sourceTree = "<group>"; };
 		267E6E56F657BFF0967E60B78DFEE84D /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
-		336CDEBA9C51983C790796F35A7110E6 /* Pods-RouteNav.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RouteNav.modulemap"; sourceTree = "<group>"; };
 		385C3D954AF7B96F19986420BA97E6AA /* CompletionObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompletionObject.swift; path = Source/CompletionObject.swift; sourceTree = "<group>"; };
-		399C4EE542F87AF8E3F737E222F04577 /* Pods-RouteNav-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNav-frameworks.sh"; sourceTree = "<group>"; };
-		3A664A00AEA2DA27A0A1FB451F687DF2 /* Pods-RouteNavTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RouteNavTests-umbrella.h"; sourceTree = "<group>"; };
 		46291C0F3622DAFF0C3FD816000F2ADD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		483B0A88B83ADF1B98043387A6AFA5F1 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
 		4C25E2437C24F8EFF77317282E81929F /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
-		4E1338D4D45070ECD6D5AFD5076CA1CE /* Pods-RouteNavUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RouteNavUITests-umbrella.h"; sourceTree = "<group>"; };
-		4FEFDB725B9DB0947745AE9C09C2923C /* Pods-RouteNav-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNav-resources.sh"; sourceTree = "<group>"; };
-		50D3F3C73E4227B668FDD95CB7320182 /* Pods-RouteNavUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavUITests-resources.sh"; sourceTree = "<group>"; };
+		5411B57D64BDC37D211E3F86C7A4F77C /* Pods-RouteNav-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNav-acknowledgements.plist"; sourceTree = "<group>"; };
 		54121AF025FC78952DBD6C1FFB9A8856 /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		54A0C1A76F5C31F2EB7F976DB0CF9108 /* OnboardingKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = OnboardingKit.xcconfig; sourceTree = "<group>"; };
-		575EB304A4F0FF5B28D756F4EBDD4718 /* Pods-RouteNavTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RouteNavTests.modulemap"; sourceTree = "<group>"; };
 		5A5CE7D7A93C352970556E5B59A189D9 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingView.swift; path = Source/OnboardingView.swift; sourceTree = "<group>"; };
-		63192035F30D95340BCDE0C2990A73E0 /* Pods-RouteNav-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RouteNav-dummy.m"; sourceTree = "<group>"; };
+		5F456342A9F90C92726418C3F28B2FE5 /* Pods-RouteNav.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RouteNav.modulemap"; sourceTree = "<group>"; };
+		658D09C5B8C2820B5FF32744A88FFC2F /* Pods-RouteNav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNav.release.xcconfig"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6C58D2E0DFD916FA2D802D858C528761 /* Pods-RouteNavUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNavUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		72B4DC0BBAC3D032877BE92E62EDA9A7 /* Pods-RouteNavTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RouteNavTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6A520D50B831DFE06EE4610FB9A9777A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		711146C88D59D6B678EF0903019621A0 /* OnboardingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OnboardingKit.framework; path = OnboardingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74CCE25E6F6D0243927011DB96465746 /* Anchor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Anchor.swift; path = Source/Anchor.swift; sourceTree = "<group>"; };
-		78CA3688121986D8990B24F314002E42 /* OnboardingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OnboardingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		790B0A85281D9BBCA8FC670BB6E73D6B /* Pods-RouteNavUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-RouteNavUITests.modulemap"; sourceTree = "<group>"; };
-		79481DCE73732D129F62CA20C1CA8798 /* Pods-RouteNav-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RouteNav-umbrella.h"; sourceTree = "<group>"; };
 		7A410024E55DBF35B76E80D08FD9E650 /* OnboardingViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingViewDataSource.swift; path = Source/OnboardingViewDataSource.swift; sourceTree = "<group>"; };
 		7F37BC965A9FE1EE6614908D51E2F47D /* PageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageView.swift; path = Source/PageView.swift; sourceTree = "<group>"; };
+		84DE5EB71FEF9C17938A399D0AAC44C9 /* Pods-RouteNav-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RouteNav-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8550411FA8F79CF000E6280DDE64EE83 /* TZStackViewAlignment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TZStackViewAlignment.swift; path = Source/TZStackView/TZStackViewAlignment.swift; sourceTree = "<group>"; };
-		8687D64768585E843E21561763C9F28B /* Pods-RouteNavTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavTests-frameworks.sh"; sourceTree = "<group>"; };
-		86A32259819BA0C1C3D6012A6364DF1D /* Pods-RouteNavTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNavTests-resources.sh"; sourceTree = "<group>"; };
+		8CDE0FC091FB5A81FEA6B9F452E9D437 /* Pods-RouteNav-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RouteNav-resources.sh"; sourceTree = "<group>"; };
+		8E99F02A8BA84DE169EED0786AF927B2 /* Pods-RouteNav-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RouteNav-umbrella.h"; sourceTree = "<group>"; };
 		9017CDAE1679C044DCE6B4E308679C7B /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
-		921A4E01F22A93EF36C4893536041592 /* Pods-RouteNavTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavTests.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		99885D7024D7120E571F96EE6C9E7C5C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D48F799F54D4D447416638FE762619B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9F265541C5443054D37413B76D293E59 /* Pods-RouteNavTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNavTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		9F4155BB9744AAEC4174CFB9DCB39F73 /* Pods-RouteNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNav.debug.xcconfig"; sourceTree = "<group>"; };
+		9FA4EAAEC5419FECC36332C2A774E524 /* Pods-RouteNav-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RouteNav-dummy.m"; sourceTree = "<group>"; };
 		A0C7A8C61BDF8266EB48F639AC600494 /* OnboardingKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OnboardingKit-prefix.pch"; sourceTree = "<group>"; };
-		A0E72B79AFADB6C70E9450A062331691 /* Pods-RouteNav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNav.debug.xcconfig"; sourceTree = "<group>"; };
 		A8F6AC8D8F8438762AF74AA3D277E872 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		B0B8D24DEEEAD84EA12C04FFD914B782 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
-		B870438DA9F6E4BFE8118E2A24E53E16 /* Pods-RouteNavUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BDFAA957C7AEED84C46C9B7BC32C9E48 /* TZStackViewDistribution.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TZStackViewDistribution.swift; path = Source/TZStackView/TZStackViewDistribution.swift; sourceTree = "<group>"; };
 		C03C0D68AFC4EE2E0C3DCA1504A2EA15 /* OnboardingKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OnboardingKit-umbrella.h"; sourceTree = "<group>"; };
-		C0BD53B166D4BD1C591D233EEC034285 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C2A30756FCEDB73CD96A4EDC4C4193A9 /* OnboardingKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = OnboardingKit.modulemap; sourceTree = "<group>"; };
+		C2A30756FCEDB73CD96A4EDC4C4193A9 /* OnboardingKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = OnboardingKit.modulemap; sourceTree = "<group>"; };
 		CB155D8C499E9EF6A5A4D2EE73BEDF8B /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
-		CBF037F11B1FD875312B1AAAB109E06C /* Pods-RouteNav-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RouteNav-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CF67D4E0E13A1F09B4B7C22050C69001 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		CF67D4E0E13A1F09B4B7C22050C69001 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		CFD7FCD71B3A85AA4DC460FD27C46168 /* OnboardingViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingViewDelegate.swift; path = Source/OnboardingViewDelegate.swift; sourceTree = "<group>"; };
-		D25EF7FB4C4A161E713D0A582A5DF5A1 /* Pods-RouteNavUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D4CC7ADFF269B7DBB0E5E0D18CA0C686 /* Pods-RouteNavTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RouteNavTests.release.xcconfig"; sourceTree = "<group>"; };
-		D675DCF6A74725265B4109EBBBB709F7 /* Pods_RouteNavTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNavTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0623EF41FEF147F23155311B7A60BD1 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		E39D87B814350B84A80CA620283CD581 /* OnboardingConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OnboardingConfiguration.swift; path = Source/OnboardingConfiguration.swift; sourceTree = "<group>"; };
-		EA6D16ED52802996FF0B2EAFC98C12CA /* Pods-RouteNavUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RouteNavUITests-dummy.m"; sourceTree = "<group>"; };
+		E665CFE0B1BEE2F76F796CE5FE0332F9 /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RouteNav.framework; path = "Pods-RouteNav.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9B20BB59BE9B990F32AB56B3D760239 /* CGRect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGRect.swift; path = Source/CGRect.swift; sourceTree = "<group>"; };
-		FA1D6492B49110F159038650E9752338 /* Pods_RouteNav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouteNav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FC2A9F62C1D564957EB65ED648AE5715 /* Pods-RouteNav-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RouteNav-acknowledgements.plist"; sourceTree = "<group>"; };
+		FF208FC194FC51C6CB05C343B8AC38FF /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		10498391B5CC7CD842A67A5F813DAFB6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B05A54793B08817493F67E6932438F79 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2BAD33651C3787908A3D14108EDAE016 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				3348FA72FBFD4E86210B66B836046C50 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BF7C83C997A523EBFC81A9DF73A9F0D3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2CAA3188BECBF3197DEA3D667EF487E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,29 +131,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0C5728B7CE7DC9A626D2901D107BD53C /* Pods-RouteNav */ = {
-			isa = PBXGroup;
-			children = (
-				06C1D7125E6E9FF53EE7BF9349C3382C /* Info.plist */,
-				336CDEBA9C51983C790796F35A7110E6 /* Pods-RouteNav.modulemap */,
-				CBF037F11B1FD875312B1AAAB109E06C /* Pods-RouteNav-acknowledgements.markdown */,
-				FC2A9F62C1D564957EB65ED648AE5715 /* Pods-RouteNav-acknowledgements.plist */,
-				63192035F30D95340BCDE0C2990A73E0 /* Pods-RouteNav-dummy.m */,
-				399C4EE542F87AF8E3F737E222F04577 /* Pods-RouteNav-frameworks.sh */,
-				4FEFDB725B9DB0947745AE9C09C2923C /* Pods-RouteNav-resources.sh */,
-				79481DCE73732D129F62CA20C1CA8798 /* Pods-RouteNav-umbrella.h */,
-				A0E72B79AFADB6C70E9450A062331691 /* Pods-RouteNav.debug.xcconfig */,
-				23A88BAE4BDC42511E1BED7DF373B1F4 /* Pods-RouteNav.release.xcconfig */,
-			);
-			name = "Pods-RouteNav";
-			path = "Target Support Files/Pods-RouteNav";
-			sourceTree = "<group>";
-		};
 		1244331B7849AD5DCDA8AAA76CF75F2E /* FirebaseCore */ = {
 			isa = PBXGroup;
 			children = (
 				481FF90DC85815063F83EC40226C6501 /* Frameworks */,
 			);
+			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -208,25 +147,26 @@
 				F66EB931C5759A9F1B77FA2CE2C629E0 /* NSData+zlib */,
 				7E0068602B6767085E0615FEFF589C65 /* Support Files */,
 			);
+			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
-		1F72AA493091FC900D2414EE36D8700C /* Pods-RouteNavUITests */ = {
+		189BC215807B89A705A1C606B2875361 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C0BD53B166D4BD1C591D233EEC034285 /* Info.plist */,
-				790B0A85281D9BBCA8FC670BB6E73D6B /* Pods-RouteNavUITests.modulemap */,
-				226E88D21F5E724440424550DB6A34D6 /* Pods-RouteNavUITests-acknowledgements.markdown */,
-				6C58D2E0DFD916FA2D802D858C528761 /* Pods-RouteNavUITests-acknowledgements.plist */,
-				EA6D16ED52802996FF0B2EAFC98C12CA /* Pods-RouteNavUITests-dummy.m */,
-				0C8F04E1D5D3EB39A9CFD7381E407EBC /* Pods-RouteNavUITests-frameworks.sh */,
-				50D3F3C73E4227B668FDD95CB7320182 /* Pods-RouteNavUITests-resources.sh */,
-				4E1338D4D45070ECD6D5AFD5076CA1CE /* Pods-RouteNavUITests-umbrella.h */,
-				D25EF7FB4C4A161E713D0A582A5DF5A1 /* Pods-RouteNavUITests.debug.xcconfig */,
-				B870438DA9F6E4BFE8118E2A24E53E16 /* Pods-RouteNavUITests.release.xcconfig */,
+				9303E82B01E2DADCD95FABAC16835CF7 /* Pods-RouteNav */,
 			);
-			name = "Pods-RouteNavUITests";
-			path = "Target Support Files/Pods-RouteNavUITests";
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		267EBB7978E62BCE740BFB007A6B7AA4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF208FC194FC51C6CB05C343B8AC38FF /* GoogleToolboxForMac.framework */,
+				711146C88D59D6B678EF0903019621A0 /* OnboardingKit.framework */,
+				E665CFE0B1BEE2F76F796CE5FE0332F9 /* Pods_RouteNav.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3A4B7FBE03F92E5E780A760D7E38CCE0 /* Frameworks */ = {
@@ -259,8 +199,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				FE012E5744699C295801E01041358771 /* Pods */,
-				816C73E87C428D6C8B0597DF1AEF402E /* Products */,
-				EA4D3CC9F5C0C33617CCA5A888C4F030 /* Targets Support Files */,
+				267EBB7978E62BCE740BFB007A6B7AA4 /* Products */,
+				189BC215807B89A705A1C606B2875361 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,18 +216,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GoogleToolboxForMac";
-			sourceTree = "<group>";
-		};
-		816C73E87C428D6C8B0597DF1AEF402E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				18D6F47E1D6CFFDD8D0EC7A3CFCC02E9 /* GoogleToolboxForMac.framework */,
-				78CA3688121986D8990B24F314002E42 /* OnboardingKit.framework */,
-				FA1D6492B49110F159038650E9752338 /* Pods_RouteNav.framework */,
-				D675DCF6A74725265B4109EBBBB709F7 /* Pods_RouteNavTests.framework */,
-				1B12A66845D21BD075F209CD8227C75E /* Pods_RouteNavUITests.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8D7316D540F5FD5F4F55E682B0A9D2F3 /* Frameworks */ = {
@@ -317,7 +245,26 @@
 				BDFAA957C7AEED84C46C9B7BC32C9E48 /* TZStackViewDistribution.swift */,
 				D8545086CF2A377999EB9046A0ECCCE1 /* Support Files */,
 			);
+			name = OnboardingKit;
 			path = OnboardingKit;
+			sourceTree = "<group>";
+		};
+		9303E82B01E2DADCD95FABAC16835CF7 /* Pods-RouteNav */ = {
+			isa = PBXGroup;
+			children = (
+				6A520D50B831DFE06EE4610FB9A9777A /* Info.plist */,
+				5F456342A9F90C92726418C3F28B2FE5 /* Pods-RouteNav.modulemap */,
+				84DE5EB71FEF9C17938A399D0AAC44C9 /* Pods-RouteNav-acknowledgements.markdown */,
+				5411B57D64BDC37D211E3F86C7A4F77C /* Pods-RouteNav-acknowledgements.plist */,
+				9FA4EAAEC5419FECC36332C2A774E524 /* Pods-RouteNav-dummy.m */,
+				0A79FCD4E6EDB63DDA879233528B5B10 /* Pods-RouteNav-frameworks.sh */,
+				8CDE0FC091FB5A81FEA6B9F452E9D437 /* Pods-RouteNav-resources.sh */,
+				8E99F02A8BA84DE169EED0786AF927B2 /* Pods-RouteNav-umbrella.h */,
+				9F4155BB9744AAEC4174CFB9DCB39F73 /* Pods-RouteNav.debug.xcconfig */,
+				658D09C5B8C2820B5FF32744A88FFC2F /* Pods-RouteNav.release.xcconfig */,
+			);
+			name = "Pods-RouteNav";
+			path = "Target Support Files/Pods-RouteNav";
 			sourceTree = "<group>";
 		};
 		9FC76545F3189255BFBAC738CC03450F /* FirebaseAnalytics */ = {
@@ -325,6 +272,7 @@
 			children = (
 				3A4B7FBE03F92E5E780A760D7E38CCE0 /* Frameworks */,
 			);
+			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -333,6 +281,7 @@
 			children = (
 				4A42390589B8551D168ABBADD4C1C050 /* Core */,
 			);
+			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -366,34 +315,6 @@
 			path = "../Target Support Files/OnboardingKit";
 			sourceTree = "<group>";
 		};
-		DCA9A8DC4FDD080A21D2238BF8B0DBBA /* Pods-RouteNavTests */ = {
-			isa = PBXGroup;
-			children = (
-				99885D7024D7120E571F96EE6C9E7C5C /* Info.plist */,
-				575EB304A4F0FF5B28D756F4EBDD4718 /* Pods-RouteNavTests.modulemap */,
-				72B4DC0BBAC3D032877BE92E62EDA9A7 /* Pods-RouteNavTests-acknowledgements.markdown */,
-				9F265541C5443054D37413B76D293E59 /* Pods-RouteNavTests-acknowledgements.plist */,
-				05FDC0D96279DD4D9C38F68794914EBA /* Pods-RouteNavTests-dummy.m */,
-				8687D64768585E843E21561763C9F28B /* Pods-RouteNavTests-frameworks.sh */,
-				86A32259819BA0C1C3D6012A6364DF1D /* Pods-RouteNavTests-resources.sh */,
-				3A664A00AEA2DA27A0A1FB451F687DF2 /* Pods-RouteNavTests-umbrella.h */,
-				921A4E01F22A93EF36C4893536041592 /* Pods-RouteNavTests.debug.xcconfig */,
-				D4CC7ADFF269B7DBB0E5E0D18CA0C686 /* Pods-RouteNavTests.release.xcconfig */,
-			);
-			name = "Pods-RouteNavTests";
-			path = "Target Support Files/Pods-RouteNavTests";
-			sourceTree = "<group>";
-		};
-		EA4D3CC9F5C0C33617CCA5A888C4F030 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				0C5728B7CE7DC9A626D2901D107BD53C /* Pods-RouteNav */,
-				DCA9A8DC4FDD080A21D2238BF8B0DBBA /* Pods-RouteNavTests */,
-				1F72AA493091FC900D2414EE36D8700C /* Pods-RouteNavUITests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		F66EB931C5759A9F1B77FA2CE2C629E0 /* NSData+zlib */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,6 +337,7 @@
 			children = (
 				8D7316D540F5FD5F4F55E682B0A9D2F3 /* Frameworks */,
 			);
+			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -435,22 +357,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3A0C0A3BA442C03A9D70A2524ACCC53E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E825C007D634F3ACD01C2B7969C72DC8 /* Pods-RouteNavUITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		55364D8F589E7D6F23DBDCCCCC66AB27 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				08AC42A0636E77A4109EEC2B75750E43 /* Pods-RouteNavTests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		696BA2E6DF960CE00A79884638F750C4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -494,7 +400,7 @@
 			);
 			name = GoogleToolboxForMac;
 			productName = GoogleToolboxForMac;
-			productReference = 18D6F47E1D6CFFDD8D0EC7A3CFCC02E9 /* GoogleToolboxForMac.framework */;
+			productReference = FF208FC194FC51C6CB05C343B8AC38FF /* GoogleToolboxForMac.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		3A72B183CA046C7435EA55B932288DDF /* Pods-RouteNav */ = {
@@ -513,41 +419,7 @@
 			);
 			name = "Pods-RouteNav";
 			productName = "Pods-RouteNav";
-			productReference = FA1D6492B49110F159038650E9752338 /* Pods_RouteNav.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C968F598722935A3CD9A570C05C4E471 /* Pods-RouteNavUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8F8E858623E02E427A32F1FC47B311AC /* Build configuration list for PBXNativeTarget "Pods-RouteNavUITests" */;
-			buildPhases = (
-				B44B10DEA4D362BA32858C2A8D98B58B /* Sources */,
-				10498391B5CC7CD842A67A5F813DAFB6 /* Frameworks */,
-				3A0C0A3BA442C03A9D70A2524ACCC53E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-RouteNavUITests";
-			productName = "Pods-RouteNavUITests";
-			productReference = 1B12A66845D21BD075F209CD8227C75E /* Pods_RouteNavUITests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		DFC2DB7A9E287BA8ECDEAF27A9788C38 /* Pods-RouteNavTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 424037F551FA2EB399F6808D2BC7EFAD /* Build configuration list for PBXNativeTarget "Pods-RouteNavTests" */;
-			buildPhases = (
-				8E55122131788D8CF98E0AACB72CB75C /* Sources */,
-				BF7C83C997A523EBFC81A9DF73A9F0D3 /* Frameworks */,
-				55364D8F589E7D6F23DBDCCCCC66AB27 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-RouteNavTests";
-			productName = "Pods-RouteNavTests";
-			productReference = D675DCF6A74725265B4109EBBBB709F7 /* Pods_RouteNavTests.framework */;
+			productReference = E665CFE0B1BEE2F76F796CE5FE0332F9 /* Pods_RouteNav.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F8A8CBFF1852C8799E0C347F22EB29EE /* OnboardingKit */ = {
@@ -564,7 +436,7 @@
 			);
 			name = OnboardingKit;
 			productName = OnboardingKit;
-			productReference = 78CA3688121986D8990B24F314002E42 /* OnboardingKit.framework */;
+			productReference = 711146C88D59D6B678EF0903019621A0 /* OnboardingKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -574,12 +446,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
-				TargetAttributes = {
-					F8A8CBFF1852C8799E0C347F22EB29EE = {
-						LastSwiftMigration = 0920;
-					};
-				};
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -589,15 +456,13 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 816C73E87C428D6C8B0597DF1AEF402E /* Products */;
+			productRefGroup = 267EBB7978E62BCE740BFB007A6B7AA4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				00103D6C821BE85971C563025527BA5D /* GoogleToolboxForMac */,
 				F8A8CBFF1852C8799E0C347F22EB29EE /* OnboardingKit */,
 				3A72B183CA046C7435EA55B932288DDF /* Pods-RouteNav */,
-				DFC2DB7A9E287BA8ECDEAF27A9788C38 /* Pods-RouteNavTests */,
-				C968F598722935A3CD9A570C05C4E471 /* Pods-RouteNavUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -642,22 +507,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8E55122131788D8CF98E0AACB72CB75C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				60C3AF513390F2105DDD5BB17C900669 /* Pods-RouteNavTests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B44B10DEA4D362BA32858C2A8D98B58B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7292474A741C16294962959845956F42 /* Pods-RouteNavUITests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -676,7 +525,135 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		12C4B864767C59600DBFA238F1E2F8BC /* Release */ = {
+		07FB54585E2D11FCBB82322C895756E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54A0C1A76F5C31F2EB7F976DB0CF9108 /* OnboardingKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/OnboardingKit/OnboardingKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OnboardingKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OnboardingKit/OnboardingKit.modulemap";
+				PRODUCT_NAME = OnboardingKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		19E54F2F3CCE697E0B9AC10E661D2ECD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 658D09C5B8C2820B5FF32744A88FFC2F /* Pods-RouteNav.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RouteNav/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RouteNav/Pods-RouteNav.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RouteNav;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4329CC5B7DC9A16EFCB2B6E695AA5106 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54A0C1A76F5C31F2EB7F976DB0CF9108 /* OnboardingKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/OnboardingKit/OnboardingKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OnboardingKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OnboardingKit/OnboardingKit.modulemap";
+				PRODUCT_NAME = OnboardingKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4FD46B2551582DF47CD95CD77DDF6B34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9017CDAE1679C044DCE6B4E308679C7B /* GoogleToolboxForMac.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
+				PRODUCT_NAME = GoogleToolboxForMac;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		621AB785940626574F07364CB14760E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -722,19 +699,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		1375239741DAE8939C1AB1C6C3CFEDCD /* Debug */ = {
+		91A407E072AC87934832FA650ED76963 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0E72B79AFADB6C70E9450A062331691 /* Pods-RouteNav.debug.xcconfig */;
+			baseConfigurationReference = 9F4155BB9744AAEC4174CFB9DCB39F73 /* Pods-RouteNav.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -747,7 +723,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-RouteNav/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-RouteNav/Pods-RouteNav.modulemap";
@@ -766,105 +742,7 @@
 			};
 			name = Debug;
 		};
-		2B6E485495EAE6A1F0B38BBB9191B035 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54A0C1A76F5C31F2EB7F976DB0CF9108 /* OnboardingKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/OnboardingKit/OnboardingKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OnboardingKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OnboardingKit/OnboardingKit.modulemap";
-				PRODUCT_NAME = OnboardingKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		3C76ECCB7A6373688179966ABCB415F6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D4CC7ADFF269B7DBB0E5E0D18CA0C686 /* Pods-RouteNavTests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RouteNavTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RouteNavTests/Pods-RouteNavTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RouteNavTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		54EF12C81D73BD419AEAC0BDB42B5EB4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54A0C1A76F5C31F2EB7F976DB0CF9108 /* OnboardingKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/OnboardingKit/OnboardingKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OnboardingKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OnboardingKit/OnboardingKit.modulemap";
-				PRODUCT_NAME = OnboardingKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		59F0302F2371FCC6B73EF0A418D40734 /* Debug */ = {
+		B57C09D404C607DDE283C5C44183B2A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -913,7 +791,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -924,39 +802,7 @@
 			};
 			name = Debug;
 		};
-		6123FE88299153E5A7EBD2ED19CF5959 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D25EF7FB4C4A161E713D0A582A5DF5A1 /* Pods-RouteNavUITests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RouteNavUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RouteNavUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		737D5876BC9FA063A4D99E9425533C8B /* Release */ = {
+		D19459BBA4D29829D7678D9CDFE01E64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9017CDAE1679C044DCE6B4E308679C7B /* GoogleToolboxForMac.xcconfig */;
 			buildSettings = {
@@ -979,142 +825,12 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BDA36DEDC4164F40B03C51E6FBA4567C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9017CDAE1679C044DCE6B4E308679C7B /* GoogleToolboxForMac.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GoogleToolboxForMac/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap";
-				PRODUCT_NAME = GoogleToolboxForMac;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		DAB01E38C331C63699C9036FBFC5F53A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23A88BAE4BDC42511E1BED7DF373B1F4 /* Pods-RouteNav.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RouteNav/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RouteNav/Pods-RouteNav.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RouteNav;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E3AE392321ACD82F0C7F3B708CB02972 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 921A4E01F22A93EF36C4893536041592 /* Pods-RouteNavTests.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RouteNavTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RouteNavTests/Pods-RouteNavTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RouteNavTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EFA1941AF32DB41962111DC0677FB2F3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B870438DA9F6E4BFE8118E2A24E53E16 /* Pods-RouteNavUITests.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-RouteNavUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RouteNavUITests/Pods-RouteNavUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RouteNavUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1122,8 +838,8 @@
 		029D943BD682CE154294902A153D821C /* Build configuration list for PBXNativeTarget "OnboardingKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2B6E485495EAE6A1F0B38BBB9191B035 /* Debug */,
-				54EF12C81D73BD419AEAC0BDB42B5EB4 /* Release */,
+				4329CC5B7DC9A16EFCB2B6E695AA5106 /* Debug */,
+				07FB54585E2D11FCBB82322C895756E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1131,17 +847,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59F0302F2371FCC6B73EF0A418D40734 /* Debug */,
-				12C4B864767C59600DBFA238F1E2F8BC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		424037F551FA2EB399F6808D2BC7EFAD /* Build configuration list for PBXNativeTarget "Pods-RouteNavTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E3AE392321ACD82F0C7F3B708CB02972 /* Debug */,
-				3C76ECCB7A6373688179966ABCB415F6 /* Release */,
+				B57C09D404C607DDE283C5C44183B2A1 /* Debug */,
+				621AB785940626574F07364CB14760E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1149,17 +856,8 @@
 		7825F5FA525D95ACB6CAAC029DEA01D9 /* Build configuration list for PBXNativeTarget "Pods-RouteNav" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1375239741DAE8939C1AB1C6C3CFEDCD /* Debug */,
-				DAB01E38C331C63699C9036FBFC5F53A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8F8E858623E02E427A32F1FC47B311AC /* Build configuration list for PBXNativeTarget "Pods-RouteNavUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6123FE88299153E5A7EBD2ED19CF5959 /* Debug */,
-				EFA1941AF32DB41962111DC0677FB2F3 /* Release */,
+				91A407E072AC87934832FA650ED76963 /* Debug */,
+				19E54F2F3CCE697E0B9AC10E661D2ECD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1167,8 +865,8 @@
 		C43D9CA5106C6CCEF973B7EDF833947B /* Build configuration list for PBXNativeTarget "GoogleToolboxForMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BDA36DEDC4164F40B03C51E6FBA4567C /* Debug */,
-				737D5876BC9FA063A4D99E9425533C8B /* Release */,
+				D19459BBA4D29829D7678D9CDFE01E64 /* Debug */,
+				4FD46B2551582DF47CD95CD77DDF6B34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

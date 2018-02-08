@@ -370,28 +370,50 @@ extension MapRoutesViewController: MKMapViewDelegate {
         let routeAnnotation = annotation as! RouteAnnotation
         
         let reuseId = "RouteAnnotationViewID"
-        var view: MKMarkerAnnotationView
-        // 4
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-            as? MKMarkerAnnotationView {
-            dequeuedView.annotation = annotation
-            view = dequeuedView
+        if #available(iOS 11.0, *) {
+            var view: MKMarkerAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+                as? MKMarkerAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                //we are re-using a view, update its annotation reference...
+                view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                view.calloutOffset = CGPoint(x: -15, y: 15)
+                view.tintColor = UIColor.orange
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                view.canShowCallout = true
+            }
+            
+            if routeAnnotation.route.type == 2 {
+                view.glyphImage = UIImage(named: "runMapIcon.png")
+            } else {
+                view.glyphImage = UIImage(named: "bikeMapIcon.png")
+            }
+            
+            return view
         } else {
-            //we are re-using a view, update its annotation reference...
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            view.calloutOffset = CGPoint(x: -15, y: 15)
-            view.tintColor = UIColor.orange
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            view.canShowCallout = true
+            var view: MKAnnotationView
+            // Fallback on earlier versions
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            } else {
+                //we are re-using a view, update its annotation reference...
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+                view.tintColor = UIColor.orange
+                view.canShowCallout = true
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            }
+            
+            if routeAnnotation.route.type == 2 {
+                view.image = UIImage(named: "smallrunIcon.png")
+            } else {
+                view.image = UIImage(named: "smallbikeIcon.png")
+            }
+            
+            return view
         }
-        
-        if routeAnnotation.route.type == 2 {
-            view.glyphImage = UIImage(named: "runMapIcon.png")
-        } else {
-            view.glyphImage = UIImage(named: "bikeMapIcon.png")
-        }
-
-        return view
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
