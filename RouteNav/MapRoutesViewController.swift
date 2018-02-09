@@ -189,6 +189,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                     let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, it doesnt look like you have any routes. You can create routes on Strava to import.", preferredStyle: .actionSheet)
                     alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     self.present(alertMessage, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.removeLoadingOverlays()
+                    }
                 }
                 else{
                     DispatchQueue.main.async {
@@ -202,6 +205,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                 let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
                 alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 self.present(alertMessage, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    self.removeLoadingOverlays()
+                }
             }
         })
     }
@@ -216,6 +222,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                     alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                     self.present(alertMessage, animated: true, completion: nil)
                     self.navigationItem.title = "Error loading route."
+                    DispatchQueue.main.async {
+                        self.removeLoadingOverlays()
+                    }
                 }
                 else {
                     self.loadingTextLabel.text = "Getting data for \(route.routename!)"
@@ -234,6 +243,9 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                 alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
                 self.present(alertMessage, animated: true, completion: nil)
                 self.navigationItem.title = "Error loading route."
+                DispatchQueue.main.async {
+                    self.removeLoadingOverlays()
+                }
             }
             else {
                 self.addRoutesToMap(route: route)
