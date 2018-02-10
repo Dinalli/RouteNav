@@ -106,7 +106,6 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         return completionHandler(true)
                     } catch {
                         //failure code
-                        print(httpResponse)
                         return completionHandler(false)
                     }
                 }
@@ -251,7 +250,6 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         
-                        print(jsonResult)
                         DispatchQueue.main.async {
                             
                             StravaCoreDataHandler.sharedInstance.addRouteDetail(route: route, routesDetailArray: jsonResult as? Dictionary<String, AnyObject>, completionHandler: { (successFlag) in

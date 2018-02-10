@@ -80,12 +80,10 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
   }
   
   public func onboardingView(_ onboardingView: OnboardingView, didSelectPage page: Int) {
-    print("Did select pge \(page)")
     didShow?(page)
   }
   
   public func onboardingView(_ onboardingView: OnboardingView, willSelectPage page: Int) {
-    print("Will select page \(page)")
     willShow?(page)
   }
 }

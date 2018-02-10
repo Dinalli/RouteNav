@@ -128,7 +128,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func refeshData(_ sender: UIBarButtonItem) {
-        print("REFRESHDATA")
         DispatchQueue.main.async {
             self.setUpLoadingOverlay()
             self.RoutesMapView.removeAnnotations(self.RoutesMapView.annotations)
@@ -360,7 +359,6 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
             routeCount = 0
             removeLoadingOverlays()
         } else {
-            print("Routes Count \(route.routename!) \(routeCount) - \(routes.count)")
             routeCount = routeCount + 1
         }
     }
@@ -441,7 +439,6 @@ extension MapRoutesViewController: MKMapViewDelegate {
     }
     
     func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
-        print("DID FINISH RENDERING")
         self.startLocationUpdates()
     }
     

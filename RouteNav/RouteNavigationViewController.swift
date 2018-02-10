@@ -64,7 +64,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             
             self.managedContext = appDelegate.persistentContainer.viewContext
         }
-        self.getRouteStream()
+        
+        if(route.routeroutecoord?.count != 0) {
+            addRouteToMap()
+        } else {
+            let alertMessage = UIAlertController(title: "Something went wrong", message: "Sorry, we dont seem to have a route, tap back and try again.", preferredStyle: .actionSheet)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertMessage, animated: true, completion: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,40 +160,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     
     //MARK : Get Data
     
-    func getRouteStream() {
-
-        apiHelper.getRouteStream(route, managedContext: managedContext) { (successFlag) in
-            if !successFlag
-            {
-                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
-                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                self.present(alertMessage, animated: true, completion: nil)
-            }
-            else {
-                self.getSegmentStreams()
-            }
-        }
-    }
-        
-    func getRouteDetail() {
-        apiHelper.getRouteDetail(route) { (successFlag) in
-            if !successFlag
-            {
-                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
-                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                self.present(alertMessage, animated: true, completion: nil)
-            }
-            else {
-                for routeDirection in self.route.routedirection! {
-                    let routeDirectionObject = routeDirection as! Direction
-                    print("direction name \(routeDirectionObject.directionname!)")
-                }
-                
-                self.getRouteStream()
-            }
-        }
-    }
-    
     func getSegmentStreams() {
         
         for routeSegment in self.route.routesegment! {
@@ -200,15 +173,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     self.present(alertMessage, animated: true, completion: nil)
                 }
                 else {
-                    DispatchQueue.main.async {
-                        self.showSegmentsOnMap(segmentObject: routeSegmentObject)
-                    }
+                    self.showSegmentsOnMap(segmentObject: routeSegmentObject)
                 }
             }
-        }
-        
-        DispatchQueue.main.async {
-            self.addRouteToMap()
         }
     }
     
@@ -226,7 +193,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let strSeconds = String(format: "%02d", seconds)
         let strFraction = String(format: "%02d", fraction)
         mapPullUpVC.updateTimeLabel("\(strMinutes):\(strSeconds):\(strFraction)")
-        //routeTimeLabel.text = "\(strMinutes):\(strSeconds):\(strFraction)"
     }
     
     func startLocationUpdates() {
@@ -295,7 +261,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 for route in (response?.routes)! {
                     for step in route.steps {
                         if( step.instructions != "Arrive at the destination" && step.instructions != "The destination is on your left" && step.instructions != "The destination is on your right") {
-                            print("\(step.instructions)")
                             DispatchQueue.main.async {
                                 self.instructionLabel.text = step.instructions
                             }
@@ -333,12 +298,12 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
  
     func addRouteToMap() {
-        
         for case let coordObject as Coordinates in route.routeroutecoord! {
             let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
             polylineCoordinates.append(locationCoord)
         }
         
+        print(polylineCoordinates.count)
         // Drop a pin
         let startObject = route.routeroutecoord?.firstObject as! Coordinates
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
@@ -360,8 +325,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         DispatchQueue.main.async {
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
-            self.mapView!.add(self.routePolyline, level: .aboveLabels)
+            self.mapView!.add(self.routePolyline, level: .aboveRoads)
         }
+        self.getSegmentStreams()
     }
     
     func showSegmentsOnMap(segmentObject :Segment) {
