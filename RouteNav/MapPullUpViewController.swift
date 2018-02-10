@@ -10,6 +10,7 @@ import UIKit
 
 class MapPullUpViewController: UIViewController {
 
+    @IBOutlet weak var segementsSwitch: UISwitch!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     public weak var delegate: MapPullUpDelegate? 
@@ -103,7 +104,12 @@ class MapPullUpViewController: UIViewController {
 //
 //        view.insertSubview(bluredView, at: 0)
     }
-
+    @IBAction func segmentValueChanged(_ sender: Any) {
+        if (delegate != nil) {
+            delegate?.segmentValueChanged(sender)
+        }
+    }
+    
     @IBAction func actionTapped(_ sender: Any) {
         if (delegate != nil) {
             delegate?.actionButtonTapped(sender)

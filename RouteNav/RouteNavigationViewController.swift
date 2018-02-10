@@ -24,6 +24,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var routePolyline: RoutePolyline!
     var segmentPolyline: MKPolyline!
     var currentLocation: CLLocation?
+    var segmentOverlays = [MKOverlay]()
+    var segmentPins = [MKPointAnnotation]()
 
     let locationManager = CLLocationManager.init()
     var polylineCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
@@ -152,7 +154,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     //MARK : Get Data
     
     func getRouteStream() {
-        
 
         apiHelper.getRouteStream(route, managedContext: managedContext) { (successFlag) in
             if !successFlag
@@ -372,6 +373,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         startDropPin.coordinate = startlocationCoord
         startDropPin.title = "\(segmentObject.segmentname ?? "segment") start"
         self.mapView!.addAnnotation(startDropPin)
+        segmentPins .append(startDropPin)
         
         // Drop a pin
         let endObject = segmentObject.segmentCoord?.lastObject as! SegmentCoordinates
@@ -380,6 +382,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         endDropPin.coordinate = endlocationCoord
         endDropPin.title = "\(segmentObject.segmentname ?? "segment") end"
         self.mapView!.addAnnotation(endDropPin)
+        segmentPins .append(endDropPin)
         
         var segmentCoordinatesArray: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
         for case let coordObject as SegmentCoordinates in segmentObject.segmentCoord! {
@@ -411,6 +414,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             let polylineRender: MKPolylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRender.lineWidth = 4.0
             polylineRender.strokeColor = UIColor.orange
+            segmentOverlays .append(overlay)
             return polylineRender
         }
     }
@@ -493,6 +497,21 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
         tracking = !tracking
     }
+    
+    func segmentValueChanged(_ sender: Any) {
+        let segmentSwitch:UISwitch = (sender as? UISwitch)!
+        
+        if segmentSwitch.isOn {
+            // Show segments
+            mapView?.addOverlays(segmentOverlays)
+            mapView?.addAnnotations(segmentPins)
+        } else {
+            // Hide segments
+            mapView?.removeOverlays(segmentOverlays)
+            mapView?.removeAnnotations(segmentPins)
+        }
+    }
+    
     
     func removeMap() {
         mapView?.delegate = nil
