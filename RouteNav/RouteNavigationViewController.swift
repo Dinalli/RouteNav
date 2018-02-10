@@ -302,8 +302,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
             polylineCoordinates.append(locationCoord)
         }
-        
-        print(polylineCoordinates.count)
         // Drop a pin
         let startObject = route.routeroutecoord?.firstObject as! Coordinates
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
@@ -360,7 +358,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         segmentPolyline.title = segmentObject.segmentname
         
         DispatchQueue.main.async {
-            self.mapView!.add(self.segmentPolyline, level: .aboveLabels)
+            self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
         }
     }
 
