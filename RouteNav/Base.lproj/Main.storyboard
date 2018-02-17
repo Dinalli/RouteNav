@@ -113,26 +113,41 @@
             </objects>
             <point key="canvasLocation" x="-341.60000000000002" y="-873.39901477832518"/>
         </scene>
-        <!--Map Routes View Controller-->
+        <!--Routes View Controller-->
         <scene sceneID="8wI-bc-vqm">
             <objects>
-                <viewController id="DDB-oO-6Y1" customClass="MapRoutesViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="V9I-9X-YSh">
+                <viewController id="DDB-oO-6Y1" customClass="RoutesViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ebk-B6-PD6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </mapView>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0lj-Rp-rR5">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="routeCollectionCell" id="aIO-D7-iF2">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <connections>
+                                    <segue destination="Rkg-Ea-qvg" kind="show" id="k9Q-dr-F72"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                    </collectionView>
                     <navigationItem key="navigationItem" id="Uyq-ez-gPa">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="refresh" id="c8t-Pe-YvY">
-                            <connections>
-                                <action selector="refeshData:" destination="DDB-oO-6Y1" id="fLj-Xj-XRW"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" id="lzz-qn-uiD"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="RoutesMapView" destination="V9I-9X-YSh" id="IXg-wi-Zny"/>
+                        <outlet property="routesCollectionView" destination="ebk-B6-PD6" id="uY2-QG-Br4"/>
                         <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" id="V6E-ug-e44"/>
-                        <segue destination="Rkg-Ea-qvg" kind="show" identifier="showDetailSegue" id="mXm-ZM-EaO"/>
-                        <segue destination="B6v-54-laf" kind="popoverPresentation" identifier="onBoardSegue" popoverAnchorView="V9I-9X-YSh" id="JpL-cc-0LQ">
+                        <segue destination="B6v-54-laf" kind="popoverPresentation" identifier="onBoardSegue" popoverAnchorView="ebk-B6-PD6" id="JpL-cc-0LQ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -240,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OI7-gD-y5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1581.5999999999999" y="-113.79310344827587"/>
+            <point key="canvasLocation" x="411" y="-113"/>
         </scene>
     </scenes>
     <resources>
@@ -248,6 +263,5 @@
         <image name="api_logo_pwrdBy_strava_horiz_light" width="338" height="63"/>
         <image name="btn_strava_connectwith_orange" width="193" height="48"/>
         <image name="pexels-photo-207779" width="960" height="640"/>
-        <image name="refresh" width="48" height="48"/>
     </resources>
 </document>

@@ -476,6 +476,21 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    func getRouteStream(route : Route) {
+        
+        apiHelper.getRouteStream(route, managedContext: managedContext) { (successFlag) in
+            if !successFlag
+            {
+                let alertMessage = UIAlertController(title: "No Routes", message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                self.present(alertMessage, animated: true, completion: nil)
+                self.navigationItem.title = "Error loading route."
+            }
+            else {
+                //self.addRoutesToMap(route: route)
+            }
+        }
+    }
     
     func removeMap() {
         mapView?.delegate = nil
