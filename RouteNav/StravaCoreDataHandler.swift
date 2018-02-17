@@ -85,6 +85,7 @@ class StravaCoreDataHandler: NSObject {
                 map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
                 map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
                 route.routemap = map
+                print("Saving \(route.routename ?? "")")
             }
             // save the context
             do {

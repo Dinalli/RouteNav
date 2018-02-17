@@ -97,7 +97,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         let jsonResult = (try JSONSerialization.jsonObject(with: data!, options:
                             JSONSerialization.ReadingOptions.mutableContainers))
                         self.routes = jsonResult as! Array
-                        
+                        print("got routes")
                         DispatchQueue.main.async {
                             StravaCoreDataHandler.sharedInstance.addRoutes(routesArray: jsonResult as! Array)
                         }
@@ -120,6 +120,8 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
     
     public func getRouteStream(_ route: Route, managedContext: NSManagedObjectContext, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         
+        
+        print("stream for \(route.routename ?? "No route name")")
         let authUrl = URL(string: "https://www.strava.com/api/v3/routes/\(route.id)/streams")
         var request = URLRequest(url: authUrl!)
         
@@ -150,7 +152,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 let typeString = streamDictionary["type"] as? String
                                 
                                 if typeString == "latlng" {
-                                    
+                                    print("adding latlng")
                                     DispatchQueue.main.async {
                                         StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, completionHandler: { (successFlag) in
                                             //success code

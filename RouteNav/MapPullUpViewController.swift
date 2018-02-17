@@ -116,6 +116,8 @@ class MapPullUpViewController: UIViewController {
         }
     }
     
+    @IBAction func uomValueChanged(_ sender: Any) {
+    }
     @IBAction func mapTypeChanged(_ sender: Any) {
         if (delegate != nil) {
             delegate?.changeMapView(sender)

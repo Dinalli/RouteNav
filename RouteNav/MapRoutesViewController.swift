@@ -227,10 +227,11 @@ class MapRoutesViewController: UIViewController, CLLocationManagerDelegate {
                 }
                 else {
                     self.loadingTextLabel.text = "Getting data for \(route.routename!)"
-                    self.getRouteStream(route: route)
+                    //self.getRouteStream(route: route)
                 }
             }
         }
+        removeLoadingOverlays()
     }
     
     func getRouteStream(route : Route) {
