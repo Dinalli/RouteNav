@@ -58,34 +58,39 @@ class StravaCoreDataHandler: NSObject {
 
             // ... do some task on the context
             for routeDetail:[String: Any] in routesArray {
-                let entity =
-                    NSEntityDescription.entity(forEntityName: "Route",
-                                               in: container.viewContext)!
+                let routeType = routeDetail["type"] as? NSNumber
                 
-                let mapentity =
-                    NSEntityDescription.entity(forEntityName: "Map",
-                                               in: container.viewContext)!
-                
-                let route = NSManagedObject(entity: entity,
-                                            insertInto: container.viewContext) as! Route
-                
-                route.setValue(routeDetail["id"] as? NSNumber, forKeyPath: "id")
-                route.setValue(routeDetail["name"] as? String, forKeyPath: "routename")
-                route.setValue(routeDetail["estimated_moving_time"] as? NSNumber, forKeyPath: "estmovingtime")
-                route.setValue(routeDetail["type"] as? NSNumber, forKeyPath: "type")
-                route.setValue(routeDetail["distance"] as? NSNumber, forKeyPath: "distance")
-                route.setValue(routeDetail["elevation_gain"] as? NSNumber, forKeyPath: "elevation_gain")
-                route.setValue(routeDetail["description"] as? String, forKeyPath: "routedesc")
-                
-                // add map data
-                let map = NSManagedObject(entity: mapentity, insertInto: container.viewContext) as! Map
-                let mapData:[String: Any] = routeDetail["map"] as! Dictionary
-                
-                map.setValue(mapData["id"] as? NSNumber, forKeyPath: "id")
-                map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
-                map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
-                route.routemap = map
-                print("Saving \(route.routename ?? "")")
+                if(routeType == 1)
+                {
+                    let entity =
+                        NSEntityDescription.entity(forEntityName: "Route",
+                                                   in: container.viewContext)!
+                    
+                    let mapentity =
+                        NSEntityDescription.entity(forEntityName: "Map",
+                                                   in: container.viewContext)!
+                    
+                    let route = NSManagedObject(entity: entity,
+                                                insertInto: container.viewContext) as! Route
+                    
+                    route.setValue(routeDetail["id"] as? NSNumber, forKeyPath: "id")
+                    route.setValue(routeDetail["name"] as? String, forKeyPath: "routename")
+                    route.setValue(routeDetail["estimated_moving_time"] as? NSNumber, forKeyPath: "estmovingtime")
+                    route.setValue(routeType, forKeyPath: "type")
+                    route.setValue(routeDetail["distance"] as? NSNumber, forKeyPath: "distance")
+                    route.setValue(routeDetail["elevation_gain"] as? NSNumber, forKeyPath: "elevation_gain")
+                    route.setValue(routeDetail["description"] as? String, forKeyPath: "routedesc")
+                    
+                    // add map data
+                    let map = NSManagedObject(entity: mapentity, insertInto: container.viewContext) as! Map
+                    let mapData:[String: Any] = routeDetail["map"] as! Dictionary
+                    
+                    map.setValue(mapData["id"] as? NSNumber, forKeyPath: "id")
+                    map.setValue(mapData["resource_state"] as? NSNumber, forKeyPath: "resource_state")
+                    map.setValue(mapData["summary_polyline"] as? String, forKeyPath: "summary_polyline")
+                    route.routemap = map
+                    print("Saving \(route.routename ?? "")")
+                }
             }
             // save the context
             do {

@@ -259,14 +259,14 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let routeCell:RouteCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell", for: indexPath) as! RouteCollectionViewCell
-        
+
         let route:Route = routes[indexPath.row]
         routeCell.routeNameLabel.text = route.routename
-        routeCell.distanceLabel.text = "\(route.distance)"
-        routeCell.elevationLabel.text = "\(route.elevation_gain)"
-        routeCell.timeLabel.text = "\(route.estmovingtime)"
+        routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
+        routeCell.elevationLabel.text = "elevation: \(route.elevation_gain) m"
+        routeCell.timeLabel.text = " time: " + srtHelper.getStringFrom(seconds: route.estmovingtime)
         
-        let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=320x157&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
+        let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=375x250&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         routeCell.mapIcon.imageFromUrl(urlString: encodedStr!)
         return routeCell

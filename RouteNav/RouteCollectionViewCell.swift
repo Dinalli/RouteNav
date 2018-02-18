@@ -15,7 +15,7 @@ class RouteCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var elevationLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+ 
     
     override func awakeFromNib() {
         super.awakeFromNib()
