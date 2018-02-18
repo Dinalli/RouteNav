@@ -308,7 +308,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         DispatchQueue.main.async {
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
-            self.mapView!.add(self.routePolyline, level: .aboveRoads)
+            self.mapView!.add(self.routePolyline, level: .aboveLabels)
         }
         
         for routeSegment in self.route.routesegment! {
@@ -358,7 +358,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         segmentPolyline.title = segmentObject.segmentname
         
         DispatchQueue.main.async {
-            self.mapView!.add(self.segmentPolyline, level: .aboveRoads)
+            self.mapView!.add(self.segmentPolyline, level: .aboveLabels)
         }
     }
 
