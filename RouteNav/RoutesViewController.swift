@@ -40,6 +40,11 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     let animationDuration: TimeInterval = 0.5
     let switchingInterval: TimeInterval = 2.5
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.routesCollectionView.register(UINib(nibName: "RouteCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "routeCollectionCell")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -239,10 +244,22 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell", for: indexPath)
-        cell.backgroundColor = UIColor.black
+        let routeCell:RouteCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell", for: indexPath) as! RouteCollectionViewCell
+        
+        let route:Route = routes[indexPath.row]
+        
+        
+        routeCell.routeNameLabel.text = route.routename
+        routeCell.distanceLabel.text = "\(route.distance)"
+        routeCell.elevationLabel.text = "\(route.elevation_gain)"
+        routeCell.timeLabel.text = "\(route.estmovingtime)"
+        
+        let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=150x150&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
+        let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        routeCell.mapIcon.imageFromUrl(urlString: encodedStr!)
+
         // Configure the cell
-        return cell
+        return routeCell
     }
 }
 
