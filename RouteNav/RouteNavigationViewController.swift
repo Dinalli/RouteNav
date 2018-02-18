@@ -66,7 +66,11 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         }
         
         if self.route != nil {
-            getRouteStream(route: self.route)
+            if (self.route.routeroutecoord?.count == 0) {
+                getRouteStream(route: self.route)
+            } else {
+                self.addRouteToMap()
+            }
         } else {
             let alertMessage = UIAlertController(title: "Something went wrong", message: "Sorry, we dont seem to have a route, tap back and try again.", preferredStyle: .actionSheet)
             alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -146,27 +150,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             
         default:
             break
-        }
-    }
-    
-    //MARK : Get Data
-    
-    func getSegmentStreams() {
-        
-        for routeSegment in self.route.routesegment! {
-            let routeSegmentObject = routeSegment as! Segment
-            
-            self.apiHelper.getSegmentStream(routeSegmentObject) { (successFlag) in
-                if !successFlag
-                {
-                    let alertMessage = UIAlertController(title: "No Segment", message: "Sorry, we cannot get segment as something went wrong.", preferredStyle: .actionSheet)
-                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-                    self.present(alertMessage, animated: true, completion: nil)
-                }
-                else {
-                    self.showSegmentsOnMap(segmentObject: routeSegmentObject)
-                }
-            }
         }
     }
     
@@ -324,7 +307,22 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             self.mapView!.showAnnotations(self.mapView!.annotations, animated: true)
             self.mapView!.add(self.routePolyline, level: .aboveRoads)
         }
-        self.getSegmentStreams()
+        
+        for routeSegment in self.route.routesegment! {
+            let routeSegmentObject = routeSegment as! Segment
+            
+            self.apiHelper.getSegmentStream(routeSegmentObject) { (successFlag) in
+                if !successFlag
+                {
+                    let alertMessage = UIAlertController(title: "No Segment", message: "Sorry, we cannot get segment as something went wrong.", preferredStyle: .actionSheet)
+                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    self.present(alertMessage, animated: true, completion: nil)
+                }
+                else {
+                    self.showSegmentsOnMap(segmentObject: routeSegmentObject)
+                }
+            }
+        }
     }
     
     func showSegmentsOnMap(segmentObject :Segment) {
