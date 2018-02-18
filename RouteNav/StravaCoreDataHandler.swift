@@ -163,7 +163,8 @@ class StravaCoreDataHandler: NSObject {
         
         let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         
-        container.viewContext.performAndWait {
+        //container.viewContext.performAndWait {
+            print("adding coordinates to route \(coordinatesArray.count)")
             
             for coordObjectIndex in 0...coordinatesArray.count-1 {
                 
@@ -177,16 +178,19 @@ class StravaCoreDataHandler: NSObject {
                 coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
                 coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
                 route.addToRouteroutecoord(coordinateObject)
-                
-                do {
-                    try container.viewContext.save()
-                } catch let error as NSError {
-                    // handle error
-                    print("Could not save. \(error), \(error.userInfo)")
-                }
+                print("adding \(coordObjectIndex)")
             }
-            completionHandler(true)
+        
+        do {
+            print("saving to core data")
+            try container.viewContext.save()
+        } catch let error as NSError {
+            // handle error
+            print("Could not save. \(error), \(error.userInfo)")
         }
+            print("completed adding coordinates to route \(coordinatesArray.count)")
+            completionHandler(true)
+        //}
     }
     
     public func addCoordinatesToSegment(segment: Segment, coordinatesArray : Array<Array<Any>>!,completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
@@ -207,13 +211,13 @@ class StravaCoreDataHandler: NSObject {
                 coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
                 coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
                 segment.addToSegmentCoord(coordinateObject)
-                
-                do {
-                    try container.viewContext.save()
-                } catch let error as NSError {
-                    // handle error
-                    print("Could not save. \(error), \(error.userInfo)")
-                }
+            }
+            
+            do {
+                try container.viewContext.save()
+            } catch let error as NSError {
+                // handle error
+                print("Could not save. \(error), \(error.userInfo)")
             }
         }
         

@@ -152,7 +152,6 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                                 let typeString = streamDictionary["type"] as? String
                                 
                                 if typeString == "latlng" {
-                                    print("adding latlng")
                                     DispatchQueue.main.async {
                                         StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route, coordinatesArray: streamDictionary["data"] as! Array, completionHandler: { (successFlag) in
                                             //success code

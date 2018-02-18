@@ -272,6 +272,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
  
     func addRouteToMap() {
+        
+        print("cordinate count \(route.routeroutecoord!.count)")
         for case let coordObject as Coordinates in route.routeroutecoord! {
             let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
             polylineCoordinates.append(locationCoord)
@@ -301,6 +303,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         navigationCoordinates = polylineCoordinates
         
+        print("polyline count \(self.polylineCoordinates.count)")
         routePolyline = RoutePolyline.init(coordinates: self.polylineCoordinates, count: self.polylineCoordinates.count)
         
         DispatchQueue.main.async {
@@ -310,7 +313,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         
         for routeSegment in self.route.routesegment! {
             let routeSegmentObject = routeSegment as! Segment
-            
+
             self.apiHelper.getSegmentStream(routeSegmentObject) { (successFlag) in
                 if !successFlag
                 {
