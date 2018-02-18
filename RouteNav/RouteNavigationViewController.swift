@@ -65,8 +65,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             self.managedContext = appDelegate.persistentContainer.viewContext
         }
         
-        if(route.routeroutecoord?.count != 0) {
-            addRouteToMap()
+        if self.route != nil {
+            getRouteStream(route: self.route)
         } else {
             let alertMessage = UIAlertController(title: "Something went wrong", message: "Sorry, we dont seem to have a route, tap back and try again.", preferredStyle: .actionSheet)
             alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -101,15 +101,6 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.showsBuildings = true
         mapView?.showsPointsOfInterest = true
         mapView?.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
-        
-        let startObject = route.routeroutecoord?.firstObject as! Coordinates
-        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
-        
-        self.camera = MKMapCamera(lookingAtCenter: startlocationCoord,
-                                  fromDistance: distance,
-                                  pitch: pitch,
-                                  heading: heading)
-        mapView?.camera = self.camera!
         polylinePosistion = 0
 
     }
@@ -302,9 +293,17 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
             let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
             polylineCoordinates.append(locationCoord)
         }
-        // Drop a pin
+        
         let startObject = route.routeroutecoord?.firstObject as! Coordinates
         let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
+        
+        self.camera = MKMapCamera(lookingAtCenter: startlocationCoord,
+                                  fromDistance: distance,
+                                  pitch: pitch,
+                                  heading: heading)
+        mapView?.camera = self.camera!
+        
+        // Drop a pin
         let dropPin = MKPointAnnotation()
         dropPin.coordinate = startlocationCoord
         dropPin.title = "start"
@@ -487,7 +486,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.navigationItem.title = "Error loading route."
             }
             else {
-                //self.addRoutesToMap(route: route)
+                self.addRouteToMap()
             }
         }
     }

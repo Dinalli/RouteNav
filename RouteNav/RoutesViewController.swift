@@ -239,6 +239,20 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.loadingOverlayView .removeFromSuperview()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailSegue" {
+            let rnc:RouteNavigationViewController = segue.destination as! RouteNavigationViewController
+            rnc.route = selectedRoute
+            navigationController?.navigationBar.backItem?.title = ""
+            navigationController?.setNavigationBarHidden(navigationController?.isNavigationBarHidden == false, animated: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedRoute = routes[indexPath.row] 
+        self.performSegue(withIdentifier: "showDetailSegue", sender: self)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return routes.count
     }
@@ -247,18 +261,14 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         let routeCell:RouteCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell", for: indexPath) as! RouteCollectionViewCell
         
         let route:Route = routes[indexPath.row]
-        
-        
         routeCell.routeNameLabel.text = route.routename
         routeCell.distanceLabel.text = "\(route.distance)"
         routeCell.elevationLabel.text = "\(route.elevation_gain)"
         routeCell.timeLabel.text = "\(route.estmovingtime)"
         
-        let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=150x150&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
+        let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=320x157&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         routeCell.mapIcon.imageFromUrl(urlString: encodedStr!)
-
-        // Configure the cell
         return routeCell
     }
 }

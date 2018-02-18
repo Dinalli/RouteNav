@@ -128,7 +128,19 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
-                        <cells/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="g9z-kc-i8E" customClass="RouteCollectionViewCell" customModule="RouteNav" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <connections>
+                                    <segue destination="Rkg-Ea-qvg" kind="show" identifier="showDetailSegue" id="0x9-HH-IZL"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Uyq-ez-gPa">
                         <barButtonItem key="rightBarButtonItem" id="lzz-qn-uiD"/>
@@ -244,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OI7-gD-y5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="411" y="-113"/>
+            <point key="canvasLocation" x="534" y="-114"/>
         </scene>
     </scenes>
     <resources>
