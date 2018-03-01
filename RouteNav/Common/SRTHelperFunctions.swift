@@ -8,6 +8,8 @@
 
 import UIKit
 
+let imageCache = NSCache<NSString, UIImage>()
+
 class SRTHelperFunctions: NSObject {
     
     func getStringFrom(seconds: Int64) -> String {

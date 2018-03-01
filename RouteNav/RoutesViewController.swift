@@ -268,7 +268,7 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         let str = "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=375x250&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")" as String
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        routeCell.mapIcon.imageFromUrl(urlString: encodedStr!)
+        routeCell.mapIcon.downloadedFrom(link: encodedStr!)
         return routeCell
     }
 }

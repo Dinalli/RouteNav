@@ -23,6 +23,7 @@
 		40866E8F1F111FFD00778CCC /* StravaAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */; };
 		40866E921F11326200778CCC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40866E911F11326200778CCC /* AdSupport.framework */; };
 		409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409559811F135C9800050BDD /* SRTHelperFunctions.swift */; };
+		409CA46A204883EB00874BC9 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409CA469204883EB00874BC9 /* UIImageViewExtension.swift */; };
 		40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */; };
 		40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */; };
 		40BE764220264DAD00132D9A /* MapPullUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BE764020264DAD00132D9A /* MapPullUpViewController.swift */; };
@@ -75,6 +76,7 @@
 		40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAuthViewController.swift; sourceTree = "<group>"; };
 		40866E911F11326200778CCC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		409559811F135C9800050BDD /* SRTHelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTHelperFunctions.swift; sourceTree = "<group>"; };
+		409CA469204883EB00874BC9 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteNavigationViewController.swift; sourceTree = "<group>"; };
 		40BC517B1FDFD33900F180B2 /* RouteAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotationView.swift; sourceTree = "<group>"; };
 		40BE764020264DAD00132D9A /* MapPullUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPullUpViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
+				409CA468204883D800874BC9 /* Extension */,
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				40040E6D2014F84000193FE4 /* RouteNav.entitlements */,
 				40870B84202628EA00E26F9C /* MapPullUpView */,
@@ -250,6 +253,14 @@
 				409559811F135C9800050BDD /* SRTHelperFunctions.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		409CA468204883D800874BC9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				409CA469204883EB00874BC9 /* UIImageViewExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		40B42AC31E7AC47200B8FA84 /* StravaAPI */ = {
@@ -442,6 +453,7 @@
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
 				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
+				409CA46A204883EB00874BC9 /* UIImageViewExtension.swift in Sources */,
 				407111BE200D04E900530974 /* onBoardingViewController.swift in Sources */,
 				40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
