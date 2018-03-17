@@ -14,7 +14,7 @@ import CoreData
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapPullUpDelegate {
     
     @IBOutlet weak var instructionLabel: UILabel!
-    
+    @IBOutlet weak var mapView: MKMapView?
     @IBOutlet weak var directionView: UIView!
     
     let mapPullUpVC = MapPullUpViewController()
@@ -30,7 +30,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     let locationManager = CLLocationManager.init()
     var polylineCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
     var navigationCoordinates: Array<CLLocationCoordinate2D>! = Array<CLLocationCoordinate2D>()
-    @IBOutlet weak var mapView: MKMapView?
+    
     var tracking: Bool = false
     var polylinePosistion: Int!
     var managedContext: NSManagedObjectContext!
@@ -107,6 +107,11 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
         polylinePosistion = 0
 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        mapView?.delegate = nil
     }
     
     func addMapPullUpView() {
@@ -299,7 +304,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
         dropPin.coordinate = endlocationCoord
         dropPin.title = "end"
-        self.mapView!.addAnnotation(dropPin)
+        
+        //guard let url = URL(string: link) else { return }
+        self.mapView?.addAnnotation(dropPin)
         
         navigationCoordinates = polylineCoordinates
         
@@ -322,7 +329,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     self.present(alertMessage, animated: true, completion: nil)
                 }
                 else {
-                    self.showSegmentsOnMap(segmentObject: routeSegmentObject)
+                    if self.mapView != nil {
+                        self.showSegmentsOnMap(segmentObject: routeSegmentObject)
+                    }
                 }
             }
         }
@@ -487,7 +496,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.navigationItem.title = "Error loading route."
             }
             else {
-                self.addRouteToMap()
+                if self.mapView != nil {
+                    self.addRouteToMap()
+                }
             }
         }
     }
