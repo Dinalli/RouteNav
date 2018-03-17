@@ -11,5 +11,6 @@ target 'RouteNav' do
 
   pod 'Firebase/Core'
   pod 'OnboardingKit'
+  pod 'SwiftLint'
 
 end

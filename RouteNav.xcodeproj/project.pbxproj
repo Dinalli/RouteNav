@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		241154357B10F80B754F7A76 /* Pods_RouteNav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 463FD9BD630C5A6AB65E7AFA /* Pods_RouteNav.framework */; };
 		400B6D431F32466D0094E76C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400B6D421F32466D0094E76C /* MapKit.framework */; };
+		401278F7205D746E005440A4 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401278F6205D746E005440A4 /* CLLocationExtension.swift */; };
+		401278F9205D74F9005440A4 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401278F8205D74F9005440A4 /* DoubleExtension.swift */; };
 		4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403129591E431DF7004CA4F8 /* AppDelegate.swift */; };
 		4031295F1E431DF7004CA4F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4031295D1E431DF7004CA4F8 /* Main.storyboard */; };
 		403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 403129601E431DF7004CA4F8 /* RouteNav.xcdatamodeld */; };
@@ -56,6 +58,8 @@
 		400B6D421F32466D0094E76C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		400E09FD1E4350E900EE4118 /* StravaSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StravaSwift.framework; path = "../StravaSwift/build/Debug-iphoneos/StravaSwift.framework"; sourceTree = "<group>"; };
 		400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Pugneys to Nostell.gpx"; sourceTree = "<group>"; };
+		401278F6205D746E005440A4 /* CLLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
+		401278F8205D74F9005440A4 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		403129561E431DF7004CA4F8 /* RouteNav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteNav.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		403129591E431DF7004CA4F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4031295E1E431DF7004CA4F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				409CA469204883EB00874BC9 /* UIImageViewExtension.swift */,
+				401278F6205D746E005440A4 /* CLLocationExtension.swift */,
+				401278F8205D74F9005440A4 /* DoubleExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 				2FFB08F6332706F34BE51D47 /* [CP] Embed Pods Frameworks */,
 				38563B5086B9E989CFE9A72F /* [CP] Copy Pods Resources */,
 				40F507D81F75515F00E6993C /* Embed Watch Content */,
+				401278F5205D69FC005440A4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -406,11 +413,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/OnboardingKit/OnboardingKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OnboardingKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -432,6 +441,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RouteNav/Pods-RouteNav-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		401278F5205D69FC005440A4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"  ";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -439,6 +461,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				401278F9205D74F9005440A4 /* DoubleExtension.swift in Sources */,
+				401278F7205D746E005440A4 /* CLLocationExtension.swift in Sources */,
 				40FF5E442013772A00816EC0 /* CustomActivity.swift in Sources */,
 				40AD0A421EAA21DB00E06958 /* RouteNavigationViewController.swift in Sources */,
 				40BC517C1FDFD33900F180B2 /* RouteAnnotationView.swift in Sources */,

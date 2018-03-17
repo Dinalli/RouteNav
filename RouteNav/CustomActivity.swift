@@ -9,15 +9,11 @@
 import UIKit
 
 class CustomActivity: UIActivity {
-    
     var customActivityType: UIActivityType
     var activityName: String
     var activityImageName: String
     var customActionWhenTapped: () -> Void
-    
-    
     // MARK: Initializer
-    
     init(title: String, imageName: String, performAction: @escaping () -> Void) {
         self.activityName = title
         self.activityImageName = imageName
@@ -25,21 +21,18 @@ class CustomActivity: UIActivity {
         self.customActionWhenTapped = performAction
         super.init()
     }
-    
     // MARK: Overrides
-    
     override var activityType: UIActivityType? {
         return customActivityType
     }
-    
+
     override var activityTitle: String? {
         return activityName
     }
-    
+
     override class var activityCategory: UIActivityCategory {
         return .share
     }
-    
 
     override var activityImage: UIImage? {
         return UIImage(named: activityImageName)
@@ -52,10 +45,8 @@ class CustomActivity: UIActivity {
     override func prepare(withActivityItems activityItems: [Any]) {
         // Nothing to prepare
     }
-    
+
     override func perform() {
         customActionWhenTapped()
     }
 }
-
-

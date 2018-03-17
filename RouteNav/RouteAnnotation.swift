@@ -15,12 +15,10 @@ class RouteAnnotation: NSObject, MKAnnotation {
     let route: Route
 
     init(title: String, coordinate: CLLocationCoordinate2D, subtitle: String, route: Route) {
-
         self.title = title
         self.coordinate = coordinate
         self.subtitle = subtitle
         self.route = route
-        
         super.init()
     }
 }

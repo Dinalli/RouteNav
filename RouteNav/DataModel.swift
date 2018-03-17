@@ -10,39 +10,35 @@ import UIKit
 import OnboardingKit
 
 public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDataSource {
-  
   public var didShow: ((Int) -> Void)?
   public var willShow: ((Int) -> Void)?
-  
   public func numberOfPages() -> Int {
     return 4
   }
-  
-  public func onboardingView(_ onboardingView: OnboardingView, configurationForPage page: Int) -> OnboardingConfiguration {
+
+  public func onboardingView(_ onboardingView: OnboardingView, configurationForPage page: Int)
+	-> OnboardingConfiguration {
     switch page {
-      
     case 0:
       return OnboardingConfiguration(
         image: UIImage(named: "LogoIcon")!,
         itemImage: UIImage(named: "blackBikeIcon")!,
         pageTitle: "Connect to Strava",
-        pageDescription: "You will need to connect to your Strava account \n to use this app. \n Connect using facebook, google+ or Strava account.",
+        pageDescription:
+		"You will need to connect to your Strava account \n to use this app. \n Connect using facebook, google+ or Strava account.",
         backgroundImage: UIImage(named: "cycling-bicycle-riding-sport-38296"),
         topBackgroundImage: UIImage(named: "BackgroundOrange"),
-        bottomBackgroundImage: UIImage(named: "WavesImage")
-      )
-        
+        bottomBackgroundImage: UIImage(named: "WavesImage"))
     case 1:
         return OnboardingConfiguration(
             image: UIImage(named: "LogoIcon")!,
             itemImage: UIImage(named: "blackBikeIcon")!,
             pageTitle: "Location",
-            pageDescription: "We need to use your location to show you \n where you are on a Map in relation to your routes,\n  we also need it to track you as you navigate.",
+            pageDescription:
+			"We need to use your location to show you \n where you are on a Map in relation to your routes,\n  we also need it to track you as you navigate.",
             backgroundImage: UIImage(named: "pexels-photo-287398"),
             topBackgroundImage: UIImage(named: "BackgroundOrange"),
-            bottomBackgroundImage: UIImage(named: "WavesImage")
-        )
-      
+            bottomBackgroundImage: UIImage(named: "WavesImage"))
     case 2:
       return OnboardingConfiguration(
         image: UIImage(named: "LogoIcon")!,
@@ -51,9 +47,7 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
         pageDescription: "Download your saved routes, \n \n View route details on the Map",
         backgroundImage: UIImage(named: "RouteMaps"),
         topBackgroundImage: UIImage(named: "BackgroundOrange"),
-        bottomBackgroundImage: UIImage(named: "WavesImage")
-      )
-        
+        bottomBackgroundImage: UIImage(named: "WavesImage"))
     case 3:
         return OnboardingConfiguration(
             image: UIImage(named: "LogoIcon")!,
@@ -62,14 +56,11 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
             pageDescription: "Select a route to Navigate \n\n Track your progress, See segments as you ride",
             backgroundImage: UIImage(named: "Navigate"),
             topBackgroundImage: UIImage(named: "BackgroundOrange"),
-            bottomBackgroundImage: UIImage(named: "WavesImage")
-        )
-      
-    default:
-      fatalError("Out of range!")
+            bottomBackgroundImage: UIImage(named: "WavesImage"))
+    default: fatalError("Out of range!")
     }
   }
-  
+
   public func onboardingView(_ onboardingView: OnboardingView, configurePageView pageView: PageView, atPage page: Int) {
     pageView.titleLabel.textColor = UIColor.white
     pageView.titleLabel.layer.shadowOpacity = 0.6
@@ -78,11 +69,11 @@ public final class DataModel: NSObject, OnboardingViewDelegate, OnboardingViewDa
     pageView.titleLabel.layer.shouldRasterize = true
     pageView.titleLabel.layer.rasterizationScale = UIScreen.main.scale
   }
-  
+
   public func onboardingView(_ onboardingView: OnboardingView, didSelectPage page: Int) {
     didShow?(page)
   }
-  
+
   public func onboardingView(_ onboardingView: OnboardingView, willSelectPage page: Int) {
     willShow?(page)
   }

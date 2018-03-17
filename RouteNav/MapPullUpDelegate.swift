@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol MapPullUpDelegate : NSObjectProtocol {
+public protocol MapPullUpDelegate: NSObjectProtocol {
     func changeMapView(_ sender: Any)
     func actionButtonTapped(_ sender: Any)
     func segmentValueChanged(_ sender: Any)

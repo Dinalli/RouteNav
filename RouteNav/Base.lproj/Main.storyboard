@@ -129,7 +129,7 @@
                             <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="g9z-kc-i8E" customClass="RouteCollectionViewCell" customModule="RouteNav" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="routeCellId" id="g9z-kc-i8E" customClass="RouteCollectionViewCell" customModule="RouteNav" customModuleProvider="target">
                                 <rect key="frame" x="10" y="5" width="355" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -177,10 +177,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz7-Wr-b9A">
-                                <rect key="frame" x="300" y="50" width="74" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="9RM-fA-zbk"/>
-                                </constraints>
+                                <rect key="frame" x="335" y="50" width="39" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="SKIP">
                                     <color key="titleColor" red="1" green="0.80392156859999997" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -193,10 +190,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="YaQ-qp-QBP" firstAttribute="top" secondItem="VZs-ba-eTT" secondAttribute="top" id="7g4-Yz-S0g"/>
+                            <constraint firstItem="fz7-Wr-b9A" firstAttribute="top" secondItem="egb-aM-MyJ" secondAttribute="bottom" constant="30" id="8r3-ru-nHO"/>
                             <constraint firstAttribute="trailing" secondItem="YaQ-qp-QBP" secondAttribute="trailing" id="Bss-oh-Pxp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fz7-Wr-b9A" secondAttribute="trailing" constant="-15" id="LGo-Ln-xyH"/>
-                            <constraint firstItem="fz7-Wr-b9A" firstAttribute="top" secondItem="egb-aM-MyJ" secondAttribute="bottom" constant="30" id="MY9-Jf-NpJ"/>
+                            <constraint firstItem="fz7-Wr-b9A" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VZs-ba-eTT" secondAttribute="leadingMargin" id="Szb-GZ-PJN"/>
                             <constraint firstItem="YaQ-qp-QBP" firstAttribute="bottom" secondItem="DVW-c3-dpx" secondAttribute="top" id="iH5-0m-oWX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fz7-Wr-b9A" secondAttribute="trailing" constant="-15" id="oGJ-LX-MC4"/>
                             <constraint firstItem="YaQ-qp-QBP" firstAttribute="leading" secondItem="VZs-ba-eTT" secondAttribute="leading" id="zFg-3E-eSB"/>
                         </constraints>
                     </view>
@@ -235,7 +233,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhN-Mn-4R8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fhN-Mn-4R8">
                                         <rect key="frame" x="16" y="28" width="343" height="62"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="28"/>
