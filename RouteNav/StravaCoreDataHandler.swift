@@ -128,7 +128,7 @@ class StravaCoreDataHandler: NSObject {
         }
     }
 
-    public func addCoordinatesToRoute(route: Route, coordinatesArray: [[[Any]]]!, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func addCoordinatesToRoute(route: Route, coordinatesArray: [Any], completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
 		let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
 		for coordObjectIndex in 0...coordinatesArray.count-1 {
 			let coords =
@@ -138,8 +138,11 @@ class StravaCoreDataHandler: NSObject {
 			guard let coordinateObject = NSManagedObject(entity: coords,
                                                          insertInto: container?.viewContext) as? Coordinates else { return }
 
-			coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
-			coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
+            guard let coordsArrayObject: [AnyObject] = coordinatesArray[coordObjectIndex] as? [AnyObject] else {
+                return
+            }
+            coordinateObject.setValue(coordsArrayObject[0], forKeyPath: "latitude")
+            coordinateObject.setValue(coordsArrayObject[1], forKeyPath: "longitude")
 			route.addToRouteroutecoord(coordinateObject)
 			print("adding \(coordObjectIndex)")
 		}
@@ -152,7 +155,7 @@ class StravaCoreDataHandler: NSObject {
 		completionHandler(true)
     }
 
-    public func addCoordinatesToSegment(segment: Segment, coordinatesArray: [[[Any]]]!, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+    public func addCoordinatesToSegment(segment: Segment, coordinatesArray: [Any], completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
         container?.viewContext.performAndWait {
             for coordObjectIndex in 0...coordinatesArray.count-1 {
@@ -161,8 +164,11 @@ class StravaCoreDataHandler: NSObject {
 											   in: (container?.viewContext)!)!
                 guard let coordinateObject = NSManagedObject(entity: coords,
                                                              insertInto: container?.viewContext) as? SegmentCoordinates else { return }
-                coordinateObject.setValue(coordinatesArray[coordObjectIndex][0], forKeyPath: "latitude")
-                coordinateObject.setValue(coordinatesArray[coordObjectIndex][1], forKeyPath: "longitude")
+                guard let coordsArrayObject: [AnyObject] = coordinatesArray[coordObjectIndex] as? [AnyObject] else {
+                    return
+                }
+                coordinateObject.setValue(coordsArrayObject[0], forKeyPath: "latitude")
+                coordinateObject.setValue(coordsArrayObject[1], forKeyPath: "longitude")
                 segment.addToSegmentCoord(coordinateObject)
             }
             do {

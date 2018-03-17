@@ -120,7 +120,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         for routeDetail: [String: Any] in routeStreamArray {
 							if let streamDictionary = routeDetail as [String: Any]! {
                                 let typeString = streamDictionary["type"] as? String
-								guard let streamData: [[[Any]]] = streamDictionary["data"] as? [[[Any]]] else { return }
+								guard let streamData: [Any] = streamDictionary["data"] as? [Any] else { return }
                                 if typeString == "latlng" {
                                     DispatchQueue.main.async {
                                         StravaCoreDataHandler.sharedInstance.addCoordinatesToRoute(route: route,
@@ -165,7 +165,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
                         for segmentDetail: [String: Any] in segmentStreamArray {
 							if let streamDictionary = segmentDetail as [String: AnyObject]! {
                                 let typeString = streamDictionary["type"] as? String
-								guard let streamData: [[[Any]]] = streamDictionary["data"] as? [[[Any]]] else { return }
+                                guard let streamData: [Any] = streamDictionary["data"] as? [Any] else { return }
                                 if typeString == "latlng" {
                                     DispatchQueue.main.async {
                                         StravaCoreDataHandler.sharedInstance.addCoordinatesToSegment(
