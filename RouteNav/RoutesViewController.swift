@@ -241,8 +241,8 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         let route: Route = routes[indexPath.row]
         routeCell.routeNameLabel.text = route.routename
         routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
-        routeCell.elevationLabel.text = "elevation: \(route.elevation_gain) m"
-        routeCell.timeLabel.text = " time: " + srtHelper.getStringFrom(seconds: route.estmovingtime)
+        routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
+        routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
         let str =
 			"http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=375x250&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
 			as String
