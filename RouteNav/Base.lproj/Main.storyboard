@@ -158,7 +158,7 @@
         <!--On Boarding View Controller-->
         <scene sceneID="ftx-Fm-h4O">
             <objects>
-                <viewController id="B6v-54-laf" customClass="onBoardingViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="B6v-54-laf" customClass="OnBoardingViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="egb-aM-MyJ"/>
                         <viewControllerLayoutGuide type="bottom" id="DVW-c3-dpx"/>
@@ -194,7 +194,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="nextButton" destination="fz7-Wr-b9A" id="O7l-Mc-CNk"/>
+                        <outlet property="nextButton" destination="fz7-Wr-b9A" id="GZ1-d0-B0b"/>
                         <outlet property="onboardingView" destination="YaQ-qp-QBP" id="lou-La-JMK"/>
                     </connections>
                 </viewController>

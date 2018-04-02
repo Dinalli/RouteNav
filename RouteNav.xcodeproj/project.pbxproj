@@ -18,7 +18,7 @@
 		403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AF66D1F75857900EF0A9D /* RoutePolyline.swift */; };
 		405F319A1E81B1890013457C /* StravaAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405F31991E81B1890013457C /* StravaAPIHelper.swift */; };
 		407111BA200CFDC100530974 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407111B9200CFDC100530974 /* DataModel.swift */; };
-		407111BE200D04E900530974 /* onBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407111BD200D04E900530974 /* onBoardingViewController.swift */; };
+		407111BE200D04E900530974 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407111BD200D04E900530974 /* OnBoardingViewController.swift */; };
 		4072BE771FD579710004525E /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4072BE761FD579710004525E /* RoutesViewController.swift */; };
 		4072C094203975E800EB7E5E /* RouteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4072C092203975E800EB7E5E /* RouteCollectionViewCell.swift */; };
 		4072C095203975E800EB7E5E /* RouteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4072C093203975E800EB7E5E /* RouteCollectionViewCell.xib */; };
@@ -73,7 +73,7 @@
 		403AF66D1F75857900EF0A9D /* RoutePolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePolyline.swift; sourceTree = "<group>"; };
 		405F31991E81B1890013457C /* StravaAPIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaAPIHelper.swift; sourceTree = "<group>"; };
 		407111B9200CFDC100530974 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
-		407111BD200D04E900530974 /* onBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingViewController.swift; sourceTree = "<group>"; };
+		407111BD200D04E900530974 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		4072BE761FD579710004525E /* RoutesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
 		4072C092203975E800EB7E5E /* RouteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCollectionViewCell.swift; sourceTree = "<group>"; };
 		4072C093203975E800EB7E5E /* RouteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RouteCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				407111B9200CFDC100530974 /* DataModel.swift */,
-				407111BD200D04E900530974 /* onBoardingViewController.swift */,
+				407111BD200D04E900530974 /* OnBoardingViewController.swift */,
 			);
 			name = onBoarding;
 			sourceTree = "<group>";
@@ -478,7 +478,7 @@
 				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
 				409CA46A204883EB00874BC9 /* UIImageViewExtension.swift in Sources */,
-				407111BE200D04E900530974 /* onBoardingViewController.swift in Sources */,
+				407111BE200D04E900530974 /* OnBoardingViewController.swift in Sources */,
 				40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */,
 				4031295A1E431DF7004CA4F8 /* AppDelegate.swift in Sources */,
 			);
