@@ -140,7 +140,10 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                 } else {
                     let alertMessage = UIAlertController(title: "No Routes",
 														 message: "Sorry, we cannot get routes as something went wrong.", preferredStyle: .actionSheet)
-                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: { (_) in
+                        self.refreshData()
+                    }))
                     self.present(alertMessage, animated: true, completion: nil)
                 }
                 self.authorising = false
@@ -171,7 +174,10 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                 let alertMessage = UIAlertController(title: "No Routes",
 													 message: "Sorry, we cannot get routes as something went wrong.",
 													 preferredStyle: .actionSheet)
-                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: { (_) in
+                    self.refreshData()
+                }))
                 self.present(alertMessage, animated: true, completion: nil)
                 DispatchQueue.main.async {
                     self.removeLoadingOverlays()
@@ -187,7 +193,10 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                     let alertMessage = UIAlertController(title: "No Routes",
 														 message: "Sorry, we cannot get routes as something went wrong.",
 														 preferredStyle: .actionSheet)
-                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    alertMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: { (_) in
+                        self.refreshData()
+                    }))
                     self.present(alertMessage, animated: true, completion: nil)
                     self.navigationItem.title = "Error loading route."
                     DispatchQueue.main.async {
