@@ -300,20 +300,20 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     }
 
     func showSegmentsOnMap(segmentObject: Segment) {
-        guard let startObject: Coordinates = route.routeroutecoord?.firstObject as? Coordinates else { return }
-        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
-        let startDropPin = MKPointAnnotation()
-        startDropPin.coordinate = startlocationCoord
-        startDropPin.title = "\(segmentObject.segmentname ?? "segment") start"
-        self.mapView!.addAnnotation(startDropPin)
-        segmentPins .append(startDropPin)
-        guard let endObject: Coordinates = route.routeroutecoord?.firstObject as? Coordinates else { return }
-        let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
-        let endDropPin = MKPointAnnotation()
-        endDropPin.coordinate = endlocationCoord
-        endDropPin.title = "\(segmentObject.segmentname ?? "segment") end"
-        self.mapView!.addAnnotation(endDropPin)
-        segmentPins .append(endDropPin)
+//        guard let startObject: Coordinates = route.routeroutecoord?.firstObject as? Coordinates else { return }
+//        let startlocationCoord = CLLocationCoordinate2DMake(startObject.latitude, startObject.longitude)
+//        let startDropPin = MKPointAnnotation()
+//        startDropPin.coordinate = startlocationCoord
+//        startDropPin.title = "\(segmentObject.segmentname ?? "segment") start"
+//        self.mapView!.addAnnotation(startDropPin)
+//        segmentPins .append(startDropPin)
+//        guard let endObject: Coordinates = route.routeroutecoord?.firstObject as? Coordinates else { return }
+//        let endlocationCoord = CLLocationCoordinate2DMake(endObject.latitude, endObject.longitude)
+//        let endDropPin = MKPointAnnotation()
+//        endDropPin.coordinate = endlocationCoord
+//        endDropPin.title = "\(segmentObject.segmentname ?? "segment") end"
+//        self.mapView!.addAnnotation(endDropPin)
+//        segmentPins .append(endDropPin)
         var segmentCoordinatesArray: [CLLocationCoordinate2D]! = [CLLocationCoordinate2D]()
         for case let coordObject as SegmentCoordinates in segmentObject.segmentCoord! {
             let locationCoord = CLLocationCoordinate2DMake(coordObject.latitude, coordObject.longitude)
@@ -353,22 +353,36 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 return anView
             } else {
                 // Fallback on earlier versions
-                let anView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin-annotation")
+                let anView = MKAnnotationView(annotation: annotation, reuseIdentifier: "userLocation")
                 anView.canShowCallout = true
                 anView.image = UIImage(named: "smallbikeIcon.png")
                 return anView
             }
         }
-        let reuseId = "test"
-        let anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-        if anView == nil {
-            let anView: MKAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            anView.image = UIImage(named: "xaxas")
-            anView.canShowCallout = true
+
+        let mapAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: "mapAnnotation")
+        if annotation.title == "end" {
+            if #available(iOS 11.0, *) {
+                let mapAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "mapAnnotation")
+                mapAnnotation.glyphImage = UIImage(named: "cheq.png")
+                return mapAnnotation
+            } else {
+                // Fallback on earlier versions
+                let mapAnnotation = MKAnnotationView(annotation: annotation, reuseIdentifier: "mapAnnotation")
+                mapAnnotation.canShowCallout = true
+                mapAnnotation.image = UIImage(named: "smallcheq.png")
+                return mapAnnotation
+            }
         } else {
-            anView?.annotation = annotation
+            if mapAnnotation == nil {
+                let mapAnnotation: MKAnnotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "mapAnnotation")
+                mapAnnotation.image = UIImage(named: "none")
+                mapAnnotation.canShowCallout = true
+            } else {
+                mapAnnotation?.annotation = annotation
+            }
         }
-        return anView
+        return mapAnnotation
     }
 
     func changeMapView(_ sender: Any) {
