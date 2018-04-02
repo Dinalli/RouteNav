@@ -65,7 +65,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
     }
 
     public func getRoutes(_ athleteId: Int, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
-        let authUrl = URL(string: "https://www.strava.com/api/v3/athletes/\(athleteId)/routes?page=0&per_page=100")
+        let authUrl = URL(string: "https://www.strava.com/api/v3/athletes/\(athleteId)/routes")
         var request = URLRequest(url: authUrl!)
         request.addValue(" Bearer " + authorisationToken!, forHTTPHeaderField: "Authorization")
         request.addValue(authorisationToken!, forHTTPHeaderField: "access_token")

@@ -15,6 +15,7 @@ import MapKit
 class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet var routesCollectionView: UICollectionView!
     var refreshControl: UIRefreshControl!
+    let backgroundImage = UIImageView()
     let apiHelper = StravaAPIHelper()
     let srtHelper = SRTHelperFunctions()
     var webView: WKWebView?
@@ -33,11 +34,14 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     var svc: SFSafariViewController?
     var index = 0
     let animationDuration: TimeInterval = 0.5
-    let switchingInterval: TimeInterval = 2.5
+    let switchingInterval: TimeInterval = 0.5
     override func viewDidLoad() {
         super.viewDidLoad()
         self.routesCollectionView.register(UINib(nibName: "RouteCollectionViewCell", bundle: nil),
 										   forCellWithReuseIdentifier: "routeCollectionCell")
+        if #available(iOS 11.0, *) {
+            self.routesCollectionView.contentInsetAdjustmentBehavior = .never
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,10 +87,10 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
 
     func setUpLoadingOverlay() {
-        loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
-        loadingOverlayView .backgroundColor = UIColor.black
-        loadingOverlayView .alpha = 0.6
-        loadingTextLabel.frame = CGRect(x: 0, y: (self.view.frame.size.height/2)+40,
+        addImageOverlay()
+        //loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        loadingOverlayView .backgroundColor = UIColor.clear
+        loadingTextLabel.frame = CGRect(x: 0, y: (self.view.frame.size.height/2),
 										width: self.view.frame.size.width, height: 80)
         loadingTextLabel.text = "Loading your routes, please wait..."
         loadingTextLabel.textAlignment = .center
@@ -109,14 +113,57 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                        completion: nil
         )
 
-        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
-																 options: NSLayoutFormatOptions.init(rawValue: 0),
-																 metrics: nil,
-																 views: ["loadingOverlay": loadingOverlayView]))
-        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlay]|",
-																 options: NSLayoutFormatOptions.init(rawValue: 0),
-																 metrics: nil,
-																 views: ["loadingOverlay": loadingOverlayView]))
+//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
+//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
+//                                                                 metrics: nil,
+//                                                                 views: ["loadingOverlay": loadingOverlayView]))
+//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlay]|",
+//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
+//                                                                 metrics: nil,
+//                                                                 views: ["loadingOverlay": loadingOverlayView]))
+    }
+
+    func addImageOverlay() {
+        //backgroundImage.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImage.contentMode = .scaleAspectFill
+        self.backgroundImage.frame = CGRect(x: 0, y: 0,
+                                            width: self.view.frame.size.width, height: self.view.frame.size.height)
+        self.backgroundImage.image = UIImage(named: "pexels-photo-207779")
+        self.view .addSubview(self.backgroundImage)
+
+//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[backgroundImage]|",
+//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
+//                                                                 metrics: nil,
+//                                                                 views: ["backgroundImage": self.backgroundImage]))
+//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[backgroundImage]|",
+//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
+//                                                                 metrics: nil,
+//                                                                 views: ["backgroundImage": self.backgroundImage]))
+
+        startAnimatingBackgroundImages()
+    }
+
+    func removeLoadingOverlays() {
+        self.loadingIconImageView .removeFromSuperview()
+        self.loadingTextLabel .removeFromSuperview()
+        self.loadingOverlayView .removeFromSuperview()
+        self.backgroundImage .removeFromSuperview()
+    }
+
+    func startAnimatingBackgroundImages() {
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(animationDuration)
+        CATransaction.setCompletionBlock {
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.switchingInterval) {
+                self.startAnimatingBackgroundImages()
+            }
+        }
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        backgroundImage.layer.add(transition, forKey: kCATransition)
+        backgroundImage.image = backgroundImagesArray[index]
+        CATransaction.commit()
+        index = index < backgroundImagesArray.count - 1 ? index + 1 : 0
     }
 
     @IBAction func refreshData() {
@@ -214,12 +261,6 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     func getQueryStringParameter(url: String, param: String) -> String? {
         guard let url = URLComponents(string: url) else { return nil }
         return url.queryItems?.first(where: { $0.name == param })?.value
-    }
-
-    func removeLoadingOverlays() {
-        self.loadingIconImageView .removeFromSuperview()
-        self.loadingTextLabel .removeFromSuperview()
-        self.loadingOverlayView .removeFromSuperview()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
