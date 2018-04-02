@@ -185,8 +185,16 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                 self.travelledDistance =
 					self.travelledDistance + round( (locations.last?.distance(from: currentLocation!))!) as Double
                 DispatchQueue.main.async {
-                    var formattedDistance: Double = self.travelledDistance / 1000
-                    self.mapPullUpVC.updateDistnaceLabel("\(formattedDistance.truncate(places: 2)) km")
+
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+
+                    if (appDelegate?.useKmAsUnits)! {
+                        var formattedDistance: Double = self.travelledDistance / 1000
+                        self.mapPullUpVC.updateDistnaceLabel("\(formattedDistance.truncate(places: 2)) km")
+                    } else {
+                        var formattedDistance: Double = self.travelledDistance * 0.000621371192
+                        self.mapPullUpVC.updateDistnaceLabel("\(formattedDistance.truncate(places: 2)) miles")
+                    }
                 }
             }
             currentLocation = locations.last

@@ -234,13 +234,22 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
 		-> UICollectionViewCell {
+
         guard let routeCell: RouteCollectionViewCell =
 			collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell",
                                                for: indexPath) as? RouteCollectionViewCell else { return UICollectionViewCell()}
 
         let route: Route = routes[indexPath.row]
         routeCell.routeNameLabel.text = route.routename
-        routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
+
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+
+        if (appDelegate?.useKmAsUnits)! {
+            routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
+        } else {
+            routeCell.distanceLabel.text = String(format: "%.02f miles", arguments: [(route.distance * 0.000621371192)])
+        }
+
         routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
         routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
         let str =

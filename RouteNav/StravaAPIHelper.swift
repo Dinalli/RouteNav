@@ -118,7 +118,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
 
                         let routeStreamArray: [[String: Any]] = jsonResult
                         for routeDetail: [String: Any] in routeStreamArray {
-							if let streamDictionary = routeDetail as [String: Any]! {
+                            if let streamDictionary = routeDetail as [String: Any]? {
                                 let typeString = streamDictionary["type"] as? String
 								guard let streamData: [Any] = streamDictionary["data"] as? [Any] else { return }
                                 if typeString == "latlng" {
@@ -163,7 +163,7 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
 							JSONSerialization.ReadingOptions.mutableContainers) as? [[String: Any]]) else { return }
                         let segmentStreamArray: [[String: Any]] = jsonResult
                         for segmentDetail: [String: Any] in segmentStreamArray {
-							if let streamDictionary = segmentDetail as [String: AnyObject]! {
+                            if let streamDictionary = segmentDetail as [String: AnyObject]? {
                                 let typeString = streamDictionary["type"] as? String
                                 guard let streamData: [Any] = streamDictionary["data"] as? [Any] else { return }
                                 if typeString == "latlng" {

@@ -24,9 +24,9 @@ extension CLLocation {
 		let lat2 = self.getRadiansFrom(degrees: location.coordinate.latitude)
 		let lon2 = self.getRadiansFrom(degrees: location.coordinate.longitude)
 		let dLon = lon2 - lon1
-		let y = sin(dLon) * cos(lat2)
-		let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
-		var radiansBearing = atan2(y, x)
+		let yvalue = sin(dLon) * cos(lat2)
+		let xvalue = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        var radiansBearing = atan2(yvalue, xvalue)
 		if radiansBearing < 0.0 {
 			radiansBearing += 2 * .pi
 		}

@@ -40,14 +40,14 @@ class MapPullUpViewController: UIViewController {
     @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.view)
         let velocity = recognizer.velocity(in: self.view)
-        let y = self.view.frame.minY
-        if ( y + translation.y >= fullView) && (y + translation.y <= partialView ) {
-            self.view.frame = CGRect(x: 0, y: y + translation.y, width: view.frame.width, height: view.frame.height)
+        let yaxis = self.view.frame.minY
+        if ( yaxis + translation.y >= fullView) && (yaxis + translation.y <= partialView ) {
+            self.view.frame = CGRect(x: 0, y: yaxis + translation.y, width: view.frame.width, height: view.frame.height)
             recognizer.setTranslation(CGPoint.zero, in: self.view)
         }
         if recognizer.state == .ended {
-            var duration =  velocity.y < 0 ? Double((y - fullView) / -velocity.y) :
-				Double((partialView - y) / velocity.y )
+            var duration =  velocity.y < 0 ? Double((yaxis - fullView) / -velocity.y) :
+				Double((partialView - yaxis) / velocity.y )
             duration = duration > 1.3 ? 1 : duration
             UIView.animate(withDuration: duration, delay: 0.0, options: [.allowUserInteraction], animations: {
                 if  velocity.y >= 0 {
@@ -79,7 +79,18 @@ class MapPullUpViewController: UIViewController {
     }
 
     @IBAction func uomValueChanged(_ sender: Any) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let uomValue: UISegmentedControl = (sender as? UISegmentedControl)!
+        if uomValue.selectedSegmentIndex == 0 {
+            appDelegate.useKmAsUnits = true
+        } else {
+            appDelegate.useKmAsUnits = false
+        }
     }
+
     @IBAction func mapTypeChanged(_ sender: Any) {
         if delegate != nil {
             delegate?.changeMapView(sender)
