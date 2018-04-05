@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import Foundation
 import CoreData
+import AVFoundation
 
 class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapPullUpDelegate {
     @IBOutlet weak var instructionLabel: UILabel!
@@ -36,10 +37,13 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var timer = Timer()
     var startTime = TimeInterval()
     var travelledDistance: Double!
+    let speechSythensizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        UIApplication.shared.isIdleTimerDisabled = true
+
         DispatchQueue.main.async {
             self.navigationItem.title = ""
             self.navigationController?.navigationBar.backItem?.title = ""
@@ -96,6 +100,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         mapView?.delegate = nil
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 
     func addMapPullUpView() {
@@ -218,6 +223,8 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 							step.instructions != "The destination is on your left"
 							&& step.instructions != "The destination is on your right" {
                             DispatchQueue.main.async {
+                                let speakDirectionsText: AVSpeechUtterance = AVSpeechUtterance(string: step.instructions)
+                                self.speechSythensizer.speak(speakDirectionsText)
                                 self.instructionLabel.text = step.instructions
                             }
                         }

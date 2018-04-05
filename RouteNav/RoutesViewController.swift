@@ -303,7 +303,7 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
         routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
         let str =
-			"http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=375x250&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
+			"http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=355x188&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
 			as String
         let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         routeCell.mapIcon.downloadedFrom(link: encodedStr!)
