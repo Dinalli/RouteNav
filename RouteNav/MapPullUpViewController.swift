@@ -10,6 +10,7 @@ import UIKit
 
 class MapPullUpViewController: UIViewController {
 
+    @IBOutlet weak var mapSegmentControl: UISegmentedControl!
     @IBOutlet weak var segementsSwitch: UISwitch!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -26,6 +27,9 @@ class MapPullUpViewController: UIViewController {
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(MapPullUpViewController.panGesture))
         view.addGestureRecognizer(gesture)
         roundViews()
+
+        segementsSwitch.setOn(SRTHelperFunctions.showSegments, animated: true)
+        mapSegmentControl.selectedSegmentIndex = SRTHelperFunctions.mapType
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -75,19 +79,6 @@ class MapPullUpViewController: UIViewController {
     @IBAction func actionTapped(_ sender: Any) {
         if delegate != nil {
             delegate?.actionButtonTapped(sender)
-        }
-    }
-
-    @IBAction func uomValueChanged(_ sender: Any) {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let uomValue: UISegmentedControl = (sender as? UISegmentedControl)!
-        if uomValue.selectedSegmentIndex == 0 {
-            appDelegate.useKmAsUnits = true
-        } else {
-            appDelegate.useKmAsUnits = false
         }
     }
 

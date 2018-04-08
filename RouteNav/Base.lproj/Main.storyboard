@@ -109,6 +109,115 @@
             </objects>
             <point key="canvasLocation" x="-341.60000000000002" y="-873.39901477832518"/>
         </scene>
+        <!--User Settings View Controller-->
+        <scene sceneID="yCL-eI-MyE">
+            <objects>
+                <viewController id="zfb-h5-cVi" customClass="UserSettingsViewController" customModule="RouteNav" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TBF-e5-1kL"/>
+                        <viewControllerLayoutGuide type="bottom" id="iLC-WP-zNA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="unv-Ke-laH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0f-Hk-w3r">
+                                <rect key="frame" x="310" y="30" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="zfb-h5-cVi" eventType="touchUpInside" id="UCE-B2-Bdi"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SjH-7W-o0d">
+                                <rect key="frame" x="16" y="181" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="KM"/>
+                                    <segment title="Miles"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="unitValueChanged:" destination="zfb-h5-cVi" eventType="valueChanged" id="MnF-GH-HHD"/>
+                                </connections>
+                            </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXJ-Tz-Rti">
+                                <rect key="frame" x="300" y="253" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentsValueChanged:" destination="zfb-h5-cVi" eventType="valueChanged" id="SHM-Uo-dYs"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show segments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5k-tm-wfZ">
+                                <rect key="frame" x="17" y="253" width="182" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Fp-3r-wGd">
+                                <rect key="frame" x="299" y="308" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="speechValueChanged:" destination="zfb-h5-cVi" eventType="valueChanged" id="NEF-Ah-2TM"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Speech" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XW2-u7-5aL">
+                                <rect key="frame" x="16" y="308" width="182" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEQ-mo-9YK">
+                                <rect key="frame" x="17" y="87" width="76" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Units" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11P-Xi-GRs">
+                                <rect key="frame" x="17" y="162" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MMD-Er-yk0">
+                                <rect key="frame" x="16" y="109" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Normal"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satelite"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="mapValueChanged:" destination="zfb-h5-cVi" eventType="valueChanged" id="aiW-zW-Yg4"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="L0f-Hk-w3r" secondAttribute="trailing" constant="12" id="KdX-wJ-Rlf"/>
+                            <constraint firstItem="L0f-Hk-w3r" firstAttribute="top" secondItem="TBF-e5-1kL" secondAttribute="bottom" constant="10" id="acW-8Q-Rsa"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapSegmentControl" destination="MMD-Er-yk0" id="GSa-Mv-EYt"/>
+                        <outlet property="segmentsSwitch" destination="LXJ-Tz-Rti" id="cYv-mZ-fDU"/>
+                        <outlet property="speechSwitch" destination="5Fp-3r-wGd" id="YV4-jY-W1f"/>
+                        <outlet property="uomSegmentControl" destination="SjH-7W-o0d" id="FQA-6v-qTo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="woX-S0-Zjt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="520.79999999999995" y="-874.81259370314854"/>
+        </scene>
         <!--Routes View Controller-->
         <scene sceneID="8wI-bc-vqm">
             <objects>
@@ -140,9 +249,15 @@
                         </cells>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Uyq-ez-gPa">
-                        <barButtonItem key="rightBarButtonItem" id="lzz-qn-uiD"/>
+                        <barButtonItem key="rightBarButtonItem" image="742-wrench-selected" id="lzz-qn-uiD">
+                            <connections>
+                                <segue destination="zfb-h5-cVi" kind="popoverPresentation" popoverAnchorBarButtonItem="lzz-qn-uiD" id="qt8-LJ-Vny">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="routesCollectionView" destination="ebk-B6-PD6" id="uY2-QG-Br4"/>
                         <segue destination="4EO-pR-Eat" kind="presentation" identifier="showAuthPopover" id="V6E-ug-e44"/>
@@ -256,6 +371,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="742-wrench-selected" width="28" height="28"/>
         <image name="LogoIcon" width="60" height="60"/>
         <image name="api_logo_pwrdBy_strava_horiz_light" width="338" height="63"/>
         <image name="btn_strava_connectwith_orange" width="193" height="48"/>

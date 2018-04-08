@@ -285,36 +285,32 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
 		-> UICollectionViewCell {
 
-        guard let routeCell: RouteCollectionViewCell =
-			collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell",
-                                               for: indexPath) as? RouteCollectionViewCell else { return UICollectionViewCell()}
+            guard let routeCell: RouteCollectionViewCell =
+                collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell",
+                                                   for: indexPath) as? RouteCollectionViewCell else { return UICollectionViewCell()}
+            let route: Route = routes[indexPath.row]
+            routeCell.routeNameLabel.text = route.routename
 
-        let route: Route = routes[indexPath.row]
-        routeCell.routeNameLabel.text = route.routename
+            if SRTHelperFunctions.UOM == 0 {
+                routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
+            } else {
+                routeCell.distanceLabel.text = String(format: "%.02f miles", arguments: [(route.distance * 0.000621371192)])
+            }
 
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-
-        if (appDelegate?.useKmAsUnits)! {
-            routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
-        } else {
-            routeCell.distanceLabel.text = String(format: "%.02f miles", arguments: [(route.distance * 0.000621371192)])
-        }
-
-        routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
-        routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
-        let str =
-			"http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=355x188&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
-			as String
-        let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        routeCell.mapIcon.downloadedFrom(link: encodedStr!)
-
-        routeCell.layer.borderColor = UIColor.gray.cgColor
-        routeCell.layer.borderWidth = 1.5
-        routeCell.layer.shadowOffset = CGSize(width: 5, height: 5)
-        routeCell.layer.cornerRadius = 18
-        routeCell.layer.shadowOpacity = 0.5
-        routeCell.layer.shadowColor = UIColor.lightGray.cgColor
-        return routeCell
+            routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
+            routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
+            let str =
+                "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=355x188&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
+                    as String
+            let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            routeCell.mapIcon.downloadedFrom(link: encodedStr!)
+            routeCell.layer.borderColor = UIColor.gray.cgColor
+            routeCell.layer.borderWidth = 1.5
+            routeCell.layer.shadowOffset = CGSize(width: 5, height: 5)
+            routeCell.layer.cornerRadius = 18
+            routeCell.layer.shadowOpacity = 0.5
+            routeCell.layer.shadowColor = UIColor.lightGray.cgColor
+            return routeCell
     }
 }
 

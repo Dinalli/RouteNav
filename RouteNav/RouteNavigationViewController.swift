@@ -95,6 +95,17 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         mapView?.showsPointsOfInterest = true
         mapView?.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
         polylinePosistion = 0
+
+        switch  SRTHelperFunctions.mapType {
+        case 0:
+            self.mapView?.mapType = .standard
+        case 1:
+            self.mapView?.mapType = .hybrid
+        case 2:
+            self.mapView?.mapType = .satellite
+        default:
+            self.mapView?.mapType = .standard
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -111,6 +122,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         let height = view.frame.height
         let width  = view.frame.width
         mapPullUpVC.view.frame = CGRect(x: 0, y: self.view.frame.maxY-60, width: width, height: height)
+
+        DispatchQueue.main.async {
+            if SRTHelperFunctions.UOM == 0 {
+                self.mapPullUpVC.updateDistnaceLabel("0 km")
+            } else {
+                self.mapPullUpVC.updateDistnaceLabel("0 miles")
+            }
+        }
     }
 
     func enableLocationServices() {
@@ -191,9 +210,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 					self.travelledDistance + round( (locations.last?.distance(from: currentLocation!))!) as Double
                 DispatchQueue.main.async {
 
-                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
-
-                    if (appDelegate?.useKmAsUnits)! {
+                    if SRTHelperFunctions.UOM == 0 {
                         var formattedDistance: Double = self.travelledDistance / 1000
                         self.mapPullUpVC.updateDistnaceLabel("\(formattedDistance.truncate(places: 2)) km")
                     } else {
@@ -223,8 +240,10 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 							step.instructions != "The destination is on your left"
 							&& step.instructions != "The destination is on your right" {
                             DispatchQueue.main.async {
-                                let speakDirectionsText: AVSpeechUtterance = AVSpeechUtterance(string: step.instructions)
-                                self.speechSythensizer.speak(speakDirectionsText)
+                                if SRTHelperFunctions.canSpeak {
+                                    let speakDirectionsText: AVSpeechUtterance = AVSpeechUtterance(string: step.instructions)
+                                    self.speechSythensizer.speak(speakDirectionsText)
+                                }
                                 self.instructionLabel.text = step.instructions
                             }
                         }
@@ -329,7 +348,9 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
         segmentPolyline = MKPolyline.init(coordinates: segmentCoordinatesArray, count: segmentCoordinatesArray.count)
         segmentPolyline.title = segmentObject.segmentname
         DispatchQueue.main.async {
-            self.mapView!.add(self.segmentPolyline, level: .aboveLabels)
+            if SRTHelperFunctions.showSegments {
+                self.mapView!.add(self.segmentPolyline, level: .aboveLabels)
+            }
         }
     }
 

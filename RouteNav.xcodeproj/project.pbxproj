@@ -31,6 +31,7 @@
 		40BE764220264DAD00132D9A /* MapPullUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BE764020264DAD00132D9A /* MapPullUpViewController.swift */; };
 		40BE764320264DAD00132D9A /* MapPullUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40BE764120264DAD00132D9A /* MapPullUpViewController.xib */; };
 		40BE764520265BB400132D9A /* MapPullUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BE764420265BB400132D9A /* MapPullUpDelegate.swift */; };
+		40C9A5BE2077A97000744A66 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C9A5BD2077A97000744A66 /* UserSettingsViewController.swift */; };
 		40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D8E7271FDACF050034590A /* RouteAnnotation.swift */; };
 		40F1AC661EBCE84C006CD74B /* StravaCoreDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */; };
 		40FAFC8F1EABABA80002EDAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */; };
@@ -86,6 +87,7 @@
 		40BE764020264DAD00132D9A /* MapPullUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPullUpViewController.swift; sourceTree = "<group>"; };
 		40BE764120264DAD00132D9A /* MapPullUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapPullUpViewController.xib; sourceTree = "<group>"; };
 		40BE764420265BB400132D9A /* MapPullUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPullUpDelegate.swift; sourceTree = "<group>"; };
+		40C9A5BD2077A97000744A66 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		40D8E7271FDACF050034590A /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		40F1AC651EBCE84C006CD74B /* StravaCoreDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StravaCoreDataHandler.swift; sourceTree = "<group>"; };
 		40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -146,9 +148,13 @@
 		403129581E431DF7004CA4F8 /* RouteNav */ = {
 			isa = PBXGroup;
 			children = (
-				409CA468204883D800874BC9 /* Extension */,
 				400EDFDA1F5360AB00E4BB62 /* Pugneys to Nostell.gpx */,
 				40040E6D2014F84000193FE4 /* RouteNav.entitlements */,
+				40C9A5BC2077A90000744A66 /* UserSettings */,
+				40C9A5BB2077A8F200744A66 /* RouteNavigation */,
+				40C9A5BA2077A8E900744A66 /* RouteList */,
+				40C9A5B92077A8D600744A66 /* Authorisation */,
+				409CA468204883D800874BC9 /* Extension */,
 				40870B84202628EA00E26F9C /* MapPullUpView */,
 				40FF5E422013770100816EC0 /* Activity */,
 				407111BF200D058B00530974 /* onBoarding */,
@@ -158,7 +164,6 @@
 				40B42AC31E7AC47200B8FA84 /* StravaAPI */,
 				4031298C1E4320A6004CA4F8 /* Model */,
 				4031298B1E432099004CA4F8 /* UI */,
-				4031298A1E432078004CA4F8 /* ViewControllers */,
 				403129591E431DF7004CA4F8 /* AppDelegate.swift */,
 				40FAFC8E1EABABA80002EDAC /* GoogleService-Info.plist */,
 				403129681E431DF7004CA4F8 /* Info.plist */,
@@ -182,16 +187,6 @@
 				4031297E1E431DF7004CA4F8 /* Info.plist */,
 			);
 			path = RouteNavUITests;
-			sourceTree = "<group>";
-		};
-		4031298A1E432078004CA4F8 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */,
-				4072BE761FD579710004525E /* RoutesViewController.swift */,
-				40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */,
-			);
-			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		4031298B1E432099004CA4F8 /* UI */ = {
@@ -275,6 +270,38 @@
 				405F31991E81B1890013457C /* StravaAPIHelper.swift */,
 			);
 			name = StravaAPI;
+			sourceTree = "<group>";
+		};
+		40C9A5B92077A8D600744A66 /* Authorisation */ = {
+			isa = PBXGroup;
+			children = (
+				40866E8E1F111FFD00778CCC /* StravaAuthViewController.swift */,
+			);
+			name = Authorisation;
+			sourceTree = "<group>";
+		};
+		40C9A5BA2077A8E900744A66 /* RouteList */ = {
+			isa = PBXGroup;
+			children = (
+				4072BE761FD579710004525E /* RoutesViewController.swift */,
+			);
+			name = RouteList;
+			sourceTree = "<group>";
+		};
+		40C9A5BB2077A8F200744A66 /* RouteNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				40AD0A411EAA21DB00E06958 /* RouteNavigationViewController.swift */,
+			);
+			name = RouteNavigation;
+			sourceTree = "<group>";
+		};
+		40C9A5BC2077A90000744A66 /* UserSettings */ = {
+			isa = PBXGroup;
+			children = (
+				40C9A5BD2077A97000744A66 /* UserSettingsViewController.swift */,
+			);
+			name = UserSettings;
 			sourceTree = "<group>";
 		};
 		40FF5E422013770100816EC0 /* Activity */ = {
@@ -477,6 +504,7 @@
 				409559821F135C9800050BDD /* SRTHelperFunctions.swift in Sources */,
 				403AF66E1F75857900EF0A9D /* RoutePolyline.swift in Sources */,
 				403129621E431DF7004CA4F8 /* RouteNav.xcdatamodeld in Sources */,
+				40C9A5BE2077A97000744A66 /* UserSettingsViewController.swift in Sources */,
 				409CA46A204883EB00874BC9 /* UIImageViewExtension.swift in Sources */,
 				407111BE200D04E900530974 /* OnBoardingViewController.swift in Sources */,
 				40D8E7281FDACF050034590A /* RouteAnnotation.swift in Sources */,
