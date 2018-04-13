@@ -12,8 +12,8 @@ import SafariServices
 import CoreData
 import MapKit
 
-class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    @IBOutlet var routesCollectionView: UICollectionView!
+class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var routesTableView: UITableView!
     var refreshControl: UIRefreshControl!
     let backgroundImage = UIImageView()
     let apiHelper = StravaAPIHelper()
@@ -37,11 +37,7 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
     let switchingInterval: TimeInterval = 0.5
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.routesCollectionView.register(UINib(nibName: "RouteCollectionViewCell", bundle: nil),
-										   forCellWithReuseIdentifier: "routeCollectionCell")
-        if #available(iOS 11.0, *) {
-            self.routesCollectionView.contentInsetAdjustmentBehavior = .never
-        }
+        self.routesTableView.register(UINib(nibName: "RouteTableViewCell", bundle: nil), forCellReuseIdentifier: "routeTableCell")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -81,14 +77,13 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: #selector(refreshData), for: UIControlEvents.valueChanged)
-        self.routesCollectionView!.addSubview(refreshControl)
-        self.routesCollectionView.delegate = self
-        self.routesCollectionView.dataSource = self
+        self.routesTableView!.addSubview(refreshControl)
+        self.routesTableView.delegate = self
+        self.routesTableView.dataSource = self
     }
 
     func setUpLoadingOverlay() {
         addImageOverlay()
-        //loadingOverlayView.translatesAutoresizingMaskIntoConstraints = false
         loadingOverlayView .backgroundColor = UIColor.clear
         loadingTextLabel.frame = CGRect(x: 0, y: (self.view.frame.size.height/2),
 										width: self.view.frame.size.width, height: 80)
@@ -112,34 +107,14 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                         },
                        completion: nil
         )
-
-//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[loadingOverlay]|",
-//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-//                                                                 metrics: nil,
-//                                                                 views: ["loadingOverlay": loadingOverlayView]))
-//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[loadingOverlay]|",
-//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-//                                                                 metrics: nil,
-//                                                                 views: ["loadingOverlay": loadingOverlayView]))
     }
 
     func addImageOverlay() {
-        //backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         backgroundImage.contentMode = .scaleAspectFill
         self.backgroundImage.frame = CGRect(x: 0, y: 0,
                                             width: self.view.frame.size.width, height: self.view.frame.size.height)
         self.backgroundImage.image = UIImage(named: "pexels-photo-207779")
         self.view .addSubview(self.backgroundImage)
-
-//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[backgroundImage]|",
-//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-//                                                                 metrics: nil,
-//                                                                 views: ["backgroundImage": self.backgroundImage]))
-//        self.view .addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[backgroundImage]|",
-//                                                                 options: NSLayoutFormatOptions.init(rawValue: 0),
-//                                                                 metrics: nil,
-//                                                                 views: ["backgroundImage": self.backgroundImage]))
-
         startAnimatingBackgroundImages()
     }
 
@@ -212,7 +187,7 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                     }
                 } else {
                     DispatchQueue.main.async {
-                        self.refreshControl.endRefreshing()
+                        //self.refreshControl.endRefreshing()
                         self.routes = StravaCoreDataHandler.sharedInstance.fetchRoutes()
                         self.getRouteDetails()
                     }
@@ -254,7 +229,7 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
                 }
             }
         }
-        self.routesCollectionView.reloadData()
+        self.routesTableView.reloadData()
         removeLoadingOverlays()
     }
 
@@ -273,44 +248,43 @@ class RoutesViewController: UIViewController, UICollectionViewDelegate, UICollec
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRoute = routes[indexPath.row]
         self.performSegue(withIdentifier: "showDetailSegue", sender: self)
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return routes.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
-		-> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let routeCell: RouteTableViewCell =
+            tableView.dequeueReusableCell(withIdentifier: "routeTableCell",
+                                          for: indexPath) as? RouteTableViewCell else { return UITableViewCell()}
+        let route: Route = routes[indexPath.row]
+        routeCell.routeNameLabel.text = route.routename
 
-            guard let routeCell: RouteCollectionViewCell =
-                collectionView.dequeueReusableCell(withReuseIdentifier: "routeCollectionCell",
-                                                   for: indexPath) as? RouteCollectionViewCell else { return UICollectionViewCell()}
-            let route: Route = routes[indexPath.row]
-            routeCell.routeNameLabel.text = route.routename
+        if SRTHelperFunctions.UOM == 0 {
+            routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
+        } else {
+            routeCell.distanceLabel.text = String(format: "%.02f miles", arguments: [(route.distance * 0.000621371192)])
+        }
 
-            if SRTHelperFunctions.UOM == 0 {
-                routeCell.distanceLabel.text = String(format: "%.02f km", arguments: [(route.distance/1000)])
-            } else {
-                routeCell.distanceLabel.text = String(format: "%.02f miles", arguments: [(route.distance * 0.000621371192)])
-            }
-
-            routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
-            routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
-            let str =
-                "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=355x188&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
-                    as String
-            let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            routeCell.mapIcon.downloadedFrom(link: encodedStr!)
-            routeCell.layer.borderColor = UIColor.gray.cgColor
-            routeCell.layer.borderWidth = 1.5
-            routeCell.layer.shadowOffset = CGSize(width: 5, height: 5)
-            routeCell.layer.cornerRadius = 18
-            routeCell.layer.shadowOpacity = 0.5
-            routeCell.layer.shadowColor = UIColor.lightGray.cgColor
-            return routeCell
+        routeCell.elevationLabel.text = String(format: "%.f", route.elevation_gain) + "m"
+        routeCell.timeLabel.text = srtHelper.getStringFrom(seconds: route.estmovingtime)
+        let str =
+            "http://maps.googleapis.com/maps/api/staticmap?sensor=false&maptype={0}&size=355x188&path=weight:3|color:red|enc:\(route.routemap?.summary_polyline! ?? "")"
+                as String
+        let encodedStr = str.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        routeCell.mapIcon.downloadedFrom(link: encodedStr!)
+        routeCell.layer.borderColor = UIColor.gray.cgColor
+        routeCell.layer.borderWidth = 1.5
+        routeCell.layer.shadowOffset = CGSize(width: 5, height: 5)
+        //routeCell.layer.cornerRadius = 18
+        routeCell.layer.shadowOpacity = 0.5
+        routeCell.layer.shadowColor = UIColor.lightGray.cgColor
+        return routeCell
     }
 }
 

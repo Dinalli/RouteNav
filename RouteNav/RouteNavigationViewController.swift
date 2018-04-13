@@ -230,6 +230,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 			MKPlacemark(coordinate: getClosestLocation(location: currentLocation, locationsCordinates: navigationCoordinates)!))
         request.requestsAlternateRoutes = false
         let directions = MKDirections(request: request)
+        var lastInstruction: String = ""
         directions.calculate(completionHandler: {(response, error) in
             if error != nil {
                 print("Error getting directions")
@@ -238,13 +239,14 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     for step in route.steps {
                         if step.instructions != "Arrive at the destination" &&
 							step.instructions != "The destination is on your left"
-							&& step.instructions != "The destination is on your right" {
+							&& step.instructions != "The destination is on your right" && step.instructions != lastInstruction {
                             DispatchQueue.main.async {
                                 if SRTHelperFunctions.canSpeak {
                                     let speakDirectionsText: AVSpeechUtterance = AVSpeechUtterance(string: step.instructions)
                                     self.speechSythensizer.speak(speakDirectionsText)
                                 }
                                 self.instructionLabel.text = step.instructions
+                                lastInstruction = step.instructions
                             }
                         }
                     }
