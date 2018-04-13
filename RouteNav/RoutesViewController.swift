@@ -248,7 +248,6 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRoute = routes[indexPath.row]
         self.performSegue(withIdentifier: "showDetailSegue", sender: self)
@@ -281,7 +280,7 @@ class RoutesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         routeCell.layer.borderColor = UIColor.gray.cgColor
         routeCell.layer.borderWidth = 1.5
         routeCell.layer.shadowOffset = CGSize(width: 5, height: 5)
-        //routeCell.layer.cornerRadius = 18
+        routeCell.layer.cornerRadius = 18
         routeCell.layer.shadowOpacity = 0.5
         routeCell.layer.shadowColor = UIColor.lightGray.cgColor
         return routeCell

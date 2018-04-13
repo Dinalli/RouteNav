@@ -247,6 +247,7 @@
                         <segue destination="B6v-54-laf" kind="popoverPresentation" identifier="onBoardSegue" popoverAnchorBarButtonItem="lzz-qn-uiD" id="JpL-cc-0LQ">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="Rkg-Ea-qvg" kind="show" identifier="showDetailSegue" id="DSb-YF-Zr5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETW-zz-hOI" userLabel="First Responder" sceneMemberID="firstResponder"/>

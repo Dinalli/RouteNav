@@ -37,6 +37,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
     var timer = Timer()
     var startTime = TimeInterval()
     var travelledDistance: Double!
+    var lastInstruction: String = ""
     let speechSythensizer: AVSpeechSynthesizer = AVSpeechSynthesizer()
 
     override func viewWillAppear(_ animated: Bool) {
@@ -230,23 +231,24 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 			MKPlacemark(coordinate: getClosestLocation(location: currentLocation, locationsCordinates: navigationCoordinates)!))
         request.requestsAlternateRoutes = false
         let directions = MKDirections(request: request)
-        var lastInstruction: String = ""
         directions.calculate(completionHandler: {(response, error) in
             if error != nil {
-                print("Error getting directions")
+                print("Error getting directions \(String(describing: error?.localizedDescription))")
             } else {
                 for route in (response?.routes)! {
                     for step in route.steps {
                         if step.instructions != "Arrive at the destination" &&
 							step.instructions != "The destination is on your left"
-							&& step.instructions != "The destination is on your right" && step.instructions != lastInstruction {
+							&& step.instructions != "The destination is on your right" && step.instructions != self.lastInstruction {
                             DispatchQueue.main.async {
                                 if SRTHelperFunctions.canSpeak {
                                     let speakDirectionsText: AVSpeechUtterance = AVSpeechUtterance(string: step.instructions)
                                     self.speechSythensizer.speak(speakDirectionsText)
                                 }
                                 self.instructionLabel.text = step.instructions
-                                lastInstruction = step.instructions
+                                self.lastInstruction = step.instructions
+
+                                print(step.instructions)
                             }
                         }
                     }
@@ -489,6 +491,7 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        stopLocationUpdates()
         removeMap()
     }
 }
