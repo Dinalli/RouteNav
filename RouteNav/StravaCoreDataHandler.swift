@@ -79,6 +79,7 @@ class StravaCoreDataHandler: NSObject {
             NotificationCenter.default.post(name: Notification.Name("SRUpdateRoutesNotification"), object: nil)
         }
     }
+
     public func addRouteDetail(route: Route, routesDetailArray: [String: Any]!, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
         let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
 		container?.viewContext.performAndWait {
@@ -144,7 +145,6 @@ class StravaCoreDataHandler: NSObject {
             coordinateObject.setValue(coordsArrayObject[0], forKeyPath: "latitude")
             coordinateObject.setValue(coordsArrayObject[1], forKeyPath: "longitude")
 			route.addToRouteroutecoord(coordinateObject)
-			print("adding \(coordObjectIndex)")
 		}
 		do {
 			try container?.viewContext.save()
@@ -180,4 +180,41 @@ class StravaCoreDataHandler: NSObject {
         }
         completionHandler(true)
     }
+
+    public func addSegmentEffortDetail(segment: Segment, segmentEffortDetailsArray: [Any], completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+
+        let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+
+        for segementEffortIndex in 0...segmentEffortDetailsArray.count-1 {
+            let segmentEffortArrayObject = segmentEffortDetailsArray[segementEffortIndex] as? [String: Any]
+            if segmentEffortArrayObject != nil {
+
+                let segmentEffort =
+                    NSEntityDescription.entity(forEntityName: "SegmentEffort",
+                                               in: (container?.viewContext)!)!
+
+                guard let segmentEffortObject = NSManagedObject(entity: segmentEffort,
+                                                                insertInto: container?.viewContext) as? SegmentEffort else { return }
+
+                segmentEffortObject.setValue(segmentEffortArrayObject!["id"] as? NSNumber, forKeyPath: "id")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["start_date"] as? NSNumber, forKeyPath: "date")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["average_cadence"] as? NSNumber, forKeyPath: "avgcadance")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["device_watts"] as? NSNumber, forKeyPath: "devicewatts")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["average_watts"] as? NSNumber, forKeyPath: "avgwatts")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["average_heartrate"] as? NSNumber, forKeyPath: "avgHR")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["distance"] as? NSNumber, forKeyPath: "distance")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["elapsed_time"] as? NSNumber, forKeyPath: "time")
+                segmentEffortObject.setValue(segmentEffortArrayObject!["pr_rank"] as? NSNumber, forKeyPath: "pr_rank")
+                segment.addToSegEffort(segmentEffortObject)
+            }
+        }
+
+        do {
+            try container?.viewContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        completionHandler(true)
+    }
+
 }

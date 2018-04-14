@@ -227,4 +227,44 @@ class StravaAPIHelper: NSObject, WKNavigationDelegate {
         })
         dataTask?.resume()
     }
+
+    public func getSegmentEffortDetail(_ segment: Segment, completionHandler: @escaping(_ successFlag: Bool) -> Swift.Void) {
+
+        print("Getting segment Efforts for \(segment.segmentname!)")
+        let authUrl = URL(string: "https://www.strava.com/api/v3/segments/\(segment.id)/all_efforts")
+        var request = URLRequest(url: authUrl!)
+        request.addValue(" Bearer " + authorisationToken!, forHTTPHeaderField: "Authorization")
+        request.addValue(authorisationToken!, forHTTPHeaderField: "access_token")
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = 5.0
+        dataTask = defaultSession.dataTask(with: request, completionHandler: { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    do {
+                        guard let jsonResult: [Any]  = (try JSONSerialization.jsonObject(with: data!, options:
+                            JSONSerialization.ReadingOptions.mutableContainers) as? [Any]) else { return }
+
+                        print(jsonResult)
+                        DispatchQueue.main.async {
+                            StravaCoreDataHandler.sharedInstance.addSegmentEffortDetail(segment: segment,
+                                                                                        segmentEffortDetailsArray: jsonResult,
+                                                                                        completionHandler: { (successFlag) in
+                                                                        //success code
+                                                            return completionHandler(successFlag)
+                            })
+                        }
+                    } catch {
+                        //failure code
+                        return completionHandler(false)
+                    }
+                } else {
+                    return completionHandler(false)
+                }
+            }
+        })
+        dataTask?.resume()
+    }
 }

@@ -326,6 +326,16 @@ class RouteNavigationViewController: UIViewController, CLLocationManagerDelegate
                     }
                 }
             }
+
+            self.apiHelper.getSegmentEffortDetail(routeSegmentObject) { (successFlag) in
+                if !successFlag {
+                    let alertMessage = UIAlertController(title: "No Segment Efforts",
+                                                         message: "Sorry, we cannot get segment as something went wrong.",
+                                                         preferredStyle: .actionSheet)
+                    alertMessage.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
+                    self.present(alertMessage, animated: true, completion: nil)
+                } 
+            }
         }
     }
 
